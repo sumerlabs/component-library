@@ -1,10 +1,38 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Modal from './Modal';
+import { ModalType } from './types';
 
 const child = () => {
   return (
-      <></>
+      <>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Pellentesque euismod, urna eu tincidunt consectetur,
+          nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
+          Sed euismod, urna eu tincidunt consectetur, nisi nisl
+          aliquam eros, eget tincidunt nisl nunc eu nisi.
+        </p>
+        <p>
+          Sed euismod, urna eu tincidunt consectetur, nisi nisl
+          aliquam eros, eget tincidunt nisl nunc eu nisi.
+          Sed euismod, urna eu tincidunt consectetur, nisi nisl
+          aliquam eros, eget tincidunt nisl nunc eu nisi.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Pellentesque euismod, urna eu tincidunt consectetur,
+          nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
+          Sed euismod, urna eu tincidunt consectetur, nisi nisl
+          aliquam eros, eget tincidunt nisl nunc eu nisi.
+        </p>
+        <p>
+          Sed euismod, urna eu tincidunt consectetur, nisi nisl
+          aliquam eros, eget tincidunt nisl nunc eu nisi.
+          Sed euismod, urna eu tincidunt consectetur, nisi nisl
+          aliquam eros, eget tincidunt nisl nunc eu nisi.
+        </p>
+      </>
   )
 }
 
@@ -32,6 +60,41 @@ Desktop.args = {
   title: "Modal Title"
 };
 
+export const DesktopWithCustomStyles = Template.bind({});
+DesktopWithCustomStyles.args = {
+  show: true,
+  onClose: () => {},
+  children: child,
+  title: "Modal Title",
+  styles: {
+    width: "200px",
+    borderRadius: {
+      bottomLeft: "0",
+      bottomRight: "0",
+      topLeft: "10px",
+      topRight: "10px"
+    }
+  }
+};
+
+export const DesktopPopup = Template.bind({});
+DesktopPopup.args = {
+  show: true,
+  onClose: () => {},
+  children: child,
+  title: "Modal Title",
+  styles: {
+    width: "350px",
+    borderRadius: {
+      bottomLeft: "0",
+      bottomRight: "0",
+      topLeft: "10px",
+      topRight: "10px"
+    },
+    type: ModalType.LEFT
+  }
+};
+
 export const Mobile = Template.bind({});
 Mobile.parameters = {
   viewport: {
@@ -43,4 +106,48 @@ Mobile.args = {
   onClose: () => {},
   children: child,
   title: "Modal Title"
+};
+
+export const MobilePopup = Template.bind({});
+MobilePopup.parameters = {
+  viewport: {
+    defaultViewport: 'iphonex',
+  },
+};
+MobilePopup.args = {
+  show: true,
+  onClose: () => {},
+  children: child,
+  title: "Modal Title",
+  styles: {
+    borderRadius: {
+      bottomLeft: "0",
+      bottomRight: "0",
+      topLeft: "10px",
+      topRight: "10px"
+    },
+    type: ModalType.LEFT
+  }
+};
+
+export const MobileButton = Template.bind({});
+MobileButton.parameters = {
+  viewport: {
+    defaultViewport: 'iphonex',
+  },
+};
+MobileButton.args = {
+  show: true,
+  onClose: () => {},
+  children: child,
+  title: "Modal Title",
+  styles: {
+    borderRadius: {
+      bottomLeft: "0",
+      bottomRight: "0",
+      topLeft: "10px",
+      topRight: "10px"
+    },
+    type: ModalType.MOBILE_BOTTOM
+  }
 };

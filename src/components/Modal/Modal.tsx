@@ -2,8 +2,9 @@ import { StyledModalOverlay, StyledModal, StyledModalHeader, StyledModalBody, St
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Close } from "../../assets/img/icons";
+import { ModalProps } from './types';
 
-const Modal = ({ show, onClose, children, title }: any) => {
+const Modal = ({ show, onClose, children, title, styles }: ModalProps) => {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -18,7 +19,9 @@ const Modal = ({ show, onClose, children, title }: any) => {
     const modalContent = show ? (
         <StyledModalOverlay>
             <StyledModal initial={{ y: 400 }}
-                         animate={{ y: 0 }} transition={{ ease: "easeInOut", duration: 0.3 }}>
+                         animate={{ y: 0 }} transition={{ ease: "easeInOut", duration: 0.3 }}
+            borderRadius={styles?.borderRadius || undefined} width={styles?.width || undefined}
+            type={styles?.type}>
                 <StyledModalHeader>
                     {title && <StyledModalTitle>{title}</StyledModalTitle>}
                     <a href="#" onClick={handleCloseClick}>
