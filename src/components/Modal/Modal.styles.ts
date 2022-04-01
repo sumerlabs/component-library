@@ -6,7 +6,7 @@ const getHeight = (type: ModalType | undefined) => {
   switch (type) {
       case ModalType.RIGHT:
       case ModalType.LEFT:
-      return '98%';
+      return '100%';
     default:
       return '60%';
   }
@@ -40,7 +40,9 @@ export const StyledModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 25px;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.9
+  
+  rem;
   margin-top: 5px;
 `;
 
