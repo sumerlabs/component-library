@@ -57,7 +57,15 @@ Desktop.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title"
+  title: "Modal Title",
+  styles: {
+    borderRadius: {
+      bottomLeft: "10px",
+      bottomRight: "10px",
+      topLeft: "10px",
+      topRight: "10px"
+    }
+  }
 };
 
 export const DesktopWithCustomStyles = Template.bind({});
@@ -153,6 +161,11 @@ MobileButton.args = {
 };
 
 export const MobileButtonInDektopView = Template.bind({});
+// MobileButtonInDektopView.parameters = {
+//   viewport: {
+//     defaultViewport: 'iphonex',
+//   },
+// };
 MobileButtonInDektopView.args = {
   show: true,
   onClose: () => {},
