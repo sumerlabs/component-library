@@ -151,3 +151,20 @@ MobileButton.args = {
     type: ModalType.MOBILE_BOTTOM
   }
 };
+
+export const MobileButtonInDektopView = Template.bind({});
+MobileButtonInDektopView.args = {
+  show: true,
+  onClose: () => {},
+  children: child,
+  title: "Modal Title",
+  styles: {
+    borderRadius: {
+      bottomLeft: "10px",
+      bottomRight: "10px",
+      topLeft: "10px",
+      topRight: "10px"
+    },
+    type: ModalType.MOBILE_BOTTOM
+  }
+};
