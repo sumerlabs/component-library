@@ -40,9 +40,7 @@ export const StyledModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 25px;
-  margin-bottom: 0.9
-  
-  rem;
+  margin-bottom: 0.9rem;
   margin-top: 5px;
 `;
 
@@ -53,8 +51,8 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
   position: ${({ type }) => checkIfIsPopup(type) ? 'fixed' : 'inherit'};
   left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
   right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
-  border-top-left-radius: ${({ borderRadius }) => borderRadius?.topLeft || '15px'};
-  border-top-right-radius: ${({ borderRadius }) => borderRadius?.topRight || '15px'};
+  border-top-left-radius: ${({ borderRadius }) => borderRadius?.topLeft || '0'};
+  border-top-right-radius: ${({ borderRadius }) => borderRadius?.topRight || '0'};
   border-bottom-right-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
   border-bottom-left-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
   padding: 15px;
@@ -68,16 +66,16 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
     left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
     right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
     align-self: center;
-    border-top-left-radius: ${({ borderRadius }) => borderRadius?.topLeft || '15px'};
-    border-top-right-radius: ${({ borderRadius }) => borderRadius?.topRight || '15px'};
+    border-top-left-radius: ${({ borderRadius }) => borderRadius?.topLeft || '0'};
+    border-top-right-radius: ${({ borderRadius }) => borderRadius?.topRight || '0'};
     border-bottom-right-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
     border-bottom-left-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
   }
   @media screen and (max-width: 1024px) {
     width: ${({ width }) => width || '800px'};
     align-self: center;
-    border-top-left-radius: ${({ borderRadius }) => borderRadius?.topLeft || '15px'};
-    border-top-right-radius: ${({ borderRadius }) => borderRadius?.topRight || '15px'};
+    border-top-left-radius: ${({ borderRadius }) => borderRadius?.topLeft || '0'};
+    border-top-right-radius: ${({ borderRadius }) => borderRadius?.topRight || '0'};
     border-bottom-right-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
     border-bottom-left-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
   }
