@@ -57,7 +57,7 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
   box-sizing: border-box;
   background-color: ${({ content }) => content?.backgroundColor || 'white'};
   width: ${({ content }) => content?.width || '100%'};
-  padding: ${({ content  }) => content?.padding || '15px'};
+  padding: ${({ content  }) => content?.padding || '10px'};
   height: ${({ content }) => getHeight(content?.type)};
   position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
   left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};
@@ -65,7 +65,7 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
   align-self: flex-end;
   min-height: 500px;
   overflow-y: scroll;
-  @media screen and (min-width: 320px) and (max-width: 375px) {
+  @media screen and (min-width: 320px) and (max-width: 393px) {
     position: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? 'fixed' : 'initial'};
     bottom: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? '0' : 'auto'};
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.MOBILE)};
@@ -73,6 +73,7 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
     height: ${({ content }) => getHeight(content?.type)};
   }
   @media screen and (min-width: 768px) and (max-width: 1824px) {
+    padding: ${({ content  }) => content?.padding || '15px'};
     width: ${({ content }) => content?.width || '800px'};
     position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.DESKTOP)};
