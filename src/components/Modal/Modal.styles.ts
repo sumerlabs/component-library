@@ -77,18 +77,21 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
     left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
     right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
     align-self: center;
+    bottom: auto;
   }
   @media screen and (min-width: 1024px) {
     width: ${({ width }) => width || '800px'};
     left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
     right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
     align-self: center;
+    bottom: auto;
   }
   @media screen and (min-width: 1440px) {
     width: ${({ width }) => width || '800px'};
     left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
     right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
     align-self: center;
+    bottom: auto;
   }
 
 `;
