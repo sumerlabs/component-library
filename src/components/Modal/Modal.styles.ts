@@ -25,8 +25,7 @@ const checkIfIsPopup = (type: ModalType | undefined) => {
 const getBorderRadius = (type: ModalType | undefined, borderRadius: BorderRadius | undefined, screen: Screen) => {
   switch (type) {
     case ModalType.MOBILE_BOTTOM:
-      return `${borderRadius?.topLeft || 0} ${borderRadius?.topRight || 0}
-       ${screen == Screen.DESKTOP ? borderRadius?.bottomRight || 0 : 0} ${screen == Screen.DESKTOP ? borderRadius?.bottomLeft || 0 : 0}`;
+      return `${borderRadius?.topLeft || 0} ${borderRadius?.topRight || 0} ${screen == Screen.DESKTOP ? borderRadius?.bottomRight || 0 : 0} ${screen == Screen.DESKTOP ? borderRadius?.bottomLeft || 0 : 0}`;
     default:
         return `${borderRadius?.topLeft || 0} ${borderRadius?.topRight || 0} ${borderRadius?.bottomRight || 0} ${borderRadius?.bottomLeft || 0}`;
   }
@@ -55,6 +54,7 @@ export const StyledModalHeader = styled.div`
 `;
 
 export const StyledModal = styled(motion.div)<ModalStyleProps>`
+  box-sizing: border-box;
   background-color: ${({ content }) => content?.backgroundColor || 'white'};
   width: ${({ content }) => content?.width || '100%'};
   padding: ${({ content  }) => content?.padding || '15px'};
