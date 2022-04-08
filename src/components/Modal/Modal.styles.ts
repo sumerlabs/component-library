@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { ModalStyleProps, ModalType } from './types';
+import { BorderRadius, ModalStyleProps, ModalType, Screen } from './types';
 
 const getHeight = (type: ModalType | undefined) => {
   switch (type) {
@@ -22,6 +22,16 @@ const checkIfIsPopup = (type: ModalType | undefined) => {
   }
 }
 
+const getBorderRadius = (type: ModalType | undefined, borderRadius: BorderRadius | undefined, screen: Screen) => {
+  switch (type) {
+    case ModalType.MOBILE_BOTTOM:
+      return `${borderRadius?.topLeft || 0} ${borderRadius?.topRight || 0}
+       ${screen == Screen.DESKTOP ? borderRadius?.bottomRight || 0 : 0} ${screen == Screen.DESKTOP ? borderRadius?.bottomLeft || 0 : 0}`;
+    default:
+        return `${borderRadius?.topLeft || 0} ${borderRadius?.topRight || 0} ${borderRadius?.bottomRight || 0} ${borderRadius?.bottomLeft || 0}`;
+  }
+}
+
 export const StyledModalTitle= styled.div`
   display: flex;
   font-weight: 600;
@@ -32,8 +42,8 @@ export const StyledModalTitle= styled.div`
   margin: 0 auto;
 `;
 
-export const StyledModalBody = styled.div`
-  padding-top: 10px;
+export const StyledModalBody = styled.div<ModalStyleProps>`
+  padding: ${({ content }) => content?.body?.padding || '0'};
 `;
 
 export const StyledModalHeader = styled.div`
@@ -45,60 +55,38 @@ export const StyledModalHeader = styled.div`
 `;
 
 export const StyledModal = styled(motion.div)<ModalStyleProps>`
-  background: white;
-  width: ${({ width }) => width || '100%'};
-  height: ${({ type }) => getHeight(type)};
-  position: ${({ type }) => checkIfIsPopup(type) ? 'fixed' : 'inherit'};
-  left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
-  right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
-  border-top-left-radius: ${({ borderRadius }) => borderRadius?.topLeft || '0'};
-  border-top-right-radius: ${({ borderRadius }) => borderRadius?.topRight || '0'};
-  border-bottom-right-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
-  border-bottom-left-radius: ${({ borderRadius }) => borderRadius?.bottomLeft || '0'};
-
+  background-color: ${({ content }) => content?.backgroundColor || 'white'};
+  width: ${({ content }) => content?.width || '100%'};
+  padding: ${({ content  }) => content?.padding || '15px'};
+  height: ${({ content }) => getHeight(content?.type)};
+  position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
+  left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};
+  right: ${({ content }) => content?.type ==  ModalType.RIGHT ? '0' : 'auto'};
   align-self: flex-end;
   min-height: 500px;
   overflow-y: scroll;
-  @media screen and (min-width: 320px) {
-    position: ${({ type }) => type ==  ModalType.MOBILE_BOTTOM ? 'fixed' : 'initial'};
-    bottom: ${({ type }) => type ==  ModalType.MOBILE_BOTTOM ? '0' : 'auto'};
+  @media screen and (min-width: 320px) and (max-width: 375px) {
+    position: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? 'fixed' : 'initial'};
+    bottom: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? '0' : 'auto'};
+    border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.MOBILE)};
     width: 100%;
-    height: ${({ type }) => getHeight(type)};
+    height: ${({ content }) => getHeight(content?.type)};
   }
-  @media screen and (min-width: 375px) {
-    position: ${({ type }) => type ==  ModalType.MOBILE_BOTTOM ? 'fixed' : 'initial'};
-    bottom: ${({ type }) => type ==  ModalType.MOBILE_BOTTOM ? '0' : 'auto'};
-    width: 100%;
-    height: ${({ type }) => getHeight(type)};
-  }
-  @media screen and (min-width: 768px) {
-    width: ${({ width }) => width || '700px'};
-    position: ${({ type }) => checkIfIsPopup(type) ? 'fixed' : 'inherit'};
-    left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
-    right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
+  @media screen and (min-width: 768px) and (max-width: 1824px) {
+    width: ${({ content }) => content?.width || '800px'};
+    position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
+    border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.DESKTOP)};
+    left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};
+    right: ${({ content }) => content?.type ==  ModalType.RIGHT ? '0' : 'auto'};
     align-self: center;
     bottom: auto;
   }
-  @media screen and (min-width: 1024px) {
-    width: ${({ width }) => width || '800px'};
-    left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
-    right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
-    align-self: center;
-    bottom: auto;
-  }
-  @media screen and (min-width: 1440px) {
-    width: ${({ width }) => width || '800px'};
-    left: ${({ type }) => type ==  ModalType.LEFT ? '0' : 'auto'};
-    right: ${({ type }) => type ==  ModalType.RIGHT ? '0' : 'auto'};
-    align-self: center;
-    bottom: auto;
-  }
-
 `;
-export const StyledModalOverlay = styled.div`
+
+export const StyledModalOverlay = styled.div<ModalStyleProps>`
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: ${({ overlay }) => overlay?.backgroundColor || 'rgba(0, 0, 0, 0.75)'};
   z-index: 2000;
   top: 0;
   left: 0;

@@ -38,14 +38,7 @@ const child = () => {
 
 export default {
   title: 'Modal',
-  component: Modal,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    show: true,
-    onClose: () => {},
-    children: child,
-    title: "Modal Title"
-  },
+  component: Modal
 } as ComponentMeta<typeof Modal>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -57,13 +50,15 @@ Desktop.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title",
+  title: "Desktop",
   styles: {
-    borderRadius: {
-      bottomLeft: "10px",
-      bottomRight: "10px",
-      topLeft: "10px",
-      topRight: "10px"
+    content: {
+      borderRadius: {
+        bottomLeft: "10px",
+        bottomRight: "10px",
+        topLeft: "10px",
+        topRight: "10px"
+      }
     }
   }
 };
@@ -73,14 +68,16 @@ DesktopWithCustomStyles.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title",
+  title: "Desktop With Custom Styles",
   styles: {
-    width: "200px",
-    borderRadius: {
-      bottomLeft: "0",
-      bottomRight: "0",
-      topLeft: "10px",
-      topRight: "10px"
+    content: {
+      width: "200px",
+      borderRadius: {
+        bottomLeft: "0",
+        bottomRight: "0",
+        topLeft: "10px",
+        topRight: "10px"
+      }
     }
   }
 };
@@ -90,16 +87,18 @@ DesktopPopup.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title",
+  title: "Desktop Popup",
   styles: {
-    width: "350px",
-    borderRadius: {
-      bottomLeft: "0",
-      bottomRight: "0",
-      topLeft: "10px",
-      topRight: "10px"
-    },
-    type: ModalType.LEFT
+    content: {
+      width: "350px",
+      borderRadius: {
+        bottomLeft: "0",
+        bottomRight: "0",
+        topLeft: "10px",
+        topRight: "10px"
+      },
+      type: ModalType.LEFT
+    }
   }
 };
 
@@ -113,7 +112,7 @@ Mobile.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title"
+  title: "Mobile"
 };
 
 export const MobilePopup = Template.bind({});
@@ -126,15 +125,17 @@ MobilePopup.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title",
+  title: "Mobile Popup",
   styles: {
-    borderRadius: {
-      bottomLeft: "0",
-      bottomRight: "0",
-      topLeft: "10px",
-      topRight: "10px"
-    },
-    type: ModalType.LEFT
+    content: {
+      borderRadius: {
+        bottomLeft: "0",
+        bottomRight: "0",
+        topLeft: "10px",
+        topRight: "10px"
+      },
+      type: ModalType.LEFT
+    }
   }
 };
 
@@ -148,36 +149,40 @@ MobileButton.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title",
+  title: "Mobile Button",
   styles: {
-    borderRadius: {
-      bottomLeft: "0",
-      bottomRight: "0",
-      topLeft: "10px",
-      topRight: "10px"
-    },
-    type: ModalType.MOBILE_BOTTOM
+    content: {
+      borderRadius: {
+        bottomLeft: "0",
+        bottomRight: "0",
+        topLeft: "10px",
+        topRight: "10px"
+      },
+      type: ModalType.MOBILE_BOTTOM
+    }
   }
 };
 
-export const MobileButtonInDektopView = Template.bind({});
+export const MobileButtonInDesktopView = Template.bind({});
 // MobileButtonInDektopView.parameters = {
 //   viewport: {
 //     defaultViewport: 'iphonex',
 //   },
 // };
-MobileButtonInDektopView.args = {
+MobileButtonInDesktopView.args = {
   show: true,
   onClose: () => {},
   children: child,
-  title: "Modal Title",
+  title: "Mobile Button In Desktop View",
   styles: {
-    borderRadius: {
-      bottomLeft: "10px",
-      bottomRight: "10px",
-      topLeft: "10px",
-      topRight: "10px"
-    },
-    type: ModalType.MOBILE_BOTTOM
+    content: {
+      borderRadius: {
+        bottomLeft: "10px",
+        bottomRight: "10px",
+        topLeft: "10px",
+        topRight: "10px"
+      },
+      type: ModalType.MOBILE_BOTTOM
+    }
   }
 };

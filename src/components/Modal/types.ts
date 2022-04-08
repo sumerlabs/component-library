@@ -7,21 +7,47 @@ export enum ModalType {
   MOBILE_BOTTOM = "mobile-bottom",
 }
 
+export enum Screen {
+    MOBILE = "mobile",
+    DESKTOP = "desktop"
+}
+
 export type ModalProps = {
     show: boolean;
     onClose: () => void;
     children: React.ReactNode;
     title: string;
-    styles?: ModalStyleProps
+    styles?: ModalStyleProps;
+    element?: Element;
+}
+
+export type BorderRadius = {
+    topLeft?: string;
+    topRight?: string;
+    bottomLeft?: string;
+    bottomRight?: string;
+}
+
+export type ModalContent = {
+    borderRadius?: BorderRadius;
+    width?: string;
+    type?: ModalType;
+    padding?: string;
+    body?: Body
+    backgroundColor?: string;
+}
+
+export type Overlay = {
+    backgroundColor?: string;
+}
+
+export type Body = {
+    borderRadius?: BorderRadius;
+    padding?: string;
+    backgroundColor?: string;
 }
 
 export type ModalStyleProps = {
-    borderRadius?: {
-        topLeft?: string;
-        topRight?: string;
-        bottomLeft?: string;
-        bottomRight?: string;
-    };
-    width?: string;
-    type?: ModalType;
+    content?: ModalContent;
+    overlay?: Overlay;
 };

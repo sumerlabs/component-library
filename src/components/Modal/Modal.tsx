@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import { Close } from "../../assets/img/icons";
 import { ModalProps } from './types';
 
-const Modal = ({ show, onClose, children, title, styles }: ModalProps) => {
+const Modal = ({ show, onClose, children, title, styles, element }: ModalProps) => {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -17,18 +17,17 @@ const Modal = ({ show, onClose, children, title, styles }: ModalProps) => {
     };
 
     const modalContent = show ? (
-        <StyledModalOverlay>
+        <StyledModalOverlay overlay={styles?.overlay}>
             <StyledModal initial={{ y: 400 }}
                          animate={{ y: 0 }} transition={{ ease: "easeInOut", duration: 0.3 }}
-            borderRadius={styles?.borderRadius || undefined} width={styles?.width || undefined}
-            type={styles?.type}>
+            content={styles?.content} overlay={styles?.overlay}>
                 <StyledModalHeader>
                     {title && <StyledModalTitle>{title}</StyledModalTitle>}
                     <a href="#" onClick={handleCloseClick}>
                         <Close/>
                     </a>
                 </StyledModalHeader>
-                <StyledModalBody>{children}</StyledModalBody>
+                <StyledModalBody content={styles?.content}>{children}</StyledModalBody>
             </StyledModal>
         </StyledModalOverlay>
     ) : null;
@@ -36,7 +35,7 @@ const Modal = ({ show, onClose, children, title, styles }: ModalProps) => {
     if (isBrowser) {
         return createPortal(
             modalContent,
-            document.body!
+            element || document.body!
         );
     } else {
         return null;
