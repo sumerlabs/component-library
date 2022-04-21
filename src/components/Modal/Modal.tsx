@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Close } from "../../assets/img/icons";
 import { ModalProps } from './types';
+import { getTransition } from './transition';
 
 const Modal = ({ show, onClose, children, title, styles, element }: ModalProps) => {
     const [isBrowser, setIsBrowser] = useState(false);
@@ -16,10 +17,18 @@ const Modal = ({ show, onClose, children, title, styles, element }: ModalProps) 
         onClose();
     };
 
+    const variants = {
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+    }
+
+    const transition = getTransition(styles?.content?.type)
+
     const modalContent = show ? (
-        <StyledModalOverlay overlay={styles?.overlay}>
-            <StyledModal initial={{ y: 400 }}
-                         animate={{ y: 0 }} transition={{ ease: "easeInOut", duration: 0.3 }}
+        <StyledModalOverlay overlay={styles?.overlay} onClick={handleCloseClick}>
+            <StyledModal variants={variants} initial={transition.initial}
+                         animate={transition.animate} transition={transition.transition}
+                         onClick={(e) => e.stopPropagation()}
             content={styles?.content} overlay={styles?.overlay}>
                 <StyledModalHeader>
                     {title && <StyledModalTitle>{title}</StyledModalTitle>}
