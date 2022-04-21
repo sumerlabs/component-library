@@ -14,6 +14,7 @@ export enum Screen {
 
 export type ModalProps = {
     show: boolean;
+    showHeader?: boolean;
     onClose: () => void;
     children: React.ReactNode;
     title: string;
