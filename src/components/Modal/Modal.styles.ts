@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { BorderRadius, ModalStyleProps, ModalType, Screen } from './types';
 
-const getHeight = (type: ModalType | undefined) => {
+const getHeight = (type: ModalType | undefined, height: string | undefined ) => {
   switch (type) {
       case ModalType.RIGHT:
       case ModalType.LEFT:
       return '100%';
     default:
-      return '60%';
+      return height || '60%';
   }
 }
 
@@ -59,12 +59,11 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
   background-color: ${({ content }) => content?.backgroundColor || 'white'};
   width: ${({ content }) => content?.width || '100%'};
   padding: ${({ content  }) => content?.padding || '10px'};
-  height: ${({ content }) => getHeight(content?.type)};
+  height: ${({ content }) => getHeight(content?.type, content?.height)};
   position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
   left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};
   right: ${({ content }) => content?.type ==  ModalType.RIGHT ? '0' : 'auto'};
   align-self: center;
-  min-height: 500px;
   overflow-y: scroll;
   bottom: auto;
   @media screen and (min-width: 320px) and (max-width: 393px) {
@@ -72,7 +71,7 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
     bottom: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? '0' : 'auto'};
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.MOBILE)};
     width: 100%;
-    height: ${({ content }) => getHeight(content?.type)};
+    height: ${({ content }) => getHeight(content?.type, content?.height)};
     align-self: flex-end;
   }
   @media screen and (min-width: 768px) and (max-width: 2363px) {
