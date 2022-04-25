@@ -71,7 +71,7 @@ DesktopWithCustomStyles.args = {
   title: "Desktop With Custom Styles",
   styles: {
     content: {
-      width: "200px",
+      width: "400px",
       borderRadius: {
         bottomLeft: "0",
         bottomRight: "0",
