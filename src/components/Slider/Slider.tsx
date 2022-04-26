@@ -82,9 +82,12 @@ const Slider = ({
   const SliderContent = (
     <ScrollElement>
       <div className="items" ref={slider}>
-        {arrayNumber.map(
-          (item: number) => <h1 style={{minWidth: '200px'}}>Hola slide {item}</h1>
-        )}
+        {children ? 
+          children :
+          arrayNumber.map(
+            (item: number) => <h1 style={{minWidth: '200px'}}>Hola slide {item}</h1>
+          )
+        }
       </div>
       {
         !hideArrows && 
