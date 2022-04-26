@@ -6,9 +6,9 @@
     "rollup": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "patch": "npm run rollup && npm version patch",
-    "minor": "npm run rollup && npm version minor",
-    "major": "npm run rollup && npm version major"
+    "patch": "npm run rollup && npm version patch && npm publish",
+    "minor": "npm run rollup && npm version minor && npm publish",
+    "major": "npm run rollup && npm version major && npm publish"
   },
   "author": "yamid@sumerlabs.com",
   "license": "ISC",
