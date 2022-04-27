@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 export enum ModalType {
   DEFAULT = "default",
@@ -20,6 +20,7 @@ export type ModalProps = {
     title: string;
     styles?: ModalStyleProps;
     element?: Element;
+    closeElement?: React.ReactNode;
 }
 
 export type BorderRadius = {

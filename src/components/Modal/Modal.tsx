@@ -5,7 +5,7 @@ import { Close } from "../../assets/img/icons";
 import { ModalProps } from './types';
 import { getTransition } from './transition';
 
-const Modal = ({ show, onClose, children, title, styles, element, showHeader = true }: ModalProps) => {
+const Modal = ({ show, onClose, children, title, styles, element, closeElement, showHeader = true }: ModalProps) => {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const Modal = ({ show, onClose, children, title, styles, element, showHeader = t
                 {showHeader && (
                     <StyledModalHeader>
                         <StyledModalTitle>{title}</StyledModalTitle>
-                        <Close onClick={handleCloseClick} />
+                        {closeElement ? <span onClick={handleCloseClick}>{closeElement}</span> : <Close onClick={handleCloseClick} />}
                     </StyledModalHeader>
                 )}
                 <StyledModalBody content={styles?.content}>{children}</StyledModalBody>

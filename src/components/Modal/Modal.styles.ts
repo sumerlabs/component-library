@@ -67,12 +67,10 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
   overflow-y: scroll;
   bottom: auto;
   @media screen and (min-width: 320px) and (max-width: 393px) {
-    position: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? 'fixed' : 'initial'};
-    bottom: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? '0' : 'auto'};
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.MOBILE)};
     width: 100%;
     height: ${({ content }) => getHeight(content?.type, content?.height)};
-    align-self: flex-end;
+    align-self: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? 'flex-end' : 'inherit'};
   }
   @media screen and (min-width: 768px) and (max-width: 2363px) {
     padding: ${({ content  }) => content?.padding || '15px'};

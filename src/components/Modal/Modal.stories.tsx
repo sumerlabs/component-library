@@ -48,7 +48,9 @@ export const Desktop = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Desktop.args = {
   show: true,
-  onClose: () => {},
+  onClose: () => {
+    console.log("Close Desktop");
+  },
   children: child,
   title: "Desktop",
   styles: {
@@ -66,7 +68,9 @@ Desktop.args = {
 export const DesktopWithCustomStyles = Template.bind({});
 DesktopWithCustomStyles.args = {
   show: true,
-  onClose: () => {},
+  onClose: () => {
+    console.log("Close DesktopWithCustomStyles");
+  },
   children: child,
   title: "Desktop With Custom Styles",
   styles: {
@@ -85,7 +89,9 @@ DesktopWithCustomStyles.args = {
 export const DesktopPopup = Template.bind({});
 DesktopPopup.args = {
   show: true,
-  onClose: () => {},
+  onClose: () => {
+    console.log("Close DesktopPopup");
+  },
   children: child,
   title: "Desktop Popup",
   styles: {
@@ -110,7 +116,9 @@ Mobile.parameters = {
 };
 Mobile.args = {
   show: true,
-  onClose: () => {},
+  onClose: () => {
+    console.log("Close Mobile");
+  },
   children: child,
   title: "Mobile"
 };
@@ -123,7 +131,9 @@ MobilePopup.parameters = {
 };
 MobilePopup.args = {
   show: true,
-  onClose: () => {},
+  onClose: () => {
+    console.log("Close MobilePopup");
+  },
   children: child,
   title: "Mobile Popup",
   styles: {
@@ -147,7 +157,9 @@ MobileButton.parameters = {
 };
 MobileButton.args = {
   show: true,
-  onClose: () => {},
+  onClose: () => {
+    console.log("Close MobileButton");
+  },
   children: child,
   title: "Mobile Button",
   styles: {
@@ -164,14 +176,11 @@ MobileButton.args = {
 };
 
 export const MobileButtonInDesktopView = Template.bind({});
-// MobileButtonInDektopView.parameters = {
-//   viewport: {
-//     defaultViewport: 'iphonex',
-//   },
-// };
 MobileButtonInDesktopView.args = {
   show: true,
-  onClose: () => {},
+  onClose: () => {
+    console.log("Close MobileButtonInDesktopView");
+  },
   children: child,
   title: "Mobile Button In Desktop View",
   styles: {
@@ -185,4 +194,25 @@ MobileButtonInDesktopView.args = {
       type: ModalType.MOBILE_BOTTOM
     }
   }
+};
+
+export const ModalWithCustomCloseElement = Template.bind({});
+ModalWithCustomCloseElement.args = {
+  show: true,
+  onClose: () => {
+    console.log("Close ModalWithCustomCloseElement");
+  },
+  children: child,
+  title: "Modal with custom close element",
+  styles: {
+    content: {
+      borderRadius: {
+        bottomLeft: "10px",
+        bottomRight: "10px",
+        topLeft: "10px",
+        topRight: "10px"
+      }
+    }
+  },
+  closeElement: <div>Custom close element</div>
 };
