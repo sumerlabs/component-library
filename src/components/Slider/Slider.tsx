@@ -14,16 +14,11 @@ const Slider = ({
   let [isDown] = useState(false);
   let [startX] = useState<number>();
   let [scrollLeft] = useState<number>();
-  const [isBrowser, setIsBrowser] = useState(false);
 
   const [nextButton, setNextButton] = useState(true);
   const [backButton, setBackButton] = useState(true);
 
   const arrayNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-  
-  useEffect(() => {
-      setIsBrowser(true);
-  }, []);
 
   useEffect(() => {
     validArrows();
@@ -115,14 +110,7 @@ const Slider = ({
     </ScrollElement>
   )
 
-  if (isBrowser) {
-    return createPortal(
-      SliderContent,
-        document.body!
-    );
-  } else {
-      return null;
-  }
+  return SliderContent;
 }
 
 export default Slider;
