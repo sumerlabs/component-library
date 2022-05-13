@@ -1,21 +1,19 @@
 import styled from "styled-components";
 
 
-export const ScrollElement = styled.div`
+export const ScrollElement = styled.div<{dragMode?: boolean}>`
   position: relative;
 
   @supports(display: flex) {
     .items {
       position: relative;
       width: 100%;
-      overflow-x: scroll;
-      overflow-y: hidden;
+      overflow-x: ${({dragMode}) => dragMode ? 'scroll' : 'hidden'};
       transition: all 0.2s;
       user-select: none;
       cursor: pointer;
       
       display: flex;
-      gap: 30px;
 
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -51,3 +49,20 @@ export const ScrollElement = styled.div`
   }
 
 `;
+
+export const Dots = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+`
+
+export const Dot = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  border: 1px solid black;
+  cursor: pointer;
+  &.active{
+    background-color: black
+  }
+`
