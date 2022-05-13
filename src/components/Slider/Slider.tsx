@@ -1,29 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { ScrollElement } from "./Slider.styled";
+import React, { cloneElement, ElementType, useEffect, useRef, useState } from "react";
+import { Dot, Dots, ScrollElement } from "./Slider.styled";
 import { SliderProps } from "./Slider.type";
 
 const Slider = ({
   children,
   hideArrows,
-  dragMode,
+  hideDots,
   iconBackArrow,
-  iconNextArrow
+  iconNextArrow,
+  dragMode
 }: SliderProps) => {
   const slider = useRef<any>(null);
+  const childrenValues = children as React.ElementType[];
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [dots, setDots] = useState(0);
+  const arrayNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+
   let [isDown] = useState(false);
   let [startX] = useState<number>();
   let [scrollLeft] = useState<number>();
 
-  const [nextButton, setNextButton] = useState(true);
-  const [backButton, setBackButton] = useState(true);
-
-  const arrayNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-
   useEffect(() => {
-    validArrows();
-
-    if(dragMode){ // that works in compiled time
+    if(dragMode){
       slider?.current?.addEventListener('mousedown', (e: any) => {
         isDown = true;
         startX = e.pageX - slider?.current.offsetLeft;
@@ -44,50 +42,61 @@ const Slider = ({
         const x = e.pageX - slider?.current?.offsetLeft;
         const walk = (x - (startX as number)) * 3;
         slider.current.scrollLeft = (scrollLeft as number) - walk;
-        validArrows();
       });
     }
   }, [dragMode])
-  
+
   const onNext = () => {
-    slider.current.scrollTo({
-      left: slider.current.scrollLeft + 350,
-      behavior: 'smooth'
-    });
-    validArrows();
+    moveFromDots(currentSlide + 1);
   }
 
   const onBack = () => {
-    slider.current.scrollTo({
-      left: slider.current.scrollLeft - 350,
-      behavior: 'smooth'
-    });
-    validArrows();
+    moveFromDots(currentSlide - 1);
   }
 
-  const validArrows = () => {
-    setTimeout(() => {
-      setNextButton(!(slider.current.scrollWidth - slider.current.scrollLeft === slider.current.clientWidth))
-    }, 500)
-    setTimeout(() => {
-      setBackButton(!(slider.current.scrollLeft === 0))
-    }, 500)
+  const range = (start: number, end: number, step = 1) => {
+    const len = Math.floor((start - end) / step);
+    return Math.abs(len);
   }
 
-  const SliderContent = (
-    <ScrollElement>
+  useEffect(() => {
+    setDots(Math.round(slider?.current?.scrollWidth / slider?.current?.clientWidth))
+  }, [setDots])
+
+  const moveFromDots = (index: number) => {
+    const operation = range(currentSlide, index);
+    if(index > currentSlide){
+      const left = slider.current.scrollLeft + (slider.current.offsetWidth * operation);
+      const moveTo = index + 1 === dots ? left + 350 : left;
+      slider.current.scrollTo({
+        left: moveTo,
+        behavior: 'smooth'
+      });
+    } else if(index < currentSlide){
+      const left = slider.current.scrollLeft - (slider.current.offsetWidth * operation);
+      const moveTo = index === 0 ? left - 350 : left;
+      slider.current.scrollTo({
+        left: moveTo,
+        behavior: 'smooth'
+      });
+    }
+    setCurrentSlide(index);
+  }
+
+  return (
+    <ScrollElement dragMode={dragMode}>
       <div className="items" ref={slider}>
         {children ? 
           children :
           arrayNumber.map(
-            (item: number) => <h1 style={{minWidth: '200px'}}>Hola slide {item}</h1>
+            (item: number) => <h1 style={{minWidth: '150px'}}>Hola slide {item}</h1>
           )
         }
       </div>
       {
-        !hideArrows && 
-        <>
-          {backButton &&
+        !hideArrows && !dragMode && 
+        (<>
+          {(currentSlide !== 0) &&
             <button
               className="arrowBtn back"
               onClick={onBack}
@@ -95,7 +104,7 @@ const Slider = ({
               {iconBackArrow ? iconBackArrow : "<"}
             </button>
           }
-          {nextButton &&
+          {(currentSlide !== dots - 1) &&
             <>
               <button
                 className="arrowBtn next"
@@ -105,12 +114,21 @@ const Slider = ({
               </button>
             </>
           }
-        </>
+        </>)
+      }
+      { !hideDots && !dragMode && (
+          <Dots>
+            {[...Array(dots)].map((dot, index) => 
+              <Dot 
+                className={`${currentSlide === index && 'active'}`}
+                key={index}
+                onClick={() => moveFromDots(index)}>
+              </Dot>)}
+          </Dots>
+        )
       }
     </ScrollElement>
-  )
-
-  return SliderContent;
+  );
 }
 
 export default Slider;

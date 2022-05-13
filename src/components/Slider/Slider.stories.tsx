@@ -17,15 +17,25 @@ export default {
 const Template: ComponentStory<typeof Slider> = (args) => <Slider {...args} />;
 
 export const Slide = Template.bind({});
-Slide.args = {
-    hideArrows: false,
-    dragMode: false,
-};
 
 export const SlideArrowIcons = Template.bind({});
 SlideArrowIcons.args = {
     hideArrows: false,
-    dragMode: false,
     iconBackArrow: <ArrowLeft width={20} height={20} />,
     iconNextArrow: <ArrowRight width={20} height={20} />,
+};
+
+export const HiddenArrows = Template.bind({});
+HiddenArrows.args = {
+    hideArrows: true
+};
+
+export const HiddenDots = Template.bind({});
+HiddenDots.args = {
+    hideDots: true
+};
+
+export const DragMode = Template.bind({});
+DragMode.args = {
+    dragMode: true
 };
