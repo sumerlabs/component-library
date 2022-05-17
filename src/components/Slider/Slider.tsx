@@ -60,8 +60,12 @@ const Slider = ({
   }
 
   useEffect(() => {
-    setDots(Math.round(slider?.current?.scrollWidth / slider?.current?.clientWidth))
-  }, [setDots])
+    const calc = Math.round(slider?.current?.scrollWidth / slider?.current?.clientWidth);
+
+    if(calc){
+      setDots(Math.round(slider?.current?.scrollWidth / slider?.current?.clientWidth))
+    }
+  }, [setDots, slider])
 
   const moveFromDots = (index: number) => {
     const operation = range(currentSlide, index);
@@ -89,7 +93,7 @@ const Slider = ({
         {children ? 
           children :
           arrayNumber.map(
-            (item: number) => <h1 style={{minWidth: '150px'}}>Hola slide {item}</h1>
+            (item: number, index) => <h1 key={index} style={{minWidth: '150px'}}>Hola slide {item}</h1>
           )
         }
       </div>
