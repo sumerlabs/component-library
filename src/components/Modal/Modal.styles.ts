@@ -43,6 +43,7 @@ export const StyledModalTitle= styled.div`
 
 export const StyledModalBody = styled.div<ModalStyleProps>`
   padding: ${({ content }) => content?.body?.padding || '0'};
+  height: 100%;
 `;
 
 export const StyledModalHeader = styled.div`
