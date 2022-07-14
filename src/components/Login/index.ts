@@ -8,4 +8,5 @@ export { default as ValidateCode } from '~/components/Login/components/ValidateC
 export { default as CheckCircle } from '~/components/Login/icons/CheckCircle';
 export { default as SignOut } from '~/components/Login/icons/SignOut';
 export { default as Profile } from '~/components/Login/icons/Profile';
-export type { Customer, ValidateCodeResponse, LoginSteps } from '~/components/Login/types';
+export * from "./services";
+export * from '~/components/Login/types';

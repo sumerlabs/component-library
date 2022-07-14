@@ -7,9 +7,10 @@ import { useTranslation } from 'react-i18next';
 import ProgressBar from '~/components/ProgressBar/ProgressBar';
 import { EVENTS } from '~/common/consts/events';
 import { useLocalStorage } from '~/common/localStorage';
+import { Customer } from '~/components/Login/types';
 
 const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
-	handleRegisterMessageView: () => void;
+	handleRegisterMessageView: (response: Customer) => void;
 	apiUrl: string;
 	logEvent: (event: string) => void
 }): JSX.Element => {
@@ -38,7 +39,7 @@ const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 				apiUrl
 			});
 			if (updateUserDataResponse.firstName) {
-				handleRegisterMessageView();
+				handleRegisterMessageView(updateUserDataResponse);
 			}
 		}
 	};
