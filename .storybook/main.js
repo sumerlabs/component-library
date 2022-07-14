@@ -1,3 +1,5 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require("path");
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -16,6 +18,10 @@ module.exports = {
       include: /node_modules/,
       type: "javascript/auto",
     })
+    config.resolve.alias = {
+      ...config.resolve?.alias,
+      '~': path.resolve(__dirname, '../src/'),
+    };
     return config
   }
 }

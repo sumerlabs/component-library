@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "outDir": "lib",
+    "baseUrl": "./",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,7 +21,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": [
     "src"
