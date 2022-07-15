@@ -7,13 +7,23 @@ import {
     GetCode,
     ValidateCode,
     UpdateUserData,
-    RegisterMessage, getUserData
+    RegisterMessage, getUserData, Customer
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 
+type Params = {
+    initialStep: LoginSteps;
+    apiKey: string;
+    apiUrl: string;
+    logEvent: (event: string) => void;
+    country: any;
+    success?: (customer: Customer) => void;
+    redirectUrl?: string
+}
+
 const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.GET_CODE,
-                   country, success }: any) => {
+                   country, success, redirectUrl }: Params) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [token, setToken] = useState<string>();
@@ -38,7 +48,10 @@ const Login = ({ apiUrl, apiKey, logEvent,
         setRefreshToken(refreshToken);
         const user = await getUserData({token, apiUrl})
         if (user?.userId) {
-            success(user);
+            success && success(user);
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+            }
         } else {
             setStep(LoginSteps.UPDATE_USER_DATA);
         }

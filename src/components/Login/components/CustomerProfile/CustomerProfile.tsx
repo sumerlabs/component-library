@@ -5,13 +5,12 @@ import { Customer } from '../../types';
 import Profile from '../../icons/Profile';
 import SignOut from '../../icons/SignOut';
 
-const CustomerProfile = ({ customer, handleShowProfile, handleCloseSession } : { customer: Customer | null,
+const CustomerProfile = ({ customer, handleCloseSession } : { customer: Customer | null,
 	handleShowProfile: () => void, handleCloseSession: () => void;}): JSX.Element => {
 	const { t } = useTranslation();
 
 	const closeSession = () => {
 		handleCloseSession();
-		handleShowProfile();
 	}
 
 	return (
