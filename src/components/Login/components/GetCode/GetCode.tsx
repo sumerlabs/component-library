@@ -37,7 +37,7 @@ const GetCode = ({
 	const theme = useTheme() as any;
 
 	const phoneOptions = useMemo(() => {
-		return countries.map((item: any) => {
+		return countries?.map((item: any) => {
 			return {
 				id: item.id,
 				image: item.flagImage,
@@ -47,7 +47,7 @@ const GetCode = ({
 	}, [countries]);
 
 	useEffect(() => {
-		const selectedItem = phoneOptions.find((item: any) => item.label === country?.prefixPhone);
+		const selectedItem = phoneOptions?.find((item: any) => item.label === country?.prefixPhone);
 
 		setSelectedOption(selectedItem);
 	}, [countries]);

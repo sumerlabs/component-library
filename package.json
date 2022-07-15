@@ -39,7 +39,8 @@
   },
   "dependencies": {
     "framer-motion": "^6.2.8",
-    "humps": "^2.0.1"
+    "humps": "^2.0.1",
+    "swr": "^1.2.2"
   },
   "peerDependencies": {
     "formik": "^2.2.9",

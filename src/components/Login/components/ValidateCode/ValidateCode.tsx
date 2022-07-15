@@ -16,12 +16,11 @@ import { useLocalStorage } from '~/common/localStorage';
 import { EVENTS } from '~/common/consts/events';
 
 const ValidateCode = ({
-	handleStepChange,
-	sendTo, prefixSendTo, channel, fetchCustomer, logEvent, apiKey, apiUrl,
+	ValidationSuccess,
+	sendTo, prefixSendTo, channel, logEvent, apiKey, apiUrl,
 }: {
-	handleStepChange: (step: string, sendTo: string, prefixSendTo : string, channel: string) => void;
+	ValidationSuccess: (token: string, expiresIn: number, refreshToken: string) => void;
 	sendTo: string, prefixSendTo: string, channel: string
-	fetchCustomer: (token: string) => void;
 	logEvent: (event: string) => void,
 	apiKey: string, apiUrl: string
 }): JSX.Element => {
@@ -50,8 +49,7 @@ const ValidateCode = ({
 			setAccessToken(validateCode.data.accessToken);
 			setExpiresIn(validateCode.data.expiresIn);
 			setRefreshToken(validateCode.data.refreshToken);
-			fetchCustomer(validateCode.data.accessToken);
-			handleStepChange(LoginSteps.UPDATE_USER_DATA, sendTo, prefixSendTo, channel);
+			ValidationSuccess(validateCode.data.accessToken, validateCode.data.expiresIn, validateCode.data.refreshToken);
 			logEvent(EVENTS.SELECT_CONFIRM_CODE);
 		} else {
 			setError(true);

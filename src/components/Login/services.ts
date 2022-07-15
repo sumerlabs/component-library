@@ -79,3 +79,21 @@ export const UpdateUserDataService = async ({ token, firstName, lastName, apiUrl
 
     return json as Customer;
 };
+
+export const getUserData = async ({ token, apiUrl }:  { token: string, apiUrl: string }) => {
+    const res = await fetch(
+        `${apiUrl}/api/ms/user/customer-detail`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Authorization": `Bearer ${token}`,
+            } as any
+        }
+    );
+
+    const json = camelizeKeys(await res.json()) as unknown;
+
+    return json as Customer;
+};
