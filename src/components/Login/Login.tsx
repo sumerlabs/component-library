@@ -7,7 +7,7 @@ import {
     GetCode,
     ValidateCode,
     UpdateUserData,
-    RegisterMessage, getUserData, Customer
+    RegisterMessage, getUserData, Customer, ValidateCodeResponse
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 
@@ -17,7 +17,7 @@ type Params = {
     apiUrl: string;
     logEvent: (event: string) => void;
     country: any;
-    success?: (customer: Customer) => void;
+    success?: (customer: Customer, loginData: ValidateCodeResponse) => void;
     redirectUrl?: string
 }
 
@@ -48,7 +48,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
         setRefreshToken(refreshToken);
         const user = await getUserData({token, apiUrl})
         if (user?.userId) {
-            success && success(user);
+            success && success(user, {accessToken: token, expiresIn, refreshToken});
             if (redirectUrl) {
                 window.location.href = redirectUrl;
             }
