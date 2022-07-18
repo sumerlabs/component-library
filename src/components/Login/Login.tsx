@@ -50,7 +50,8 @@ const Login = ({ apiUrl, apiKey, logEvent,
         if (user?.userId) {
             success && success(user, {accessToken: token, expiresIn, refreshToken});
             if (redirectUrl) {
-                window.location.href = redirectUrl;
+                window.location.href =
+                    `${redirectUrl}?accessToken=${token}&expiresIn=${expiresIn}&refreshToken=${refreshToken}&userId=${user.userId}`;
             }
         } else {
             setStep(LoginSteps.UPDATE_USER_DATA);
