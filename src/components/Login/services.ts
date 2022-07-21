@@ -57,8 +57,35 @@ export const ValidateCodeService = async ({ sendTo, prefixSendTo, code, apiKey, 
     };
 };
 
-export const UpdateUserDataService = async ({ token, firstName, lastName, apiUrl }:  { token: string,
-    firstName: string, lastName: string, apiUrl: string }) => {
+export const UpdateUserDataService = async ({
+    token,
+    firstName,
+    lastName,
+    email,
+    identification,
+    identificationType,
+    postalCode,
+    apiUrl
+}: {
+    token: string,
+    firstName: string,
+    lastName: string,
+    email?: string;
+    identification?: string;
+    identificationType?: string;
+    postalCode?: string;
+    apiUrl: string;
+}) => {
+    const body: { [key: string]: any } = {
+        first_name: firstName,
+        last_name: lastName,
+    };
+
+    email ? (body['email'] = email) : null;
+    identification ? (body['identification_number'] = identification) : null;
+    identificationType ? (body['identification_type'] = identificationType) : null;
+    postalCode ? (body['additional_data'] = { postalCode }) : null;
+
     const res = await fetch(
         `${apiUrl}/api/ms/user/customer-detail`,
         {
@@ -68,10 +95,7 @@ export const UpdateUserDataService = async ({ token, firstName, lastName, apiUrl
                 Accept: "application/json",
                 "Authorization": `Bearer ${token}`,
             } as any,
-            body: JSON.stringify({
-                first_name: firstName,
-                last_name: lastName
-            }),
+            body: JSON.stringify(body),
         }
     );
 
