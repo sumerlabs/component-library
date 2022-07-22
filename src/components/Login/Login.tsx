@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import HelpLink from '~/components/HelpLink/HelpLink';
 import useSWR from 'swr';
 import {
-    LoginSteps,
     LoginContainer,
     GetCode,
     ValidateCode,
@@ -10,6 +9,7 @@ import {
     RegisterMessage, getUserData, Customer, ValidateCodeResponse
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
+import { LoginSteps } from './types';
 
 type Params = {
     initialStep: LoginSteps;
