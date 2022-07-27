@@ -9,21 +9,11 @@ import {
     RegisterMessage, getUserData, Customer, ValidateCodeResponse
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
-import { LoginSteps } from './types';
-
-type Params = {
-    initialStep: LoginSteps;
-    apiKey: string;
-    apiUrl: string;
-    logEvent: (event: string) => void;
-    country: any;
-    success?: (customer: Customer, loginData: ValidateCodeResponse) => void;
-    redirectUrl?: string
-}
+import { LoginProps, LoginSteps } from './types';
 
 const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.GET_CODE,
-                   country, success, redirectUrl }: Params) => {
+                   country, success, redirectUrl }: LoginProps) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [token, setToken] = useState<string>();

@@ -5,6 +5,16 @@ export enum LoginSteps {
   REGISTER_MESSAGE = 'register_message',
 }
 
+export type LoginProps = {
+  initialStep: LoginSteps;
+  apiKey: string;
+  apiUrl: string;
+  logEvent: (event: string) => void;
+  country: any;
+  success?: (customer: Customer, loginData: ValidateCodeResponse) => void;
+  redirectUrl?: string
+}
+
 export type ValidateCodeResponse = {
   accessToken: string;
   refreshToken: string;
