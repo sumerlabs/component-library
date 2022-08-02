@@ -1,5 +1,6 @@
 import { withThemesProvider } from "themeprovider-storybook";
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import '../src/styles/icons.css';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

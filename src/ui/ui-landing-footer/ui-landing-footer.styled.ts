@@ -1,0 +1,93 @@
+import styled from "styled-components";
+import { Breakpoints } from "~/constants";
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  .logo {
+    color: #FFFFFF;
+    cursor: pointer;
+    margin: 32px auto;
+    text-align: center;
+  }
+  .links {
+    display: flex;
+    row-gap: 10px;
+    padding: 0 20px;
+    margin: 0 0 32px 0;
+    flex-direction: column;
+    .link {
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+    }
+  }
+  .socials {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 34px 20px;
+    .description {
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+    .icons {
+      display: flex;
+      column-gap: 16px;
+      align-items: center;
+      margin: 10px 0 20px 0;
+      .icon {
+        color: #FFFFFF;
+        font-size: 22px;
+        cursor: pointer;
+      }
+    }
+    .address {
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16px;
+    }
+  }
+  .language-badge {
+    height: 58px;
+    display: flex;
+    color: #FFFFFF;
+    padding: 0 20px;
+    align-items: center;
+    background-color: #4C42F6;
+    justify-content: space-between;
+    .language {
+      display: flex;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16px;
+      align-items: center;
+    }
+  }
+  @media screen and (min-width: ${Breakpoints.Tablet}) {
+    flex-wrap: wrap;
+    padding: 52px 0 0 0;
+    flex-direction: row;
+    justify-content: space-between;
+    .logo {
+      margin: 0 0 0 122px;
+    }
+    .socials {
+      margin: 0 122px 0 0;
+    }
+    .language-badge {
+      width: 100%;
+      margin: 50px 0 0 0;
+      .language {
+        margin: 0 0 0 122px;
+      }
+      .mark {
+        margin: 0 122px 0 0;
+      }
+    }
+  }
+`;
