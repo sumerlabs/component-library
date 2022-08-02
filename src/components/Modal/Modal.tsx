@@ -44,7 +44,7 @@ const Modal = ({ show, onClose, children, title, styles, element, closeElement, 
     if (isBrowser) {
         return createPortal(
             modalContent,
-            element || document.body!
+            element || document.body!, 'modal'
         );
     } else {
         return null;
