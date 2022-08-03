@@ -49,7 +49,8 @@ export const GetCodeContainer = styled.div`
 		width: 100%;
 		border-radius: 5px;
 		margin-bottom: 10px;
-		justify-content: space-around;
+		justify-content: center;
+        gap:1rem;
 		margin-top: 20px;
 	}
       .button-msn:disabled {
@@ -76,7 +77,8 @@ export const GetCodeContainer = styled.div`
 		width: 100%;
 		border: 1px solid ${({ theme }) => theme.colors.greenScale.g6};
 		border-radius: 5px;
-		justify-content: space-evenly;
+        gap:1rem;
+		justify-content: center;
 	}
       .button-wsp:disabled {
         background-color: ${({ theme }) => theme.colors.grayScale.gr5};
@@ -114,7 +116,7 @@ export const WrapperInput = styled.div`
 		line-height:140%;
 		font-weight: 400;
 		outline: none;
-		padding-top: 20px;
+		padding-top: 10px;
 		padding-left: 0;
 		height: 100%;
 		width: 100%;

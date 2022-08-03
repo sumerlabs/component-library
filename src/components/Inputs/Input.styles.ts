@@ -15,10 +15,10 @@ export const WrapperInput = styled.div`
     input {
       border: none;
       font-size:16px;
-   line-height:140%;
-   font-weight: 400;
+      line-height:140%;
+      font-weight: 400;
       outline: none;
-      padding-top: 20px;
+      padding-top: 10px;
       padding-left: 0;
       padding-bottom: 5px;
       height: 100%;
