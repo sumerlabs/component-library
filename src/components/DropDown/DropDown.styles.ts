@@ -7,10 +7,9 @@ export const DropDownContainer = styled.div`
 
 export const DropDownHeader = styled.div`
   display: flex;
-  height: 64px;
   position: absolute;
   width: 95%;
-  align-items: center;
+  align-items: flex-end;
 
   .icon {
     position: absolute;
@@ -28,7 +27,7 @@ export const DropDownHeader = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     width: 95%;
-    padding-bottom: 0.5rem;
+    padding-top: 10px;
 
     img {
       margin-right: 5px;
