@@ -8,3 +8,4 @@ export * from './ui-landing-header';
 export * from './ui-loader';
 export * from './ui-phone';
 export * from './ui-radio';
+export * from './ui-timer';
