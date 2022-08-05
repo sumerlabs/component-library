@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 20px;
-  height: 20px;
   display: flex;
   flex: 0 0 auto;
   cursor: pointer;
+  position: relative;
   border-radius: 4px;
   align-items: center;
   box-sizing: border-box;
@@ -14,21 +13,20 @@ export const Wrapper = styled.div`
   transition: border-color .3s;
   &.active {
     border: 2px solid #4C42F6;
-    .fill {
+    .icon {
       opacity: 1;
     }
   }
-  .fill {
+  .icon {
+    font-size: 20px;
     opacity: 0;
-    width: 100%;
-    height: 100%;
     display: flex;
+    flex: 0 0 auto;
+    color: #FFFFFF;
+    border-radius: 4px;
     align-items: center;
     justify-content: center;
-    transition: opacity .3s;
     background-color: #4C42F6;
-    .icon {
-      color: #FFFFFF;
-    }
+    transition: opacity .3s;
   }
 `;

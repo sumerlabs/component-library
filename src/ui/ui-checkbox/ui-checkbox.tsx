@@ -4,7 +4,7 @@ import { Wrapper } from "./ui-checkbox.styled";
  
 const UiCheckbox: FC<UiCheckboxProps> = ({
   active,
-  size,
+  size = 20,
   onChange,
 }) => {
   const [isActive, setIsActive] = useState(active);
@@ -23,9 +23,10 @@ const UiCheckbox: FC<UiCheckboxProps> = ({
       className={`${isActive && 'active'}`} 
       onClick={handleClick} 
       style={{ width: `${size}px`, height: `${size}px` }}>
-      <div className="fill">
-        <span className={`icon icon-check`} />
-      </div>
+      <span 
+        className={`icon icon-check`} 
+        style={{ width: `${size}px`, height: `${size}px`, fontSize: `${size - 2}px` }}
+      />
     </Wrapper>
   );
 }
