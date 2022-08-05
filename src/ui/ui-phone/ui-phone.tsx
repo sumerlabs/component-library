@@ -7,10 +7,13 @@ import { UiPhoneProps } from "./types";
 const UiPhone: FC<UiPhoneProps> = ({
   options,
   hasError,
+  className,
   prefixValue,
   phoneValue,
   errorMessage,
+  placeholder,
   hint,
+  label,
   onBlur,
   onChange,
   onFocusInput,
@@ -25,11 +28,11 @@ const UiPhone: FC<UiPhoneProps> = ({
   }
 
   return (
-    <Wrapper className={`${hasError && 'error'}`}>
+    <Wrapper className={`${className} ${hasError && 'error'}`}>
       <UiDropdown
         className='selector'
-        label="Teléfono*" 
-        placeholder="+57"
+        label={label || "Teléfono*"}
+        placeholder="---"
         value={prefixValue}
         hasError={hasError}
         options={options}
@@ -42,7 +45,7 @@ const UiPhone: FC<UiPhoneProps> = ({
         maxLength={12}
         className='input'
         value={phoneValue}
-        placeholder="Tu número de celular"
+        placeholder={placeholder || "Tu número de celular"}
         hasError={hasError}
         onBlur={onBlur}
         onFocus={onFocusInput}

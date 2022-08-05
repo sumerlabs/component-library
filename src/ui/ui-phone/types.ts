@@ -6,7 +6,10 @@ export interface UiPhoneOption {
 
 export declare type UiPhoneProps = {
   options: UiPhoneOption[];
+  label?: string;
+  placeholder?: string;
   hasError?: boolean;
+  className?: string;
   errorMessage?: string;
   hint?: string;
   prefixValue?: string;
