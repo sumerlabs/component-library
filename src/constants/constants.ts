@@ -1,4 +1,7 @@
 export const WEB_ASSETS = 'https://sumer-s3-database.s3.us-west-2.amazonaws.com/dev/assets/web';
+export const OPEN_APP_STORE_ANDROID = 'https://link.sumerlabs.com/sDH5/webandroid';
+export const OPEN_APP_STORE_IOS = 'https://link.sumerlabs.com/sDH5/webios';
+export const OPEN_APP_INSTALLED = 'sumerscheme://mobile.sumerlabs.com';
 
 export enum Breakpoints {
   Mobile = '375px',
@@ -8,3 +11,6 @@ export enum Breakpoints {
   LaptopMedium = '1440px',
   LaptopLarge = '1980px',
 }
+
+export const ALPHANUMERIC_REGEX = /^[a-z A-Z 0-9 ñÑáéíóúÁÉÍÓÚ]+$/;
+export const NUMERIC_REGEX = /^[0-9\b]+$/;
