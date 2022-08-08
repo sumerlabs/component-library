@@ -1,3 +1,4 @@
 export declare type UiLandingHeaderProps = {
-  holi: boolean;
+  className?: string;
+  onLoginClick: () => void;
 };

@@ -1,8 +1,13 @@
 import React, { FC, useState } from "react";
 import { Wrapper } from "./ui-landing-header.styled";
 import { UiLandingHeaderProps } from "./types";
+import { WEB_ASSETS } from "~/constants";
+import { goToApp } from "~/utils";
  
-const UiLandingHeader: FC<UiLandingHeaderProps> = () => {
+const UiLandingHeader: FC<UiLandingHeaderProps> = ({
+  className,
+  onLoginClick,
+}) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [openTab, setOpenTab] = useState<number | null>(null);
 
@@ -73,7 +78,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = () => {
   ];
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <div className="menu-icon" onClick={() => setShowMobileMenu(a => !a)}>
         {!showMobileMenu ? 
           <span className="icon icon-burger-menu" /> :
@@ -81,13 +86,32 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = () => {
         }
       </div>
       <div className="logo">
-        {/* <SumerLogo /> */}
+        <img src={`${WEB_ASSETS}/images/sumer-logo-black.png`} alt="Main logo" className="img" />
       </div>
+      <div className="spacer" />
       <div className="points" onClick={() => setShowMobileMenu(a => !a)}>
         <div className="icon icon-four-points" />
         <div className="icon icon-arrow" />
       </div>
-      <div className="spacer" />
+      <div className="about">
+        <div className="text">Sobre sumer</div>
+        <div className="icon icon-arrow" />
+      </div>
+      <div className="community">
+        <div className="text">Comunidad</div>
+        <div className="icon icon-arrow" />
+      </div>
+      <div className="expert">
+        <div className="text">Experto</div>
+      </div>
+      <div className="right-side">
+        <div className="login">Ingresar</div>
+        <div className="download-button" onClick={() => goToApp(true)}>
+          <span className="icon icon-android" />
+          <span className="icon icon-apple" />
+          <div className="text">Descargar la app</div>
+        </div>
+      </div>
       <div className={`mobile-menu ${showMobileMenu && 'show'}`}>
         {menuItems.map((menuItem, index) => (
           <div key={`mobile-menu-item-${menuItem.title}`} className={`item ${openTab === index && 'open'}`}>
@@ -119,6 +143,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = () => {
             )}
           </div>
         ))}
+        <div className="login-button" onClick={onLoginClick}>Ingresar</div>
       </div>
     </Wrapper>
   );
