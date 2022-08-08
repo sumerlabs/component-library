@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Breakpoints } from "~/constants";
 
 export const Wrapper = styled.div`
+  z-index: 99;
   width: 100%;
   height: 80px;
   display: flex;
