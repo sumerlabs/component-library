@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { Wrapper } from "./ui-landing-header.styled";
-import { UiLandingHeaderProps } from "./types";
+import { UiLandingHeaderMenuItem, UiLandingHeaderMenuSubItem, UiLandingHeaderProps } from "./types";
 import { WEB_ASSETS } from "~/constants";
 import { goToApp } from "~/utils";
  
@@ -10,54 +10,10 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   onLoginClick,
 }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [openTab, setOpenTab] = useState<number | null>(null);
+  const [openMobileTab, setOpenMobileTab] = useState<number | null>(null);
+  const [openExpandibleTab, setOpenExpandibleTab] = useState<number | null>(null);
 
-  const communityItems = [
-    {
-      name: "Preguntar a otros negocios",
-      description:
-        "Encuentra apoyo en otros comerciantes y conoce sus experiencias",
-      link: "https://comunidad.sumerlabs.com/popular",
-    },
-    {
-      name: "Consultar al equipo experto",
-      description:
-        "Consulta con los mejores todo lo que quieres saber sobre Sumer",
-      link: "https://calendly.com/sumerayuda/soportepersonalizado",
-    },
-    {
-      name: "Preguntas frecuentes",
-      description: "Resuelve tus dudas a un clic",
-      link: "https://comunidad.sumerlabs.com/",
-    },
-  ];
-  
-  const aboutItems = [
-    {
-      name: "Sobre nosotros",
-      description: "Conoce nuestro propósito y el equipo que lo hace realidad.",
-      link: "/about-us",
-    },
-    {
-      name: "Trabaja con nosotros",
-      description: "¡Únete a nuestro equipo! Talento LATAM",
-      link: "/sumer-jobs",
-    },
-  ];
-
-  const menuItems = [
-    {
-      icon: 'bubble-chat',
-      title: 'Comunidad',
-      description: 'FAQ y experiencias',
-      subItems: communityItems,
-    },
-    {
-      icon: 'question-support',
-      title: 'Sobre el equipo',
-      description: 'Conoce nuestro equipo y su propósito',
-      subItems: aboutItems,
-    },
+  const defaultMenuItems: UiLandingHeaderMenuItem[] = [
     {
       icon: 'pencil',
       title: "Blog",
@@ -78,6 +34,60 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
     },
   ];
 
+  const communityItems: UiLandingHeaderMenuSubItem[] = [
+    {
+      icon: 'book-open',
+      name: "Preguntar a otros negocios",
+      description:
+        "Encuentra apoyo en otros comerciantes y conoce sus experiencias",
+      link: "https://comunidad.sumerlabs.com/popular",
+    },
+    {
+      icon: 'book-open',
+      name: "Consultar al equipo experto",
+      description:
+        "Consulta con los mejores todo lo que quieres saber sobre Sumer",
+      link: "https://calendly.com/sumerayuda/soportepersonalizado",
+    },
+    {
+      icon: 'book-open',
+      name: "Preguntas frecuentes",
+      description: "Resuelve tus dudas a un clic",
+      link: "https://comunidad.sumerlabs.com/",
+    },
+  ];
+  
+  const aboutItems: UiLandingHeaderMenuSubItem[] = [
+    {
+      icon: 'book-open',
+      name: "Sobre nosotros",
+      description: "Conoce nuestro propósito y el equipo que lo hace realidad.",
+      link: "/about-us",
+    },
+    {
+      icon: 'book-open',
+      name: "Trabaja con nosotros",
+      description: "¡Únete a nuestro equipo! Talento LATAM",
+      link: "/sumer-jobs",
+    },
+  ];
+
+  const mobileMenuItems: UiLandingHeaderMenuItem[] = [
+    {
+      icon: 'bubble-chat',
+      title: 'Comunidad',
+      description: 'FAQ y experiencias',
+      subItems: communityItems,
+    },
+    {
+      icon: 'question-support',
+      title: 'Sobre el equipo',
+      description: 'Conoce nuestro equipo y su propósito',
+      subItems: aboutItems,
+    },
+    ...defaultMenuItems
+  ];
+
   return (
     <Wrapper className={className}>
       <div className="menu-icon" onClick={() => setShowMobileMenu(a => !a)}>
@@ -90,17 +100,56 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         <img src={`${WEB_ASSETS}/images/sumer-logo-black.png`} alt="Main logo" className="img" />
       </div>
       <div className="spacer" />
-      <div className="points" onClick={() => setShowMobileMenu(a => !a)}>
-        <div className="icon icon-four-points" />
-        <div className="icon icon-arrow" />
+      <div className="points">
+        <div className="icons" onClick={() => setOpenExpandibleTab(t => t === 0 ? null : 0)}>
+          <div className="icon icon-four-points" />
+          <div className="icon icon-arrow" />
+        </div>
+        <div className={`submenu ${openExpandibleTab === 0 ? 'open' : 'close'}`}>
+          {defaultMenuItems.map(i => (
+            <div className="actionable">
+              <div className={`icon icon-${i.icon}`} />
+              <div className="texts">
+                <div className="title">{i.title}</div>
+                <div className="description">{i.description}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="about">
-        <div className="text">Sobre sumer</div>
-        <div className="icon icon-arrow" />
+        <div className="clicker" onClick={() => setOpenExpandibleTab(t => t === 1 ? null : 1)}>
+          <div className="text">Sobre sumer</div>
+          <div className="icon icon-arrow" />
+          <div className={`submenu ${openExpandibleTab === 1 ? 'open' : 'close'}`}>
+            {aboutItems.map(i => (
+              <div className="actionable">
+                <div className={`icon icon-${i.icon}`} />
+                <div className="texts">
+                  <div className="title">{i.name}</div>
+                  <div className="description">{i.description}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <div className="community">
-        <div className="text">Comunidad</div>
-        <div className="icon icon-arrow" />
+        <div className="clicker" onClick={() => setOpenExpandibleTab(t => t === 2 ? null : 2)}>
+          <div className="text">Comunidad</div>
+          <div className="icon icon-arrow" />
+        </div>
+        <div className={`submenu ${openExpandibleTab === 2 ? 'open' : 'close'}`}>
+          {communityItems.map(i => (
+            <div className="actionable">
+              <div className={`icon icon-${i.icon}`} />
+              <div className="texts">
+                <div className="title">{i.name}</div>
+                <div className="description">{i.description}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="expert">
         <div className="text">Experto</div>
@@ -114,9 +163,9 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
       </div>
       <div className={`mobile-menu ${showMobileMenu && 'show'}`}>
-        {menuItems.map((menuItem, index) => (
-          <div key={`mobile-menu-item-${menuItem.title}`} className={`item ${openTab === index && 'open'}`}>
-            <div className="actionable" onClick={() => setOpenTab(t => t === index ? null : index)}>
+        {mobileMenuItems.map((menuItem, index) => (
+          <div key={`mobile-menu-item-${menuItem.title}`} className={`item ${openMobileTab === index && 'open'}`}>
+            <div className="actionable" onClick={() => setOpenMobileTab(t => t === index ? null : index)}>
               <div className={`icon icon-${menuItem.icon}`} />
               <div className="texts">
                 <div className="title">{menuItem.title}</div>
@@ -136,15 +185,13 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
                     key={`mobile-menu-sub-item-${item.name}`} 
                     href={item.link} 
                     target={'_blank'}
-                  >
-                    {item.name}
-                  </a>
+                  >{item.name}</a>
                 ))}
               </div>
             )}
           </div>
         ))}
-        <div className="login-button" onClick={onLoginClick}>Ingresar</div>
+        {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar</div>}
       </div>
     </Wrapper>
   );

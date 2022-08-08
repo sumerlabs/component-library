@@ -36,12 +36,18 @@ export const Wrapper = styled.div`
   }
   .points {
     display: none;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
+    position: relative;
     transition: color .3s;
     &:hover {
-      color: #4C42F6;
+      .icons {
+        color: #4C42F6;
+      }
+    }
+    .icons {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
     }
     .icon-four-points {
       font-size: 30px;
@@ -49,15 +55,19 @@ export const Wrapper = styled.div`
   }
   .about, .community, .expert {
     display: none;
-    column-gap: 8px;
-    cursor: pointer;
+    position: relative;
     margin: 0 0 0 36px;
-    align-items: center;
-    .text {
-      color: #0C1220;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 135%;
+    .clicker {
+      display: flex;
+      column-gap: 8px;
+      cursor: pointer;
+      align-items: center;
+      .text {
+        color: #0C1220;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 135%;
+      }
     }
   }
   .right-side {
@@ -184,6 +194,7 @@ export const Wrapper = styled.div`
       display: flex;
       color: #FFFFFF;
       font-size: 14px;
+      cursor: pointer;
       font-weight: 700;
       line-height: 140%;
       margin: auto 0 0 0;
@@ -192,7 +203,63 @@ export const Wrapper = styled.div`
       background-color: #4C42F6;
     }
   }
+  .submenu {
+    left: 0;
+    top: 62px;
+    row-gap: 20px;
+    padding: 40px;
+    display: flex;
+    width: max-content;
+    border-radius: 5px;
+    position: absolute;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E9F2;
+    transition: clip-path .3s;
+    box-shadow: 0px 10px 10px -5px rgba(17, 17, 17, 0.18);
+    &.open {
+      clip-path: inset(0% 0% 0% 0%);
+    }
+    &.close {
+      clip-path: inset(0% 0% 100% 0%);
+    }
+    .actionable {
+      display: flex;
+      cursor: pointer;
+      column-gap: 16px;
+      .icon {
+        width: 30px;
+        height: 30px;
+        color: #646464;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .texts {
+        .title {
+          font-size: 14px;
+          font-weight: 700;
+          margin: 0 0 4px 0;
+        }
+        .description {
+          font-size: 12px;
+          font-weight: 400;
+          color: rgb(135, 135, 136);
+        }
+      }
+      .arrow {
+        margin: 0 0 0 auto;
+        .icon-arrow {
+          color: #4C42F6;
+          font-size: 24px;
+          font-weight: bold;
+          transition: transform .3s;
+        }
+      }
+    }
+  }
   @media screen and (min-width: ${Breakpoints.LaptopShort}) {
+    background-color: #FFFFFF;
     border: 1px solid #D2D2D2;
     .menu-icon {
       display: none;
