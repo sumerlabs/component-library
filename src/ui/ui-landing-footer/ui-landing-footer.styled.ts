@@ -10,6 +10,9 @@ export const Wrapper = styled.div`
     cursor: pointer;
     margin: 32px auto;
     text-align: center;
+    .img {
+      width: 128px;
+    }
   }
   .links {
     display: flex;
@@ -63,6 +66,7 @@ export const Wrapper = styled.div`
     .language {
       display: flex;
       font-size: 14px;
+      cursor: pointer;
       font-weight: 400;
       line-height: 16px;
       align-items: center;

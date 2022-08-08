@@ -5,6 +5,7 @@ import { WEB_ASSETS } from "~/constants";
 import { goToApp } from "~/utils";
  
 const UiLandingHeader: FC<UiLandingHeaderProps> = ({
+  showLogin = true,
   className,
   onLoginClick,
 }) => {
@@ -105,7 +106,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         <div className="text">Experto</div>
       </div>
       <div className="right-side">
-        <div className="login">Ingresar</div>
+        {showLogin && <div className="login" onClick={onLoginClick}>Ingresar</div>}
         <div className="download-button" onClick={() => goToApp(true)}>
           <span className="icon icon-android" />
           <span className="icon icon-apple" />

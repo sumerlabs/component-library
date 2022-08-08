@@ -96,9 +96,9 @@ export const Wrapper = styled.div`
     z-index: 10;
     display: flex;
     row-gap: 20px;
-    padding: 30px 0;
     max-width: 500px;
     position: absolute;
+    padding: 30px 0 0 0;
     top: calc(100% + 2px);
     flex-direction: column;
     transition: transform .3s;
@@ -177,6 +177,19 @@ export const Wrapper = styled.div`
           text-decoration: none;
         }
       }
+    }
+    .login-button {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 140%;
+      margin: auto 0 0 0;
+      align-items: center;
+      justify-content: center;
+      background-color: #4C42F6;
     }
   }
   @media screen and (min-width: ${Breakpoints.LaptopShort}) {

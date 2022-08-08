@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Wrapper } from "./ui-landing-footer.styled";
 import { UiLandingFooterProps } from "./types";
+import { WEB_ASSETS } from "~/constants";
  
 const UiLandingFooter: FC<UiLandingFooterProps> = ({
   className,
@@ -32,7 +33,7 @@ const UiLandingFooter: FC<UiLandingFooterProps> = ({
   return (
     <Wrapper className={className}>
       <a className="logo" href="/">
-        {/* <SumerLogo /> */}
+        <img src={`${WEB_ASSETS}/images/sumer-logo-white.png`} alt="Main logo" className="img" />
       </a>
       <div className="links">
         <a href="/" className="link">Inicio</a>
