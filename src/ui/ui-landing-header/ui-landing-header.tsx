@@ -107,13 +107,13 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
         <div className={`submenu ${openExpandibleTab === 0 ? 'open' : 'close'}`}>
           {defaultMenuItems.map(i => (
-            <div className="actionable">
+            <a className="actionable" href={i.link}>
               <div className={`icon icon-${i.icon}`} />
               <div className="texts">
                 <div className="title">{i.title}</div>
                 <div className="description">{i.description}</div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -123,13 +123,13 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
           <div className="icon icon-arrow" />
           <div className={`submenu ${openExpandibleTab === 1 ? 'open' : 'close'}`}>
             {aboutItems.map(i => (
-              <div className="actionable">
+              <a className="actionable" href={i.link}>
                 <div className={`icon icon-${i.icon}`} />
                 <div className="texts">
                   <div className="title">{i.name}</div>
                   <div className="description">{i.description}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -141,13 +141,13 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
         <div className={`submenu ${openExpandibleTab === 2 ? 'open' : 'close'}`}>
           {communityItems.map(i => (
-            <div className="actionable">
+            <a className="actionable" href={i.link}>
               <div className={`icon icon-${i.icon}`} />
               <div className="texts">
                 <div className="title">{i.name}</div>
                 <div className="description">{i.description}</div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -156,7 +156,8 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       </div>
       <div className="right-side">
         {showLogin && <div className="login" onClick={onLoginClick}>Ingresar</div>}
-        <div className="download-button" onClick={() => goToApp(true)}>
+        {/* <div className="download-button" onClick={() => goToApp(true)}> */}
+        <div className="download-button" onClick={() => goToApp(false)}>
           <span className="icon icon-android" />
           <span className="icon icon-apple" />
           <div className="text">Descargar la app</div>

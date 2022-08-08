@@ -220,32 +220,35 @@ export const Wrapper = styled.div`
     transition: clip-path .3s;
     box-shadow: 0px 10px 10px -5px rgba(17, 17, 17, 0.18);
     &.open {
-      clip-path: inset(0% 0% 0% 0%);
+      clip-path: inset(0% -2% -4% -2%);
     }
     &.close {
-      clip-path: inset(0% 0% 100% 0%);
+      clip-path: inset(0% 0% 102% 0%);
     }
     .actionable {
       display: flex;
       cursor: pointer;
       column-gap: 16px;
+      text-decoration: none;
       .icon {
         width: 30px;
         height: 30px;
-        color: #646464;
+        color: #4C42F6;
         font-size: 20px;
         font-weight: bold;
       }
       .texts {
         .title {
+          color: #000000;
           font-size: 14px;
           font-weight: 700;
+          line-height: 140%;
           margin: 0 0 4px 0;
         }
         .description {
+          color: #666666;
           font-size: 12px;
           font-weight: 400;
-          color: rgb(135, 135, 136);
         }
       }
       .arrow {
