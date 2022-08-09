@@ -58,17 +58,18 @@ export const Wrapper = styled.div`
     display: none;
     position: relative;
     margin: 0 0 0 36px;
+    .text {
+      color: #0C1220;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 135%;
+      text-decoration: none;
+    }
     .clicker {
       display: flex;
       column-gap: 8px;
       cursor: pointer;
       align-items: center;
-      .text {
-        color: #0C1220;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 135%;
-      }
     }
   }
   .right-side {
@@ -115,7 +116,7 @@ export const Wrapper = styled.div`
     transition: transform .3s;
     background-color: #FAFAFA;
     height: calc(100vh - 80px);
-    transform: translateX(-100%);
+    transform: translateX(-102%);
     box-shadow: 0px 6px 8px rgba(69, 68, 74, 0.12);
     &.show {
       transform: translateX(0);
@@ -269,7 +270,7 @@ export const Wrapper = styled.div`
       display: none;
     }
     .logo {
-      margin: 0 0 0 122px;
+      margin: 0 0 0 60px;
     }
     .points {
       display: flex;
@@ -281,7 +282,7 @@ export const Wrapper = styled.div`
       display: flex;
     }
     .right-side {
-      margin: 0 120px 0 auto;
+      margin: 0 60px 0 auto;
       .login {
         display: block;
       }
@@ -290,6 +291,14 @@ export const Wrapper = styled.div`
           display: block;
         }
       }
+    }
+  }
+  @media screen and (min-width: ${Breakpoints.LaptopMedium}) {
+    .logo {
+      margin: 0 0 0 120px;
+    }
+    .right-side {
+      margin: 0 120px 0 auto;
     }
   }
 `;

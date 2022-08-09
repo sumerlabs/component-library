@@ -96,9 +96,9 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
           <span className="icon icon-close" />
         }
       </div>
-      <div className="logo">
+      <a className="logo" href="/">
         <img src={`${WEB_ASSETS}/images/sumer-logo-black.png`} alt="Main logo" className="img" />
-      </div>
+      </a>
       <div className="spacer" />
       <div className="points">
         <div className="icons" onClick={() => setOpenExpandibleTab(t => t === 0 ? null : 0)}>
@@ -152,12 +152,11 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
       </div>
       <div className="expert">
-        <div className="text">Experto</div>
+        <a className="text" href="/freemium">Experto</a>
       </div>
       <div className="right-side">
         {showLogin && <div className="login" onClick={onLoginClick}>Ingresar</div>}
-        {/* <div className="download-button" onClick={() => goToApp(true)}> */}
-        <div className="download-button" onClick={() => goToApp(false)}>
+        <div className="download-button" onClick={() => goToApp(true)}>
           <span className="icon icon-android" />
           <span className="icon icon-apple" />
           <div className="text">Descargar la app</div>
