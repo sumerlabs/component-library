@@ -1,4 +1,4 @@
-export const WEB_ASSETS = 'https://sumer-s3-database.s3.us-west-2.amazonaws.com/dev/assets/web';
+export const WEB_ASSETS = 'https://www.dev.sumerlabs.com/dev/assets/web';
 export const OPEN_APP_STORE_ANDROID = 'https://link.sumerlabs.com/sDH5/webandroid';
 export const OPEN_APP_STORE_IOS = 'https://link.sumerlabs.com/sDH5/webios';
 export const OPEN_APP_INSTALLED = 'sumerscheme://mobile.sumerlabs.com';
