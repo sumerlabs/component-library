@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
-  title: 'UI/UiIcon',
+  title: 'UI/UiIcons',
 } as ComponentMeta<typeof React.Component>;
 
 const Template: ComponentStory<typeof React.Component> = (args) => (
