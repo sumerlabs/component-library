@@ -28,8 +28,11 @@ const Login = ({ apiUrl, apiKey, logEvent,
         fetcher,
     );
 
-    const handleRegisterMessageView = (): void => {
+    const handleRegisterMessageView = (response: Customer): void => {
         setStep(LoginSteps.REGISTER_MESSAGE);
+        if (response.userId) {
+            success && success(response);
+        }
     };
 
     const ValidationSuccess = async (token: string, expiresIn: number, refreshToken: string) => {

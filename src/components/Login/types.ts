@@ -11,7 +11,7 @@ export type LoginProps = {
   apiUrl: string;
   logEvent: (event: string) => void;
   country: any;
-  success?: (customer: Customer, loginData: ValidateCodeResponse) => void;
+  success?: (customer: Customer, loginData?: ValidateCodeResponse) => void;
   redirectUrl?: string
 }
 
