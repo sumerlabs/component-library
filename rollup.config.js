@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import css from "rollup-plugin-import-css";
+import copy from 'rollup-plugin-copy';
 
 const packageJson = require("./package.json");
 
@@ -21,6 +22,13 @@ export default {
     }
   ],
   plugins: [
+    copy({
+      targets: [
+        { src: 'src/styles/icons.css', dest: 'lib/styles' },
+        { src: 'src/styles/icomoon-font.dev.css', dest: 'lib/styles' },
+        { src: 'src/styles/icomoon-font.prod.css', dest: 'lib/styles' },
+      ]
+    }),
     css(),
     peerDepsExternal(),
     resolve(),
