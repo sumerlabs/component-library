@@ -4,6 +4,7 @@ import { Wrapper } from "./ui-checkbox.styled";
  
 const UiCheckbox: FC<UiCheckboxProps> = ({
   active,
+  className,
   size = 20,
   onChange,
 }) => {
@@ -20,7 +21,7 @@ const UiCheckbox: FC<UiCheckboxProps> = ({
 
   return (
     <Wrapper 
-      className={`${isActive && 'active'}`} 
+      className={`${className} ${isActive && 'active'}`} 
       onClick={handleClick} 
       style={{ width: `${size}px`, height: `${size}px` }}>
       <span 
