@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/icomoon-font.prod.css';
 
-const UiIconsProd = () => <></>;
+const UiIconsProd = () => <>ICONS PROD</>;
 
 export default UiIconsProd;
