@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof UiButton> = (args) => <UiButton {...args} 
 export const Default = Template.bind({});
 Default.args = {
   text: 'Text',
+  isExpert: false,
   isDisabled: false,
   isSecondary: false,
   isLoading: false,

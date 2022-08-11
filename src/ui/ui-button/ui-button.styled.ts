@@ -25,6 +25,10 @@ export const Wrapper = styled.div`
     background-color: #FFFFFF;
     border: 1px solid #4C42F6;
   }
+  &.expert {
+    color: #000000;
+    background: linear-gradient(90.32deg, #FFB237 -6.02%, #FFB237 9.29%, #E58D09 25.38%, #FFB237 67.24%, #E58D09 112.77%);
+  }
   &.disabled {
     color: #878788;
     cursor: default;

@@ -7,6 +7,7 @@ const UiButton: FC<UiButtonProps> = ({
   text,
   iconRight,
   className,
+  isExpert,
   isSecondary,
   isDisabled,
   isLoading,
@@ -20,6 +21,7 @@ const UiButton: FC<UiButtonProps> = ({
   return (
     <Wrapper className={`
       ${className} 
+      ${isExpert && 'expert'}
       ${isDisabled && 'disabled'}
       ${isSecondary && 'secondary'}
     `} onClick={handleClick}>
