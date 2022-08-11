@@ -3,12 +3,14 @@ import { Wrapper } from "./ui-landing-header.styled";
 import { UiLandingHeaderMenuItem, UiLandingHeaderMenuSubItem, UiLandingHeaderProps } from "./types";
 import { WEB_ASSETS } from "~/constants";
 import { goToApp } from "~/utils";
+import { UiButton } from "../ui-button";
  
 const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   showLogin = true,
   className,
   onLoginClick,
 }) => {
+
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [openMobileTab, setOpenMobileTab] = useState<number | null>(null);
   const [openExpandibleTab, setOpenExpandibleTab] = useState<number | null>(null);
@@ -88,6 +90,14 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
     ...defaultMenuItems
   ];
 
+  const handleExpertButtonClick = () => {
+    const link = document.createElement("a");
+    link.href = '/freemium'
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <Wrapper className={className}>
       <div className="menu-icon" onClick={() => setShowMobileMenu(a => !a)}>
@@ -151,8 +161,9 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
           ))}
         </div>
       </div>
-      <div className="expert">
-        <a className="text" href="/freemium">Experto</a>
+      <div className="expert-link">
+        <a className="text" href="/freemium">Quiero ser Experto</a>
+        <div className="icon icon-expert" />
       </div>
       <div className="right-side">
         {showLogin && <div className="login" onClick={onLoginClick}>Ingresar</div>}
@@ -191,6 +202,13 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
             )}
           </div>
         ))}
+        <UiButton 
+          className="expert-button" 
+          text="Quiero ser Experto" 
+          onClick={handleExpertButtonClick} 
+          iconRight={<span className="icon-expert" />}
+          isExpert
+        />
         {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar</div>}
       </div>
     </Wrapper>

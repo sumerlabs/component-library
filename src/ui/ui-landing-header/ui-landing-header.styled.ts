@@ -54,10 +54,12 @@ export const Wrapper = styled.div`
       font-size: 30px;
     }
   }
-  .about, .community, .expert {
+  .about, .community, .expert-link {
     display: none;
+    column-gap: 8px;
     position: relative;
     margin: 0 0 0 36px;
+    align-items: center;
     .text {
       color: #0C1220;
       font-size: 18px;
@@ -190,6 +192,9 @@ export const Wrapper = styled.div`
         }
       }
     }
+    .expert-button {
+      margin: 0 16px;
+    }
     .login-button {
       width: 100%;
       height: 40px;
@@ -278,7 +283,7 @@ export const Wrapper = styled.div`
     .spacer {
       display: block;
     }
-    .about, .community, .expert {
+    .about, .community, .expert-link {
       display: flex;
     }
     .right-side {
