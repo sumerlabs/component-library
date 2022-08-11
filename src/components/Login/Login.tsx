@@ -10,21 +10,23 @@ import {
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 import { LoginProps, LoginSteps } from './types';
+import SelectLoginMethod from '~/components/SelectLoginMethod/SelectLoginMethod';
+import { useLocalStorage } from '~/common';
 
 const Login = ({ apiUrl, apiKey, logEvent,
-                   initialStep = LoginSteps.GET_CODE,
-                   country, success, redirectUrl }: LoginProps) => {
+                   initialStep = LoginSteps.SELECT_LOGIN_METHOD,
+                   country, success, redirectUrl, apiKeySp }: LoginProps) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
-  const [token, setToken] = useState<string>();
-  const [expiresIn, setExpiresIn] = useState<number>();
-  const [refreshToken, setRefreshToken] = useState<string>();
+  const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
+  const [expiresIn, setExpiresIn] = useLocalStorage('expiresIn', 0);
+  const [refreshToken, setRefreshToken] = useLocalStorage('refreshToken', '');
   const [prefixSendTo, setPrefixSendTo] = useState<string>();
   const [channel, setChannel] = useState<string>();
 
     const { data: countries, error: countriesError } = useSWR(
         [`${apiUrl}/api/ms/remote-config/country-data`,
-        apiKey],
+            apiKeySp],
         fetcher,
     );
 
@@ -36,7 +38,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
     };
 
     const ValidationSuccess = async (token: string, expiresIn: number, refreshToken: string) => {
-        setToken(token);
+        setAccessToken(token);
         setExpiresIn(expiresIn);
         setRefreshToken(refreshToken);
         const user = await getUserData({token, apiUrl})
@@ -60,10 +62,11 @@ const Login = ({ apiUrl, apiKey, logEvent,
 
   return (
       <LoginContainer>
+          {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod validationSuccess={ValidationSuccess} apiUrl={apiUrl} apiKey={apiKey} />}
           {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
                                                     countries={countries}
                                                     country={country} logEvent={logEvent}
-                                                    apiUrl={apiUrl} apiKey={apiKey} />}
+                                                    apiUrl={apiUrl} apiKey={apiKeySp} />}
           {step === LoginSteps.VALIDATE_CODE && <ValidateCode ValidationSuccess={ValidationSuccess}
                                                               sendTo={sendTo!}
                                                               prefixSendTo={prefixSendTo!} channel={channel!}

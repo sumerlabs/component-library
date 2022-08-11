@@ -12,7 +12,8 @@ const Template: ComponentStory<typeof Login> = (args) => <Login {...args} />;
 export const LoginDefault = Template.bind({});
 LoginDefault.args = {
     fetchCustomer: () => {},
-    apiKey: 'TeFbDPQQ8G5Cmvxmzcc7gd7yF389cmsV',
+    apiKeySp: 'TeFbDPQQ8G5Cmvxmzcc7gd7yF389cmsV',
+    apiKey: '78cd3ff2bd5c9f661ba1d6a0a98fcab9',
     apiUrl: 'https://services.dev.sumerlabs.com',
     logEvent: () => {},
     success: () => {
