@@ -30,8 +30,8 @@
     "@types/styled-components": "^5.1.23",
     "babel-loader": "^8.2.3",
     "rollup": "^2.68.0",
-    "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-import-css": "^3.0.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.31.2",
@@ -43,6 +43,7 @@
     "@greatsumini/react-facebook-login": "^3.2.1",
     "framer-motion": "^6.2.8",
     "humps": "^2.0.1",
+    "react-google-login": "^5.2.2",
     "swr": "^1.2.2"
   },
   "peerDependencies": {

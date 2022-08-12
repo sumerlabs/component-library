@@ -60,9 +60,15 @@ const Login = ({ apiUrl, apiKey, logEvent,
     setChannel(channel_);
   }
 
+  const getCodeStep = () => {
+      setStep(LoginSteps.GET_CODE);
+  }
+
   return (
       <LoginContainer>
-          {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod validationSuccess={ValidationSuccess} apiUrl={apiUrl} apiKey={apiKey} />}
+          {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod getCodeStep={getCodeStep}
+                                                                         validationSuccess={ValidationSuccess}
+                                                                         apiUrl={apiUrl} apiKey={apiKey} />}
           {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
                                                     countries={countries}
                                                     country={country} logEvent={logEvent}

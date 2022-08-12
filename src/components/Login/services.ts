@@ -140,3 +140,22 @@ export const facebookLogin = async ({ token, apiUrl, apiKey }:  { token: string,
 
     return json as ValidateCodeResponse;
 };
+
+export const googleLogin = async ({ token, apiUrl, apiKey }:  { token: string, apiUrl: string, apiKey: string }) => {
+    const res = await fetch(
+        `${apiUrl}/api/ms/user/auth/login-google`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "api-key-sumer": '78cd3ff2bd5c9f661ba1d6a0a98fcab9',
+            } as any,
+            body: JSON.stringify({token: token}),
+        }
+    );
+
+    const json = camelizeKeys(await res.json()) as unknown;
+
+    return json as ValidateCodeResponse;
+};
