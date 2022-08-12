@@ -5,6 +5,7 @@
   "scripts": {
     "rollup": "rollup -c",
     "storybook": "start-storybook -p 6006",
+    "storybook-ssh": "start-storybook -p 6006 --https --ssl-cert ~/server.crt --ssl-key ~/server.key",
     "build-storybook": "build-storybook",
     "patch": "npm run rollup && npm version patch && npm publish",
     "minor": "npm run rollup && npm version minor && npm publish",
