@@ -33,6 +33,8 @@ const Login = ({ apiUrl, apiKey, logEvent,
     const handleRegisterMessageView = (response: Customer): void => {
         setStep(LoginSteps.REGISTER_MESSAGE);
         if (response.userId) {
+            response.prefixPhone = prefixSendTo;
+            response.phone = sendTo;
             success && success(response);
         }
     };

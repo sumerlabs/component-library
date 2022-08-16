@@ -19,7 +19,7 @@ const CustomerProfile = ({ customer, handleCloseSession } : { customer: Customer
 				<Profile width={66} height={66} />
 				<div className='box-customer-profile'>
 					<p className='name-profile'>{customer?.firstName + ' ' + customer?.lastName}</p>
-					<p className='customer-phone'>{`${customer?.prefixPhone} ${customer?.phone}`}</p>
+					{customer?.prefixPhone && <p className='customer-phone'>{`${customer?.prefixPhone} ${customer?.phone}`}</p>}
 				</div>
 			</div>
 			<div className='box-sign-out' onClick={closeSession}>

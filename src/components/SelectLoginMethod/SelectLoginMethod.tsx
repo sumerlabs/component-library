@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { SelectLoginMethodContainer } from '~/components/SelectLoginMethod/SelectLoginMethod.styled';
-import { LightSupport } from '~/icons';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookLogin, googleLogin } from '~/components';
 import GoogleLogin from 'react-google-login';
@@ -22,7 +21,8 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, getCodeStep }:
         validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
     }
 
-    const handleError = () => {
+    const handleLoginError = (error: any) => {
+        console.log(error);
         setError(true);
         const timer = setTimeout(() => {
             setError(false);
@@ -50,7 +50,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, getCodeStep }:
                             await facebook(response.accessToken);
                         }
                     }}
-                    onFail={() => {handleError()}}
+                    onFail={(error) => {handleLoginError(error)}}
                     render={({ onClick, logout }) => (
                         <button className={'facebook'} onClick={onClick}>
                             <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/fb.png'}/>
@@ -68,7 +68,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, getCodeStep }:
                     )}
                     buttonText="Login"
                     onSuccess={google}
-                    onFailure={() => {handleError()}}
+                    onFailure={(error) => {handleLoginError(error)}}
                     cookiePolicy={'single_host_origin'}
                 />
                 <button className={'Teléfono'} onClick={getCodeStep}>
