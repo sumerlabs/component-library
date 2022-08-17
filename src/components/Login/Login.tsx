@@ -74,6 +74,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
   return (
       <LoginContainer>
           {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
+                                                                         loginType={loginType}
                                                                          validationSuccess={ValidationSuccess}
                                                                          apiUrl={apiUrl} apiKey={apiKey} />}
           {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
 import Login from './Login';
+import { LoginType } from '~/components/Login/types';
 
 export default {
   title: 'Login',
@@ -16,7 +17,7 @@ LoginMobile.parameters = {
     },
 };
 LoginMobile.args = {
-    fetchCustomer: () => {},
+    loginType: LoginType.SELLER,
     apiKeySp: 'TeFbDPQQ8G5Cmvxmzcc7gd7yF389cmsV',
     apiKey: '78cd3ff2bd5c9f661ba1d6a0a98fcab9',
     apiUrl: 'https://services.dev.sumerlabs.com',
@@ -44,7 +45,7 @@ LoginMobile.args = {
 
 export const LoginDesktop = Template.bind({});
 LoginDesktop.args = {
-    fetchCustomer: () => {},
+    loginType: LoginType.SELLER,
     apiKeySp: 'TeFbDPQQ8G5Cmvxmzcc7gd7yF389cmsV',
     apiKey: '78cd3ff2bd5c9f661ba1d6a0a98fcab9',
     apiUrl: 'https://services.dev.sumerlabs.com',

@@ -6,10 +6,12 @@ import GoogleLogin from 'react-google-login';
 import { useTranslation } from 'react-i18next';
 import Modal from '~/components/Modal';
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
+import { LoginType } from '~/components/Login/types';
 
-const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo }:
+const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType }:
                                { validationSuccess: (token: string, expiresIn: number, refreshToken: string)
-                                       => void, apiUrl: string, apiKey: string, setStepTo: (step: string) => void }): JSX.Element => {
+                                       => void, apiUrl: string, apiKey: string,
+                                   setStepTo: (step: string) => void, loginType: LoginType }): JSX.Element => {
 
     const [error, setError] = useState(false);
     const { t } = useTranslation();
@@ -89,7 +91,8 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo }:
                    title={t('login.register')} element={ref.current as unknown as Element}>
                 <RegisterInApp />
             </Modal>
-            <div className={'register'}>¿No tienes cuenta? <span onClick={() => {setShowModal(true)}}>Regístrate ahora</span></div>
+            { loginType === LoginType.SELLER && <div className={'register'}>
+                {t('login.do_not_have_account')} <span onClick={() => {setShowModal(true)}}>{t('login.register_now')}</span></div>}
         </SelectLoginMethodContainer>
     );
 };
