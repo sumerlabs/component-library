@@ -61,4 +61,18 @@ export const SelectLoginMethodContainer = styled.div`
     text-align: center;
     padding-top: 14px;
   }
+  .register {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    span {
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: #4C42F6;
+    }
+  }
 `;

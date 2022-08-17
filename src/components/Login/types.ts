@@ -1,9 +1,15 @@
 export enum LoginSteps {
   SELECT_LOGIN_METHOD = 'select_login_method',
   GET_CODE = 'get_code',
+  EMAIL = 'email',
   VALIDATE_CODE = 'pending',
   UPDATE_USER_DATA = 'update_user_data',
   REGISTER_MESSAGE = 'register_message',
+}
+
+export enum LoginType {
+  BUYER = 'buyer',
+  SELLER = 'seller',
 }
 
 export type LoginProps = {
@@ -15,6 +21,7 @@ export type LoginProps = {
   country: any;
   success?: (customer: Customer, loginData?: ValidateCodeResponse) => void;
   redirectUrl?: string
+  loginType: LoginType
 }
 
 export type ValidateCodeResponse = {

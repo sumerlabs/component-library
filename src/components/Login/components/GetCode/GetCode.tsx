@@ -24,12 +24,14 @@ const GetCode = ({
 					 country,
 					 logEvent,
 					 apiKey,
-					 apiUrl
+					 apiUrl,
+					 setStepTo
 }: {
 	handleStepChange: (step: string, sendTo: string, prefixSendTo : string, type: string) => void,
 	countries: any, country: any,
 	apiKey: string, apiUrl: string
 	logEvent: (event: string) => void
+	setStepTo: (step: string) => void
 }): JSX.Element => {
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState<any>({ label: '', image: '' });
@@ -61,11 +63,13 @@ const GetCode = ({
 
 	const handleForm = async (values: any) => {
 		const requestCode = await GetCodeService({
-			sendTo: values.phone,
-			prefixSendTo: values.prefixPhone,
-			channel: values.channel,
 			apiKey,
-			apiUrl
+			apiUrl,
+			payload: {
+				send_to: values.phone,
+				prefix_send_to: values.prefixPhone,
+				channel: values.channel,
+			}
 		}).catch(() => {
 			setError(true);
 			const timer = setTimeout(() => {
@@ -108,7 +112,9 @@ const GetCode = ({
 					} = props;
 					return (
 						<GetCodeContainer>
-							<p className="title-login">{t('login.account')}</p>
+							<div className={'head'}>
+								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>Atrás</div><p className="title-login">{t('login.account')}</p>
+							</div>
 							<ProgressBar width={35} />
 							<WrapperInput>
 								<div

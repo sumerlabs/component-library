@@ -12,8 +12,8 @@ const Template: ComponentStory<typeof GetCode> = (args) => <GetCode {...args} />
 export const GetCodeDefault = Template.bind({});
 GetCodeDefault.args = {
     handleStepChange: () => {},
-    apiKey: '12312312321',
-    apiUrl: 'https://api.example.com',
+    apiKey: '78cd3ff2bd5c9f661ba1d6a0a98fcab9',
+    apiUrl: 'https://services.dev.sumerlabs.com',
     logEvent: () => {},
     country: {
         "id": "CO",

@@ -6,16 +6,17 @@ import {
     GetCode,
     ValidateCode,
     UpdateUserData,
-    RegisterMessage, getUserData, Customer, ValidateCodeResponse
+    RegisterMessage, getUserData, Customer,
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 import { LoginProps, LoginSteps } from './types';
 import SelectLoginMethod from '~/components/SelectLoginMethod/SelectLoginMethod';
 import { useLocalStorage } from '~/common';
+import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCodeByEmail';
 
 const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
-                   country, success, redirectUrl, apiKeySp }: LoginProps) => {
+                   country, success, redirectUrl, apiKeySp, loginType }: LoginProps) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
@@ -66,14 +67,22 @@ const Login = ({ apiUrl, apiKey, logEvent,
       setStep(LoginSteps.GET_CODE);
   }
 
+  const setStepTo = (stp: string) => {
+        setStep(stp);
+  }
+
   return (
       <LoginContainer>
-          {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod getCodeStep={getCodeStep}
+          {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
                                                                          validationSuccess={ValidationSuccess}
                                                                          apiUrl={apiUrl} apiKey={apiKey} />}
           {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
                                                     countries={countries}
+                                                    setStepTo={setStepTo}
                                                     country={country} logEvent={logEvent}
+                                                    apiUrl={apiUrl} apiKey={apiKeySp} />}
+          {step === LoginSteps.EMAIL && <GetCodeByEmail handleStepChange={handleStepChange}
+                                                    setStepTo={setStepTo}  logEvent={logEvent}
                                                     apiUrl={apiUrl} apiKey={apiKeySp} />}
           {step === LoginSteps.VALIDATE_CODE && <ValidateCode ValidationSuccess={ValidationSuccess}
                                                               sendTo={sendTo!}
@@ -83,7 +92,6 @@ const Login = ({ apiUrl, apiKey, logEvent,
           {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
               handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
           {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
-          <HelpLink logEvent={logEvent}  />
       </LoginContainer>
   );
 };

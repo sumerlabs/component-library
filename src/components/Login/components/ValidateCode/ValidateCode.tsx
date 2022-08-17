@@ -58,9 +58,11 @@ const ValidateCode = ({
 
 	const handleResendCode = async () => {
 		const requestCode = await GetCodeService({
-			sendTo: sendTo,
-			prefixSendTo: prefixSendTo,
-			channel: channel,
+			payload: {
+				send_to: sendTo,
+				prefix_send_to: prefixSendTo,
+				channel: channel,
+			},
 			apiKey,
 			apiUrl,
 		});

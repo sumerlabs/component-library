@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import { OptionProps } from './types';
 
 export const GetCodeContainer = styled.div`
+  .head {
+    display: flex;
+    align-items: center;
+  }
 	padding: 1.1rem;
 	.title-login {
-		font-size:18px;
-		line-height:140%;
+		font-size: 18px;
+		line-height: 140%;
 		font-weight: 700;
 		text-align: center;
-		padding-bottom: 45px;
 	}
 
 	.box-term-check {

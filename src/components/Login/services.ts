@@ -1,10 +1,9 @@
 import { camelizeKeys } from 'humps';
 import { Customer, ValidateCodeResponse } from '~/components/Login/types';
+import { RequestCodePayload } from '~/components/Login/components/GetCode/types';
 
-export const GetCodeService = async ({ sendTo,
-                                         prefixSendTo, channel, apiKey, apiUrl }:  { sendTo: string,
-    prefixSendTo : string,
-    channel: string, apiKey: string, apiUrl: string }) => {
+export const GetCodeService = async ({ apiKey, apiUrl, payload }:
+                                         { apiKey: string, apiUrl: string, payload: RequestCodePayload }) => {
     const res = await fetch(
         `${apiUrl}/api/ms/user/twilio/login/verification-code`,
         {
@@ -14,11 +13,7 @@ export const GetCodeService = async ({ sendTo,
                 Accept: "application/json",
                 "api-key-sumer": apiKey,
             } as any,
-            body: JSON.stringify({
-                send_to: sendTo,
-                prefix_send_to: prefixSendTo,
-                channel: channel,
-            }),
+            body: JSON.stringify(payload),
         }
     );
 
