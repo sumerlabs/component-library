@@ -25,7 +25,7 @@ const Input = ({
   const handleFocus = (event: any) => event.target.select();
   return (
     <WrapperInput className={className}>
-      <div className="input-box">
+     
         <input
           id={id}
           maxLength={maxLength}
@@ -51,7 +51,7 @@ const Input = ({
         >
           <span className="content-name">{title}</span>
         </label>
-      </div>
+      
       {showError && touched && touched[name] && errors && errors[name] ? (
         <ErrorMessage className="error">{errors[name]}</ErrorMessage>
       ) : null}

@@ -8,12 +8,20 @@ export const DropDownContainer = styled.div`
 export const DropDownHeader = styled.div`
   display: flex;
   position: absolute;
-  width: 95%;
+  width: 75%;
   align-items: flex-end;
+  border: 1px solid #DDE0F5;
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+  align-items: center;
 
   .icon {
     position: absolute;
     right: 0;
+    padding-right: 10px;
+    width: 13px;
+    height: 13px;
   }
 
   .label {
@@ -27,13 +35,19 @@ export const DropDownHeader = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     width: 95%;
-    padding-top: 10px;
+    padding-top: 4px;
 
     img {
       margin-right: 5px;
       width: 18px;
     }
   }
+  &:focus,
+  &:active,
+  &.selected {
+    border: 1px solid ${({ theme }) => theme.colors.primaryColorScale.p2};
+  }
+  
 `;
 
 export const DropDownListContainer = styled.div`
@@ -44,8 +58,9 @@ export const DropDownListContainer = styled.div`
   max-height: 310px;
   overflow-y: auto;
   position: absolute;
-  top: 30px;
-  width: max-content;
+  top: 43px;
+  left: 0;
+  width: 100%;
   z-index: 100;
   &:focus,
   &:active {
@@ -56,8 +71,9 @@ export const DropDownListContainer = styled.div`
 export const DropDownList = styled.ul`
   margin: 0;
   padding: 0;
+  padding: 2px;
   &:first-child {
-    padding-top: 9px;
+    padding-top: 5px;
   }
 `;
 
@@ -69,20 +85,20 @@ export const ListItem = styled.li`
   font-weight: 400;
   list-style: none;
   margin-bottom: 4px;
-  padding: 4px 12px;
-  min-width: 100px;
+  width: 100%;
+  padding: 8px 0px;
 
   &:hover,
   &:focus,
   &:active,
   &.selected {
-    border: 1px solid ${({ theme }) => theme.colors.primaryColorScale.p2};
     border-radius: 5px;
     font-weight: 600;
+    background: #EDECFE;
   }
 
   img {
     margin-right: 5px;
-    width: 24px;
+    width: 20px;
   }
 `;

@@ -8,9 +8,9 @@ import {
 } from "./DropDown.styles";
 import { DropDownProps, Selected } from "./types";
 import React from "react";
-import { isEmpty } from '~/common/utils';
-import ArrowDown from '~/icons/ArrowDown';
-import ArrowTop from '~/icons/ArrowTop';
+import { isEmpty } from "~/common/utils";
+import ArrowDown from "~/icons/ArrowDown";
+import ArrowTop from "~/icons/ArrowTop";
 
 const initialSelected = {
   label: "",
@@ -76,15 +76,22 @@ export const DropDown = ({
 
   return (
     <DropDownContainer className={className}>
-      <DropDownHeader className="header" onClick={toggling} data-testid={`dropdown-${className}`}>
+      <DropDownHeader
+        className="header"
+        onClick={toggling}
+        data-testid={`dropdown-${className}`}
+      >
         <span className="label">
-          {selectedOption.image && <img src={selectedOption.image} />}
           {selectedOption.label || "" || placeholder}
         </span>
-        <span className="icon">
-          {!isOpen && <ArrowDown height="10" width="12" />}
-          {isOpen && <ArrowTop height="10" width="12" />}
-        </span>
+        <img
+          src={
+            isOpen
+              ? "https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowUp.png"
+              : "https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrow.png"
+          }
+          className="icon"
+        ></img>
       </DropDownHeader>
       {isOpen && (
         <DropDownHeader>
@@ -93,7 +100,9 @@ export const DropDown = ({
               {options.length > 0 &&
                 options.map(({ oId, image, label }: any) => (
                   <ListItem
-                  data-testid={`dropdown-${className}-item-${label === selectedOption.label ? "selected" : ""}`}
+                    data-testid={`dropdown-${className}-item-${
+                      label === selectedOption.label ? "selected" : ""
+                    }`}
                     onClick={(event) => {
                       event.preventDefault();
                       updateSelectedOption(label, image);

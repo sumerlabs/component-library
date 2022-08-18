@@ -13,6 +13,17 @@ export const GetCodeContainer = styled.div`
 		font-weight: 700;
 		text-align: center;
 	}
+	.back {
+    display: flex;
+    align-items: center;
+    width: 47%;
+    justify-content: space-between;
+}
+
+	.img-back{
+		width: 18px;
+		height: 18px;
+	}
 
 	.box-term-check {
 		display: flex;
@@ -83,6 +94,11 @@ export const GetCodeContainer = styled.div`
         gap:1rem;
 		justify-content: center;
 	}
+
+	.icon-code{
+		width: 17px;
+		height: 17px;
+	}
       .button-wsp:disabled {
         background-color: ${({ theme }) => theme.colors.grayScale.gr5};
         color: ${({ theme }) => theme.colors.white};
@@ -103,6 +119,17 @@ export const WrapperInput = styled.div`
 	label {
 		color: ${({ theme }) => theme.colors.primaryColorScale.p2};
 	}
+	.text-login{
+		font-weight: 400;
+		font-size: 18px;
+		color: ${({ theme }) => theme.colors.black};
+	}
+
+	.text-phone-create {
+    font-weight: 400;
+    font-size: 16px;
+    color: #646464;
+}
 	.input-box {
 		display: flex;
 		font-size:16px;
@@ -138,7 +165,6 @@ export const WrapperInput = styled.div`
 		width: 100%;
 		height: 100%;
 		pointer-events: none;
-		border-bottom: 1px solid ${({ theme }) => theme.colors.grayScale.gr3};
 
 		&.error {
 			border-color: ${({ theme }) => theme.colors.redScale.r2};
@@ -196,8 +222,8 @@ export const WrapperInput = styled.div`
 		display: flex;
 		flex-direction: column;
 		font-size:12px;
-   line-height:130%;
-   font-weight: 400;
+	line-height:130%;
+	font-weight: 400;
 		margin-bottom: 1rem;
 	}
 
@@ -278,7 +304,6 @@ export const WrapperInput = styled.div`
 	}
 
 	.select-indicative .label {
-		border-bottom: 1px solid ${({ theme }) => theme.colors.grayScale.gr3};
 	}
 	.phone,
 	.input-field {

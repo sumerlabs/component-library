@@ -113,9 +113,11 @@ const GetCode = ({
 					return (
 						<GetCodeContainer>
 							<div className={'head'}>
-								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>Atrás</div><p className="title-login">{t('login.account')}</p>
+								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
+									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
+									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
+								</div>
 							</div>
-							<ProgressBar width={35} />
 							<WrapperInput>
 								<div
 									className={`select-phone ${
@@ -124,9 +126,10 @@ const GetCode = ({
 											? 'error'
 											: ''
 									}`}>
-									<label className="label-name">
-										<span className="content-input">{t('login.phone')}</span>
-									</label>
+									<div className='box-phone-create'>
+										<p className='text-login'>{t('login.title')}</p>
+										<p className='text-phone-create'>{t('login.number_phone')}</p>
+									</div>
 									<PhoneBox>
 										<DropDown
 											className="select-indicative"
@@ -186,7 +189,7 @@ const GetCode = ({
 									logEvent(EVENTS.SELECT_SMS_CONFIRM);
 									handleSubmit(e);
 								}}>
-								<Chat width={17} height={17} />
+								<img className='icon-code' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/sms.png'/>
 								{t('login.sms')}
 							</button>
 							<button className="button-wsp" disabled={!isValid} onClick={(e: any) => {
@@ -194,7 +197,7 @@ const GetCode = ({
 								logEvent(EVENTS.SELECT_WA_CONFIRM);
 								handleSubmit(e);
 							}}>
-								<WhatsAppFill fill={isValid ? theme.colors.greenScale.g6: ""} width={17} height={17}/>
+								<img className='icon-code' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/assets/web/login/whatssapp.png'/>
 								{t('login.whatsapp')}
 							</button>
 						</GetCodeContainer>
