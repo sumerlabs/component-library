@@ -100,18 +100,27 @@ const ValidateCode = ({
 					} = props;
 					return (
 						<>
-							<p className="title-login">{t('login.account')}</p>
-							<ProgressBar width={75} />
+							<div className={'back'}>
+									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
+									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
+								</div>
 							<WrapperCheckCode>
 								<form noValidate>
-									<Title>{t('login.code')}</Title>
-									<Text>
-									{t('login.send')}
-										<span className="highlights">{`${prefixSendTo} ${sendTo}`}</span>
-									</Text>
+									<div className='box-code-verification'>
+										<p className='text-code'>{t('login.code_verification')}</p>
+										<p className='text-code-send'>{t('login.code_verification_send')}</p>
+									</div>
+									<div className='box-send-to'>
+										<p className='text-send-to'>{`${prefixSendTo} ${sendTo}`}</p>
+										<p className='text-change'>Cambiar</p>
+									</div>
 									<SmsValidation
 												   handleChange={handleChange}
 												   handleBlur={handleBlur} values={values} logEvent={logEvent} error={error} />
+												   { error && <div className='box-error-code'>
+													   <img src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/error.png'/>
+													   <p>{t('login.incorrect')}</p>
+													</div>}
 									<Text className="small">
 										{t('login.codeQuestion')}{' '}
 										<span role="button" className="highlights" onClick={() => {
@@ -130,7 +139,7 @@ const ValidateCode = ({
 										}}>{t('login.next')}</button>
 									</div>
 								</form>
-								{ error && <div className='box-error-code'>{t('login.incorrect')}</div>}
+								
 							</WrapperCheckCode>
 						</>
 					);

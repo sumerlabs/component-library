@@ -2,7 +2,17 @@ import styled from 'styled-components';
 
 export const ValidateCodeContainer = styled.div`
 	padding: 1.1rem;
+	.back {
+    display: flex;
+    align-items: center;
+    width: 47%;
+    justify-content: space-between;
+}
 
+	.img-back{
+		width: 18px;
+		height: 18px;
+	}
 	.title-login {
 		font-size:14px;
 		line-height:140%;
@@ -18,6 +28,14 @@ export const ValidateCodeContainer = styled.div`
 		font-weight: 400;
 		text-align: center;
 		padding-top: 14px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+		img{
+			width: 16px;
+			height: 16px;
+		}
 	}
 
   .box-resend-code {
@@ -33,6 +51,35 @@ export const ValidateCodeContainer = styled.div`
 export const WrapperCheckCode = styled.div`
 	text-align: left;
     margin-top: 2rem;
+	.text-code{
+		font-weight: 700;
+		font-size: 20px;
+		color: ${({ theme }) => theme.colors.black};
+	}
+
+	.text-code-send {
+    font-weight: 400;
+    font-size: 16px;
+    color: #646464;
+}
+.box-send-to{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.text-send-to{
+	font-weight: 400;
+	font-size: 18px;
+}
+
+.text-change{
+	color: #4C42F6;
+	font-weight: 400;
+	font-size: 16px;
+	text-decoration-line: underline;
+}
 	.btn-box {
 		margin-top: 2.5em;
 	}

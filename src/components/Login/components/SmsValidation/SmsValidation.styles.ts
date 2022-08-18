@@ -5,21 +5,23 @@ export const SmsValidationContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin: 2.5em 0;
+	margin: 1.5em 0 0 0;
 
 	& .input-code {
-		height: 46px;
-		width: 2.5em;
+		height: 40px;
+		width: 40px;
 		border: 1px solid ${({ theme }) => theme.colors.grayScale.gr6};
-		border-radius: 5px;
+		border-radius: 8px;
 		text-align: center;
+		background: #FAFAFA;
+
 	}
 
 	& .input-error{
-		height: 46px;
-		width: 2.5em;
+		height: 40px;
+		width: 40px;
 		border: 1px solid  ${({ theme }) => theme.colors.redScale.r2};
-		color:  ${({ theme }) => theme.colors.redScale.r2};
+		color:  ${({ theme }) => theme.colors.black};
 		border-radius: 5px;
 		text-align: center;
 	}

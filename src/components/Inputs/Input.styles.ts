@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { OptionProps } from "./types";
 
 export const WrapperInput = styled.div`
-  .input-box {
     display: flex;
     font-size:16px;
    line-height:140%;
@@ -21,9 +20,18 @@ export const WrapperInput = styled.div`
       padding-top: 10px;
       padding-left: 0;
       padding-bottom: 5px;
-      height: 100%;
       width: 100%;
+      border: 1px solid #DDE0F5;
+      border-radius: 8px;
+      padding: 0.6rem;
+        &:focus,
+        &:active,
+        &.selected {
+          border: 1px solid ${({ theme }) => theme.colors.primaryColorScale.p2};
+        }
     }
+  .input-box {
+    
   }
 
   ${({ theme, className }): string => `
@@ -53,7 +61,7 @@ export const WrapperInput = styled.div`
           width: 100%;
           height: 100%;
           pointer-events: none;
-          border-bottom: 1px solid ${theme.colors.grayScale.gr3};
+          
     
           &.error {
             border-color: ${theme.colors.redScale.r2};
@@ -65,7 +73,6 @@ export const WrapperInput = styled.div`
             left: 0;
             height: 100%;
             width: 100%;
-            border-bottom: 1px solid ${theme.colors.primaryColorScale.p2};
             transform: translateX(-100%);
           }
     
