@@ -63,10 +63,6 @@ const Login = ({ apiUrl, apiKey, logEvent,
     setChannel(channel_);
   }
 
-  const getCodeStep = () => {
-      setStep(LoginSteps.GET_CODE);
-  }
-
   const setStepTo = (stp: string) => {
         setStep(stp);
   }
