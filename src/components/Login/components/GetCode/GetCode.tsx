@@ -10,13 +10,9 @@ import * as Yup from 'yup';
 import { Formik, Field } from 'formik';
 import { Input } from '~/components/Inputs';
 import { GetCodeService } from '../../services';
-import ProgressBar from '~/components/ProgressBar/ProgressBar';
 import { LoginSteps } from '../../types';
 import { allowOnlyNumber } from '~/common/utils';
-import Chat from '~/icons/Chat';
-import WhatsAppFill from '~/icons/WhatsAppFill';
 import { EVENTS } from '~/common/consts/events';
-import { useTheme } from 'styled-components';
 
 const GetCode = ({
 	handleStepChange,
@@ -36,7 +32,6 @@ const GetCode = ({
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState<any>({ label: '', image: '' });
 	const [error, setError] = useState(false);
-	const theme = useTheme() as any;
 
 	const phoneOptions = useMemo(() => {
 		return countries?.map((item: any) => {

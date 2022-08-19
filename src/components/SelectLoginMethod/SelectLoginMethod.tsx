@@ -8,15 +8,14 @@ import Modal from '~/components/Modal';
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
 import { LoginType } from '~/components/Login/types';
 
-const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType }:
+const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType, handleRegisterModal }:
                                { validationSuccess: (token: string, expiresIn: number, refreshToken: string)
                                        => void, apiUrl: string, apiKey: string,
-                                   setStepTo: (step: string) => void, loginType: LoginType }): JSX.Element => {
+                                   setStepTo: (step: string) => void, loginType: LoginType,
+                                   handleRegisterModal: () => void}): JSX.Element => {
 
     const [error, setError] = useState(false);
     const { t } = useTranslation();
-    const ref = useRef(null);
-    const [showModal, setShowModal] = useState(false);
     const facebook = async (token: string) => {
         const response = await facebookLogin({apiUrl, apiKey, token});
         validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
@@ -37,7 +36,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
     }
 
     return (
-        <SelectLoginMethodContainer ref={ref}>
+        <SelectLoginMethodContainer>
             <div className={'header'}>
                 <div className={'welcome'}>
                     <div className={'title'}>
@@ -87,12 +86,8 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                 </button>
             </div>
             { error && <div className='box-error-code'>{t('login.error')}</div>}
-            <Modal show={showModal} onClose={() => {setShowModal(false)}}
-                   title={t('login.register')} element={ref.current as unknown as Element}>
-                <RegisterInApp />
-            </Modal>
             { loginType === LoginType.SELLER && <div className={'register'}>
-                {t('login.do_not_have_account')} <span onClick={() => {setShowModal(true)}}>{t('login.register_now')}</span></div>}
+                {t('login.do_not_have_account')} <span onClick={handleRegisterModal}>{t('login.register_now')}</span></div>}
         </SelectLoginMethodContainer>
     );
 };

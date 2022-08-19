@@ -1,29 +1,37 @@
-import React, { useState } from 'react';
-import HelpLink from '~/components/HelpLink/HelpLink';
+import React, { useRef, useState } from 'react';
 import useSWR from 'swr';
 import {
-    LoginContainer,
+    Customer,
     GetCode,
-    ValidateCode,
+    getUserData,
+    LoginContainer,
+    LoginType,
+    RegisterMessage,
     UpdateUserData,
-    RegisterMessage, getUserData, Customer,
+    ValidateCode,
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 import { LoginProps, LoginSteps } from './types';
 import SelectLoginMethod from '~/components/SelectLoginMethod/SelectLoginMethod';
 import { useLocalStorage } from '~/common';
 import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCodeByEmail';
+import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
+import Modal from '~/components/Modal';
+import { useTranslation } from 'react-i18next';
 
 const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
                    country, success, redirectUrl, apiKeySp, loginType }: LoginProps) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
+  const [showModal, setShowModal] = useState(false);
+  const ref = useRef(null);
   const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
   const [expiresIn, setExpiresIn] = useLocalStorage('expiresIn', 0);
   const [refreshToken, setRefreshToken] = useLocalStorage('refreshToken', '');
   const [prefixSendTo, setPrefixSendTo] = useState<string>();
   const [channel, setChannel] = useState<string>();
+  const { t } = useTranslation();
 
     const { data: countries, error: countriesError } = useSWR(
         [`${apiUrl}/api/ms/remote-config/country-data`,
@@ -52,7 +60,11 @@ const Login = ({ apiUrl, apiKey, logEvent,
                     `${redirectUrl}?accessToken=${token}&expiresIn=${expiresIn}&refreshToken=${refreshToken}&userId=${user.userId}`;
             }
         } else {
-            setStep(LoginSteps.UPDATE_USER_DATA);
+            if (loginType !== LoginType.SELLER) {
+                setStep(LoginSteps.UPDATE_USER_DATA);
+            } else {
+                setShowModal(true);
+            }
         }
     };
 
@@ -67,9 +79,14 @@ const Login = ({ apiUrl, apiKey, logEvent,
         setStep(stp);
   }
 
+  const handleRegisterModal = () => {
+     setShowModal(m => !m);
+  }
+
   return (
-      <LoginContainer>
+      <LoginContainer ref={ref}>
           {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
+                                                                         handleRegisterModal={handleRegisterModal}
                                                                          loginType={loginType}
                                                                          validationSuccess={ValidationSuccess}
                                                                          apiUrl={apiUrl} apiKey={apiKey} />}
@@ -89,6 +106,10 @@ const Login = ({ apiUrl, apiKey, logEvent,
           {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
               handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
           {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
+          <Modal show={showModal} onClose={() => {setShowModal(false)}}
+                 title={t('login.register')} element={ref.current as unknown as Element}>
+              <RegisterInApp />
+          </Modal>
       </LoginContainer>
   );
 };

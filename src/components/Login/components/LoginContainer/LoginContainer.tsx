@@ -1,10 +1,10 @@
 import React from 'react';
 import { LoginContainerWrapper } from './LoginContainer.styles';
 
-const LoginContainer = ({ children }: { children: React.ReactNode; }): JSX.Element => {
+const LoginContainer = ({ children, ref }: { children: React.ReactNode; ref?: any }): JSX.Element => {
 
     return (
-        <LoginContainerWrapper>
+        <LoginContainerWrapper ref={ref}>
             {children}
         </LoginContainerWrapper>
     );
