@@ -78,7 +78,11 @@ const GetCodeByEmail = ({
 					return (
 						<GetCodeByEmailContainer>
 							<div className={'head'}>
-								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>Atrás</div><p className="title-login">{t('login.account')}</p>
+								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
+									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
+									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
+								</div>
+								<p className="title-login-email">{t('login.title')}</p>
 							</div>
 							<WrapperInputRegisterBYEmail>
 								<Input
@@ -101,15 +105,14 @@ const GetCodeByEmail = ({
 								/>
 							</WrapperInputRegisterBYEmail>
 							<button
-								className="button-msn"
+								className={!isValid ? "button-msn-email" : "button-msn-email enable"}
 								disabled={!isValid}
 								onClick={(e: any) => {
 									setFieldValue('channel','email')
 									logEvent(EVENTS.SELECT_SMS_CONFIRM);
 									handleSubmit(e);
 								}}>
-								<Chat width={17} height={17} />
-								Enviar code
+								{t('login.continue')}
 							</button>
 						</GetCodeByEmailContainer>
 					);
