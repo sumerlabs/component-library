@@ -23,6 +23,7 @@ export const GetCodeContainer = styled.div`
 	.img-back{
 		width: 18px;
 		height: 18px;
+		cursor: pointer;
 	}
 
 	.box-term-check {
@@ -123,6 +124,7 @@ export const WrapperInput = styled.div`
 		font-weight: 400;
 		font-size: 18px;
 		color: ${({ theme }) => theme.colors.black};
+		padding-bottom: 15px;
 	}
 
 	.text-phone-create {

@@ -12,6 +12,7 @@ export const ValidateCodeContainer = styled.div`
 	.img-back{
 		width: 18px;
 		height: 18px;
+		cursor: pointer;
 	}
 	.title-login {
 		font-size:14px;
