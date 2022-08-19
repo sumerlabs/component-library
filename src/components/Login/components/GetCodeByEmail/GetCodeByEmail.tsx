@@ -78,7 +78,7 @@ const GetCodeByEmail = ({
 					return (
 						<GetCodeByEmailContainer>
 							<div className={'head'}>
-								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>Atrás</div><p className="title-login">{t('login.account')}</p>
+								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>Atrás</div><p className="title-login">{t('login.title')}</p>
 							</div>
 							<WrapperInputRegisterBYEmail>
 								<Input
