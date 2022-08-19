@@ -20,6 +20,7 @@ export const GetCodeByEmailContainer = styled.div`
     font-size: 18px;
     line-height: 135%;
     padding-top: 3rem;
+    margin-bottom: 5px;
   }
   .button-msn-email {
     background: #f3f3f3;
