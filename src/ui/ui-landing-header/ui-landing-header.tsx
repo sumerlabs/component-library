@@ -117,7 +117,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
         <div className={`submenu ${openExpandibleTab === 0 ? 'open' : 'close'}`}>
           {defaultMenuItems.map(i => (
-            <a className="actionable" href={i.link}>
+            <a key={`points-actionable-${i.title}`} className="actionable" href={i.link}>
               <div className={`icon icon-${i.icon}`} />
               <div className="texts">
                 <div className="title">{i.title}</div>
@@ -133,7 +133,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
           <div className="icon icon-arrow" />
           <div className={`submenu ${openExpandibleTab === 1 ? 'open' : 'close'}`}>
             {aboutItems.map(i => (
-              <a className="actionable" href={i.link}>
+              <a key={`about-actionable-${i.name}`} className="actionable" href={i.link}>
                 <div className={`icon icon-${i.icon}`} />
                 <div className="texts">
                   <div className="title">{i.name}</div>
@@ -151,7 +151,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
         <div className={`submenu ${openExpandibleTab === 2 ? 'open' : 'close'}`}>
           {communityItems.map(i => (
-            <a className="actionable" href={i.link}>
+            <a key={`community-actionable-${i.name}`} className="actionable" href={i.link}>
               <div className={`icon icon-${i.icon}`} />
               <div className="texts">
                 <div className="title">{i.name}</div>
@@ -176,7 +176,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       <div className={`mobile-menu ${showMobileMenu && 'show'}`}>
         {mobileMenuItems.map((menuItem, index) => (
           <div key={`mobile-menu-item-${menuItem.title}`} className={`item ${openMobileTab === index && 'open'}`}>
-            <div className="actionable" onClick={() => setOpenMobileTab(t => t === index ? null : index)}>
+            <a href={menuItem.link} className="actionable" onClick={() => setOpenMobileTab(t => t === index ? null : index)}>
               <div className={`icon icon-${menuItem.icon}`} />
               <div className="texts">
                 <div className="title">{menuItem.title}</div>
@@ -187,7 +187,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
                   <div className="icon-arrow" />
                 </div>
               )}
-            </div>
+            </a>
             {!!menuItem.subItems?.length && (
               <div className="sub-items">
                 {menuItem.subItems.map(item => (

@@ -143,6 +143,7 @@ export const Wrapper = styled.div`
         cursor: pointer;
         column-gap: 16px;
         padding: 0 0 10px 0;
+        text-decoration: none;
         .icon {
           width: 30px;
           height: 30px;
@@ -152,6 +153,7 @@ export const Wrapper = styled.div`
         }
         .texts {
           .title {
+            color: #000000;
             font-size: 14px;
             font-weight: 700;
             margin: 0 0 4px 0;
