@@ -125,7 +125,7 @@ export const facebookLogin = async ({ token, apiUrl, apiKey }:  { token: string,
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                "api-key-sumer": '78cd3ff2bd5c9f661ba1d6a0a98fcab9',
+                "api-key-sumer": apiKey,
             } as any,
             body: JSON.stringify({token: token}),
         }
@@ -144,7 +144,7 @@ export const googleLogin = async ({ token, apiUrl, apiKey }:  { token: string, a
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                "api-key-sumer": '78cd3ff2bd5c9f661ba1d6a0a98fcab9',
+                "api-key-sumer": apiKey,
             } as any,
             body: JSON.stringify({token: token}),
         }
