@@ -1,11 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { SelectLoginMethodContainer } from '~/components/SelectLoginMethod/SelectLoginMethod.styled';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookLogin, googleLogin, LoginSteps } from '~/components';
 import GoogleLogin from 'react-google-login';
 import { useTranslation } from 'react-i18next';
-import Modal from '~/components/Modal';
-import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
 import { LoginType } from '~/components/Login/types';
 
 const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType, handleRegisterModal }:
@@ -21,6 +19,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             const response = await facebookLogin({apiUrl, apiKey, token});
             validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
         } catch (e) {
+            console.log(e);
             handleRegisterModal();
         }
     }
@@ -30,6 +29,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             const response = await googleLogin({apiUrl, apiKey, token: googleResponse.tokenId});
             validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
         } catch (e) {
+            console.log(e);
             handleRegisterModal();
         }
     }

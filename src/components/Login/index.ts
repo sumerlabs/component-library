@@ -5,6 +5,7 @@ export { default as RegisterMessage } from '~/components/Login/components/Regist
 export { default as SmsValidation } from '~/components/Login/components/SmsValidation/SmsValidation';
 export { default as UpdateUserData } from '~/components/Login/components/UpdateUserData/UpdateUserData';
 export { default as ValidateCode } from '~/components/Login/components/ValidateCode/ValidateCode';
+export { default as RegisterInApp } from '~/components/Login/components/RegisterInApp/RegisterInApp';
 export { default as CheckCircle } from '~/components/Login/icons/CheckCircle';
 export { default as SignOut } from '~/components/Login/icons/SignOut';
 export { default as Profile } from '~/components/Login/icons/Profile';
