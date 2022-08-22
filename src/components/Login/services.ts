@@ -24,8 +24,8 @@ export const GetCodeService = async ({ apiKey, apiUrl, payload }:
     return res.json();
 };
 
-export const ValidateCodeService = async ({ sendTo, prefixSendTo, code, apiKey, apiUrl }:  { sendTo: string,
-    prefixSendTo : string, code: string, apiKey: string, apiUrl: string }) => {
+export const ValidateCodeService = async ({ sendTo, prefixSendTo, code, apiKey, apiUrl, channel }:  { sendTo: string,
+    prefixSendTo : string, code: string, apiKey: string, apiUrl: string, channel: string }) => {
     const res = await fetch(
         `${apiUrl}/api/ms/user/twilio/login/check-code`,
         {
@@ -38,7 +38,7 @@ export const ValidateCodeService = async ({ sendTo, prefixSendTo, code, apiKey, 
             body: JSON.stringify({
                 send_to: sendTo,
                 prefix_send_to: prefixSendTo,
-                channel: "sms",
+                channel: channel,
                 code: code
             }),
         }

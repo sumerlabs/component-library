@@ -44,6 +44,7 @@ const ValidateCode = ({
 			code: code,
 			apiKey,
 			apiUrl,
+			channel
 		});
 		if (validateCode.status === 200) {
 			setAccessToken(validateCode.data.accessToken);
