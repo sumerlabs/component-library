@@ -80,6 +80,7 @@ export const WrapperCheckCode = styled.div`
 	font-weight: 400;
 	font-size: 16px;
 	text-decoration-line: underline;
+    cursor: pointer;
 }
 	.btn-box {
 		margin-top: 2.5em;

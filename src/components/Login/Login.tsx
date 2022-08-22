@@ -100,6 +100,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
                                                     apiUrl={apiUrl} apiKey={apiKeySp} />}
           {step === LoginSteps.VALIDATE_CODE && <ValidateCode ValidationSuccess={ValidationSuccess}
                                                               sendTo={sendTo!}
+                                                              setStepTo={setStepTo}
                                                               prefixSendTo={prefixSendTo!} channel={channel!}
                                                               logEvent={logEvent}
                                                               apiUrl={apiUrl} apiKey={apiKey}/>}
