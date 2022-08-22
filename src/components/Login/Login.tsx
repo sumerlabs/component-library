@@ -3,9 +3,7 @@ import useSWR from 'swr';
 import {
     Customer,
     GetCode,
-    getUserData,
     LoginContainer,
-    LoginType,
     RegisterMessage,
     UpdateUserData,
     ValidateCode,
@@ -44,7 +42,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
         if (response.userId) {
             response.prefixPhone = prefixSendTo;
             response.phone = sendTo;
-            success && success(response);
+            success && success({accessToken: accessToken, expiresIn, refreshToken});
         }
     };
 
@@ -52,20 +50,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
         setAccessToken(token);
         setExpiresIn(expiresIn);
         setRefreshToken(refreshToken);
-        const user = await getUserData({token, apiUrl})
-        if (user?.userId) {
-            success && success(user, {accessToken: token, expiresIn, refreshToken});
-            if (redirectUrl) {
-                window.location.href =
-                    `${redirectUrl}?accessToken=${token}&expiresIn=${expiresIn}&refreshToken=${refreshToken}&userId=${user.userId}`;
-            }
-        } else {
-            if (loginType !== LoginType.SELLER) {
-                setStep(LoginSteps.UPDATE_USER_DATA);
-            } else {
-                setShowModal(true);
-            }
-        }
+        success && success({accessToken: token, expiresIn, refreshToken});
     };
 
   const handleStepChange = (stp: string, sendTo_: string, prefixSendTo_ : string, channel_: string) => {

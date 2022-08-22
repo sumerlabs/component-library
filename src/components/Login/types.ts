@@ -19,7 +19,7 @@ export type LoginProps = {
   apiKeySp: string
   logEvent: (event: string) => void;
   country: any;
-  success?: (customer: Customer, loginData?: ValidateCodeResponse) => void;
+  success?: (loginData?: ValidateCodeResponse) => void;
   redirectUrl?: string
   loginType: LoginType
 }

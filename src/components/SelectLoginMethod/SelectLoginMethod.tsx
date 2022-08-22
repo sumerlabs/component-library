@@ -17,13 +17,21 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
     const [error, setError] = useState(false);
     const { t } = useTranslation();
     const facebook = async (token: string) => {
-        const response = await facebookLogin({apiUrl, apiKey, token});
-        validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+        try {
+            const response = await facebookLogin({apiUrl, apiKey, token});
+            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+        } catch (e) {
+            handleRegisterModal();
+        }
     }
 
     const google = async (googleResponse: any) => {
-        const response = await googleLogin({apiUrl, apiKey, token: googleResponse.tokenId});
-        validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+        try {
+            const response = await googleLogin({apiUrl, apiKey, token: googleResponse.tokenId});
+            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+        } catch (e) {
+            handleRegisterModal();
+        }
     }
 
     const handleLoginError = (error: any) => {
