@@ -45,12 +45,14 @@ export const SelectLoginMethodContainer = styled.div`
     border: 1px solid #DDE0F5;
     border-radius: 5px;
     display: flex;
+    cursor: pointer;
     img {
       width: 16px;
       height: 16px;
     }
     label {
       flex-basis: 85%;
+      cursor: pointer;
     }
   }
   .box-error-code {
