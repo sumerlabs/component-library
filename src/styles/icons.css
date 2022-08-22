@@ -235,22 +235,22 @@
 .icon-box-circle-color .path2:before {
   content: "\e948";
   margin-left: -1em;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 .icon-box-circle-color .path3:before {
   content: "\e949";
   margin-left: -1em;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 .icon-box-circle-color .path4:before {
   content: "\e94a";
   margin-left: -1em;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 .icon-box-circle-color .path5:before {
   content: "\e94b";
   margin-left: -1em;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 .icon-talk:before {
   content: "\e94c";
@@ -291,4 +291,7 @@
   content: "\e955";
   margin-left: -1em;
   color: rgb(255, 255, 255);
+}
+.icon-percentage:before {
+  content: "\e956";
 }
