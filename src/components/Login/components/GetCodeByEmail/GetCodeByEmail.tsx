@@ -101,7 +101,7 @@ const GetCodeByEmail = ({
 									errors={errors}
 									isRequired={true}
 									type="email"
-									placeholder={t('formCheckout.phone_placeholder')}
+									placeholder={t('formCheckout.email_placeholder')}
 								/>
 							</WrapperInputRegisterBYEmail>
 							<button
