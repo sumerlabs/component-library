@@ -92,7 +92,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
 
   const handleExpertButtonClick = () => {
     const link = document.createElement("a");
-    link.href = '/freemium'
+    link.href = '/premium'
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -162,7 +162,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
       </div>
       <div className="expert-link">
-        <a className="text" href="/freemium">Quiero ser Experto</a>
+        <a className="text" href="/premium">Quiero ser Experto</a>
         <div className="icon icon-expert" />
       </div>
       <div className="right-side">
