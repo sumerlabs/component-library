@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	Title,
 	WrapperCheckCode,
@@ -34,6 +34,10 @@ const ValidateCode = ({
 	const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
 	const [expiresIn, setExpiresIn] = useLocalStorage('expiresIn', 0);
 	const [refreshToken, setRefreshToken] = useLocalStorage('refreshToken', '');
+	const initialTimer = 45
+	const [seconds, setSeconds] = useState(initialTimer);
+	const [sendCode, setSendCode] = useState(false);
+	const [timer, setTimer] = useState(true);
 	const { t } = useTranslation();
 
 	const handleForm = async (values: any) => {
@@ -76,6 +80,30 @@ const ValidateCode = ({
 			}, 2000);
 		}
 	}
+
+	const useTimer = () => {
+		useEffect(() => {
+		  const interval = setInterval(() => {
+			setSeconds(seconds - 1);
+			
+			if(seconds == 0){
+				setSendCode(true)
+				setTimer(false)
+			}
+			
+		  }, 1000);
+		  return () => clearInterval(interval);
+		});
+		return seconds;
+	  };
+
+	  const handleSendCode = () =>{
+		setTimer(true);
+		setSeconds(initialTimer);
+		setSendCode(false)
+	  } 
+
+	  useTimer()
 
 	return (
 		<ValidateCodeContainer>
@@ -122,15 +150,22 @@ const ValidateCode = ({
 													   <img src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/error.png'/>
 													   <p>{t('login.incorrect')}</p>
 													</div>}
-									<Text className="small">
-										{t('login.codeQuestion')}{' '}
-										<span role="button" className="highlights" onClick={() => {
-											logEvent(EVENTS.SELECT_RESEND_CODE);
-											handleResendCode();
-										}}>
-										{t('login.send-again')}
-										</span>
-									</Text>
+													{timer &&(
+														<p className='send-code-text'>Solicita otro código dentro de: {seconds} segundos</p>
+													)}
+													{sendCode && (
+														<Text className="small">
+														{t('login.codeQuestion')}{' '}
+														<span role="button" className="highlights" onClick={() => {
+															logEvent(EVENTS.SELECT_RESEND_CODE);
+															handleResendCode();
+															handleSendCode()
+														}}>	
+														{t('login.send-again')}
+														</span>
+													</Text>
+													)}
+									
 									{ resend && <div className='box-resend-code'>{t('login.resend')}</div>}
 									<div className="btn-box enabled">
 										<button  type={'submit'} className="btn-primary"

@@ -39,6 +39,13 @@ export const ValidateCodeContainer = styled.div`
 		}
 	}
 
+	.send-code-text{
+		font-weight: 400;
+		font-size: 14px;
+		color: #646464;
+		text-align: center;
+	}
+
   .box-resend-code {
     color: ${({ theme }) => theme.colors.greenScale.g2};
 	  font-size:14px;
