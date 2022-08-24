@@ -10,3 +10,4 @@ export * from './ui-phone';
 export * from './ui-radio';
 export * from './ui-timer';
 export * from './ui-icons';
+export * from './ui-autocomplete';
