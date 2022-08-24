@@ -28,8 +28,8 @@ const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> =
   const isCurrentOption = (option: UiAutocompleteOption) => option.value === selectedValue?.value;
 
   const filteredOptions = useMemo(() => 
-    localValue ? options.filter(o => o.label.toLowerCase().includes(localValue.toLowerCase())) : 
-    options, [localValue]);
+    !!localValue ? options.filter(o => o.label.toLowerCase().includes(localValue.toLowerCase())) : 
+    options, [localValue, options]);
 
   const handleWriteText = (e: ChangeEvent<HTMLInputElement>) => {
     setLocalValue(e.target.value);
