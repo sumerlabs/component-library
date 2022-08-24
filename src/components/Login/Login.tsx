@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next';
 
 const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
-                   country, success, redirectUrl, apiKeySp, loginType }: LoginProps) => {
+                   country, success, apiKeySp, loginType }: LoginProps) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [showModal, setShowModal] = useState(false);
