@@ -8,7 +8,8 @@ const Slider = ({
   hideDots,
   iconBackArrow,
   iconNextArrow,
-  dragMode
+  dragMode,
+  dotsStyle
 }: SliderProps) => {
   const slider = useRef<any>(null);
   const childrenValues = children as React.ElementType[];
@@ -123,7 +124,11 @@ const Slider = ({
       { !hideDots && !dragMode && (
           <Dots>
             {[...Array(dots)].map((dot, index) => 
-              <Dot 
+              <Dot
+                type={dotsStyle?.type}
+                width={dotsStyle?.width}
+                height={dotsStyle?.height}
+                backgroundColor={dotsStyle?.backgroundColor}
                 className={`${currentSlide === index && 'active'}`}
                 key={index}
                 onClick={() => moveFromDots(index)}>
