@@ -61,7 +61,7 @@ export const Dot = styled.div<DotsStyle>`
   width: ${({width}) => width ? width : '10px'};
   height: ${({height}) => height ? height : '10px'};
   border-radius: ${({type}) => type && type === 'square' ? '4px' : '100%'};
-  border: ${({type, backgroundColor}) => type && type === 'square' ? `4px solid ${backgroundColor || 'black'}` : `1px solid ${backgroundColor || 'black'}`};
+  border: ${({backgroundColor}) => `1px solid ${backgroundColor || 'black'}`};
   cursor: pointer;
   &.active{
     background-color: ${({backgroundColor}) => backgroundColor || 'black'};
