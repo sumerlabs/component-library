@@ -2,7 +2,7 @@ export type SliderProps = {
     children: React.ReactNode;
     hideArrows?: boolean;
     hideDots?: boolean;
-    dotsStyle: DotsStyle
+    dotsStyle?: DotsStyle
     dragMode?: boolean;
     iconBackArrow?: JSX.Element;
     iconNextArrow?: JSX.Element;
