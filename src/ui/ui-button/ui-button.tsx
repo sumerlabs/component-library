@@ -1,34 +1,38 @@
 import React, { FC } from "react";
-import UiLoader from "../ui-loader/ui-loader";
-import { Wrapper } from "./ui-button.styled";
+import { UiLoader } from "../ui-loader";
 import { UiButtonProps } from "./types";
- 
+import { WrapperButton } from "./ui-button.styled";
+
+
 const UiButton: FC<UiButtonProps> = ({
-  text,
-  iconRight,
+  appearance,
   className,
-  isExpert,
-  isSecondary,
-  isDisabled,
-  isLoading,
+  children,
+  disabled,
   onClick,
+  isLoading,
+  icon,
+  styles
 }) => {
 
   const handleClick = () => {
-    if (!isDisabled) onClick();
+    if (!disabled) onClick();
   }
 
   return (
-    <Wrapper className={`
-      ${className} 
-      ${isExpert && 'expert'}
-      ${isDisabled && 'disabled'}
-      ${isSecondary && 'secondary'}
-    `} onClick={handleClick}>
-      {!isLoading ? text : <UiLoader size={20} />}
-      {iconRight}
-    </Wrapper>
+    <WrapperButton
+      role="button"
+      type="button"
+      appearance={appearance}
+      className={className}
+      disabled={disabled}
+      onClick={handleClick}
+      {...styles}
+    >
+      {!isLoading ? children : <UiLoader size={20} />}
+      {icon}
+    </WrapperButton>
   );
-}
- 
+};
+
 export default UiButton;

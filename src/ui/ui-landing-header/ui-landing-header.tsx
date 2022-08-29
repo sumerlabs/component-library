@@ -204,11 +204,10 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         ))}
         <UiButton 
           className="expert-button" 
-          text="Quiero ser Experto" 
+          appearance="expert"
           onClick={handleExpertButtonClick} 
-          iconRight={<span className="icon-expert" />}
-          isExpert
-        />
+          icon={<span className="icon-expert" />}
+        >Quiero ser Experto</UiButton>
         {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar</div>}
       </div>
     </Wrapper>

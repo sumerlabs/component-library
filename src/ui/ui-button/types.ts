@@ -1,12 +1,25 @@
-import { ReactNode } from "react";
+import { MouseEvent, ReactNode } from "react";
 
-export declare type UiButtonProps = {
-  text: string;
-  isExpert?: boolean;
-  iconRight?: ReactNode;
-  isSecondary?: boolean;
-  className?: string;
+export type UiButtonProps = {
+	appearance: string;
+	children: string | React.ReactNode;
+	className?: string;
+	disabled?: boolean;
   isLoading?: boolean;
-  isDisabled?: boolean;
-  onClick: () => void;
+  icon?: ReactNode;
+	onClick: (event?: MouseEvent<HTMLButtonElement>) => void;
+  styles?: ButtonStyles;
 };
+
+export type StyledButtonProps = ButtonStyles & {
+  appearance: string;
+};
+
+export type ButtonStyles = {
+  background?: string;
+  color?: string;
+  borderRadius?: string;
+  width?: string;
+  height?: string;
+  borderColor?: string;
+}
