@@ -7,10 +7,10 @@ import {
     RegisterMessage,
     UpdateUserData,
     ValidateCode,
+    SelectLoginMethod
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 import { LoginProps, LoginSteps } from './types';
-import SelectLoginMethod from '~/components/SelectLoginMethod/SelectLoginMethod';
 import { useLocalStorage } from '~/common';
 import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCodeByEmail';
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
