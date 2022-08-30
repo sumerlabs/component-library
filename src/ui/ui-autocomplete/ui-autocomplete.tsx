@@ -32,6 +32,7 @@ const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> =
     options, [localValue, options]);
 
   const handleWriteText = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     setLocalValue(e.target.value);
   }
 
@@ -41,7 +42,6 @@ const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> =
   }
   const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
     onBlur && onBlur(e);
-    setIsOpen(false);
   }
 
   const handleSelectOption = (option: UiAutocompleteOption) => {
