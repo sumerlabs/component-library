@@ -56,6 +56,20 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             </div>
             <hr />
             <div className={'body'}>
+            <div className='login-sumer-text'>{t('login.login_sumer')}</div>
+                <GoogleLogin
+                    clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com"
+                    render={renderProps => (
+                        <button className={'facebook'} onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                            <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
+                            <label>{t('login.google_login')}</label>
+                        </button>
+                    )}
+                    buttonText="Login"
+                    onSuccess={google}
+                    onFailure={(error) => {handleLoginError(error)}}
+                    cookiePolicy={'single_host_origin'}
+                />
                 <FacebookLogin
                     appId="382238867303639"
                     onSuccess={async (response) => {
@@ -70,19 +84,6 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                             <label>{t('login.facebook_login')}</label>
                         </button>
                     )}
-                />
-                <GoogleLogin
-                    clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com"
-                    render={renderProps => (
-                        <button className={'facebook'} onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                            <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
-                            <label>{t('login.google_login')}</label>
-                        </button>
-                    )}
-                    buttonText="Login"
-                    onSuccess={google}
-                    onFailure={(error) => {handleLoginError(error)}}
-                    cookiePolicy={'single_host_origin'}
                 />
                 <button className={'phone'} onClick={() => {setStepTo(LoginSteps.GET_CODE)}}>
                     <img src={'https://sumerlabs.com/prod/assets/web/login/phone/phone.png'}/>
