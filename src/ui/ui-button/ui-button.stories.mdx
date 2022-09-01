@@ -1,0 +1,332 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { default as UiButton } from './ui-button';
+
+<Meta title="UI/UiButton" component={UiButton} />
+
+export const defaultArgs = {
+    children: 'Hola mundo',
+    styles: {
+        width: '450px'
+    }
+};
+
+export const Template = (args) => <UiButton {...args} />;
+
+# Button
+
+En este apartado podrás ver todas las variantes del componente `Button`, el cual está diseñado para 
+recibir diferentes propiedades que permitiran ver reflejadas sus diferentes variantes, a continuación podrás
+ver cada una de ellas.
+
+- Botón `default`, `default disabled`, `default icon`. Es la variación más simple del componente `Button`, en su estado `default`, `disabled`
+y con un icono con la propiedad `icon` del tipo `ReactNode`:
+
+<Canvas>
+    <Story
+        name="Button Default"
+        args={{
+            ...defaultArgs,
+            children: 'Default',
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Button Disabled"
+        args={{
+            ...defaultArgs,
+            children: 'Disabled',
+            disabled: true,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+   <Story
+        name="Button Icon"
+        args={{
+            ...defaultArgs,
+            children: 'Icon',
+            icon: <span className="icon-check" />,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+</Canvas>
+
+
+- Botón `link`, `link disabled`, `link custom`, `link icon`. 
+Con la propiedad `appereance` igual a `link`, de igual forma 
+puedes jugar con los colores agregando en el objeto `styles` la propiedad `color`: 
+
+<Canvas>
+    <Story
+        name="Button Link"
+        args={{
+            ...defaultArgs,
+            appereance: 'link',
+            children: 'Link',
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+   <Story
+        name="Button Link Disabled"
+        args={{
+            ...defaultArgs,
+            appereance: 'link',
+            children: 'Link disabled',
+            styles: {
+                width: '150px'
+            },
+            disabled: true
+        }}>
+        {Template.bind({})}
+   </Story>
+   <Story
+        name="Button Link Custom"
+        args={{
+            ...defaultArgs,
+            appereance: 'link',
+            children: 'Link custom',
+            styles: {
+                width: '150px',
+                color: '#F93C00'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+   <Story
+        name="Button Link Icon"
+        args={{
+            ...defaultArgs,
+            appereance: 'link',
+            children: 'Link icon',
+            icon: <span className="icon-check" />,
+            styles: {
+                width: '200px',
+            },
+        }}>
+        {Template.bind({})}
+   </Story>
+</Canvas>
+
+- Botón `outline`, `outline disabled`, `outline icon`.
+Con la propiedad `appereance` igual a `outline`:
+
+<Canvas>
+    <Story
+        name="Button Outline"
+        args={{
+            ...defaultArgs,
+            children: 'Outline',
+            appereance: 'outline',
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Button Outline Disabled"
+        args={{
+            ...defaultArgs,
+            children: 'Disabled',
+            appereance: 'outline',
+            disabled: true,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+   <Story
+        name="Button Outline Icon"
+        args={{
+            ...defaultArgs,
+            children: 'Icon',
+            appereance: 'outline',
+            icon: <span className="icon-check" />,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+</Canvas>
+
+- Botón `beauty`, `beauty disabled`, `beauty icon`.
+Con la propiedad `appereance` igual a `beauty`:
+
+<Canvas>
+    <Story
+        name="Button Beauty"
+        args={{
+            ...defaultArgs,
+            children: 'Outline',
+            appereance: 'beauty',
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Button Beauty Disabled"
+        args={{
+            ...defaultArgs,
+            children: 'Disabled',
+            appereance: 'beauty',
+            disabled: true,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+   <Story
+        name="Button Beauty Icon"
+        args={{
+            ...defaultArgs,
+            children: 'Icon',
+            appereance: 'beauty',
+            icon: <span className="icon-check" />,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+</Canvas>
+
+- Botón `expert`, `expert disabled`, `expert icon`.
+Con la propiedad `appereance` igual a `expert`:
+
+<Canvas>
+    <Story
+        name="Button Expert"
+        args={{
+            ...defaultArgs,
+            children: 'Expert',
+            appereance: 'expert',
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="Button Expert Disabled"
+        args={{
+            ...defaultArgs,
+            children: 'Disabled',
+            appereance: 'expert',
+            disabled: true,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+   <Story
+        name="Button Expert Icon"
+        args={{
+            ...defaultArgs,
+            children: 'Icon',
+            appereance: 'expert',
+            icon: <span className="icon-check" />,
+            styles: {
+                width: '150px'
+            }
+        }}>
+        {Template.bind({})}
+   </Story>
+</Canvas>
+
+- Botón `rounded`. Con la propiedad `appereance` igual a `rounded`:
+
+<Canvas>
+    <Story
+        name="Button Rounded"
+        args={{
+            ...defaultArgs,
+            children: 'Rounded',
+            appereance: 'rounded',
+            styles: {
+                width: '200px',
+            }
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Botón `custom`. En este tipo de botón puedes cambiar el `height`, `width`, `color` y `background` en el objeto `styles`:
+
+<Canvas>
+    <Story
+        name="Button Custom"
+        args={{
+            ...defaultArgs,
+            children: 'Custom',
+            styles: {
+                width: '200px',
+                height: '70px',
+                color: 'white',
+                background: 'red'
+            }
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Botón `loading`. Con la propiedad `isLoading` igual a `true`:
+
+<Canvas>
+    <Story
+        name="Button Loading"
+        args={{
+            ...defaultArgs,
+            children: 'Loader',
+            isLoading: true,
+            styles: {
+                width: '200px'
+            }
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+
+# API
+
+| Property     | **Description**                                                                  | Is required | Type                                            | Default |
+|--------------|----------------------------------------------------------------------------------|-------------|-------------------------------------------------|---------|
+| `appereance` | **Opción para seleccionar el tema del botón**                                    | `false`     | `rounded`, `outline`, `link`, `expert`, `beauty` | -       |
+| `className`  | **Opción para agregar una clase css que nos permita customizar el botón**        | `false`     | `string`                                        | -       |
+| `children`   | **Permite establecer contenido incluído dentro del componente**                  | `true`      | `string` ó `ReactNode`                          | -       |
+| `disabled`   | **Permite habilitar o deshabilitar el funcionamiento del botón**                 | `false`     | `boolean`                                       | `true`  |
+| `onClick`    | **Nos permite ejecutar una función cuando damos click al botón**                 | `true`      | `(e: MouseEvent<any>) => void`                  | -       |
+| `isLoading`  | **Establece el estado de carga del botón**                                       | `false`     | `boolean`                                       | `false` |
+| `icon`       | **Permite agregar un icono al botón**                                            | `false`     | `ReactNode`                                     | -       |
+| `styles`     | **Permite customizar el botón en su ancho, alto, color, fondo, radio del borde** | `false`     | `StylesType`                                    | -       |
+
+
+
+#### Styles (StylesType):
+
+| Property       | Is required | Type     | Default |
+|----------------|-------------|----------|---------|
+| `background`   | `false`     | `string` | -       |
+| `color`        | `false`     | `string` | -       |
+| `borderRadius` | `false`     | `string` | -       |
+| `width`        | `false`     | `string` | -       |
+| `height`       | `false`     | `string` | -       |
+| `borderColor`  | `false`     | `string` | -       |
