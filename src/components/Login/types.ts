@@ -20,7 +20,8 @@ export type LoginProps = {
   logEvent: (event: string) => void;
   country: any;
   success?: (loginData?: ValidateCodeResponse) => void;
-  loginType: LoginType
+  loginType: LoginType,
+  handleGoBack?: () => void;
 }
 
 export type ValidateCodeResponse = {
