@@ -5,7 +5,7 @@ import { WrapperButton } from "./ui-button.styled";
 
 
 const UiButton: FC<UiButtonProps> = ({
-  appearance,
+  appereance,
   className,
   children,
   disabled,
@@ -15,15 +15,15 @@ const UiButton: FC<UiButtonProps> = ({
   styles
 }) => {
 
-  const handleClick = () => {
-    if (!disabled) onClick();
+  const handleClick = (e: React.MouseEvent<any>) => {
+    if (!disabled) onClick(e);
   }
 
   return (
     <WrapperButton
       role="button"
       type="button"
-      appearance={appearance}
+      appereance={appereance as string}
       className={className}
       disabled={disabled}
       onClick={handleClick}
