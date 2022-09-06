@@ -1,18 +1,18 @@
 import { MouseEvent, ReactNode, FormEvent } from "react";
 
 export type UiButtonProps = {
-	appearance?: string;
+	appereance?: string;
 	children: string | React.ReactNode;
 	className?: string;
 	disabled?: boolean;
-    isLoading?: boolean;
-    icon?: ReactNode;
+  isLoading?: boolean;
+  icon?: ReactNode;
 	onClick: (event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>) => void;
-    styles?: ButtonStyles;
+  styles?: ButtonStyles;
 };
 
 export type StyledButtonProps = ButtonStyles & {
-  appearance: string;
+  appereance: string;
 };
 
 export type ButtonStyles = {
