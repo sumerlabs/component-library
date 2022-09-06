@@ -13,6 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cart:before {
+  content: "\e900";
+}
+.icon-calendar:before {
+  content: "\e901";
+}
 .icon-expert:before {
   content: "\e902";
 }
@@ -130,20 +136,11 @@
 .icon-four-points:before {
   content: "\e928";
 }
-.icon-calendar:before {
-  content: "\e901";
-}
-.icon-cart:before {
-  content: "\e900";
-}
 .icon-arrow-line:before {
   content: "\e929";
 }
 .icon-arrow-bend:before {
   content: "\e92a";
-}
-.icon-percent:before {
-  content: "\e92b";
 }
 .icon-list-more:before {
   content: "\e92c";
@@ -180,7 +177,6 @@
 }
 .icon-whatsapp-color:before {
   content: "\e937";
-  color: #25d366;
 }
 .icon-instagram-circle-outline:before {
   content: "\e938";
@@ -193,10 +189,6 @@
 }
 .icon-store:before {
   content: "\e93b";
-}
-.icon-hamburguer:before {
-  content: "\e93c";
-  color: #edecfe;
 }
 .icon-order:before {
   content: "\e93d";
@@ -216,9 +208,6 @@
 .icon-share-outline:before {
   content: "\e942";
 }
-.icon-shopping-bag:before {
-  content: "\e943";
-}
 .icon-star-fill:before {
   content: "\e944";
 }
@@ -228,51 +217,8 @@
 .icon-support:before {
   content: "\e946";
 }
-.icon-box-circle-color .path1:before {
-  content: "\e947";
-  color: rgb(138, 67, 245);
-}
-.icon-box-circle-color .path2:before {
-  content: "\e948";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
-.icon-box-circle-color .path3:before {
-  content: "\e949";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
-.icon-box-circle-color .path4:before {
-  content: "\e94a";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
-.icon-box-circle-color .path5:before {
-  content: "\e94b";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
 .icon-talk:before {
   content: "\e94c";
-}
-.icon-tiktok-logo .path1:before {
-  content: "\e94d";
-  color: rgb(252, 33, 93);
-}
-.icon-tiktok-logo .path2:before {
-  content: "\e94e";
-  margin-left: -1em;
-  color: rgb(252, 33, 93);
-}
-.icon-tiktok-logo .path3:before {
-  content: "\e94f";
-  margin-left: -1em;
-  color: rgb(40, 219, 217);
-}
-.icon-tiktok-logo .path4:before {
-  content: "\e950";
-  margin-left: -1em;
-  color: rgb(17, 17, 17);
 }
 .icon-arrow-top:before {
   content: "\e951";
@@ -280,18 +226,40 @@
 .icon-trash-outline:before {
   content: "\e952";
 }
-.icon-trash-outline-stroke:before {
-  content: "\e953";
+.icon-facebook-outline:before {
+  content: "\e92b";
 }
-.icon-youtube-logo .path1:before {
-  content: "\e954";
-  color: rgb(255, 0, 0);
+.icon-instagram-outline:before {
+  content: "\e93c";
 }
-.icon-youtube-logo .path2:before {
-  content: "\e955";
+.icon-twitter-online:before {
+  content: "\e943";
+}
+.icon-location-outline:before {
+  content: "\e947";
+  color: #646464;
+}
+.icon-box-circle-color .path1:before {
+  content: "\e948";
+  color: rgb(138, 67, 245);
+}
+.icon-box-circle-color .path2:before {
+  content: "\e949";
   margin-left: -1em;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
-.icon-percentage:before {
-  content: "\e956";
+.icon-box-circle-color .path3:before {
+  content: "\e94a";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-box-circle-color .path4:before {
+  content: "\e94b";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-box-circle-color .path5:before {
+  content: "\e94d";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
 }
