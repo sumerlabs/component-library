@@ -16,13 +16,14 @@ import { EVENTS } from '~/common/consts/events';
 
 const ValidateCode = ({
 	ValidationSuccess,
-	sendTo, prefixSendTo, channel, logEvent, apiKey, apiUrl, setStepTo
+	sendTo, prefixSendTo, channel, logEvent, apiKey, apiUrl, setStepTo, handleGoBack
 }: {
 	ValidationSuccess: (token: string, expiresIn: number, refreshToken: string) => void;
 	sendTo: string, prefixSendTo: string, channel: string
 	logEvent: (event: string) => void,
 	apiKey: string, apiUrl: string,
-	setStepTo: (step: string) => void
+	setStepTo: (step: string) => void,
+	handleGoBack?: () => void;
 }): JSX.Element => {
 	const [error, setError] = useState(false);
 	const [resend, setResend] = useState(false);
@@ -38,9 +39,12 @@ const ValidateCode = ({
 	const [seconds, setSeconds] = useState(initialTimer);
 	const [sendCode, setSendCode] = useState(false);
 	const [timer, setTimer] = useState(true);
+	const [checkCode, setCheckCode] = useState(false);
+	const [loadingCode, setLoadingCode] = useState(false);
 	const { t } = useTranslation();
 
 	const handleForm = async (values: any) => {
+		setLoadingCode(true);
 		const code = `${values.one}${values.two}${values.three}`;
 		const validateCode = await ValidateCodeService({
 			sendTo: sendTo,
@@ -50,12 +54,15 @@ const ValidateCode = ({
 			apiUrl,
 			channel
 		});
+		setLoadingCode(false);
 		if (validateCode.status === 200) {
 			setAccessToken(validateCode.data.accessToken);
 			setExpiresIn(validateCode.data.expiresIn);
 			setRefreshToken(validateCode.data.refreshToken);
 			ValidationSuccess(validateCode.data.accessToken, validateCode.data.expiresIn, validateCode.data.refreshToken);
 			logEvent(EVENTS.SELECT_CONFIRM_CODE);
+			setCheckCode(true)
+			
 		} else {
 			setError(true);
 		}
@@ -129,27 +136,49 @@ const ValidateCode = ({
 					} = props;
 					return (
 						<>
-							<div className={'back'}>
-									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
-									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
-								</div>
+						{handleGoBack && (
+							<div className={'back'} onClick={handleGoBack}>
+							<img className='img-back' src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
+							<img  src='https://www.sumerlabs.com/prod/catalogue/logoSumer.png'/>
+						</div>
+						)}
 							<WrapperCheckCode>
 								<form noValidate>
 									<div className='box-code-verification'>
 										<p className='text-code'>{t('login.code_verification')}</p>
+										<br/>
 										<p className='text-code-send'>{t('login.code_verification_send')}</p>
 									</div>
+									<br/>
 									<div className='box-send-to'>
 										<p className='text-send-to'>{`${prefixSendTo} ${sendTo}`}</p>
-										<p className='text-change' onClick={() => {setStepTo(LoginSteps.GET_CODE)}}>{t('login.change_phone')}</p>
+										<p className='text-change' onClick={handleGoBack}>{t('login.change_phone')}</p>
 									</div>
 									<SmsValidation
 												   handleChange={handleChange}
 												   handleBlur={handleBlur} values={values} logEvent={logEvent} error={error} />
-												   { error && <div className='box-error-code'>
-													   <img src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/error.png'/>
-													   <p>{t('login.incorrect')}</p>
-													</div>}
+												 {error ? (
+													<div className="box-error-code">
+													<img src="https://www.sumerlabs.com/prod/catalogue/error.png" />
+													<p>{t("login.incorrect")}</p>
+													</div>
+												) : checkCode ? (
+													<div className="box-check-code">
+													<img
+														className="ckeck-code"
+														src="https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/check.png"
+													/>
+													</div>
+												) : loadingCode ? (
+													<div className="box-loading">
+													<img
+														className="ckeck-code"
+														src="https://www.sumerlabs.com/prod/catalogue/loading.png"
+													/>
+													</div>
+												) : (
+													""
+												)}
 													{timer &&(
 														<p className='send-code-text'>Solicita otro código dentro de: {seconds} segundos</p>
 													)}

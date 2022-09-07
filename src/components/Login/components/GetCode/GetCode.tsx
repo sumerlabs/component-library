@@ -109,8 +109,8 @@ const GetCode = ({
 						<GetCodeContainer>
 							<div className={'head'}>
 								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
-									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
-									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
+									<img className='img-back' src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
+									<img  src='https://www.sumerlabs.com/prod/catalogue/logoSumer.png'/>
 								</div>
 							</div>
 							<WrapperInput>
@@ -167,7 +167,7 @@ const GetCode = ({
                  							{t('login.agree')}{' '}
 										<label className="condition">
 											<a
-												href={`https://sumerlabs.com/terms/politica-de-privacidad-de-datos-personales`}
+												href={`https://www.sumerlabs.com/terms/politica-de-privacidad-de-datos-personales`}
 												target="_blank"
 												rel="noreferrer"
 											>{t('login.terms')}</a>
@@ -184,7 +184,7 @@ const GetCode = ({
 									logEvent(EVENTS.SELECT_SMS_CONFIRM);
 									handleSubmit(e);
 								}}>
-								<img className='icon-code' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/sms.png'/>
+								<img className='icon-code' src='https://www.sumerlabs.com/prod/catalogue/sms.png'/>
 								{t('login.sms')}
 							</button>
 							<button className="button-wsp" disabled={!isValid} onClick={(e: any) => {
@@ -192,7 +192,14 @@ const GetCode = ({
 								logEvent(EVENTS.SELECT_WA_CONFIRM);
 								handleSubmit(e);
 							}}>
-								<img className='icon-code' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/assets/web/login/whatssapp.png'/>
+								<img
+								className="icon-code"
+								src={
+									!isValid
+									? "https://www.sumerlabs.com/prod/catalogue/wpsgray.png"
+									: "https://www.sumerlabs.com/prod/assets/web/login/whatssapp.png"
+								}
+								/>
 								{t('login.whatsapp')}
 							</button>
 						</GetCodeContainer>
