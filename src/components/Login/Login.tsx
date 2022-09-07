@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 import {
     Customer,
@@ -67,6 +67,10 @@ const Login = ({ apiUrl, apiKey, logEvent,
   const handleRegisterModal = () => {
      setShowModal(m => !m);
   }
+
+  useEffect(() => {
+      setStep(initialStep);
+  }, [initialStep]);
 
   return (
       <LoginContainer ref={ref}>
