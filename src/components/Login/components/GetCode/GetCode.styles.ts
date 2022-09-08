@@ -31,6 +31,7 @@ export const GetCodeContainer = styled.div`
 		justify-content: flex-start;
 		width: 87%;
 		gap: 0.5rem;
+		align-items: center;
 	}
 
 	.box-terms {
@@ -101,8 +102,8 @@ export const GetCodeContainer = styled.div`
 		height: 17px;
 	}
       .button-wsp:disabled {
-        background-color: ${({ theme }) => theme.colors.grayScale.gr5};
-        color: ${({ theme }) => theme.colors.white};
+        background-color: ${({ theme }) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.grayScale.gr5};
 		border: 1px solid ${({ theme }) => theme.colors.grayScale.gr5};
       }
 

@@ -8,7 +8,7 @@ import {
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { GetCodeService, ValidateCodeService } from '~/components/Login/services';
-import { LoginSteps } from '~/components/Login/types';
+import { LoginSteps, SelectMethod } from '~/components/Login/types';
 import { useTranslation } from 'react-i18next';
 import SmsValidation from '~/components/Login/components/SmsValidation/SmsValidation';
 import { useLocalStorage } from '~/common/localStorage';
@@ -16,14 +16,13 @@ import { EVENTS } from '~/common/consts/events';
 
 const ValidateCode = ({
 	ValidationSuccess,
-	sendTo, prefixSendTo, channel, logEvent, apiKey, apiUrl, setStepTo, handleGoBack
+	sendTo, prefixSendTo, channel, logEvent, apiKey, apiUrl, setStepTo
 }: {
 	ValidationSuccess: (token: string, expiresIn: number, refreshToken: string) => void;
 	sendTo: string, prefixSendTo: string, channel: string
 	logEvent: (event: string) => void,
 	apiKey: string, apiUrl: string,
 	setStepTo: (step: string) => void,
-	handleGoBack?: () => void;
 }): JSX.Element => {
 	const [error, setError] = useState(false);
 	const [resend, setResend] = useState(false);
@@ -112,6 +111,14 @@ const ValidateCode = ({
 
 	  useTimer()
 
+	  const handleGoBack = ():void => {
+		if (channel === SelectMethod.EMAIL_METHOD) {
+			setStepTo(LoginSteps.EMAIL);
+		} else {
+			setStepTo(LoginSteps.GET_CODE);
+		}
+	}
+
 	return (
 		<ValidateCodeContainer>
 			<Formik
@@ -136,12 +143,10 @@ const ValidateCode = ({
 					} = props;
 					return (
 						<>
-						{handleGoBack && (
 							<div className={'back'} onClick={handleGoBack}>
 							<img className='img-back' src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
 							<img  src='https://www.sumerlabs.com/prod/catalogue/logoSumer.png'/>
 						</div>
-						)}
 							<WrapperCheckCode>
 								<form noValidate>
 									<div className='box-code-verification'>

@@ -18,8 +18,8 @@ import Modal from '~/components/Modal';
 import { useTranslation } from 'react-i18next';
 
 const Login = ({ apiUrl, apiKey, logEvent,
-                   initialStep,
-                   country, success, apiKeySp, loginType, handleGoBack }: LoginProps) => {
+                   initialStep = LoginSteps.SELECT_LOGIN_METHOD,
+                   country, success, apiKeySp, loginType }: LoginProps) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [showModal, setShowModal] = useState(false);
@@ -92,7 +92,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
                                                               setStepTo={setStepTo}
                                                               prefixSendTo={prefixSendTo!} channel={channel!}
                                                               logEvent={logEvent}
-                                                              apiUrl={apiUrl} apiKey={apiKey} handleGoBack={handleGoBack}/>}
+                                                              apiUrl={apiUrl} apiKey={apiKey}/>}
           {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
               handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
           {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
