@@ -1,0 +1,182 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs'
+
+import { default as UiInput } from './ui-input';
+
+<Meta title="UI/UiInput" component={UiInput} />
+
+export const Template = (args) => <UiInput {...args} />;
+
+# Input
+
+En este apartado podrás ver todas las variantes del componente `Input`, el cual está diseñado para 
+recibir diferentes propiedades que permitiran ver reflejadas sus diferentes variantes, a continuación podrás
+ver cada una de ellas.
+
+- Input `default` esta es la variación más simple de este componente donde solo recibe como propiedades 
+`label` del tipo `string` y una función en su propiedad `onChange` que nos permitirá ver reflejados
+los cambios de entrada del componente:
+
+<Canvas>
+    <Story
+        name="Input Default"
+        args={{
+            label: 'Input default',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input con un valor en su propiedad `value`:
+
+<Canvas>
+    <Story
+        name="Input Value"
+        args={{
+            label: 'Input default',
+            value:'My value',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input en su estado `error`, solo tienes que agregar la propiedad `hasError` que es un boleano y para insinuar un mensaje la propiedad `errorMessage` del tipo `string`:
+
+<Canvas>
+    <Story
+        name="Input Error"
+        args={{
+            label: 'Input error',
+            hasError: true,
+            errorMessage: 'Error message',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input en su estado `success`, solo tienes que agregar la propiedad `success` que es un boleano y para insinuar un mensaje la propiedad `hint` del tipo `string`:
+
+<Canvas>
+    <Story
+        name="Input Success"
+        args={{
+            label: 'Input success',
+            success: true,
+            hint:'This is a hint',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input en su estado `disabled`:
+
+<Canvas>
+    <Story
+        name="Input Disabled"
+        args={{
+            label: 'Input disabled',
+            disabled: true,
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input con un prefijo, solo tienes que agregar la propiedad `prefix` un prefijo no mayor a 3 caractéres:
+
+<Canvas>
+    <Story
+        name="Input Prefix"
+        args={{
+            label: 'Input prefix',
+            prefix: 'MXN',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input con un placeholder, solo tienes que agregar la propiedad `placeholder`:
+
+<Canvas>
+    <Story
+        name="Input Placeholder"
+        args={{
+            label: 'Input placeholder',
+            placeholder: 'This is a placeholder',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input del tipo `password`:
+
+<Canvas>
+    <Story
+        name="Input Password"
+        args={{
+            label: 'Input password',
+            value: 'Password',
+            type: 'password',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input con un estilo `filled`:
+
+<Canvas>
+    <Story
+        name="Input Filled"
+        args={{
+            label: 'Input filled',
+            style: 'filled',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+- Input con un estilo `view`:
+
+<Canvas>
+    <Story
+        name="Input View"
+        args={{
+            label: 'Input view',
+            style: 'view',
+            onChange: () => {},
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+
+
+# API
+
+| Property       | **Description**                                                                | Is required | Type                                        | Default   |
+|----------------|--------------------------------------------------------------------------------|-------------|---------------------------------------------|-----------|
+| `className`    | **Opción para agregar una clase css que nos permita customizar el componente** | `false`     | `string`                                    | -         |
+| `hint`         | **Permite agregar una insinuación debajo del componente**                      | `false`     | `string`                                    | -         |
+| `label`        | **Representa el label del input**                                              | `false`     | `string`                                    | -         |
+| `name`         | **Representa el nombre del input**                                             | `false`     | `string`                                    | -         |
+| `value`        | **Representa el valor del input**                                              | `false`     | `string`                                    | -         |
+| `style`        | **Representa el estilo del input**                                             | `false`     | `outline`, `filled`, `view`                 | `outline` |
+| `type`         | **Tipo de input**                                                              | `false`     | `text`, `number`, `password`                | `text`    |
+| `maxLength`    | **Establece la longitud máxima permitida en el input**                         | `false`     | `number`                                    | -         |
+| `minLength`    | **Establece la longitud mínima permitida en el input**                         | `false`     | `number`                                    | -         |
+| `disabled`     | **Habilita o deshabilita el input**                                            | `false`     | `boolean`                                   | -         |
+| `prefix`       | **Nos permite agregar un prefijo al input**                                    | `false`     | `string`                                    | -         |
+| `placeholder`  | **Representa el placeholder del input**                                        | `false`     | `string`                                    | -         |
+| `hasError`     | **Habilita el modo error en el input**                                         | `false`     | `boolean`                                   | -         |
+| `errorMessage` | **Nos permite agregar un mensaje en el modo error del input**                  | `false`     | `string`                                    | -         |
+| `success`      | **Habilita el modo success en el input**                                       | `false`     | `string`                                    | -         |
+| `onFocus`      | **Devolución de llamada en modo focus del input**                              | `false`     | `(e:ChangeEvent<HTMLInputElement>) => void` | -         |
+| `onBlur`       | **Devolución de llamada cuando el input pierde su estado focus**               | `false`     | `(e:ChangeEvent<HTMLInputElement>) => void` | -         |
+| `onChange`     | **Devolución de llamada cuando el estado del input ha cambiado**               | `true`      | `(e:ChangeEvent<HTMLInputElement>) => void` | -         |
