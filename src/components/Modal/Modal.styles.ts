@@ -56,9 +56,9 @@ export const StyledModalHeader = styled.div`
 
 export const StyledModal = styled(motion.div)<ModalStyleProps>`
   box-sizing: border-box;
-  max-width: 800px;
   background-color: ${({ content }) => content?.backgroundColor || 'white'};
-  width: ${({ content }) => content?.width || '100%'};
+  width: 100%;
+  max-width: ${({ content }) => content?.width || 'none'};
   padding: ${({ content  }) => content?.padding || '10px'};
   height: ${({ content }) => getHeight(content?.type, content?.height)};
   position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
@@ -69,13 +69,12 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
   bottom: auto;
   @media screen and (min-width: 320px) and (max-width: 393px) {
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.MOBILE)};
-    width: 100%;
     height: ${({ content }) => getHeight(content?.type, content?.height)};
     align-self: ${({ content }) => content?.type ==  ModalType.MOBILE_BOTTOM ? 'flex-end' : 'inherit'};
   }
   @media screen and (min-width: 768px) and (max-width: 2363px) {
     padding: ${({ content  }) => content?.padding || '15px'};
-    width: ${({ content }) => content?.width || '800px'};
+    max-width: ${({ content }) => content?.width || '800px'};
     position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.DESKTOP)};
     left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};

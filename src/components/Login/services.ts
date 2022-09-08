@@ -112,6 +112,10 @@ export const getUserData = async ({ token, apiUrl }:  { token: string, apiUrl: s
         }
     );
 
+    if (!res.ok) {
+        throw new Error(res.statusText);
+    }
+
     const json = camelizeKeys(await res.json()) as unknown;
 
     return json as Customer;

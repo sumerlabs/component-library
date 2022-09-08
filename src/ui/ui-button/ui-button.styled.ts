@@ -29,27 +29,58 @@ export const WrapperButton = styled.button<StyledButtonProps>`
     &:hover{ opacity: 0.8; }
   `}
 
-  ${({ appearance}) =>
-		appearance === 'rounded' &&
+  ${({ appereance}) =>
+		appereance === 'rounded' &&
 		`
     border-radius:78px;
   `}
 
-  ${({ appearance, color, borderColor }) =>
-		appearance === 'outline' &&
+  ${({ appereance, color, borderColor }) =>
+		appereance === 'outline' &&
 		`
     background-color: #ffffff;
     border: 1px solid ${borderColor || '#4C42F6' };
     color: ${color || '#4C42F6' };
 
     &:hover{ background-color: #ffffff; }
+    
+    &:disabled {
+      opacity: 0.5;
+      color: ${color || '#4C42F6' } !important;
+      background-color: transparent !important;
+    }
   `}
 
-  ${({ appearance }) =>
-		appearance === 'expert' &&
+  ${({ appereance, color }) =>
+		appereance === 'link' &&
+		`
+    background-color: transparent;
+    border: none;
+    color: ${color || '#4C42F6' };
+
+    &:disabled {
+      background-color: transparent !important;
+    }
+  `}
+
+  ${({ appereance }) =>
+		appereance === 'expert' &&
 		`
     color: #000000;
     background: linear-gradient(90.32deg, #FFB237 -6.02%, #FFB237 9.29%, #E58D09 25.38%, #FFB237 67.24%, #E58D09 112.77%);
+
+    &:disabled {
+      opacity: .5;
+      color: #000000 !important;
+      background-color: transparent !important;
+    }
+  `}
+
+  ${({ appereance, color }) =>
+		appereance === 'beauty' &&
+		`
+    color: ${color || '#4C42F6'};
+    background: #EDECFE;
   `}
 
   &:disabled {

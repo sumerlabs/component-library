@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const SelectLoginMethodContainer = styled.div`
+padding-top: 2.5rem;
 	display: flex;
     flex-direction: column;
   hr {
@@ -36,6 +37,16 @@ export const SelectLoginMethodContainer = styled.div`
     gap: 10px;
     align-items: center;
     padding: 5px;
+  }
+  .login-sumer-text{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 135%;
+    padding: 13px 0px;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 45%;
+		}
   }
   button {
     padding: 12px 16px;
