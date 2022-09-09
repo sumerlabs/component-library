@@ -237,7 +237,6 @@
 }
 .icon-location-outline:before {
   content: "\e947";
-  color: #646464;
 }
 .icon-box-circle-color .path1:before {
   content: "\e948";
@@ -262,4 +261,7 @@
   content: "\e94d";
   margin-left: -1em;
   color: rgb(0, 0, 0);
+}
+.icon-heart:before {
+  content: "\e94e";
 }
