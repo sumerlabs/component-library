@@ -118,7 +118,7 @@ const GetCodeByEmail = ({
 					);
 				}}
 			</Formik>
-			{ error && <div className='box-error-code'>{t('login.invalidPhoneNumber')}</div>}
+			{ error && <div className='box-error-code'>{t('login.invalidEmail')}</div>}
 		</GetCodeByEmailContainer>
 	);
 };

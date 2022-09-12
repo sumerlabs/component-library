@@ -39,6 +39,21 @@ export const ValidateCodeContainer = styled.div`
 		}
 	}
 
+	.box-check-code{
+		text-align: center;
+		padding: 2rem;
+	}
+
+	.ckeck-code{
+		width: 24px;
+		height: 24px;
+	}
+
+	.box-loading{
+		text-align: center;
+		padding: 2rem;
+	}
+
 	.send-code-text{
 		font-weight: 400;
 		font-size: 14px;
