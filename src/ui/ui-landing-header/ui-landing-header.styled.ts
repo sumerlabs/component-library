@@ -309,3 +309,37 @@ export const Wrapper = styled.div`
     }
   }
 `;
+
+export const DownloadContent = styled.div`
+  text-align: center;
+  .sumer-img {
+    width: 132px;
+    height: 138.6px;
+  }
+  .text-acount {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+  }
+  .text-download {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    padding: 1rem 0;
+  }
+  .download-app-button {
+    display: flex;
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.black};
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 8px;
+    padding: 14px 8px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+`;
+

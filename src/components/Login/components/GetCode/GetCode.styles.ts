@@ -132,6 +132,7 @@ export const WrapperInput = styled.div`
     font-weight: 400;
     font-size: 16px;
     color: #646464;
+	padding-bottom: 1.5rem;
 }
 	.input-box {
 		display: flex;
