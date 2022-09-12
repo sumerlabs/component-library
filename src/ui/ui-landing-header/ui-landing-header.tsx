@@ -204,7 +204,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         ))}
         <UiButton 
           className="expert-button" 
-          appearance="expert"
+          appereance="expert"
           onClick={handleExpertButtonClick} 
           icon={<span className="icon-expert" />}
         >Quiero ser Experto</UiButton>
