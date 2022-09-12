@@ -6,10 +6,15 @@ export declare type UiInputProps = {
   label?: string;
   name?: string;
   value?: string;
-  type?: 'text' | 'number';
+  style?: string;
+  type?: 'text' | 'number' | 'password';
   maxLength?: number;
+  minLength?: number;
+  disabled?: boolean;
+  prefix?: string;
   placeholder?: string;
   hasError?: boolean;
+  success?: boolean;
   errorMessage?: string;
   onFocus?: (e: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
