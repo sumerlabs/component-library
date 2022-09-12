@@ -5,6 +5,7 @@ export enum ModalType {
   LEFT = "left",
   RIGHT = "right",
   MOBILE_BOTTOM = "mobile-bottom",
+  TOP = "top"
 }
 
 export enum Screen {
