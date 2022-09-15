@@ -36,6 +36,7 @@ export type ModalContent = {
     borderRadius?: BorderRadius;
     width?: string;
     height?: string;
+    top?: string;
     type?: ModalType;
     padding?: string;
     body?: Body

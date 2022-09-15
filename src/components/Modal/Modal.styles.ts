@@ -82,7 +82,7 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.DESKTOP)};
     left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};
     right: ${({ content }) => content?.type ==  ModalType.RIGHT ? '0' : content?.type === ModalType.TOP ? "15px":'auto'};
-    top: ${({ content }) => content?.type ==  ModalType.TOP ? '110px' : '0'};
+    top: ${({ content }) => content?.type ==  ModalType.TOP ? '110px' : content?.top || 'auto'};
   }
 `;
 
