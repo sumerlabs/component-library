@@ -5,7 +5,7 @@ import { Close } from "../../assets/img/icons";
 import { ModalProps } from './types';
 import { getTransition } from './transition';
 
-const Modal = ({ show, onClose, children, title, styles, element, closeElement, showHeader = true }: ModalProps) => {
+const Modal = ({ show, onClose, children, title, styles, element, closeElement, showHeader = true, className }: ModalProps) => {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -26,17 +26,22 @@ const Modal = ({ show, onClose, children, title, styles, element, closeElement, 
 
     const modalContent = show ? (
         <StyledModalOverlay overlay={styles?.overlay} onClick={handleCloseClick}>
-            <StyledModal variants={variants} initial={transition.initial}
-                         animate={transition.animate} transition={transition.transition}
-                         onClick={(e) => e.stopPropagation()}
-            content={styles?.content} overlay={styles?.overlay}>
+            <StyledModal 
+                variants={variants}
+                initial={transition.initial}
+                animate={transition.animate}
+                transition={transition.transition}
+                onClick={(e) => e.stopPropagation()}
+                content={styles?.content}
+                overlay={styles?.overlay}
+                className={className}>
                 {showHeader && (
-                    <StyledModalHeader>
-                        <StyledModalTitle>{title}</StyledModalTitle>
+                    <StyledModalHeader className="modal-header">
+                        <StyledModalTitle className="modal-title">{title}</StyledModalTitle>
                         {closeElement ? <span onClick={handleCloseClick}>{closeElement}</span> : <Close onClick={handleCloseClick} />}
                     </StyledModalHeader>
                 )}
-                <StyledModalBody content={styles?.content}>{children}</StyledModalBody>
+                <StyledModalBody className="modal-body" content={styles?.content}>{children}</StyledModalBody>
             </StyledModal>
         </StyledModalOverlay>
     ) : null;

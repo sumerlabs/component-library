@@ -22,6 +22,7 @@ export type ModalProps = {
     styles?: ModalStyleProps;
     element?: Element;
     closeElement?: React.ReactNode;
+    className?: string;
 }
 
 export type BorderRadius = {
