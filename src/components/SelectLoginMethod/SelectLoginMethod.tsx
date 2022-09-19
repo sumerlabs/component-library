@@ -13,9 +13,11 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                                    handleRegisterModal: () => void}): JSX.Element => {
 
     const url = location?.origin;
+    console.log('url', url);
     let disableGoogle = false;
 
     if (url) {
+        console.log(url !== 'https://www.sumerlabs.com' && url !== 'https://www.dev.sumerlabs.com')
         disableGoogle = url !== 'https://www.sumerlabs.com' && url !== 'https://www.dev.sumerlabs.com';
     }
 
@@ -63,7 +65,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             <div className={'body'}>
             <div className='login-sumer-text'>{t('login.login_sumer')}</div>
                 {
-                    disableGoogle &&
+                    !disableGoogle &&
                     <GoogleLogin
                         clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com"
                         render={renderProps => (
