@@ -45,11 +45,9 @@ padding-top: 2.5rem;
     font-weight: 400;
     font-size: 18px;
     line-height: 135%;
-    padding: 12px 16px;
+    padding: 12px 0px;
     width: 343px;
-    /* @media screen and (min-width: 768px) {
-      width: 45%;
-		} */
+    font-weight: 700;
   }
   button {
     padding: 12px 16px;

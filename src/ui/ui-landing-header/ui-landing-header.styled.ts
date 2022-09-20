@@ -296,6 +296,7 @@ export const Wrapper = styled.div`
       .download-button {
         .text {
           display: block;
+          width: 150px;
         }
       }
     }
