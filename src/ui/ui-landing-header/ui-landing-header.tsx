@@ -79,12 +79,6 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
 
   const mobileMenuItems: UiLandingHeaderMenuItem[] = [
     {
-      icon: 'bubble-chat',
-      title: 'Comunidad',
-      description: 'FAQ y experiencias',
-      subItems: communityItems,
-    },
-    {
       icon: 'question-support',
       title: 'Sobre el equipo',
       description: 'Conoce nuestro equipo y su propósito',
@@ -149,23 +143,6 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
               </a>
             ))}
           </div>
-        </div>
-      </div>
-      <div className="community">
-        <div className="clicker" onClick={() => setOpenExpandibleTab(t => t === 2 ? null : 2)}>
-          <div className="text">Comunidad</div>
-          <div className="icon icon-arrow" />
-        </div>
-        <div className={`submenu ${openExpandibleTab === 2 ? 'open' : 'close'}`}>
-          {communityItems.map(i => (
-            <a key={`community-actionable-${i.name}`} className="actionable" href={i.link}>
-              <div className={`icon icon-${i.icon}`} />
-              <div className="texts">
-                <div className="title">{i.name}</div>
-                <div className="description">{i.description}</div>
-              </div>
-            </a>
-          ))}
         </div>
       </div>
       <div className="expert-link">
@@ -241,12 +218,16 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
             )}
           </div>
         ))}
-        <UiButton 
-          className="expert-button"
-          appereance="expert"
-          onClick={handleExpertButtonClick} 
-          icon={<span className="icon-expert" />}
-        >Quiero ser Experto</UiButton>
+        <div className={'mobile-menu__expert'}>
+          <UiButton
+              className="expert-button"
+              appereance="expert"
+              onClick={handleExpertButtonClick}
+              icon={<span className="icon-expert" />}
+          >
+            Quiero ser Experto
+          </UiButton>
+        </div>
         {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
       </div>
     </Wrapper>
