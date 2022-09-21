@@ -194,8 +194,12 @@ export const Wrapper = styled.div`
         }
       }
     }
-    .expert-button {
-      margin: 0 16px;
+    .mobile-menu__expert{
+      max-width: 300px;
+      .expert-button {
+        margin: 0 16px;
+      }
+    }
     }
     .login-button {
       width: 100%;
@@ -210,6 +214,9 @@ export const Wrapper = styled.div`
       align-items: center;
       justify-content: center;
       background-color: #4C42F6;
+    }
+    .mobile-menu__exper{
+      max-width: 300px;
     }
   }
   .submenu {
