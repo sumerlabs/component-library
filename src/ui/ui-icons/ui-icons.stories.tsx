@@ -54,6 +54,7 @@ const Template: ComponentStory<typeof React.Component> = (args) => (
     <div className="icon-book-open">icon-book-open</div>
     <div className="icon-pencil">icon-pencil</div>
     <div className="icon-expert">icon-expert</div>
+    <div className="icon-heart">icon-expert</div>
   </div>
 );
 
