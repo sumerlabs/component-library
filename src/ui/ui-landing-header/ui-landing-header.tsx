@@ -147,7 +147,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       </div>
       <div className="expert-link">
         <a className="text" href="/premium">Quiero ser Experto</a>
-        <div className="icon icon-expert" />
+        <div className="icon icon-crown" />
       </div>
       <div className="right-side">
         {showLogin && <div className="login" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
@@ -223,7 +223,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
               className="expert-button"
               appereance="expert"
               onClick={handleExpertButtonClick}
-              icon={<span className="icon-expert" />}
+              icon={<span className="icon-crown" />}
           >
             Quiero ser Experto
           </UiButton>
