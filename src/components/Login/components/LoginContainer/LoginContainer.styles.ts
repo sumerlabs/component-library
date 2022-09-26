@@ -6,6 +6,7 @@ export const LoginContainerWrapper = styled.div`
   flex-direction: column; 
   height: 93%;
   justify-content: space-between;
+  width: 100%;
   .help-link {
     align-self: center;
   }
