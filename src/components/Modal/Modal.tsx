@@ -5,7 +5,7 @@ import { Close } from "../../assets/img/icons";
 import { ModalProps } from './types';
 import { getTransition } from './transition';
 
-const Modal = ({ show, onClose, children, title, styles, element, closeElement, showHeader = true, className }: ModalProps) => {
+const Modal = ({ show, onClose, children, title, styles, element, closeElement, showHeader = true }: ModalProps) => {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -33,15 +33,14 @@ const Modal = ({ show, onClose, children, title, styles, element, closeElement, 
                 transition={transition.transition}
                 onClick={(e) => e.stopPropagation()}
                 content={styles?.content}
-                overlay={styles?.overlay}
-                className={className}>
+                overlay={styles?.overlay}>
                 {showHeader && (
-                    <StyledModalHeader className="modal-header">
-                        <StyledModalTitle className="modal-title">{title}</StyledModalTitle>
+                    <StyledModalHeader>
+                        <StyledModalTitle>{title}</StyledModalTitle>
                         {closeElement ? <span onClick={handleCloseClick}>{closeElement}</span> : <Close onClick={handleCloseClick} />}
                     </StyledModalHeader>
                 )}
-                <StyledModalBody className="modal-body" content={styles?.content}>{children}</StyledModalBody>
+                <StyledModalBody content={styles?.content}>{children}</StyledModalBody>
             </StyledModal>
         </StyledModalOverlay>
     ) : null;
