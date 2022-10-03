@@ -18,7 +18,8 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
 
     if (url) {
         console.log(url !== 'https://www.sumerlabs.com' && url !== 'https://www.dev.sumerlabs.com')
-        disableGoogle = url !== 'https://www.sumerlabs.com' && url !== 'https://www.dev.sumerlabs.com';
+        disableGoogle = url !== 'https://www.sumerlabs.com'
+            && url !== 'https://www.dev.sumerlabs.com' && !url.includes('dashboard');
     }
 
     const [error, setError] = useState(false);
