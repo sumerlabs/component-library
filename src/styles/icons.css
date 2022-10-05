@@ -253,9 +253,24 @@
 .icon-crown:before {
   content: "\e94f";
 }
+.icon-pin:before {
+  content: "\e950";
+}
 .icon-arrow-top:before {
   content: "\e951";
 }
 .icon-trash-outline:before {
   content: "\e952";
+}
+.icon-info-alert-icon:before {
+  content: "\e953";
+}
+.icon-minus-circle:before {
+  content: "\e954";
+}
+.icon-plus-circle:before {
+  content: "\e955";
+}
+.icon-ray:before {
+  content: "\e956";
 }
