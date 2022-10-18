@@ -16,7 +16,7 @@ export const GetCodeContainer = styled.div`
 	.back {
     display: flex;
     align-items: center;
-    width: 47%;
+    width: 60%;
     justify-content: space-between;
 }
 
@@ -125,7 +125,7 @@ export const WrapperInput = styled.div`
 		font-weight: 400;
 		font-size: 18px;
 		color: ${({ theme }) => theme.colors.black};
-		padding-bottom: 15px;
+		padding-bottom: 20px;
 	}
 
 	.text-phone-create {
@@ -133,6 +133,7 @@ export const WrapperInput = styled.div`
     font-size: 16px;
     color: #646464;
 	padding-bottom: 1.5rem;
+	line-height: 140%;
 }
 	.input-box {
 		display: flex;
