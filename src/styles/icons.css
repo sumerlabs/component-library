@@ -262,3 +262,18 @@
 .icon-filters:before {
   content: "\e948";
 }
+.icon-pause:before {
+  content: "\e949";
+}
+.icon-mute:before {
+  content: "\e94a";
+}
+.icon-volume:before {
+  content: "\e94b";
+}
+.icon-play:before {
+  content: "\e94d";
+}
+.icon-full-screen:before {
+  content: "\e957";
+}
