@@ -4,7 +4,7 @@ export const GetCodeByEmailContainer = styled.div`
   .back {
     display: flex;
     align-items: center;
-    width: 47%;
+    width: 60%;
     justify-content: space-between;
     padding-top: 15px;
   }
