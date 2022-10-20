@@ -16,7 +16,7 @@ export enum SelectMethod {
   EMAIL_METHOD = 'email',
 }
 
-export type LoginProps = {
+export declare type LoginProps = {
   initialStep: LoginSteps;
   apiKey: string;
   apiUrl: string;
