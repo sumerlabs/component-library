@@ -277,3 +277,18 @@
 .icon-full-screen:before {
   content: "\e957";
 }
+.icon-bag:before {
+  content: "\e958";
+}
+.icon-image:before {
+  content: "\e959";
+}
+.icon-palette:before {
+  content: "\e95a";
+}
+.icon-picture-in-picture:before {
+  content: "\e95b";
+}
+.icon-star:before {
+  content: "\e95c";
+}
