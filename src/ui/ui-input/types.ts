@@ -7,7 +7,7 @@ export declare type UiInputProps = {
   name?: string;
   value?: string;
   style?: string;
-  type?: 'text' | 'number' | 'password';
+  type?: 'text' | 'number' | 'password' | 'email';
   maxLength?: number;
   minLength?: number;
   disabled?: boolean;
