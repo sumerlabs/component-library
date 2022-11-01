@@ -4,6 +4,7 @@ import { UiInputProps } from "./types";
  
 const UiInput: FC<UiInputProps> = ({
   className,
+  autocomplete = true,
   hint,
   type = 'text',
   style = 'outline',
@@ -25,7 +26,7 @@ const UiInput: FC<UiInputProps> = ({
 
   const inputRef = useRef<HTMLInputElement| null>(null);
   const [isActive, setIsActive] = useState(false);
-  const [showPasword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if(inputRef.current && inputRef.current.value.length > 0){
@@ -48,7 +49,7 @@ const UiInput: FC<UiInputProps> = ({
         {prefix && <span className="prefix">{prefix}</span>}
         <input 
           ref={inputRef}
-          type={`${showPasword ? 'text' : type}`}
+          type={`${showPassword ? 'text' : type}`}
           className={`input ${isActive && 'fill'} ${!!placeholder && 'is-placeholder'}`} 
           name={name}
           value={value}
@@ -59,11 +60,14 @@ const UiInput: FC<UiInputProps> = ({
           maxLength={maxLength}
           minLength={minLength}
           placeholder={placeholder}
+          autoComplete={autocomplete ? 'on' : 'off'}
         />
         {!!label && <span className="label">{label}</span>}
         {type === 'password' && (
-          <span onClick={() => setShowPassword(s => !s)} 
-                className={`show-password ${showPasword ? 'icon-hide-password' : 'icon-show-password'}`}/>
+          <span 
+            onClick={() => setShowPassword(s => !s)} 
+            className={`show-password ${showPassword ? 'icon-hide-password' : 'icon-show-password'}`}
+          />
         )}
       </div>
       {(!!hint || hasError) && <div className="hint">{errorMessage || hint}</div>}

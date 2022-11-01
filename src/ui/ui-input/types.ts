@@ -2,6 +2,7 @@ import { ChangeEvent } from "react";
 
 export declare type UiInputProps = {
   className?: string;
+  autocomplete?: boolean;
   hint?: string;
   label?: string;
   name?: string;
