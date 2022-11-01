@@ -3,6 +3,7 @@ import { UiRadioProps } from "./types";
 import { Wrapper } from "./ui-radio.styled";
  
 const UiRadio: FC<UiRadioProps> = ({
+  className,
   active = false,
   onChange,
 }) => {
@@ -18,7 +19,7 @@ const UiRadio: FC<UiRadioProps> = ({
   }, [active]);
 
   return (
-    <Wrapper className={`${isActive && 'active'}`} onClick={handleChange}>
+    <Wrapper className={`${className} ${isActive && 'active'}`} onClick={handleChange}>
       <div className="fill" />
     </Wrapper>
   );
