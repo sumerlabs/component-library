@@ -292,3 +292,6 @@
 .icon-star:before {
   content: "\e95c";
 }
+.icon-dots:before {
+  content: "\e95d";
+}
