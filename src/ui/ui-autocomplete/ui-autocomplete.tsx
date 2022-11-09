@@ -55,6 +55,7 @@ const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> =
     <Wrapper className={`${className} ${isOpen ? 'open' : 'close'} `}>
       <UiInput
         className={`${className}-input`}
+        autocomplete={false}
         hint={hint}
         label={label}
         type={type}

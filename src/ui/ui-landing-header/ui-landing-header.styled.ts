@@ -194,8 +194,12 @@ export const Wrapper = styled.div`
         }
       }
     }
-    .expert-button {
-      margin: 0 16px;
+    .mobile-menu__expert{
+      max-width: 300px;
+      .expert-button {
+        margin: 0 16px;
+      }
+    }
     }
     .login-button {
       width: 100%;
@@ -210,6 +214,9 @@ export const Wrapper = styled.div`
       align-items: center;
       justify-content: center;
       background-color: #4C42F6;
+    }
+    .mobile-menu__exper{
+      max-width: 300px;
     }
   }
   .submenu {
@@ -296,6 +303,7 @@ export const Wrapper = styled.div`
       .download-button {
         .text {
           display: block;
+          width: 150px;
         }
       }
     }
@@ -309,3 +317,37 @@ export const Wrapper = styled.div`
     }
   }
 `;
+
+export const DownloadContent = styled.div`
+  text-align: center;
+  .sumer-img {
+    width: 132px;
+    height: 138.6px;
+  }
+  .text-acount {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 140%;
+  }
+  .text-download {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    padding: 1rem 0;
+  }
+  .download-app-button {
+    display: flex;
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.black};
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 8px;
+    padding: 14px 8px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+`;
+

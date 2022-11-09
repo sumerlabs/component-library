@@ -7,6 +7,8 @@ const getHeight = (type: ModalType | undefined, height: string | undefined ) => 
       case ModalType.RIGHT:
       case ModalType.LEFT:
       return '100%';
+      case ModalType.TOP:
+      return 'auto';
     default:
       return height || '60%';
   }
@@ -16,6 +18,7 @@ const checkIfIsPopup = (type: ModalType | undefined) => {
   switch (type) {
     case ModalType.RIGHT:
     case ModalType.LEFT:
+      case ModalType.TOP:
       return true;
     default:
       return false;
@@ -65,7 +68,7 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
   left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};
   right: ${({ content }) => content?.type ==  ModalType.RIGHT ? '0' : 'auto'};
   align-self: center;
-  overflow-y: scroll;
+  overflow-y: ${({ content }) => content?.type ==  ModalType.TOP ? 'none' : 'scroll'};
   bottom: auto;
   @media screen and (min-width: 320px) and (max-width: 393px) {
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.MOBILE)};
@@ -78,7 +81,8 @@ export const StyledModal = styled(motion.div)<ModalStyleProps>`
     position: ${({ content }) => checkIfIsPopup(content?.type) ? 'fixed' : 'inherit'};
     border-radius: ${({ content }) => getBorderRadius(content?.type, content?.borderRadius, Screen.DESKTOP)};
     left: ${({ content }) => content?.type ==  ModalType.LEFT ? '0' : 'auto'};
-    right: ${({ content }) => content?.type ==  ModalType.RIGHT ? '0' : 'auto'};
+    right: ${({ content }) => content?.type ==  ModalType.RIGHT ? '0' : content?.type === ModalType.TOP ? "15px":'auto'};
+    top: ${({ content }) => content?.type ==  ModalType.TOP ? '110px' : content?.top || 'auto'};
   }
 `;
 

@@ -1,0 +1,119 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import { default as UiIconsProd } from './ui-icons-prod';
+
+<Meta title="Icons" />
+
+export const WEB_ASSETS = 'https://www.sumerlabs.com/prod/assets/web';
+
+export const Template = (args) => <UiIconsProd {...args } />
+
+# Fuente de Iconos
+
+Este es un apartado dondepodrás ver todas las variantes del nuestra `Fuente de iconos` su nombre y su respectivo icono.
+
+# Como subir un nuevo icono
+- 1. Tener en tu equipo descargado el .svg `icomoon.svg`.
+- 2. Abrir el sitio web `https://icomoon.io/app/#/select`.
+- 3. Limpiar el board de `icomoon` con el botón `Remove Set`. *Del menú hamburgesa en la parte derecha*
+- 4. Importar los `icomoon.svg` desde el botón `Import Icons`. *Parte superior izquierda*
+- 5. arrastrar el nuevo icono a la pantalla y ubicarlo en último lugar. *Arrastrar con la opción "move" que sale en la parte superior al lado del icono de basura*
+- 6. Si el icono tiene border, abrirlo y limpiar con la gota. *Dar clic en el icono*
+- 7. Seleccionar Todo. *Clic sostenido y arrastrar sobre los iconos*
+- 8. `Generar Fuente` *Clic en el botón que se encuentra en la parte inferior derecha del navegador*.
+- 9. `Descargar`
+- 10. Abrir el 'Quick Usage' y copiar la url en el navegador y copiar la `fuente de iconos`.
+- 11. Copiarlos en el archivo de storyBook `styles/icons.css`.
+- 12. Agregar el nuevo icono en `ui-icons.stories.mdx`.
+- 13. Agregar la fuente a postman en *upload file* raiz `/assets/web/fonts`.
+
+#### ¡Y listo!
+#
+#
+#
+#
+## Como usar los iconos
+`<div className="icon-minus">icon-minus</div>`
+#
+#
+#
+#
+## Como importalo
+  Al importar la librería de componentes en otros proyectos ya se puede hacer uso de los iconos nombrándolos por su clase.
+- Ejemplo: `className="icon-minus"`
+- *Tambien es importante revisar que en el `previwe.js` se este llamando la fuente que se necesita.*
+#
+#
+#
+#
+
+#
+#
+#
+#
+# Iconos
+
+<Story
+    name="Icons"
+    args={{
+        status: 'positive',
+        label: 'Positive'
+    }}>
+    <div className="icons" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, auto)',
+        gap: '1rem',
+        rowGap: '1rem',
+        fontSize: '1.2rem',
+    }}>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-trash">icon-trash</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-minus">icon-minus</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-plus-2">icon-plus-2</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-headset-mic">icon-headset-mic</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-bubble-chat">icon-bubble-chat</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-share">icon-share</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-close">icon-close</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-check">icon-check</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-user">icon-user</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-plus">icon-plus</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-arrow-3">icon-arrow-3</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-arrow-2">icon-arrow-2</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-arrow">icon-arrow</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-hide-password">icon-hide-password</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-show-password">icon-show-password</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-squares">icon-squares</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-bullets-list">icon-bullets-list</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-search">icon-search</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-circle-check">icon-circle-check</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-circle-exclamation">icon-circle-exclamation</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-burger-menu">icon-burger-menu</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-shopping-cart">icon-shopping-cart</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-cash">icon-cash</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-arrows-left-right">icon-arrows-left-right</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-refresh">icon-refresh</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-credit-card">icon-credit-card</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-trophy">icon-trophy</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-book-open">icon-book-open</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-pencil">icon-pencil</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-question-support">icon-question-support</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-android">icon-android</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-apple">icon-apple</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-four-points">icon-four-points</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-youtube">icon-youtube</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-linked-in">icon-linked-in</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-tiktok">icon-tiktok</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-instagram">icon-instagram</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-facebook">icon-facebook</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-trophy">icon-trophy</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-book-open">icon-book-open</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-pencil">icon-pencil</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-expert">icon-expert</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-heart">icon-heart</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-crown">icon-crown</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-location-outline">icon-location-outline</div>
+         <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-info-alert-icon">icon-info-alert-icon</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-minus-circle">icon-minus-circle</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-plus-circle">icon-plus-circle</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-ray">icon-ray</div>
+        <div style={{ background: '#4C42F6', padding:'1rem', color:'white',display:'flex', alignItems:'center', gap:'1rem'}} className="icon-clock">icon-clock</div>
+    </div>
+</Story>

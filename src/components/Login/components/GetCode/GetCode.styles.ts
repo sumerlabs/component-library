@@ -16,7 +16,7 @@ export const GetCodeContainer = styled.div`
 	.back {
     display: flex;
     align-items: center;
-    width: 47%;
+    width: 60%;
     justify-content: space-between;
 }
 
@@ -31,6 +31,7 @@ export const GetCodeContainer = styled.div`
 		justify-content: flex-start;
 		width: 87%;
 		gap: 0.5rem;
+		align-items: center;
 	}
 
 	.box-terms {
@@ -101,8 +102,8 @@ export const GetCodeContainer = styled.div`
 		height: 17px;
 	}
       .button-wsp:disabled {
-        background-color: ${({ theme }) => theme.colors.grayScale.gr5};
-        color: ${({ theme }) => theme.colors.white};
+        background-color: ${({ theme }) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.grayScale.gr5};
 		border: 1px solid ${({ theme }) => theme.colors.grayScale.gr5};
       }
 
@@ -124,13 +125,15 @@ export const WrapperInput = styled.div`
 		font-weight: 400;
 		font-size: 18px;
 		color: ${({ theme }) => theme.colors.black};
-		padding-bottom: 15px;
+		padding-bottom: 20px;
 	}
 
 	.text-phone-create {
     font-weight: 400;
     font-size: 16px;
     color: #646464;
+	padding-bottom: 1.5rem;
+	line-height: 140%;
 }
 	.input-box {
 		display: flex;

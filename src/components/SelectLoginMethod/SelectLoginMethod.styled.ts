@@ -12,11 +12,14 @@ padding-top: 2.5rem;
   .header {
     display: flex;
     flex-direction: column;
+    padding-bottom: 1rem;
     .welcome {
       display: flex;
       justify-content: space-around;
       .title {
         display: flex;
+        padding: 12px 0px;
+         width: 343px;
         flex-direction: column;
         justify-content: flex-end;
         gap: 15px;
@@ -42,11 +45,9 @@ padding-top: 2.5rem;
     font-weight: 400;
     font-size: 18px;
     line-height: 135%;
-    padding: 13px 0px;
-    width: 100%;
-    @media screen and (min-width: 768px) {
-      width: 45%;
-		}
+    padding: 12px 0px;
+    width: 343px;
+    font-weight: 700;
   }
   button {
     padding: 12px 16px;
@@ -54,7 +55,7 @@ padding-top: 2.5rem;
     height: 44px;
     background: #FFFFFF;
     border: 1px solid #DDE0F5;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     cursor: pointer;
     img {
@@ -87,5 +88,9 @@ padding-top: 2.5rem;
       line-height: 140%;
       color: #4C42F6;
     }
+  }
+  .facebook-btn{
+    background: #1877F2;
+    color: white;
   }
 `;

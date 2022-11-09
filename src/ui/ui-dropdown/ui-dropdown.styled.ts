@@ -53,6 +53,7 @@ export const Wrapper = styled.div`
     border-radius: 8px;
     align-items: center;
     box-sizing: border-box;
+    background-color: #FFFFFF;
     border: 1px solid #DDE0F5;
     justify-content: space-between;
     .text {

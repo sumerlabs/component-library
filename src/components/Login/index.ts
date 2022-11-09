@@ -11,5 +11,6 @@ export { default as SignOut } from '~/components/Login/icons/SignOut';
 export { default as Profile } from '~/components/Login/icons/Profile';
 export { default as Login } from '~/components/Login/Login';
 export * from "./services";
+export * from '~/components/Login/types';
 export type { Customer, ValidateCodeResponse, LoginProps } from '~/components/Login/types';
-export { LoginSteps, LoginType } from '~/components/Login/types';
+export { LoginSteps, LoginType, SelectMethod } from '~/components/Login/types';

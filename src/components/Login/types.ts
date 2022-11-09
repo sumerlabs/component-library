@@ -12,7 +12,11 @@ export enum LoginType {
   SELLER = 'seller',
 }
 
-export type LoginProps = {
+export enum SelectMethod {
+  EMAIL_METHOD = 'email',
+}
+
+export declare type LoginProps = {
   initialStep: LoginSteps;
   apiKey: string;
   apiUrl: string;
@@ -20,7 +24,7 @@ export type LoginProps = {
   logEvent: (event: string) => void;
   country: any;
   success?: (loginData?: ValidateCodeResponse) => void;
-  loginType: LoginType
+  loginType: LoginType,
 }
 
 export type ValidateCodeResponse = {

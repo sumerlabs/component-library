@@ -12,6 +12,16 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                                    setStepTo: (step: string) => void, loginType: LoginType,
                                    handleRegisterModal: () => void}): JSX.Element => {
 
+    const url = location?.origin;
+    console.log('url', url);
+    let disableGoogle = false;
+
+    if (url) {
+        console.log(url !== 'https://www.sumerlabs.com' && url !== 'https://www.dev.sumerlabs.com')
+        disableGoogle = url !== 'https://www.sumerlabs.com'
+            && url !== 'https://www.dev.sumerlabs.com' && !url.includes('dashboard');
+    }
+
     const [error, setError] = useState(false);
     const { t } = useTranslation();
     const facebook = async (token: string) => {
@@ -51,25 +61,26 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                         <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/sumer.png'}/>
                         <div className={'message'}>Bienvenido/a</div>
                     </div>
-                    <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/rocket.png'} alt={'rocket'}/>
                 </div>
             </div>
-            <hr />
             <div className={'body'}>
             <div className='login-sumer-text'>{t('login.login_sumer')}</div>
-                <GoogleLogin
-                    clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com"
-                    render={renderProps => (
-                        <button className={'facebook'} onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                            <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
-                            <label>{t('login.google_login')}</label>
-                        </button>
-                    )}
-                    buttonText="Login"
-                    onSuccess={google}
-                    onFailure={(error) => {handleLoginError(error)}}
-                    cookiePolicy={'single_host_origin'}
-                />
+                {
+                    !disableGoogle &&
+                    <GoogleLogin
+                        clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com"
+                        render={renderProps => (
+                            <button className={'facebook'} onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
+                                <label>{t('login.google_login')}</label>
+                            </button>
+                        )}
+                        buttonText="Login"
+                        onSuccess={google}
+                        onFailure={(error) => {handleLoginError(error)}}
+                        cookiePolicy={'single_host_origin'}
+                    />
+                }
                 <FacebookLogin
                     appId="382238867303639"
                     onSuccess={async (response) => {
@@ -79,8 +90,8 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                     }}
                     onFail={(error) => {handleLoginError(error)}}
                     render={({ onClick, logout }) => (
-                        <button className={'facebook'} onClick={onClick}>
-                            <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/fb.png'}/>
+                        <button className={'facebook-btn'} onClick={onClick}>
+                            <img src={'https://www.sumerlabs.com/prod/catalogue/facebokk-btn.png'}/>
                             <label>{t('login.facebook_login')}</label>
                         </button>
                     )}

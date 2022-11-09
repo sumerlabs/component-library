@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {FC, useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 import {
     Customer,
@@ -17,9 +17,9 @@ import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterI
 import Modal from '~/components/Modal';
 import { useTranslation } from 'react-i18next';
 
-const Login = ({ apiUrl, apiKey, logEvent,
+const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
-                   country, success, apiKeySp, loginType }: LoginProps) => {
+                   country, success, apiKeySp, loginType }) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [showModal, setShowModal] = useState(false);
@@ -67,6 +67,10 @@ const Login = ({ apiUrl, apiKey, logEvent,
   const handleRegisterModal = () => {
      setShowModal(m => !m);
   }
+
+  useEffect(() => {
+      setStep(initialStep);
+  }, [initialStep]);
 
   return (
       <LoginContainer ref={ref}>

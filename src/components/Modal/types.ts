@@ -5,6 +5,7 @@ export enum ModalType {
   LEFT = "left",
   RIGHT = "right",
   MOBILE_BOTTOM = "mobile-bottom",
+  TOP = "top"
 }
 
 export enum Screen {
@@ -21,6 +22,7 @@ export type ModalProps = {
     styles?: ModalStyleProps;
     element?: Element;
     closeElement?: React.ReactNode;
+    className?: string;
 }
 
 export type BorderRadius = {
@@ -34,6 +36,7 @@ export type ModalContent = {
     borderRadius?: BorderRadius;
     width?: string;
     height?: string;
+    top?: string;
     type?: ModalType;
     padding?: string;
     body?: Body

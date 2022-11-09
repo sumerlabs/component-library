@@ -1,9 +1,11 @@
 import React, { FC, useState } from "react";
-import { Wrapper } from "./ui-landing-header.styled";
+import { DownloadContent, Wrapper } from "./ui-landing-header.styled";
 import { UiLandingHeaderMenuItem, UiLandingHeaderMenuSubItem, UiLandingHeaderProps } from "./types";
 import { WEB_ASSETS } from "~/constants";
 import { goToApp } from "~/utils";
 import { UiButton } from "../ui-button";
+import Modal from "~/components/Modal";
+import { ModalType } from "~/components/Modal/types";
  
 const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   showLogin = true,
@@ -14,6 +16,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [openMobileTab, setOpenMobileTab] = useState<number | null>(null);
   const [openExpandibleTab, setOpenExpandibleTab] = useState<number | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
   const defaultMenuItems: UiLandingHeaderMenuItem[] = [
     {
@@ -76,12 +79,6 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
 
   const mobileMenuItems: UiLandingHeaderMenuItem[] = [
     {
-      icon: 'bubble-chat',
-      title: 'Comunidad',
-      description: 'FAQ y experiencias',
-      subItems: communityItems,
-    },
-    {
       icon: 'question-support',
       title: 'Sobre el equipo',
       description: 'Conoce nuestro equipo y su propósito',
@@ -96,6 +93,10 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+  const toggleOpenModal = ():void => {
+      setShowModal( (show) => !show)
   }
 
   return (
@@ -144,35 +145,50 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
           </div>
         </div>
       </div>
-      <div className="community">
-        <div className="clicker" onClick={() => setOpenExpandibleTab(t => t === 2 ? null : 2)}>
-          <div className="text">Comunidad</div>
-          <div className="icon icon-arrow" />
-        </div>
-        <div className={`submenu ${openExpandibleTab === 2 ? 'open' : 'close'}`}>
-          {communityItems.map(i => (
-            <a key={`community-actionable-${i.name}`} className="actionable" href={i.link}>
-              <div className={`icon icon-${i.icon}`} />
-              <div className="texts">
-                <div className="title">{i.name}</div>
-                <div className="description">{i.description}</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
       <div className="expert-link">
         <a className="text" href="/premium">Quiero ser Experto</a>
-        <div className="icon icon-expert" />
+        <div className="icon icon-crown" />
       </div>
       <div className="right-side">
-        {showLogin && <div className="login" onClick={onLoginClick}>Ingresar</div>}
-        <div className="download-button" onClick={() => goToApp(true)}>
+        {showLogin && <div className="login" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
+        <div className="download-button" onClick={() => toggleOpenModal()}>
           <span className="icon icon-android" />
           <span className="icon icon-apple" />
           <div className="text">Descargar la app</div>
         </div>
       </div>
+      <Modal
+        title={"Registrate en Sumer"}
+        show={showModal}
+        onClose={toggleOpenModal}
+        styles={{
+          content: {
+            borderRadius: {
+              bottomLeft: "10px",
+              bottomRight: "10px",
+              topLeft: "10px",
+              topRight: "10px",
+            },
+            width: "499px",
+            height: "auto",
+            type: ModalType.TOP,
+          },
+        }}
+      >
+        <DownloadContent>
+          <img
+            className="sumer-img"
+            src="https://www.sumerlabs.com/prod/catalogue/sumer-img.png"
+          />
+          <p className="text-acount">Aún no tienes una cuenta en Sumer.</p>
+          <p className="text-download">Descarga la app y crea tu cuenta</p>
+          <div className="download-app-button" onClick={() => goToApp(true)}>
+            <span className="icon icon-apple" />
+            <span className="icon icon-android" />
+            <div className="text">Descargar la app</div>
+          </div>
+        </DownloadContent>
+      </Modal>
       <div className={`mobile-menu ${showMobileMenu && 'show'}`}>
         {mobileMenuItems.map((menuItem, index) => (
           <div key={`mobile-menu-item-${menuItem.title}`} className={`item ${openMobileTab === index && 'open'}`}>
@@ -202,13 +218,17 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
             )}
           </div>
         ))}
-        <UiButton 
-          className="expert-button" 
-          appearance="expert"
-          onClick={handleExpertButtonClick} 
-          icon={<span className="icon-expert" />}
-        >Quiero ser Experto</UiButton>
-        {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar</div>}
+        <div className={'mobile-menu__expert'}>
+          <UiButton
+              className="expert-button"
+              appereance="expert"
+              onClick={handleExpertButtonClick}
+              icon={<span className="icon-crown" />}
+          >
+            Quiero ser Experto
+          </UiButton>
+        </div>
+        {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
       </div>
     </Wrapper>
   );

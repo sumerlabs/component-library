@@ -216,3 +216,26 @@ ModalWithCustomCloseElement.args = {
   },
   closeElement: <div>Custom close element</div>
 };
+
+export const DesktopWithTop = Template.bind({});
+
+DesktopWithTop.args = {
+  show: true,
+  onClose: () => {
+    console.log("Close Desktop");
+  },
+  children: child,
+  title: "Desktop With Top",
+  styles: {
+    content: {
+      width: "350px",
+      borderRadius: {
+        bottomLeft: "10px",
+        bottomRight: "10px",
+        topLeft: "10px",
+        topRight: "10px"
+      },
+      type: ModalType.TOP
+    }
+  }
+};
