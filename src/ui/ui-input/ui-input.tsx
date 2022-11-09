@@ -27,20 +27,22 @@ const UiInput: FC<UiInputProps> = ({
   const inputRef = useRef<HTMLInputElement| null>(null);
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [text, setText] = useState(value || '');
 
   useEffect(() => {
     if(inputRef.current && inputRef.current.value.length > 0){
       inputRef.current.classList.toggle('fill')
     }
   }, [])
-  
+
+  useEffect(() => {
+    setText(value || '')
+  }, [value])
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsActive(e.target.value.length > 0);
-    if (e.target.maxLength != -1) {
-      if (e.target.maxLength >= e.target.value.length) onChange(e);
-    } else {
-      onChange(e);
-    }
+    setText(e.target.value);
+    onChange(e);
   }
 
   return (
@@ -52,7 +54,7 @@ const UiInput: FC<UiInputProps> = ({
           type={`${showPassword ? 'text' : type}`}
           className={`input ${isActive && 'fill'} ${!!placeholder && 'is-placeholder'}`} 
           name={name}
-          value={value}
+          value={text}
           disabled={disabled}
           onBlur={onBlur}
           onFocus={onFocus}
