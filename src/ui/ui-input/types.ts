@@ -1,3 +1,4 @@
+import { FormikHandlers } from "formik";
 import { ChangeEvent } from "react";
 
 export declare type UiInputProps = {
@@ -6,7 +7,7 @@ export declare type UiInputProps = {
   hint?: string;
   label?: string;
   name?: string;
-  value?: string;
+  value?: string | number | any;
   style?: string;
   type?: 'text' | 'number' | 'password' | 'email';
   maxLength?: number;
@@ -17,7 +18,7 @@ export declare type UiInputProps = {
   hasError?: boolean;
   success?: boolean;
   errorMessage?: string;
-  onFocus?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: FormikHandlers["handleBlur"];
+  onChange: FormikHandlers["handleChange"];
+  onInput?: (event: any) => any;
 };

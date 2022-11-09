@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, FC, useEffect, useRef, useState, KeyboardEvent } from "react";
 import { Wrapper } from "./ui-input.styled";
 import { UiInputProps } from "./types";
  
@@ -20,8 +20,8 @@ const UiInput: FC<UiInputProps> = ({
   minLength,
   errorMessage,
   onChange,
-  onFocus,
-  onBlur
+  onBlur,
+  onInput
 }) => {
 
   const inputRef = useRef<HTMLInputElement| null>(null);
@@ -33,17 +33,19 @@ const UiInput: FC<UiInputProps> = ({
     if(inputRef.current && inputRef.current.value.length > 0){
       inputRef.current.classList.toggle('fill')
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     setText(value || '')
-  }, [value])
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  }, [value]);
+  
+  const handleChange = (e: ChangeEvent<any>) => {
     setIsActive(e.target.value.length > 0);
     setText(e.target.value);
     onChange(e);
   }
+
+  const handleFocus = (event: any) => event.target.select();
 
   return (
     <Wrapper className={`${className} ${!!hasError && 'error'} ${!!success && 'success'}`}>
@@ -57,8 +59,12 @@ const UiInput: FC<UiInputProps> = ({
           value={text}
           disabled={disabled}
           onBlur={onBlur}
-          onFocus={onFocus}
+          onFocus={handleFocus}
           onChange={handleChange}
+          onInput={onInput}
+          onKeyPress={(e: KeyboardEvent<HTMLElement>) => {
+            e.key === "Enter" && e.preventDefault();
+          }}
           maxLength={maxLength}
           minLength={minLength}
           placeholder={placeholder}
