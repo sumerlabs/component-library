@@ -45,7 +45,12 @@ const UiInput: FC<UiInputProps> = ({
   const handleChange = (e: ChangeEvent<any>) => {
     setIsActive(e.target.value.length > 0);
     setText(e.target.value);
-    onChange(e);
+    
+    if (e.target.maxLength != -1) {
+      if (e.target.maxLength >= e.target.value.length) onChange(e);
+    } else {
+      onChange(e);
+    }
   }
 
   return (
