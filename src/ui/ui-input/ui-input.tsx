@@ -36,7 +36,8 @@ const UiInput: FC<UiInputProps> = ({
   }, []);
 
   useEffect(() => {
-    setText(value || '')
+    setText(value || '');
+    setIsActive(!!value);
   }, [value]);
   
   const handleChange = (e: ChangeEvent<any>) => {
