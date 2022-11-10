@@ -18,7 +18,9 @@ export declare type UiInputProps = {
   hasError?: boolean;
   success?: boolean;
   errorMessage?: string;
+  role?: string;
   onBlur?: FormikHandlers["handleBlur"];
   onChange: FormikHandlers["handleChange"];
   onInput?: (event: any) => any;
+  onFocus?: (event: any) => any;
 };
