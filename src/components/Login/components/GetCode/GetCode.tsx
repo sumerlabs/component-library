@@ -96,7 +96,7 @@ const GetCode = ({
 							<div className={'head'}>
 								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
 									<img className='img-back' src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
-									<img  src='https://www.sumerlabs.com/prod/catalogue/logoSumer.png'/>
+									<img className='img-sumer'  src='https://www.sumerlabs.com/prod/coupon-templates/sumerImg.png'/>
 								</div>
 							</div>
 							<WrapperInput>
@@ -108,7 +108,7 @@ const GetCode = ({
 											: ''
 									}`}>
 									<div className='box-phone-create'>
-										<p className='text-login'>{t('login.title')}</p>
+										<p className='text-login'>{t('login.title')}</p><br/>
 										<p className='text-phone-create'>{t('login.number_phone')}</p>
 									</div>
 									<UiPhone
@@ -127,6 +127,7 @@ const GetCode = ({
 										  }}
 										  hasError={(touched.phone || touched.prefixPhone) && (!!errors.phone || !!errors.prefixPhone)}
 									/>
+									{ error && <div className='box-error-code'>{t('login.invalidPhoneNumber')}</div>}
 								</div>
 							</WrapperInput>
 							<div className="box-term-check">
@@ -180,7 +181,6 @@ const GetCode = ({
 					);
 				}}
 			</Formik>
-			{ error && <div className='box-error-code'>{t('login.invalidPhoneNumber')}</div>}
 		</GetCodeContainer>
 	);
 };
