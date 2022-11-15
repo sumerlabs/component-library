@@ -8,13 +8,12 @@ const RegisterInApp = (): JSX.Element => {
 
     return (
         <RegisterInAppContainer>
-            <img src={'https://sumerlabs.com/prod/assets/web/login/user-q.png'} alt={'user'}/>
+            <img className='sumer-logo' src={'https://sumerlabs.com/prod/coupon-templates/Isotipo-sumer.png'} alt={'user'}/>
             <div className="container">
-                <div className={'exclamation'}>Oh oh!</div>
-                <div>{t('register.sumer_account')}</div>
+                <div className={'exclamation'}>{t('register.not_account')}</div>
+                <div className='download-text'>{t('register.download_app')}</div>
             </div>
             <div className="container">
-                <div>{t('register.download_app')}</div>
                 <DownloadAppButton />
             </div>
         </RegisterInAppContainer>

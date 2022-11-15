@@ -7,7 +7,8 @@ import {
     RegisterMessage,
     UpdateUserData,
     ValidateCode,
-    SelectLoginMethod
+    SelectLoginMethod,
+    ModalType
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 import { LoginProps, LoginSteps } from './types';
@@ -96,7 +97,18 @@ const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
           {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
               handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
           {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
-          <Modal show={showModal} onClose={() => {setShowModal(false)}}
+          <Modal styles={{
+          content: {
+              type: ModalType.DEFAULT,
+            borderRadius: {
+              bottomLeft: "10px",
+              bottomRight: "10px",
+              topLeft: "10px",
+              topRight: "10px",
+            },
+            height: "474px",
+          },
+        }} show={showModal} onClose={() => {setShowModal(false)}}
                  title={t('login.register')} element={ref.current as unknown as Element}>
               <RegisterInApp />
           </Modal>
