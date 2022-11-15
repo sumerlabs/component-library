@@ -82,7 +82,9 @@ const GetCodeByEmail = ({
 									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
 									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
 								</div>
+								<br/>
 								<p className="title-login-email">{t('login.title')}</p>
+								<br/>
 							</div>
 							<WrapperInputRegisterBYEmail>
 								<Input

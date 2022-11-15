@@ -16,7 +16,7 @@ export const GetCodeContainer = styled.div`
 	.back {
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 62%;
     justify-content: space-between;
 }
 
@@ -24,6 +24,11 @@ export const GetCodeContainer = styled.div`
 		width: 18px;
 		height: 18px;
 		cursor: pointer;
+	}
+
+	.img-sumer{
+		width: 94px;
+		height: 30px;
 	}
 
 	.box-term-check {
@@ -112,8 +117,6 @@ export const GetCodeContainer = styled.div`
 		font-size:14px;
 		line-height:140%;
 		font-weight: 400;
-        text-align: center;
-        padding-top: 14px;
       }
 `;
 
