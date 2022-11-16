@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 
 export const RegisterInAppContainer = styled.div`
-	display: flex;
+	  display: flex;
     flex-direction: column;
     max-width: 800px;
     align-items: center;
     gap: 30px;
+    background-color: blue;
   img {
     width: 180px;
     height: 180px;
+  }
+
+  .sumer-logo{
+    width: 132px;
+    height: 138px;
   }
   .container {
     display: flex;
@@ -18,8 +24,11 @@ export const RegisterInAppContainer = styled.div`
   }
   .exclamation {
     font-weight: 700;
-    font-size: 18px;
-    line-height: 135%;
-    color: #000000;
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  .download-text{
+    padding-top: .5rem;
   }
 `;
