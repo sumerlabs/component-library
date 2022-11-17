@@ -6,7 +6,6 @@ export const RegisterInAppContainer = styled.div`
     max-width: 800px;
     align-items: center;
     gap: 30px;
-    background-color: blue;
   img {
     width: 180px;
     height: 180px;
