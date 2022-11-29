@@ -49,7 +49,7 @@ const UiPhone: FC<UiPhoneProps> = ({
         hasError={hasError}
         onBlur={onBlur}
         onFocus={onFocusInput}
-        onChange={(e) => handlePhoneChange(e.target.value)}
+        onChange={(e: any) => handlePhoneChange(e.target.value)}
       />
       {(!!hint || hasError) && <div className="hint">{errorMessage || hint}</div>}
     </Wrapper>
