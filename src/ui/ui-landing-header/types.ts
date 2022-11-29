@@ -1,8 +1,11 @@
+import {UiLandingHeaderStyled} from "~/ui/ui-landing-header/ui-landing-header.styled";
+
 export declare type UiLandingHeaderProps = {
   showLogin?: boolean;
   className?: string;
   onLoginClick?: () => void;
-};
+} & UiLandingHeaderStyledProps;
+
 
 export declare type UiLandingHeaderMenuSubItem = {
   name: string;
@@ -18,3 +21,9 @@ export declare type UiLandingHeaderMenuItem = {
   link?: string;
   subItems?: UiLandingHeaderMenuSubItem[];
 };
+
+export declare type UiLandingHeaderTheme = 'light' | 'dark'
+
+export declare type UiLandingHeaderStyledProps ={
+  appearance? : UiLandingHeaderTheme;
+}

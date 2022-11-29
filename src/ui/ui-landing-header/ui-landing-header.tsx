@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { DownloadContent, Wrapper } from "./ui-landing-header.styled";
+import {DownloadContent, UiLandingHeaderStyled} from "./ui-landing-header.styled";
 import { UiLandingHeaderMenuItem, UiLandingHeaderMenuSubItem, UiLandingHeaderProps } from "./types";
 import { WEB_ASSETS } from "~/constants";
 import { goToApp } from "~/utils";
@@ -11,12 +11,14 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   showLogin = true,
   className,
   onLoginClick,
+  appearance,
 }) => {
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [openMobileTab, setOpenMobileTab] = useState<number | null>(null);
   const [openExpandibleTab, setOpenExpandibleTab] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
+
 
   const defaultMenuItems: UiLandingHeaderMenuItem[] = [
     {
@@ -100,7 +102,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   }
 
   return (
-    <Wrapper className={className}>
+    <UiLandingHeaderStyled appearance={appearance} className={className}>
       <div className="menu-icon" onClick={() => setShowMobileMenu(a => !a)}>
         {!showMobileMenu ? 
           <span className="icon icon-burger-menu" /> :
@@ -108,7 +110,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         }
       </div>
       <a className="logo" href="/">
-        <img src={`${WEB_ASSETS}/images/sumer-logo-black.png`} alt="Main logo" className="img" />
+        <img src={ appearance === 'dark' ? `${WEB_ASSETS}/images/sumer-logo-white.png` : `${WEB_ASSETS}/images/sumer-logo-black.png` } alt="Main logo" className="img" />
       </a>
       <div className="spacer" />
       <div className="points">
@@ -230,7 +232,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
         {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
       </div>
-    </Wrapper>
+    </UiLandingHeaderStyled>
   );
 }
  
