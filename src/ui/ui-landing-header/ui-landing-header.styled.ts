@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Breakpoints } from "~/constants";
+import {UiLandingHeaderStyledProps} from "~/ui";
 
-export const Wrapper = styled.div`
+export const UiLandingHeaderStyled = styled.div<UiLandingHeaderStyledProps>`
   z-index: 99;
   width: 100%;
   height: 80px;
@@ -61,11 +62,11 @@ export const Wrapper = styled.div`
     margin: 0 0 0 36px;
     align-items: center;
     .text {
-      color: #0C1220;
       font-size: 18px;
       font-weight: 400;
       line-height: 135%;
       text-decoration: none;
+      color: black;
     }
     .clicker {
       display: flex;
@@ -278,7 +279,6 @@ export const Wrapper = styled.div`
     }
   }
   @media screen and (min-width: ${Breakpoints.LaptopShort}) {
-    background-color: #FFFFFF;
     border: 1px solid #D2D2D2;
     .menu-icon {
       display: none;
@@ -316,6 +316,25 @@ export const Wrapper = styled.div`
       margin: 0 120px 0 auto;
     }
   }
+
+${({ appearance, theme }) =>
+        appearance === "dark" &&
+    `
+    background: ${theme.colors.black};
+    color ${theme.colors.white};    
+    
+    .expert-link{
+        .text{
+        color: ${theme.colors.white};
+        }
+    }
+    .clicker{
+        .text{
+        color: ${theme.colors.white};
+        }
+    }
+    `
+  }
 `;
 
 export const DownloadContent = styled.div`
@@ -341,7 +360,7 @@ export const DownloadContent = styled.div`
     background-color: ${({ theme }) => theme.colors.black};
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.5rem;   
     border-radius: 8px;
     padding: 14px 8px;
     width: 70%;
@@ -349,5 +368,6 @@ export const DownloadContent = styled.div`
     margin-bottom: 1rem;
     cursor: pointer;
   }
+  
 `;
 
