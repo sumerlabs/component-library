@@ -11,5 +11,6 @@ export const EVENTS = {
     SELECT_INPUT_BUYER_NAME: "web_select_input_buyer_name",
     SELECT_BUYER_LAST_NAME: "web_select_input_buyer_last_name",
     SELECT_CONFIRM_NAME: "web_select_confirm_name",
-    SELECT_LOGOUT: "web_select_logout"
+    SELECT_LOGOUT: "web_select_logout",
+    SUCCESS_LOGIN_METHOD:'web_view_sumer_web_method'
 }
