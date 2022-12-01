@@ -6,9 +6,9 @@ const AuthContext = React.createContext({
     user: null
 });
 
-export function AuthContextProvider({ children, url, callback, tokenKey = 'accessToken' } :
+export function AuthContextProvider({ children, url, callback, onError, tokenKey = 'accessToken' } :
                                         { children: React.ReactNode, url: string, tokenKey?: string,
-                                            callback?: (user: any) => void}) {
+                                            callback?: (user: any) => void, onError?: () => void}) {
     const [user, setUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [accessToken, setAccessToken] = useLocalStorage(tokenKey, '');
@@ -31,7 +31,9 @@ export function AuthContextProvider({ children, url, callback, tokenKey = 'acces
                     setIsLoggedIn(true)
                     setAccessToken(token);
                     callback && callback(data)
-                });
+                }).catch(() => {
+                    onError && onError()
+            });
         }
     }, []);
     return (
