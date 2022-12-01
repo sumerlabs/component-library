@@ -12,7 +12,7 @@ import {
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 import { LoginProps, LoginSteps } from './types';
-import { useLocalStorage } from '~/common';
+import {EVENTS, useLocalStorage} from '~/common';
 import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCodeByEmail';
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
 import Modal from '~/components/Modal';
@@ -47,10 +47,11 @@ const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
         }
     };
 
-    const ValidationSuccess = async (token: string, expiresIn: number, refreshToken: string) => {
+    const validationSuccess = async (token: string, expiresIn: number, refreshToken: string, channel: string) => {
         setAccessToken(token);
         setExpiresIn(expiresIn);
         setRefreshToken(refreshToken);
+        logEvent(EVENTS.SUCCESS_LOGIN_METHOD, { channel })
         success && success({accessToken: token, expiresIn, refreshToken});
     };
 
@@ -78,7 +79,7 @@ const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
           {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
                                                                          handleRegisterModal={handleRegisterModal}
                                                                          loginType={loginType}
-                                                                         validationSuccess={ValidationSuccess}
+                                                                         validationSuccess={validationSuccess}
                                                                          apiUrl={apiUrl} apiKey={apiKey} />}
           {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
                                                     countries={countries}
@@ -88,10 +89,11 @@ const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
           {step === LoginSteps.EMAIL && <GetCodeByEmail handleStepChange={handleStepChange}
                                                     setStepTo={setStepTo}  logEvent={logEvent}
                                                     apiUrl={apiUrl} apiKey={apiKeySp} />}
-          {step === LoginSteps.VALIDATE_CODE && <ValidateCode ValidationSuccess={ValidationSuccess}
+          {step === LoginSteps.VALIDATE_CODE && <ValidateCode validationSuccess={validationSuccess}
                                                               sendTo={sendTo!}
                                                               setStepTo={setStepTo}
-                                                              prefixSendTo={prefixSendTo!} channel={channel!}
+                                                              prefixSendTo={prefixSendTo!}
+                                                              channel={channel!}
                                                               logEvent={logEvent}
                                                               apiUrl={apiUrl} apiKey={apiKey}/>}
           {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData

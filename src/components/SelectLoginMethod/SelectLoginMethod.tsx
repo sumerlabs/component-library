@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { LoginType } from '~/components/Login/types';
 
 const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType, handleRegisterModal }:
-                               { validationSuccess: (token: string, expiresIn: number, refreshToken: string)
+                               { validationSuccess: (token: string, expiresIn: number, refreshToken: string, channel: string)
                                        => void, apiUrl: string, apiKey: string,
                                    setStepTo: (step: string) => void, loginType: LoginType,
                                    handleRegisterModal: () => void}): JSX.Element => {
@@ -27,7 +27,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
     const facebook = async (token: string) => {
         try {
             const response = await facebookLogin({apiUrl, apiKey, token});
-            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken, 'facebook');
         } catch (e) {
             console.log(e);
             handleRegisterModal();
@@ -37,7 +37,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
     const google = async (googleResponse: any) => {
         try {
             const response = await googleLogin({apiUrl, apiKey, token: googleResponse.tokenId});
-            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken, 'google');
         } catch (e) {
             console.log(e);
             handleRegisterModal();
