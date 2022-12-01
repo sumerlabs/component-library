@@ -33,7 +33,7 @@ export function AuthContextProvider({ children, url, callback, tokenKey = 'acces
                     callback && callback(data)
                 });
         }
-    }, [accessToken, setAccessToken, url]);
+    }, []);
     return (
         <AuthContext.Provider value={{
             isLoggedIn,
