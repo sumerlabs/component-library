@@ -307,3 +307,9 @@
 .icon-megaphone:before {
   content: "\e961";
 }
+.icon-filled-clock:before {
+  content: "\e962";
+}
+.icon-bank:before {
+  content: "\e963";
+}
