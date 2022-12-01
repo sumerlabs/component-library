@@ -313,3 +313,9 @@
 .icon-bank:before {
   content: "\e963";
 }
+.icon-filled-lock:before {
+  content: "\e964";
+}
+.icon-outlined-shield:before {
+  content: "\e965";
+}
