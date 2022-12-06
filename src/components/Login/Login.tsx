@@ -44,6 +44,7 @@ const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
         if (response.userId) {
             response.prefixPhone = prefixSendTo;
             response.phone = sendTo;
+            logEvent(EVENTS.SUCCESS_LOGIN_METHOD, { channelSteps: 'Login con teléfono' })
             success && success({accessToken: accessToken, expiresIn, refreshToken});
         }
     };
