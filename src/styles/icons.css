@@ -319,3 +319,6 @@
 .icon-outlined-shield:before {
   content: "\e965";
 }
+.icon-font:before {
+  content: "\e966";
+}
