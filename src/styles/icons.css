@@ -322,3 +322,21 @@
 .icon-font:before {
   content: "\e966";
 }
+.icon-sumer-logo:before {
+  content: "\e967";
+}
+.icon-e-twitter:before {
+  content: "\e968";
+}
+.icon-e-facebook:before {
+  content: "\e969";
+}
+.icon-e-instagram:before {
+  content: "\e96a";
+}
+.icon-e-tik-tok:before {
+  content: "\e96b";
+}
+.icon-camera:before {
+  content: "\e96c";
+}
