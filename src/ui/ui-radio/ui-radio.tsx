@@ -10,8 +10,10 @@ const UiRadio: FC<UiRadioProps> = ({
   const [isActive, setIsActive] = useState(false);
 
   const handleChange = () => {
-    setIsActive(a => !a);
-    onChange && onChange(!isActive);
+    if(!isActive){
+      setIsActive(a => !a);
+      onChange && onChange(!isActive);
+    }
   }
 
   useEffect(() => {
