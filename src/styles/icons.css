@@ -340,3 +340,10 @@
 .icon-camera:before {
   content: "\e96c";
 }
+.icon-light-dots-three-circle:before {
+  content: "\e96d";
+}
+.icon-close-circle:before {
+  content: "\e96e";
+  color: #fafafa;
+}
