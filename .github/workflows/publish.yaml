@@ -20,4 +20,5 @@ jobs:
         with:
           node-version: '16.x' 
           registry-url: 'https://registry.npmjs.org/:_authToken=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'
+      - run: npm install
       - run: npm run patch
