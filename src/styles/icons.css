@@ -348,5 +348,7 @@
 }
 .icon-diamonds:before {
   content: "\e96f";
-  color: #646464;
+}
+.icon-arrow-go-up:before {
+  content: "\e970";
 }
