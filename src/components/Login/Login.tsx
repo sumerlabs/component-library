@@ -17,11 +17,10 @@ import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCode
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
 import Modal from '~/components/Modal';
 import { useTranslation } from 'react-i18next';
-import * as events from "events";
 
-const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
+const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
-                   country, success, apiKeySp, loginType }) => {
+                   country, success, apiKeySp, loginType, registerInApp } : LoginProps ) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [showModal, setShowModal] = useState(false);

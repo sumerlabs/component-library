@@ -25,6 +25,7 @@ export declare type LoginProps = {
   country: any;
   success?: (loginData?: ValidateCodeResponse) => void;
   loginType: LoginType,
+  registerInApp?: boolean,
 }
 
 export type ValidateCodeResponse = {
