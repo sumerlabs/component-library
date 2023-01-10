@@ -24,7 +24,6 @@ const Login = ({ apiUrl, apiKey, logEvent,
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [showModal, setShowModal] = useState(false);
-  const ref = useRef(null);
   const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
   const [expiresIn, setExpiresIn] = useLocalStorage('expiresIn', 0);
   const [refreshToken, setRefreshToken] = useLocalStorage('refreshToken', '');
@@ -76,7 +75,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
   }, [initialStep]);
 
   return (
-      <LoginContainer ref={ref}>
+      <LoginContainer>
           {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
                                                                          handleRegisterModal={handleRegisterModal}
                                                                          loginType={loginType}
@@ -112,7 +111,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
             height: "474px",
           },
         }} show={showModal} onClose={() => {setShowModal(false)}}
-                 title={t('login.register')} element={ref.current as unknown as Element}>
+                 title={t('login.register')}>
               <RegisterInApp />
           </Modal>
       </LoginContainer>
