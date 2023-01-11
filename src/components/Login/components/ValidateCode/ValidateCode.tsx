@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { GetCodeService, ValidateCodeService } from '~/components/Login/services';
 import { LoginSteps, SelectMethod } from '~/components/Login/types';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '~/providers/copies.provider';
 import SmsValidation from '~/components/Login/components/SmsValidation/SmsValidation';
 import { useLocalStorage } from '~/common/localStorage';
 import { EVENTS } from '~/common/consts/events';

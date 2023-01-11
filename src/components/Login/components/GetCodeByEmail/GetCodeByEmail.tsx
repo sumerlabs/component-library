@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '~/providers/copies.provider';
 import {
 	GetCodeByEmailContainer, WrapperInputRegisterBYEmail
 } from './GetCodeByEmail.styles';
@@ -8,7 +8,6 @@ import { Formik } from 'formik';
 import { Input } from '~/components/Inputs';
 import { GetCodeService } from '../../services';
 import { LoginSteps } from '../../types';
-import Chat from '~/icons/Chat';
 import { EVENTS } from '~/common/consts/events';
 
 const GetCodeByEmail = ({

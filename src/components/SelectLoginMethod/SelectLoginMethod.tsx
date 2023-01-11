@@ -3,8 +3,8 @@ import { SelectLoginMethodContainer } from '~/components/SelectLoginMethod/Selec
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookLogin, googleLogin, LoginSteps } from '~/components';
 import GoogleLogin from 'react-google-login';
-import { useTranslation } from 'react-i18next';
 import { LoginType } from '~/components/Login/types';
+import { useTranslation } from '~/providers/copies.provider';
 
 const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType, handleRegisterModal }:
                                { validationSuccess: (token: string, expiresIn: number, refreshToken: string, channel: string)

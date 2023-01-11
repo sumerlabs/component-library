@@ -3,7 +3,7 @@ import { UpdateUserDataContainer } from './UpdateUserData.styles';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { UpdateUserDataService } from '~/components/Login/services';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '~/providers/copies.provider';
 import ProgressBar from '~/components/ProgressBar/ProgressBar';
 import { EVENTS } from '~/common/consts/events';
 import { useLocalStorage } from '~/common/localStorage';

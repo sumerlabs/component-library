@@ -17,6 +17,7 @@ import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCode
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
 import Modal from '~/components/Modal';
 import { useTranslation } from 'react-i18next';
+import { CopiesContextProvider } from '~/providers/copies.provider';
 
 const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
@@ -75,46 +76,48 @@ const Login = ({ apiUrl, apiKey, logEvent,
   }, [initialStep]);
 
   return (
-      <LoginContainer>
-          {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
-                                                                         handleRegisterModal={handleRegisterModal}
-                                                                         loginType={loginType}
-                                                                         validationSuccess={validationSuccess}
-                                                                         apiUrl={apiUrl} apiKey={apiKey} />}
-          {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
-                                                    countries={countries}
-                                                    setStepTo={setStepTo}
-                                                    country={country} logEvent={logEvent}
-                                                    apiUrl={apiUrl} apiKey={apiKeySp} />}
-          {step === LoginSteps.EMAIL && <GetCodeByEmail handleStepChange={handleStepChange}
-                                                    setStepTo={setStepTo}  logEvent={logEvent}
-                                                    apiUrl={apiUrl} apiKey={apiKeySp} />}
-          {step === LoginSteps.VALIDATE_CODE && <ValidateCode validationSuccess={validationSuccess}
-                                                              sendTo={sendTo!}
-                                                              setStepTo={setStepTo}
-                                                              prefixSendTo={prefixSendTo!}
-                                                              channel={channel!}
-                                                              logEvent={logEvent}
-                                                              apiUrl={apiUrl} apiKey={apiKey}/>}
-          {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
-              handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
-          {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
-          <Modal styles={{
-          content: {
-              type: ModalType.DEFAULT,
-            borderRadius: {
-              bottomLeft: "10px",
-              bottomRight: "10px",
-              topLeft: "10px",
-              topRight: "10px",
-            },
-            height: "474px",
-          },
-        }} show={showModal} onClose={() => {setShowModal(false)}}
-                 title={t('login.register')}>
-              <RegisterInApp />
-          </Modal>
-      </LoginContainer>
+      <CopiesContextProvider>
+          <LoginContainer>
+              {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
+                                                                             handleRegisterModal={handleRegisterModal}
+                                                                             loginType={loginType}
+                                                                             validationSuccess={validationSuccess}
+                                                                             apiUrl={apiUrl} apiKey={apiKey} />}
+              {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
+                                                        countries={countries}
+                                                        setStepTo={setStepTo}
+                                                        country={country} logEvent={logEvent}
+                                                        apiUrl={apiUrl} apiKey={apiKeySp} />}
+              {step === LoginSteps.EMAIL && <GetCodeByEmail handleStepChange={handleStepChange}
+                                                        setStepTo={setStepTo}  logEvent={logEvent}
+                                                        apiUrl={apiUrl} apiKey={apiKeySp} />}
+              {step === LoginSteps.VALIDATE_CODE && <ValidateCode validationSuccess={validationSuccess}
+                                                                  sendTo={sendTo!}
+                                                                  setStepTo={setStepTo}
+                                                                  prefixSendTo={prefixSendTo!}
+                                                                  channel={channel!}
+                                                                  logEvent={logEvent}
+                                                                  apiUrl={apiUrl} apiKey={apiKey}/>}
+              {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
+                  handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
+              {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
+              <Modal styles={{
+              content: {
+                  type: ModalType.DEFAULT,
+                borderRadius: {
+                  bottomLeft: "10px",
+                  bottomRight: "10px",
+                  topLeft: "10px",
+                  topRight: "10px",
+                },
+                height: "474px",
+              },
+            }} show={showModal} onClose={() => {setShowModal(false)}}
+                     title={t('login.register')}>
+                  <RegisterInApp />
+              </Modal>
+          </LoginContainer>
+      </CopiesContextProvider>
   );
 };
 
