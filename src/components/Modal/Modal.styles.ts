@@ -90,7 +90,7 @@ export const StyledModalOverlay = styled.div<ModalStyleProps>`
   position: fixed;
   inset: 0;
   background-color: ${({ overlay }) => overlay?.backgroundColor || 'rgba(0, 0, 0, 0.75)'};
-  z-index: 2000;
+  z-index: ${({ overlay }) => overlay?.zIndex || '2000'};
   top: 0;
   left: 0;
   width: 100%;

@@ -45,6 +45,7 @@ export type ModalContent = {
 
 export type Overlay = {
     backgroundColor?: string;
+    zIndex?: number;
 }
 
 export type Body = {
