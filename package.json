@@ -1,6 +1,6 @@
 {
   "name": "@sumerlabs/component-library",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "description": "Component library",
   "scripts": {
     "rollup": "rollup -c",
