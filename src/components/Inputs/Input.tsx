@@ -53,7 +53,7 @@ const Input = ({
         </label>
       
       {showError && touched && touched[name] && errors && errors[name] ? (
-        <ErrorMessage className="error">{errors[name]}</ErrorMessage>
+        <ErrorMessage className="error">{errors[name]?.toString()}</ErrorMessage>
       ) : null}
     </WrapperInput>
   );

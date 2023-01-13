@@ -101,7 +101,7 @@ const InputDocument = ({
       </div>
       {(touched?.idNumber && errors?.idNumber) ||
       (touched?.idType && errors?.idType) ? (
-        <ErrorMessage>{errors?.idNumber || errors?.idType}</ErrorMessage>
+        <ErrorMessage>{errors?.idNumber?.toString() || errors?.idType?.toString()}</ErrorMessage>
       ) : null}
     </WrapperInput>
   );

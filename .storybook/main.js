@@ -7,8 +7,7 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "themeprovider-storybook/register"
+    "@storybook/addon-interactions"
   ],
   "framework": "@storybook/react",
   webpackFinal: async (config) => {

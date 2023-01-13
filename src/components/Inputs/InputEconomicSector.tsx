@@ -47,7 +47,9 @@ const InputEconomicSector = ({
         </PhoneBox>
       </div>
       {touched?.economicSector && errors?.economicSector ? (
-        <ErrorMessage>{errors.economicSector}</ErrorMessage>
+        <ErrorMessage><div>
+          {errors.economicSector?.toString()}
+        </div></ErrorMessage>
       ) : null}
     </WrapperInput>
   );
