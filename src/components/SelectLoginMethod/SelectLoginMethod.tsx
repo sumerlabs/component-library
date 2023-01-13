@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SelectLoginMethodContainer } from '~/components/SelectLoginMethod/SelectLoginMethod.styled';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookLogin, googleLogin, LoginSteps } from '~/components';
+import GoogleLogin from 'react-google-login';
 import { LoginType } from '~/components/Login/types';
 import { useTranslation } from '~/providers/copies.provider';
 
@@ -33,6 +34,16 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
         }
     }
 
+    const google = async (googleResponse: any) => {
+        try {
+            const response = await googleLogin({apiUrl, apiKey, token: googleResponse.tokenId});
+            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken, 'google');
+        } catch (e) {
+            console.log(e);
+            handleRegisterModal();
+        }
+    }
+
     const handleLoginError = (error: any) => {
         console.log(error);
         setError(true);
@@ -54,6 +65,22 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             </div>
             <div className={'body'}>
             <div className='login-sumer-text'>{t('login.login_sumer')}</div>
+                {
+                    !disableGoogle &&
+                    <GoogleLogin
+                        clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com"
+                        render={renderProps => (
+                            <button className={'facebook'} onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
+                                <label>{t('login.google_login')}</label>
+                            </button>
+                        )}
+                        buttonText="Login"
+                        onSuccess={google}
+                        onFailure={(error) => {handleLoginError(error)}}
+                        cookiePolicy={'single_host_origin'}
+                    />
+                }
                 <FacebookLogin
                     appId="382238867303639"
                     onSuccess={async (response) => {

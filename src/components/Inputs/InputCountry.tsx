@@ -47,7 +47,7 @@ const InputCountry = ({
         </CountryBox>
       </div>
       {touched?.country && errors?.country ? (
-        <ErrorMessage>{errors.country?.toString()}</ErrorMessage>
+        <ErrorMessage>{errors.country}</ErrorMessage>
       ) : null}
     </WrapperInput>
   );

@@ -53,7 +53,7 @@ const InputPassword = ({
         </button>
       </div>
       {touched && touched[name] && errors && errors[name] ? (
-          <ErrorMessage>{errors[name]?.toString()}</ErrorMessage>
+          <ErrorMessage>{errors[name]}</ErrorMessage>
       ) : null}
     </WrapperInput>
   );

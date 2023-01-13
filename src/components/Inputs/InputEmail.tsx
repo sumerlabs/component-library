@@ -40,7 +40,7 @@ const InputEmail = ({
         </label>
       </div>
       {touched&& touched[name] && errors && errors[name] ? (
-        <ErrorMessage>{errors[name]?.toString()}</ErrorMessage>
+        <ErrorMessage>{errors[name]}</ErrorMessage>
       ) : null}
     </WrapperInput>
   );

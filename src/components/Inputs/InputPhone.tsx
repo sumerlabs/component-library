@@ -93,7 +93,7 @@ const InputPhone = ({
       </div>
       {(touched?.indicative && errors?.indicative) ||
       (touched?.phone && errors?.phone) ? (
-        <ErrorMessage>{errors.indicative?.toString() || errors.phone?.toString()}</ErrorMessage>
+        <ErrorMessage>{errors.indicative || errors.phone}</ErrorMessage>
       ) : null}
     </WrapperInput>
   );
