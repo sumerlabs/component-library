@@ -18,6 +18,7 @@ import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterI
 import Modal from '~/components/Modal';
 import { useTranslation } from 'react-i18next';
 import { CopiesContextProvider } from '~/providers/copies.provider';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
@@ -78,6 +79,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
   return (
       <CopiesContextProvider>
           <LoginContainer>
+              <GoogleOAuthProvider clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com">
               {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
                                                                              handleRegisterModal={handleRegisterModal}
                                                                              loginType={loginType}
@@ -116,6 +118,7 @@ const Login = ({ apiUrl, apiKey, logEvent,
                      title={t('login.register')}>
                   <RegisterInApp />
               </Modal>
+              </GoogleOAuthProvider>
           </LoginContainer>
       </CopiesContextProvider>
   );
