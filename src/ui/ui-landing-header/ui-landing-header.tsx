@@ -28,16 +28,28 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       link: "https://blog.sumerlabs.com/",
     },
     {
-      icon: 'book-open',
+      icon: 'question-support',
       title: "Ver tutoriales",
       description: "Te enseñamos cómo usar Sumer",
       link: "/tutoriales-sumer",
     },
     {
-      icon: 'trophy',
-      title: "Retos",
-      description: "Obtén recompensas para tu negocio",
-      link: "/retos",
+      icon: 'eye',
+      title: "Publicidad en 3 clics",
+      description: "Publicidad efectiva en 3 pasos",
+      link: "/publicidad",
+    },
+    {
+      icon: 'bag',
+      title: "Paquetes de Publicidad",
+      description: "Selecciona el mejor paquete para tu negocio",
+      link: "/publicidad/paquetes",
+    },
+    {
+      icon: 'book-open',
+      title: "Sumer directorio",
+      description: "Compra a un clic los mejores productos",
+      link: "https://www.sumerlabs.com/directorio/colombia",
     },
   ];
 
