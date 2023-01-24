@@ -355,3 +355,9 @@
 .icon-chart-line-up:before {
   content: "\e971";
 }
+.icon-map-pin-line:before {
+  content: "\e972";
+}
+.icon-light-percent:before {
+  content: "\e973";
+}
