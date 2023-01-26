@@ -40,12 +40,6 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       link: "/publicidad",
     },
     {
-      icon: 'bag',
-      title: "Paquetes de Publicidad",
-      description: "Selecciona el mejor paquete para tu negocio",
-      link: "/publicidad/paquetes",
-    },
-    {
       icon: 'book-open',
       title: "Sumer directorio",
       description: "Compra a un clic los mejores productos",
