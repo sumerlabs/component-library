@@ -361,3 +361,12 @@
 .icon-light-percent:before {
   content: "\e973";
 }
+.icon-chat-talk:before {
+  content: "\e974";
+}
+.icon-light-package:before {
+  content: "\e975";
+}
+.icon-line-start:before {
+  content: "\e976";
+}
