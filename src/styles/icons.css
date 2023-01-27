@@ -355,3 +355,18 @@
 .icon-chart-line-up:before {
   content: "\e971";
 }
+.icon-map-pin-line:before {
+  content: "\e972";
+}
+.icon-light-percent:before {
+  content: "\e973";
+}
+.icon-chat-talk:before {
+  content: "\e974";
+}
+.icon-light-package:before {
+  content: "\e975";
+}
+.icon-line-start:before {
+  content: "\e976";
+}
