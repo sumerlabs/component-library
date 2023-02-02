@@ -32,6 +32,9 @@ padding-top: 2.5rem;
         width: 163px;
         height: 163px;
       }
+      .message{
+        font-size: 18px;
+      }
     }
   }
   .body {
