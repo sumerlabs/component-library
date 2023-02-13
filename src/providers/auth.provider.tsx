@@ -15,7 +15,7 @@ export function AuthContextProvider({ children, url, callback, onError, tokenKey
     useEffect(() => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        const token = accessToken.length ? accessToken : urlParams.get(tokenKey);
+        const token = accessToken?.length ? accessToken : urlParams.get(tokenKey);
         if (token) {
             fetch(url, {
                 method: "GET",
