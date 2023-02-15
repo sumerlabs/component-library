@@ -370,3 +370,9 @@
 .icon-line-start:before {
   content: "\e976";
 }
+.icon-email-outline:before {
+  content: "\e977";
+}
+.icon-copy:before {
+  content: "\e978";
+}
