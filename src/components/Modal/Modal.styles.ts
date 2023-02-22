@@ -40,7 +40,7 @@ export const StyledModalTitle= styled.div`
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.002em;
-  color: ${({ theme }) => theme.colors.blackScale.b1};
+  color: #111111;
   margin: 0 auto;
 `;
 
