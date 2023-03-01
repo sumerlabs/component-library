@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 
 interface PaginationItemProps {
@@ -64,7 +64,7 @@ export const PaginationItem = styled.li<PaginationItemProps>`
     }
   }
 
-  ${({ disabled }) => disabled && `
+  ${({ disabled }) => disabled && css`
     pointer-events: none;
 
     .arrow::before {
@@ -78,7 +78,7 @@ export const PaginationItem = styled.li<PaginationItemProps>`
     }
   `}
 
-  ${({ theme, selected }) => selected && `
+  ${({ theme, selected }) => selected && css`
     color: ${theme?.colors?.blueScale?.b9 ? theme?.colors?.blueScale?.b9 : 'red'};
   `}
 `;

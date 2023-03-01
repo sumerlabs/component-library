@@ -19,9 +19,11 @@ const UiInput: FC<UiInputProps> = ({
   maxLength,
   minLength,
   errorMessage,
+  role = 'ds-input-component',
   onChange,
   onBlur,
-  onInput
+  onInput,
+  onFocus
 }) => {
 
   const inputRef = useRef<HTMLInputElement| null>(null);
@@ -36,22 +38,27 @@ const UiInput: FC<UiInputProps> = ({
   }, []);
 
   useEffect(() => {
-    setText(value || '')
+    setText(value || '');
+    setIsActive(!!value);
   }, [value]);
   
   const handleChange = (e: ChangeEvent<any>) => {
     setIsActive(e.target.value.length > 0);
     setText(e.target.value);
-    onChange(e);
+    
+    if (e.target.maxLength != -1) {
+      if (e.target.maxLength >= e.target.value.length) onChange(e);
+    } else {
+      onChange(e);
+    }
   }
 
-  const handleFocus = (event: any) => event.target.select();
-
   return (
-    <Wrapper className={`${className} ${!!hasError && 'error'} ${!!success && 'success'}`}>
+    <Wrapper role={`${role}-container`} className={`${className} ${!!hasError && 'error'} ${!!success && 'success'}`}>
       <div className={`input-box ${style} ${prefix && 'is-prefix'}`}>
-        {prefix && <span className="prefix">{prefix}</span>}
-        <input 
+        {prefix && <span role={`${role}-input-prefix`} className="prefix">{prefix}</span>}
+        <input
+          role={`${role}-input`}
           ref={inputRef}
           type={`${showPassword ? 'text' : type}`}
           className={`input ${isActive && 'fill'} ${!!placeholder && 'is-placeholder'}`} 
@@ -59,7 +66,7 @@ const UiInput: FC<UiInputProps> = ({
           value={text}
           disabled={disabled}
           onBlur={onBlur}
-          onFocus={handleFocus}
+          onFocus={onFocus}
           onChange={handleChange}
           onInput={onInput}
           onKeyPress={(e: KeyboardEvent<HTMLElement>) => {
@@ -72,13 +79,14 @@ const UiInput: FC<UiInputProps> = ({
         />
         {!!label && <span className="label">{label}</span>}
         {type === 'password' && (
-          <span 
+          <span
+            role={`${role}-icon-password`}
             onClick={() => setShowPassword(s => !s)} 
             className={`show-password ${showPassword ? 'icon-hide-password' : 'icon-show-password'}`}
           />
         )}
       </div>
-      {(!!hint || hasError) && <div className="hint">{errorMessage || hint}</div>}
+      {(!!hint || hasError) && <div role={`${role}-message`} className="hint">{errorMessage || hint}</div>}
     </Wrapper>
   );
 }

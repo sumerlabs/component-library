@@ -1,6 +1,6 @@
 {
   "name": "@sumerlabs/component-library",
-  "version": "4.2.1",
+  "version": "5.0.13",
   "description": "Component library",
   "scripts": {
     "rollup": "rollup -c",
@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@greatsumini/react-facebook-login": "^3.2.1",
+    "@react-oauth/google": "^0.6.0",
     "framer-motion": "^6.2.8",
     "humps": "^2.0.1",
     "react-google-login": "^5.2.2",

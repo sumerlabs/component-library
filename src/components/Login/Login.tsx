@@ -7,23 +7,25 @@ import {
     RegisterMessage,
     UpdateUserData,
     ValidateCode,
-    SelectLoginMethod
+    SelectLoginMethod,
+    ModalType
 } from '~/components';
 import { fetcher } from '~/components/Login/fetcher';
 import { LoginProps, LoginSteps } from './types';
-import { useLocalStorage } from '~/common';
+import {EVENTS, useLocalStorage} from '~/common';
 import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCodeByEmail';
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
 import Modal from '~/components/Modal';
 import { useTranslation } from 'react-i18next';
+import { CopiesContextProvider } from '~/providers/copies.provider';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
+const Login = ({ apiUrl, apiKey, logEvent,
                    initialStep = LoginSteps.SELECT_LOGIN_METHOD,
-                   country, success, apiKeySp, loginType }) => {
+                   country, success, apiKeySp, loginType, registerInApp } : LoginProps ) => {
   const [step, setStep] = useState<string>(initialStep);
   const [sendTo, setSendTop] = useState<string>();
   const [showModal, setShowModal] = useState(false);
-  const ref = useRef(null);
   const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
   const [expiresIn, setExpiresIn] = useLocalStorage('expiresIn', 0);
   const [refreshToken, setRefreshToken] = useLocalStorage('refreshToken', '');
@@ -42,14 +44,16 @@ const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
         if (response.userId) {
             response.prefixPhone = prefixSendTo;
             response.phone = sendTo;
+            logEvent(EVENTS.SUCCESS_LOGIN_METHOD, { channelSteps: 'Login con teléfono' })
             success && success({accessToken: accessToken, expiresIn, refreshToken});
         }
     };
 
-    const ValidationSuccess = async (token: string, expiresIn: number, refreshToken: string) => {
+    const validationSuccess = async (token: string, expiresIn: number, refreshToken: string, channel: string) => {
         setAccessToken(token);
         setExpiresIn(expiresIn);
         setRefreshToken(refreshToken);
+        logEvent(EVENTS.SUCCESS_LOGIN_METHOD, { channel })
         success && success({accessToken: token, expiresIn, refreshToken});
     };
 
@@ -73,34 +77,50 @@ const Login: FC<LoginProps> = ({ apiUrl, apiKey, logEvent,
   }, [initialStep]);
 
   return (
-      <LoginContainer ref={ref}>
-          {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
-                                                                         handleRegisterModal={handleRegisterModal}
-                                                                         loginType={loginType}
-                                                                         validationSuccess={ValidationSuccess}
-                                                                         apiUrl={apiUrl} apiKey={apiKey} />}
-          {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
-                                                    countries={countries}
-                                                    setStepTo={setStepTo}
-                                                    country={country} logEvent={logEvent}
-                                                    apiUrl={apiUrl} apiKey={apiKeySp} />}
-          {step === LoginSteps.EMAIL && <GetCodeByEmail handleStepChange={handleStepChange}
-                                                    setStepTo={setStepTo}  logEvent={logEvent}
-                                                    apiUrl={apiUrl} apiKey={apiKeySp} />}
-          {step === LoginSteps.VALIDATE_CODE && <ValidateCode ValidationSuccess={ValidationSuccess}
-                                                              sendTo={sendTo!}
-                                                              setStepTo={setStepTo}
-                                                              prefixSendTo={prefixSendTo!} channel={channel!}
-                                                              logEvent={logEvent}
-                                                              apiUrl={apiUrl} apiKey={apiKey}/>}
-          {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
-              handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
-          {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
-          <Modal show={showModal} onClose={() => {setShowModal(false)}}
-                 title={t('login.register')} element={ref.current as unknown as Element}>
-              <RegisterInApp />
-          </Modal>
-      </LoginContainer>
+      <CopiesContextProvider>
+          <LoginContainer>
+              <GoogleOAuthProvider clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com">
+              {step === LoginSteps.SELECT_LOGIN_METHOD && <SelectLoginMethod setStepTo={setStepTo}
+                                                                             handleRegisterModal={handleRegisterModal}
+                                                                             loginType={loginType}
+                                                                             validationSuccess={validationSuccess}
+                                                                             apiUrl={apiUrl} apiKey={apiKey} />}
+              {step === LoginSteps.GET_CODE && <GetCode handleStepChange={handleStepChange}
+                                                        countries={countries}
+                                                        setStepTo={setStepTo}
+                                                        country={country} logEvent={logEvent}
+                                                        apiUrl={apiUrl} apiKey={apiKeySp} />}
+              {step === LoginSteps.EMAIL && <GetCodeByEmail handleStepChange={handleStepChange}
+                                                        setStepTo={setStepTo}  logEvent={logEvent}
+                                                        apiUrl={apiUrl} apiKey={apiKeySp} />}
+              {step === LoginSteps.VALIDATE_CODE && <ValidateCode validationSuccess={validationSuccess}
+                                                                  sendTo={sendTo!}
+                                                                  setStepTo={setStepTo}
+                                                                  prefixSendTo={prefixSendTo!}
+                                                                  channel={channel!}
+                                                                  logEvent={logEvent}
+                                                                  apiUrl={apiUrl} apiKey={apiKey}/>}
+              {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
+                  handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
+              {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
+              <Modal styles={{
+              content: {
+                  type: ModalType.DEFAULT,
+                borderRadius: {
+                  bottomLeft: "10px",
+                  bottomRight: "10px",
+                  topLeft: "10px",
+                  topRight: "10px",
+                },
+                height: "474px",
+              },
+            }} show={showModal} onClose={() => {setShowModal(false)}}
+                     title={t('login.register')}>
+                  <RegisterInApp />
+              </Modal>
+              </GoogleOAuthProvider>
+          </LoginContainer>
+      </CopiesContextProvider>
   );
 };
 

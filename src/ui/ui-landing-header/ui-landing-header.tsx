@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { DownloadContent, Wrapper } from "./ui-landing-header.styled";
+import {DownloadContent, UiLandingHeaderStyled} from "./ui-landing-header.styled";
 import { UiLandingHeaderMenuItem, UiLandingHeaderMenuSubItem, UiLandingHeaderProps } from "./types";
 import { WEB_ASSETS } from "~/constants";
 import { goToApp } from "~/utils";
@@ -11,12 +11,14 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   showLogin = true,
   className,
   onLoginClick,
+  appearance,
 }) => {
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [openMobileTab, setOpenMobileTab] = useState<number | null>(null);
   const [openExpandibleTab, setOpenExpandibleTab] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
+
 
   const defaultMenuItems: UiLandingHeaderMenuItem[] = [
     {
@@ -26,16 +28,22 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       link: "https://blog.sumerlabs.com/",
     },
     {
-      icon: 'book-open',
+      icon: 'question-support',
       title: "Ver tutoriales",
       description: "Te enseñamos cómo usar Sumer",
       link: "/tutoriales-sumer",
     },
     {
-      icon: 'trophy',
-      title: "Retos",
-      description: "Obtén recompensas para tu negocio",
-      link: "/retos",
+      icon: 'eye',
+      title: "Publicidad en 3 clics",
+      description: "Publicidad efectiva en 3 pasos",
+      link: "/publicidad",
+    },
+    {
+      icon: 'book-open',
+      title: "Sumer directorio",
+      description: "Compra a un clic los mejores productos",
+      link: "https://www.sumerlabs.com/directorio/colombia",
     },
   ];
 
@@ -100,7 +108,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   }
 
   return (
-    <Wrapper className={className}>
+    <UiLandingHeaderStyled appearance={appearance} className={className}>
       <div className="menu-icon" onClick={() => setShowMobileMenu(a => !a)}>
         {!showMobileMenu ? 
           <span className="icon icon-burger-menu" /> :
@@ -108,7 +116,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         }
       </div>
       <a className="logo" href="/">
-        <img src={`${WEB_ASSETS}/images/sumer-logo-black.png`} alt="Main logo" className="img" />
+        <img src={ appearance === 'dark' ? `${WEB_ASSETS}/images/sumer-logo-white.png` : `${WEB_ASSETS}/images/sumer-logo-black.png` } alt="Main logo" className="img" />
       </a>
       <div className="spacer" />
       <div className="points">
@@ -230,7 +238,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
         {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
       </div>
-    </Wrapper>
+    </UiLandingHeaderStyled>
   );
 }
  

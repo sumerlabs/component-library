@@ -7,6 +7,7 @@ export type UiButtonProps = {
 	disabled?: boolean;
   isLoading?: boolean;
   icon?: ReactNode;
+  role?: string;
 	onClick: (event: MouseEvent<HTMLButtonElement> | FormEvent<HTMLFormElement>) => void;
   styles?: ButtonStyles;
 };

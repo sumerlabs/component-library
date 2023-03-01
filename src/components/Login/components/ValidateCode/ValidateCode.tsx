@@ -9,16 +9,16 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { GetCodeService, ValidateCodeService } from '~/components/Login/services';
 import { LoginSteps, SelectMethod } from '~/components/Login/types';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '~/providers/copies.provider';
 import SmsValidation from '~/components/Login/components/SmsValidation/SmsValidation';
 import { useLocalStorage } from '~/common/localStorage';
 import { EVENTS } from '~/common/consts/events';
 
 const ValidateCode = ({
-	ValidationSuccess,
+	validationSuccess,
 	sendTo, prefixSendTo, channel, logEvent, apiKey, apiUrl, setStepTo
 }: {
-	ValidationSuccess: (token: string, expiresIn: number, refreshToken: string) => void;
+	validationSuccess: (token: string, expiresIn: number, refreshToken: string, channel: string) => void;
 	sendTo: string, prefixSendTo: string, channel: string
 	logEvent: (event: string) => void,
 	apiKey: string, apiUrl: string,
@@ -58,7 +58,7 @@ const ValidateCode = ({
 			setAccessToken(validateCode.data.accessToken);
 			setExpiresIn(validateCode.data.expiresIn);
 			setRefreshToken(validateCode.data.refreshToken);
-			ValidationSuccess(validateCode.data.accessToken, validateCode.data.expiresIn, validateCode.data.refreshToken);
+			validationSuccess(validateCode.data.accessToken, validateCode.data.expiresIn, validateCode.data.refreshToken, channel);
 			logEvent(EVENTS.SELECT_CONFIRM_CODE);
 			setCheckCode(true)
 			

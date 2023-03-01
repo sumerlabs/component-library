@@ -12,6 +12,7 @@ const UiButton: FC<UiButtonProps> = ({
   onClick,
   isLoading,
   icon,
+  role,
   styles
 }) => {
 
@@ -21,12 +22,12 @@ const UiButton: FC<UiButtonProps> = ({
 
   return (
     <WrapperButton
-      role="button"
       type="button"
       appereance={appereance as string}
       className={className}
       disabled={disabled}
       onClick={handleClick}
+      role={role}
       {...styles}
     >
       {!isLoading ? children : <UiLoader size={20} />}

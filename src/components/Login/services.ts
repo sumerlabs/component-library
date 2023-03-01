@@ -142,7 +142,7 @@ export const facebookLogin = async ({ token, apiUrl, apiKey }:  { token: string,
 
 export const googleLogin = async ({ token, apiUrl, apiKey }:  { token: string, apiUrl: string, apiKey: string }) => {
     const res = await fetch(
-        `${apiUrl}/api/ms/user/auth/login-google`,
+        `${apiUrl}/api/ms/user/auth/login-google-v2`,
         {
             method: "POST",
             headers: {

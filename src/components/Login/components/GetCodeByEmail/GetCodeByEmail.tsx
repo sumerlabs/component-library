@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '~/providers/copies.provider';
 import {
 	GetCodeByEmailContainer, WrapperInputRegisterBYEmail
 } from './GetCodeByEmail.styles';
@@ -8,7 +8,6 @@ import { Formik } from 'formik';
 import { Input } from '~/components/Inputs';
 import { GetCodeService } from '../../services';
 import { LoginSteps } from '../../types';
-import Chat from '~/icons/Chat';
 import { EVENTS } from '~/common/consts/events';
 
 const GetCodeByEmail = ({
@@ -82,7 +81,9 @@ const GetCodeByEmail = ({
 									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
 									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
 								</div>
+								<br/>
 								<p className="title-login-email">{t('login.title')}</p>
+								<br/>
 							</div>
 							<WrapperInputRegisterBYEmail>
 								<Input

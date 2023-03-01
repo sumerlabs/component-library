@@ -21,10 +21,11 @@ export declare type LoginProps = {
   apiKey: string;
   apiUrl: string;
   apiKeySp: string
-  logEvent: (event: string) => void;
+  logEvent: (event: string, payload?: { [key: string]: string | null; } | undefined) => void;
   country: any;
   success?: (loginData?: ValidateCodeResponse) => void;
   loginType: LoginType,
+  registerInApp?: boolean,
 }
 
 export type ValidateCodeResponse = {

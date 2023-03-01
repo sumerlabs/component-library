@@ -78,9 +78,6 @@ export const decorators = [withThemesProvider([
         b11: "#16233D",
         b12: "#362FAF"
       },
-      blackScale: {
-        b1: "#111111",
-      },
       purpleScale: {
         p1: "#7879F1",
         p2: "#6F1DF4",

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { SelectLoginMethodContainer } from '~/components/SelectLoginMethod/SelectLoginMethod.styled';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookLogin, googleLogin, LoginSteps } from '~/components';
-import GoogleLogin from 'react-google-login';
-import { useTranslation } from 'react-i18next';
 import { LoginType } from '~/components/Login/types';
+import { useTranslation } from '~/providers/copies.provider';
+import { GoogleOAuthProvider, GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 
 const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType, handleRegisterModal }:
-                               { validationSuccess: (token: string, expiresIn: number, refreshToken: string)
+                               { validationSuccess: (token: string, expiresIn: number, refreshToken: string, channel: string)
                                        => void, apiUrl: string, apiKey: string,
                                    setStepTo: (step: string) => void, loginType: LoginType,
                                    handleRegisterModal: () => void}): JSX.Element => {
@@ -27,25 +27,30 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
     const facebook = async (token: string) => {
         try {
             const response = await facebookLogin({apiUrl, apiKey, token});
-            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken, 'facebook');
         } catch (e) {
             console.log(e);
             handleRegisterModal();
         }
     }
+
+    const loginGoogle = useGoogleLogin({
+        onSuccess: async tokenResponse => {
+            await google(tokenResponse)
+        },
+    });
 
     const google = async (googleResponse: any) => {
         try {
-            const response = await googleLogin({apiUrl, apiKey, token: googleResponse.tokenId});
-            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken);
+            const response = await googleLogin({apiUrl, apiKey, token: googleResponse.access_token});
+            validationSuccess(response.accessToken, response.expiresIn, response.refreshToken, 'google');
         } catch (e) {
             console.log(e);
             handleRegisterModal();
         }
     }
 
-    const handleLoginError = (error: any) => {
-        console.log(error);
+    const handleLoginError = () => {
         setError(true);
         const timer = setTimeout(() => {
             setError(false);
@@ -65,22 +70,10 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             </div>
             <div className={'body'}>
             <div className='login-sumer-text'>{t('login.login_sumer')}</div>
-                {
-                    !disableGoogle &&
-                    <GoogleLogin
-                        clientId="763088249199-p7ce5bb5hrcmarml939f5pirhrroomc6.apps.googleusercontent.com"
-                        render={renderProps => (
-                            <button className={'facebook'} onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                                <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
-                                <label>{t('login.google_login')}</label>
-                            </button>
-                        )}
-                        buttonText="Login"
-                        onSuccess={google}
-                        onFailure={(error) => {handleLoginError(error)}}
-                        cookiePolicy={'single_host_origin'}
-                    />
-                }
+                <button className={'facebook'} onClick={() => loginGoogle()} >
+                    <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
+                    <label>{t('login.google_login')}</label>
+                </button>
                 <FacebookLogin
                     appId="382238867303639"
                     onSuccess={async (response) => {
@@ -88,7 +81,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                             await facebook(response.accessToken);
                         }
                     }}
-                    onFail={(error) => {handleLoginError(error)}}
+                    onFail={(error) => {handleLoginError()}}
                     render={({ onClick, logout }) => (
                         <button className={'facebook-btn'} onClick={onClick}>
                             <img src={'https://www.sumerlabs.com/prod/catalogue/facebokk-btn.png'}/>
