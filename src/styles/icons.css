@@ -370,3 +370,34 @@
 .icon-line-start:before {
   content: "\e976";
 }
+
+.icon-email-outline:before {
+  content: "\e977";
+}
+.icon-copy:before {
+  content: "\e978";
+}
+.icon-cart-outline:before {
+  content: "\e979";
+}
+.icon-account-circle-outline:before {
+  content: "\e97a";
+}
+.icon-comments-outline:before {
+  content: "\e97b";
+}
+.icon-handshake-outline:before {
+  content: "\e97c";
+}
+.icon-home-outline:before {
+  content: "\e97d";
+}
+.icon-logout-outline:before {
+  content: "\e97e";
+}
+.icon-shopping-outline:before {
+  content: "\e97f";
+}
+.icon-view-grid-outline:before {
+  content: "\e980";
+}
