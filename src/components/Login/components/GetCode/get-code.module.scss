@@ -1,0 +1,163 @@
+.getCodeContainer {
+  .head {
+		display: flex;
+		align-items: center;
+  	}
+	padding: 1.1rem;
+	.titleLogin {
+		font-size: 18px;
+		line-height: 140%;
+		font-weight: 700;
+		text-align: center;
+	}
+	.back {
+		display: flex;
+		align-items: center;
+		width: 62%;
+		justify-content: space-between;
+	}
+
+	.imgBack{
+		width: 18px;
+		height: 18px;
+		cursor: pointer;
+	}
+
+	.imgSumer{
+		width: 94px;
+		height: 30px;
+	}
+
+	.boxTermCheck {
+		display: flex;
+		justify-content: flex-start;
+		width: 87%;
+		gap: 0.5rem;
+		align-items: center;
+	}
+
+	.boxTerms {
+		font-size:12px;
+   		line-height:130%;
+   		font-weight: 400;
+	}
+
+	.condition {
+		color: #4c42f6;
+	}
+
+	.buttonMsn {
+		height: 50px;
+		border: none;
+		display: flex;
+		cursor: pointer;
+		padding: 0 40px;
+		max-width: 100%;
+		transition: 0.3s;
+		position: relative;
+		align-items: center;
+		box-sizing: border-box;
+		background-color: #4c42f6;
+		font-weight: 600;
+		overflow: hidden;
+		line-height: 22px;
+		color: #ffffff;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: 100%;
+		border-radius: 5px;
+		margin-bottom: 10px;
+		justify-content: center;
+        gap:1rem;
+		margin-top: 20px;
+	}
+      .buttonMsn:disabled {
+        background-color: #d2d2d2;
+        color: #ffffff;
+      }
+
+	.buttonWsp {
+		height: 50px;
+		display: flex;
+		cursor: pointer;
+		max-width: 100%;
+		transition: 0.3s;
+		position: relative;
+		align-items: center;
+		box-sizing: border-box;
+		background-color: white;
+		font-weight: 600;
+		overflow: hidden;
+		line-height: 22px;
+		color: #25D366;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: 100%;
+		border: 1px solid #25D366;
+		border-radius: 5px;
+        gap:1rem;
+		justify-content: center;
+	}
+
+	.iconCode{
+		width: 17px;
+		height: 17px;
+	}
+      .buttonWsp:disabled {
+        background-color: #ffffff;
+        color: #d2d2d2;
+		border: 1px solid #d2d2d2;
+      }
+
+      .boxErrorCode {
+        color: #ff5b24;
+		font-size:14px;
+		line-height:140%;
+		font-weight: 400;
+      }
+}
+
+.wrapperInput {
+	label {
+		color: #4c42f6;
+	}
+	.textLogin {
+		font-weight: 400;
+		font-size: 18px;
+		color: #ffffff;
+		padding-bottom: 20px;
+	}
+
+	.textPhoneCreate {
+    font-weight: 400;
+    font-size: 16px;
+    color: #646464;
+	padding-bottom: 1.5rem;
+	line-height: 140%;
+}
+	.selectPhone {
+		color: #888888;
+		display: flex;
+		flex-direction: column;
+		font-size:12px;
+   line-height:130%;
+   font-weight: 400;
+		margin-bottom: 1rem;
+        margin-top: 2rem;
+	}
+
+	.selectPhone:focus-within {
+		color: #4c42f6;
+		font-size:12px;
+   line-height:130%;
+   font-weight: 400;
+	}
+
+	.selectPhone {
+		&.error {
+			.content-input {
+				color: #ff5b24;
+			}
+		}
+	}
+}

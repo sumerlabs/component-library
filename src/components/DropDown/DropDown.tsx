@@ -1,16 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import {
-  DropDownContainer,
-  DropDownHeader,
-  DropDownList,
-  DropDownListContainer,
-  ListItem,
-} from "./DropDown.styles";
 import { DropDownProps, Selected } from "./types";
 import React from "react";
 import { isEmpty } from "~/common/utils";
-import ArrowDown from "~/icons/ArrowDown";
-import ArrowTop from "~/icons/ArrowTop";
+import * as styles from "./drop-down.module.scss";
 
 const initialSelected = {
   label: "",
@@ -75,13 +67,13 @@ export const DropDown = ({
   };
 
   return (
-    <DropDownContainer className={className}>
-      <DropDownHeader
-        className="header"
+    <div className={`${styles.dropDown} ${className}`}>
+      <div
+        className={`${styles.header} header`}
         onClick={toggling}
         data-testid={`dropdown-${className}`}
       >
-        <span className="label">
+        <span className={styles.label}>
           {selectedOption.label || "" || placeholder}
         </span>
         <img
@@ -90,16 +82,16 @@ export const DropDown = ({
               ? "https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowUp.png"
               : "https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrow.png"
           }
-          className="icon"
+          className={styles.icon}
         ></img>
-      </DropDownHeader>
+      </div>
       {isOpen && (
-        <DropDownHeader>
-          <DropDownListContainer ref={node}>
-            <DropDownList id={id}>
+        <div className={styles.header}>
+          <div className={styles.listContainer} ref={node}>
+            <ul id={id}>
               {options.length > 0 &&
                 options.map(({ oId, image, label }: any) => (
-                  <ListItem
+                  <li
                     data-testid={`dropdown-${className}-item-${
                       label === selectedOption.label ? "selected" : ""
                     }`}
@@ -108,17 +100,17 @@ export const DropDown = ({
                       updateSelectedOption(label, image);
                     }}
                     key={oId}
-                    className={label === selectedOption.label ? "selected" : ""}
+                    className={label === selectedOption.label ? styles.selected : ""}
                   >
                     {image && <img src={image} />}
                     {label}
-                  </ListItem>
+                  </li>
                 ))}
-            </DropDownList>
-          </DropDownListContainer>
-        </DropDownHeader>
+            </ul>
+          </div>
+        </div>
       )}
-    </DropDownContainer>
+    </div>
   );
 };
 

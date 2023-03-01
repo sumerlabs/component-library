@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { CSSProperties, ReactElement } from "react";
 
 export enum ModalType {
   DEFAULT = "default",
@@ -58,3 +58,15 @@ export type ModalStyleProps = {
     content?: ModalContent;
     overlay?: Overlay;
 };
+
+export type ModalContextProps = {
+    show: boolean;
+    type?: ModalType;
+    children: React.ReactNode;
+    styles: {
+        header?: CSSProperties | undefined;
+        body?: CSSProperties | undefined;
+        content?: CSSProperties | undefined;
+        overlay?: CSSProperties | undefined;
+    }
+}

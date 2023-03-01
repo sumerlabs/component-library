@@ -1,10 +1,9 @@
 import { KeyboardEvent, useState } from "react";
-
-import { WrapperInput } from "./Input.styles";
 import { InputGeneralType } from "./types";
 import { ErrorMessage } from '~/components/ErrorMessage';
 import React from "react";
 import Password from '~/icons/Password';
+import * as styles from './input.module.scss';
 
 const InputPassword = ({
   title,
@@ -20,8 +19,8 @@ const InputPassword = ({
   const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
   return (
-    <WrapperInput>
-      <div className="input-box">
+    <div className={styles.inputContainer}>
+      <div className={styles.inputBox}>
         <input
           id={name}
           name={name}
@@ -36,18 +35,18 @@ const InputPassword = ({
         />
         <label
           htmlFor={name}
-          className={`label-name ${
-              touched && touched[name] && errors && errors[name] ? "error" : ""
+          className={`${styles.labelName} ${
+              touched && touched[name] && errors && errors[name] ? styles.error : ""
           }`}
         >
-          <span className="content-name">{title}</span>
+          <span className={styles.contentName}>{title}</span>
         </label>
         <button
-          className="toggle"
+          className={styles.toggle}
           onClick={handlePasswordVisibility}
           type="button"
         >
-          <span className="iconinput">
+          <span className={styles.iconInput}>
             <Password />
           </span>
         </button>
@@ -55,7 +54,7 @@ const InputPassword = ({
       {touched && touched[name] && errors && errors[name] ? (
           <ErrorMessage>{errors[name]}</ErrorMessage>
       ) : null}
-    </WrapperInput>
+    </div>
   );
 };
 

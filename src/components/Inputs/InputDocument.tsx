@@ -1,12 +1,11 @@
 import { KeyboardEvent, useEffect, useMemo, useState } from "react";
-
-import { Box, WrapperInput } from "./Input.styles";
 import { InputGeneralType } from "./types";
 import { Selected } from '~/components/DropDown/types';
 import { DropDown } from '~/components/DropDown';
 import { ErrorMessage } from '~/components/ErrorMessage';
 import { isEmpty } from '~/common';
 import React from "react";
+import * as styles from './input.module.scss';
 
 export type InputDocumentProps = InputGeneralType & {
   identificationTypes: string[];
@@ -61,22 +60,22 @@ const InputDocument = ({
   };
 
   return (
-    <WrapperInput className={className}>
+    <div className={`${styles.inputContainer} ${className}`}>
       <div
-        className={`select-general ${
-          touched?.idNumber && errors?.idNumber ? "error" : ""
+        className={`${styles.selectGeneral} ${
+          touched?.idNumber && errors?.idNumber ? styles.error : ""
         }`}
       >
-        <label className="label-name">
-          <span className="content-input">{title}</span>
+        <label className={styles.labelName}>
+          <span className={styles.contentInput}>{title}</span>
         </label>
-        <Box
-          className={`field-box ${
-            touched?.idType && errors?.idType ? "error-box" : ""
+        <div
+          className={`${styles.box} ${styles.fieldBox} ${
+            touched?.idType && errors?.idType ? styles.errorBox : ""
           }`}
         >
           <DropDown
-            className="select-dropdown"
+            className={styles.selectDropdown}
             fieldName="idType"
             id="idType"
             options={options}
@@ -97,13 +96,13 @@ const InputDocument = ({
             placeholder="1023456789"
             value={value.idNumber}
           />
-        </Box>
+        </div>
       </div>
       {(touched?.idNumber && errors?.idNumber) ||
       (touched?.idType && errors?.idType) ? (
         <ErrorMessage>{errors?.idNumber || errors?.idType}</ErrorMessage>
       ) : null}
-    </WrapperInput>
+    </div>
   );
 };
 

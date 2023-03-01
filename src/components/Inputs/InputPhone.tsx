@@ -1,12 +1,11 @@
 import { KeyboardEvent, useEffect, useMemo, useState } from "react";
-
-import { PhoneBox, WrapperInput } from "./Input.styles";
 import { InputGeneralType } from "./types";
 import { Selected } from '~/components/DropDown/types';
 import { DropDown } from '~/components/DropDown';
 import { ErrorMessage } from '~/components/ErrorMessage';
 import React from "react";
 import { isEmpty } from '~/common';
+import * as styles from './input.module.scss';
 
 const InputPhone = ({
   errors,
@@ -54,22 +53,22 @@ const InputPhone = ({
   };
 
   return (
-    <WrapperInput className={className}>
+    <div className={`${styles.inputContainer} ${className}`}>
       <div
-        className={`select-phone ${
-          touched?.phone && errors?.phone ? "error" : ""
+        className={`${styles.selectPhone} ${
+          touched?.phone && errors?.phone ? styles.error : ""
         }`}
       >
-        <label className="label-name">
-          <span className="content-input">{title}</span>
+        <label className={styles.labelName}>
+          <span className={styles.contentInput}>{title}</span>
         </label>
-        <PhoneBox
-          className={`phone-box ${
-            touched?.indicative && errors?.indicative ? "error-indicative" : ""
+        <div
+          className={`${styles.phoneBox} ${
+            touched?.indicative && errors?.indicative ? styles.errorIndicative : ""
           }`}
         >
           <DropDown
-            className="select-indicative"
+            className={styles.selectIndicative}
             fieldName="indicative"
             onChange={handleChange}
             options={phoneOptions}
@@ -89,13 +88,13 @@ const InputPhone = ({
             placeholder="300 234 2345"
             value={value.phone}
           />
-        </PhoneBox>
+        </div>
       </div>
       {(touched?.indicative && errors?.indicative) ||
       (touched?.phone && errors?.phone) ? (
         <ErrorMessage>{errors.indicative || errors.phone}</ErrorMessage>
       ) : null}
-    </WrapperInput>
+    </div>
   );
 };
 

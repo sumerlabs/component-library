@@ -4,7 +4,8 @@ import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookLogin, googleLogin, LoginSteps } from '~/components';
 import { LoginType } from '~/components/Login/types';
 import { useTranslation } from '~/providers/copies.provider';
-import { GoogleOAuthProvider, GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
+import * as styles from './select-login-method.module.scss';
 
 const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType, handleRegisterModal }:
                                { validationSuccess: (token: string, expiresIn: number, refreshToken: string, channel: string)
@@ -59,17 +60,17 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
     }
 
     return (
-        <SelectLoginMethodContainer>
-            <div className={'header'}>
-                <div className={'welcome'}>
-                    <div className={'title'}>
+        <div className={styles.selectLoginMethod}>
+            <div className={styles.header}>
+                <div className={styles.welcome}>
+                    <div className={styles.title}>
                         <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/sumer.png'}/>
-                        <div className={'message'}>Bienvenido/a</div>
+                        <div className={styles.message}>Bienvenido/a</div>
                     </div>
                 </div>
             </div>
-            <div className={'body'}>
-            <div className='login-sumer-text'>{t('login.login_sumer')}</div>
+            <div className={styles.body}>
+            <div className={styles.loginSumerText}>{t('login.login_sumer')}</div>
                 <button className={'facebook'} onClick={() => loginGoogle()} >
                     <img src={'https://sumer-assets.s3.us-west-2.amazonaws.com/web/login/google.png'}/>
                     <label>{t('login.google_login')}</label>
@@ -83,7 +84,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                     }}
                     onFail={(error) => {handleLoginError()}}
                     render={({ onClick, logout }) => (
-                        <button className={'facebook-btn'} onClick={onClick}>
+                        <button className={styles.facebookBtn} onClick={onClick}>
                             <img src={'https://www.sumerlabs.com/prod/catalogue/facebokk-btn.png'}/>
                             <label>{t('login.facebook_login')}</label>
                         </button>
@@ -98,10 +99,10 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                     <label>{t('login.email')}</label>
                 </button>
             </div>
-            { error && <div className='box-error-code'>{t('login.error')}</div>}
-            { loginType === LoginType.SELLER && <div className={'register'}>
+            { error && <div className={styles.boxErrorCode}>{t('login.error')}</div>}
+            { loginType === LoginType.SELLER && <div className={styles.register}>
                 {t('login.do_not_have_account')} <span onClick={handleRegisterModal}>{t('login.register_now')}</span></div>}
-        </SelectLoginMethodContainer>
+        </div>
     );
 };
 

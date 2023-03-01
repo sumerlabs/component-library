@@ -1,0 +1,21 @@
+.downloadAppButton {
+  .downloadsIcon > img {
+    width: 15px;
+    height: 18px;
+  }
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 8px;
+  gap: 10px;
+  width: 311px;
+  height: 50px;
+  background: #000;
+  border-radius: 8px;
+  border: 1px solid #d2d2d2;
+  cursor: pointer;
+}

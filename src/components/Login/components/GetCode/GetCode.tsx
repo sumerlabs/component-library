@@ -1,8 +1,4 @@
 import { useTranslation } from '~/providers/copies.provider';
-import {
-	GetCodeContainer,
-	WrapperInput,
-} from './GetCode.styles';
 import React, { useEffect, useMemo, useState } from 'react';
 import * as Yup from 'yup';
 import { Formik  } from 'formik';
@@ -12,6 +8,7 @@ import { allowOnlyNumber } from '~/common/utils';
 import { EVENTS } from '~/common/consts/events';
 import { UiPhone, UiPhoneOption } from '~/ui/ui-phone';
 import UiCheckbox from '../../../../ui/ui-checkbox/ui-checkbox';
+import * as styles from './get-code.module.scss';
 
 const GetCode = ({
 	handleStepChange,
@@ -64,7 +61,7 @@ const GetCode = ({
 	};
 
 	return (
-		<GetCodeContainer>
+		<div className={styles.getCodeContainer}>
 			<Formik
 				initialValues={{ ...defaultValues }}
 				onSubmit={(values) => {
@@ -92,24 +89,24 @@ const GetCode = ({
 						isSubmitting,
 					} = props;
 					return (
-						<GetCodeContainer>
-							<div className={'head'}>
-								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
-									<img className='img-back' src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
-									<img className='img-sumer'  src='https://www.sumerlabs.com/prod/coupon-templates/sumerImg.png'/>
+						<div className={styles.getCodeContainer}>
+							<div className={styles.head}>
+								<div className={styles.back} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
+									<img className={styles.imgBack} src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
+									<img className={styles.imgSumer}  src='https://www.sumerlabs.com/prod/coupon-templates/sumerImg.png'/>
 								</div>
 							</div>
-							<WrapperInput>
+							<div className={styles.wrapperInput}>
 								<div
-									className={`select-phone ${
+									className={`${styles.selectPhone}  ${
 										(touched.prefixPhone || touched.phone) &&
 										(errors.phone || errors.prefixPhone)
-											? 'error'
+											? styles.error
 											: ''
 									}`}>
 									<div className='box-phone-create'>
-										<p className='text-login'>{t('login.title')}</p><br/>
-										<p className='text-phone-create'>{t('login.number_phone')}</p>
+										<p className={styles.textLogin} >{t('login.title')}</p><br/>
+										<p className={styles.textPhoneCreate} >{t('login.number_phone')}</p>
 									</div>
 									<UiPhone
 										options={prefixCodeOptions}
@@ -127,20 +124,20 @@ const GetCode = ({
 										  }}
 										  hasError={(touched.phone || touched.prefixPhone) && (!!errors.phone || !!errors.prefixPhone)}
 									/>
-									{ error && <div className='box-error-code'>{t('login.invalidPhoneNumber')}</div>}
+									{ error && <div className={styles.boxErrorCode} >{t('login.invalidPhoneNumber')}</div>}
 								</div>
-							</WrapperInput>
-							<div className="box-term-check">
+							</div>
+							<div className={styles.boxTermCheck}>
 							<UiCheckbox
 								active={false}
 								onChange={(v) => {
 									setFieldValue("terms", v);
 								}}
 							/>
-								<div className="box-terms">
+								<div className={styles.boxTerms}>
 									<label className="terms">
                  							{t('login.agree')}{' '}
-										<label className="condition">
+										<label className={styles.condition}>
 											<a
 												href={`https://www.sumerlabs.com/terms/politica-de-privacidad-de-datos-personales`}
 												target="_blank"
@@ -152,23 +149,23 @@ const GetCode = ({
 								</div>
 							</div>
 							<button
-								className="button-msn"
+								className={styles.buttonMsn}
 								disabled={!isValid}
 								onClick={(e: any) => {
 									setFieldValue('channel','sms')
 									logEvent(EVENTS.SELECT_SMS_CONFIRM);
 									handleSubmit(e);
 								}}>
-								<img className='icon-code' src='https://www.sumerlabs.com/prod/catalogue/sms.png'/>
+								<img className={styles.iconCode}  src='https://www.sumerlabs.com/prod/catalogue/sms.png'/>
 								{t('login.sms')}
 							</button>
-							<button className="button-wsp" disabled={!isValid} onClick={(e: any) => {
+							<button className={styles.buttonWsp}  disabled={!isValid} onClick={(e: any) => {
 								setFieldValue('channel','whatsapp')
 								logEvent(EVENTS.SELECT_WA_CONFIRM);
 								handleSubmit(e);
 							}}>
 								<img
-								className="icon-code"
+								className={styles.iconCode}
 								src={
 									!isValid
 									? "https://www.sumerlabs.com/prod/catalogue/wpsgray.png"
@@ -177,11 +174,11 @@ const GetCode = ({
 								/>
 								{t('login.whatsapp')}
 							</button>
-						</GetCodeContainer>
+						</div>
 					);
 				}}
 			</Formik>
-		</GetCodeContainer>
+		</div>
 	);
 };
 

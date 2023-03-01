@@ -1,10 +1,9 @@
 import { useMemo } from "react";
-
-import { PhoneBox, WrapperInput } from "./Input.styles";
 import { InputGeneralType } from "./types";
 import { ErrorMessage } from '~/components/ErrorMessage';
 import { DropDown } from '~/components/DropDown';
 import React from "react";
+import * as styles from './input.module.scss';
 
 const InputEconomicSector = ({
   title,
@@ -24,32 +23,32 @@ const InputEconomicSector = ({
   }, [data]);
 
   return (
-    <WrapperInput>
+    <div className={styles.inputContainer}>
       <div
-        className={`select-economic-sector ${
-          touched?.economicSector && errors?.economicSector ? "error" : ""
+        className={`${styles.selectEconomicSector} ${
+          touched?.economicSector && errors?.economicSector ? styles.error : ""
         }`}
       >
-        <label className="label-name">
-          <span className="content-input">{title}</span>
+        <label className={styles.labelName}>
+          <span className={styles.contentInput}>{title}</span>
         </label>
-        <PhoneBox
-          className={`${
-            touched?.indicative && errors?.indicative ? "error-indicative" : ""
+        <div
+          className={`${styles.phoneBox}  ${
+            touched?.indicative && errors?.indicative ? styles.errorIndicative : ""
           }`}
         >
           <DropDown
-            className="select-economic"
+            className={styles.selectEconomic}
             fieldName="economicSector"
             options={businessOptions}
             setFieldValue={setFieldValue}
           />
-        </PhoneBox>
+        </div>
       </div>
       {touched?.economicSector && errors?.economicSector ? (
         <ErrorMessage>{errors.economicSector}</ErrorMessage>
       ) : null}
-    </WrapperInput>
+    </div>
   );
 };
 

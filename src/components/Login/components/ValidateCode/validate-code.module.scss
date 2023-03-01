@@ -1,0 +1,179 @@
+.validateCodeContainer {
+  padding: 1.1rem;
+  .back {
+    display: flex;
+    align-items: center;
+    width: 47%;
+    justify-content: space-between;
+  }
+
+  .imgBack {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  .titleLogin {
+    font-size:14px;
+    line-height:140%;
+    font-weight:700;
+    text-align: center;
+    padding-bottom: 45px;
+  }
+
+  .boxErrorCode {
+    color: #ff5b24;
+    font-size:14px;
+    line-height:140%;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    img{
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .boxCheckCode {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .checkCode {
+    width: 24px;
+    height: 24px;
+  }
+
+  .boxLoading {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .sendCodeText {
+    font-weight: 400;
+    font-size: 14px;
+    color: #646464;
+    text-align: center;
+  }
+
+  .boxResendCode {
+    color: #00ea96;
+    font-size:14px;
+    line-height:140%;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 14px;
+  }
+}
+
+.wrapperCheckCode {
+  text-align: left;
+  margin-top: 2rem;
+  .textCode{
+    font-weight: 700;
+    font-size: 20px;
+    color: #000;
+  }
+
+  .textCodeSend {
+    font-weight: 400;
+    font-size: 16px;
+    color: #646464;
+  }
+  .boxSendTo{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .textSendTo{
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  .textChange{
+    color: #4C42F6;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+  .btnBox {
+    margin-top: 2.5em;
+  }
+
+  .btnBox button {
+    border-radius: 5px;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    color: #ffffff;
+  }
+
+  .enabled button {
+    background: #4c42f6;
+  }
+
+  button:disabled {
+    background: #d2d2d2;
+  }
+
+  .error {
+    color: #ff5b24;
+    font-size:14px;
+    line-height:140%;
+    font-weight: 400;
+    padding-bottom: 2.5em;
+  }
+}
+
+.title {
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  line-height: 140%;
+  font-weight: 400;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.text {
+  align-items: center;
+  color: #888888;
+  display: flex;
+  font-size:16px;
+  line-height:140%;
+  font-weight: 400;
+  text-align: center;
+  justify-content: center;
+
+  &.highlights {
+    cursor: pointer;
+    color: #4c42f6;
+    margin-left: 0.3125em;
+  }
+
+  &.small {
+    font-size:14px;
+    line-height:140%;
+    font-weight: 400;
+    &.highlights {
+      text-decoration: underline;
+    }
+  }
+}
+
+.line {
+  background-color: #888888;
+  border-radius: 2px;
+  height: 2px;
+  margin: 0 0.5em;
+  width: 8px;
+}

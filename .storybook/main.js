@@ -1,4 +1,5 @@
 const path = require("path");
+console.log(path.resolve("./.storybook/scss-preset.js"))
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -8,7 +9,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "themeprovider-storybook/register"
+    '@storybook/addon-postcss',
   ],
   "framework": "@storybook/react",
   webpackFinal: async (config) => {
@@ -16,6 +17,31 @@ module.exports = {
       test: /\.mjs$/,
       include: /node_modules/,
       type: "javascript/auto",
+    })
+    config.module.rules.push({
+      test: /\.scss$/,
+      loaders: [
+        {
+          loader: require.resolve('style-loader'),
+          options: {
+            esModule: true,
+            modules: {
+              namedExport: true,
+            },
+          },
+        },
+        {
+          loader: require.resolve('css-loader'),
+          options: {
+            importLoaders: 1,
+            esModule: true,
+            modules: {
+              namedExport: true,
+            },
+          },
+        },
+        require.resolve('sass-loader'),
+      ],
     })
     config.resolve.alias = {
       ...config.resolve?.alias,

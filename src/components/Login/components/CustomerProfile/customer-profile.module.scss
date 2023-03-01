@@ -1,0 +1,39 @@
+.customerProfileContainer {
+	padding: 1.1rem;
+	margin-top: 4rem;
+	.boxImgProfile {
+		display: flex;
+		justify-content: flex-start;
+		gap: 1rem;
+		align-items: center;
+		border-bottom: 1px solid #DDE0F5;
+		padding-bottom: 1rem;
+	}
+
+	.nameProfile {
+		font-size:24px;
+		line-height:140%;
+		font-weight: 400;
+	}
+
+	.phoneProfile {
+		font-size:18px;
+		line-height:140%;
+		font-weight: 400;
+		color: #4c42f6;
+	}
+
+	.boxSignOut {
+		display: flex;
+		justify-content: flex-start;
+		gap: 0.5rem;
+		cursor: pointer;
+		align-items: center;
+		color: #f93c00;
+		margin-top: 1rem;
+	}
+
+	.customerPhone {
+		color: #4c42f6;
+	}
+}
