@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { Wrapper } from "./ui-landing-footer.styled";
 import { UiLandingFooterProps } from "./types";
 import { WEB_ASSETS } from "~/constants";
 import * as styles from './ui-landing-footer.module.scss';
