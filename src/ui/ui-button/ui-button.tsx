@@ -22,7 +22,7 @@ const UiButton: FC<UiButtonProps> = ({
 
   return (
     <button
-        className={`${_styles.uiButtonWrapper} ${_styles[className as keyof typeof styles]} ${_styles[appereance as keyof typeof styles]}`}
+        className={`${className} ${_styles.uiButtonWrapper} ${className && _styles[className as keyof typeof styles]} ${_styles[appereance as keyof typeof styles]}`}
         style={{...styles}}
         role={role}
         onClick={handleClick}
