@@ -13,3 +13,13 @@ export const Default = Template.bind({});
 Default.args = {
   onLoginClick: () => {},
 }
+
+export const darkMode = Template.bind({});
+darkMode.args = {
+  appearance: 'dark',
+}
+
+export const lightMode = Template.bind({});
+lightMode.args = {
+  appearance: 'light',
+}

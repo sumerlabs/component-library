@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
-import { Wrapper } from "./ui-dropdown.styled";
 import { UiDropdownOption, UiDropdownProps } from "./types";
+import * as styles from "./ui-dropdown.module.scss"; 
  
 const UiDropdown: FC<UiDropdownProps> = ({
   label,
@@ -43,39 +43,35 @@ const UiDropdown: FC<UiDropdownProps> = ({
   }, [value, options.length]);
 
   return (
-    <Wrapper 
-      className={`${className} 
-        ${isOpen ? 'open' : 'close'} 
-        ${isFullWidth && 'fullWidth'} 
-        ${hasError && 'error'}`} 
+      <div className={`${className}  ${styles.wrapperDropdown} ${isOpen ? `${styles.open}` : `${styles.close}`} ${isFullWidth && `${styles.fullWidth}`}  ${hasError && `${styles.error}`}`} 
       tabIndex={0} 
       onBlur={handleBlur}
       data-testid={`${dataTestId}`}>
-      <div className="dropdown" onClick={handleToggle} data-testid={`${dataTestId}-display-box`}>
-        <span className="label" data-testid={`${dataTestId}-label`}>{label}</span>
-        <span className={`text ${!selectedValue && 'placeholder'}`}>{selectedValue?.label || placeholder}</span>
+      <div className={styles.dropdown} onClick={handleToggle} data-testid={`${dataTestId}-display-box`}>
+        <span className={styles.label} data-testid={`${dataTestId}-label`}>{label}</span>
+        <span className={`${styles.text} ${!selectedValue && `${styles.placeholder}`}`}>{selectedValue?.label || placeholder}</span>
         <span className="icon-arrow" />
       </div>
       {(!!hint || hasError) && (
-        <div className="hint-text" data-testid={`${dataTestId}-hint`}>
+        <div className={styles.hintTextDropdown} data-testid={`${dataTestId}-hint`}>
           {errorMessage || hint}
         </div>
       )}
       <div
-        className={`dropdown-expanded-section dropdown-${expandiblePosition}`} 
+        className={`${styles.expandedSection} dropdown-${expandiblePosition}`} 
         data-testid={`${dataTestId}-expanded-section`}>
         {options.map((o, index) => (
           <div 
             key={`dropdown-item-${o.value}-${index}`}
-            className={`item ${isCurrentOption(o) && 'active'}`} 
+            className={`${styles.item} ${isCurrentOption(o) && `${styles.active}`}`} 
             onClick={() => handleSelectOption(o)}
             data-testid={`${dataTestId}-item-${o.value}`}>
-            {o.flagUrl && <img src={o.flagUrl} alt="Flag" className="flag" />}
+            {o.flagUrl && <img src={o.flagUrl} alt="Flag" className={styles.flag} />}
             {o.label}
           </div>
         ))}
       </div>
-    </Wrapper>
+    </div>    
   );
 }
  
