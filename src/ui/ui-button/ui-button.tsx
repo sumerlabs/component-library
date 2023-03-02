@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { UiLoader } from "../ui-loader";
 import { UiButtonProps } from "./types";
-import * as _styles from './ui-button.module.scss';
+import _styles from './ui-button.module.scss';
 
 
 const UiButton: FC<UiButtonProps> = ({
@@ -22,7 +22,7 @@ const UiButton: FC<UiButtonProps> = ({
 
   return (
     <button
-        className={`${_styles.uiButtonWrapper} ${_styles[className]} ${_styles[appereance]}`}
+        className={`${_styles.uiButtonWrapper} ${_styles[className as keyof typeof styles]} ${_styles[appereance as keyof typeof styles]}`}
         style={{...styles}}
         role={role}
         onClick={handleClick}
