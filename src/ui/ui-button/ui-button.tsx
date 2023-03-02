@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { UiLoader } from "../ui-loader";
 import { UiButtonProps } from "./types";
-import { WrapperButton } from "./ui-button.styled";
+import * as _styles from './ui-button.module.scss';
 
 
 const UiButton: FC<UiButtonProps> = ({
@@ -21,18 +21,16 @@ const UiButton: FC<UiButtonProps> = ({
   }
 
   return (
-    <WrapperButton
-      type="button"
-      appereance={appereance as string}
-      className={className}
-      disabled={disabled}
-      onClick={handleClick}
-      role={role}
-      {...styles}
-    >
+    <button
+        className={`${_styles.uiButtonWrapper} ${_styles[className]} ${_styles[appereance]}`}
+        style={{...styles}}
+        role={role}
+        onClick={handleClick}
+        disabled={disabled}
+        type="button">
       {!isLoading ? children : <UiLoader size={20} />}
       {icon}
-    </WrapperButton>
+    </button>
   );
 };
 

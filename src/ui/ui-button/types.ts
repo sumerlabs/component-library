@@ -23,4 +23,5 @@ export type ButtonStyles = {
   width?: string;
   height?: string;
   borderColor?: string;
+  padding?: string;
 }
