@@ -1,32 +1,35 @@
-import styled from 'styled-components';
-
-export const Wrapper = styled.label`
+.uiInput {
   row-gap: 4px;
   display: flex;
   flex-direction: column;
 
   &.error {
-    .input-box {
-      &.outline{
+    .inputBox {
+      &.outline {
         border: none;
+
         .input {
           border: 1px solid #F93C00;
+
           &::placeholder {
             color: #F93C00;
           }
         }
       }
 
-      &.filled{
+      &.filled {
         border: none;
+
         .input {
           border-bottom: 1px solid #F93C00;
           border-radius: 0;
+
           &::placeholder {
             color: #F93C00;
           }
         }
       }
+
       .label {
         color: #F93C00;
       }
@@ -38,27 +41,32 @@ export const Wrapper = styled.label`
   }
 
   &.success {
-    .input-box {
-      &.outline{
+    .inputBox {
+      &.outline {
         border: none;
+
         .input {
           border: 1px solid #009B5A;
+
           &::placeholder {
             color: #009B5A;
           }
         }
       }
 
-      &.filled{
+      &.filled {
         border: none;
+
         .input {
           border-bottom: 1px solid #009B5A;
           border-radius: 0;
+
           &::placeholder {
             color: #009B5A;
           }
         }
       }
+
       .label {
         color: #009B5A;
       }
@@ -69,13 +77,13 @@ export const Wrapper = styled.label`
     }
   }
 
-  .input-box {
+  .inputBox {
     height: 56px;
     display: flex;
     position: relative;
     transition: border-color .3s;
 
-    &.filled{
+    &.filled {
       border-radius: 0;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
@@ -83,11 +91,12 @@ export const Wrapper = styled.label`
       border-bottom: 1px solid #DDE0F5;
       background: #FAFAFA;
 
-      .input{
+      .input {
         background: transparent;
         padding-top: 13px;
       }
-      .label{ 
+
+      .label {
         background: transparent;
       }
 
@@ -99,10 +108,10 @@ export const Wrapper = styled.label`
         }
       }
 
-      .input{
+      .input {
         &:focus ~ .label,
         &.fill ~ .label,
-        &.is-placeholder ~ .label {
+        &.isPlaceholder ~ .label {
           top: 15px;
           left: 12px;
           font-size: 12px;
@@ -110,21 +119,22 @@ export const Wrapper = styled.label`
       }
     }
 
-    &.outline{
+    &.outline {
       border-radius: 5px;
       background: #FFFFFF;
       box-sizing: border-box;
       border: 1px solid #DDE0F5;
-      
+
       &:focus-within {
         .input {
           border: 1px solid #4C42F6;
         }
       }
-      .input{
+
+      .input {
         &:focus ~ .label,
         &.fill ~ .label,
-        &.is-placeholder ~ .label {
+        &.isPlaceholder ~ .label {
           top: 0px;
           left: 12px;
           font-size: 12px;
@@ -133,23 +143,24 @@ export const Wrapper = styled.label`
       }
     }
 
-    &.view{
+    &.view {
       border-radius: 5px;
       background: #FFFFFF;
       box-sizing: border-box;
       border: none;
-      
+
       &:focus-within {
         .input {
           border: none;
         }
       }
-      .input{
+
+      .input {
         background: #FAFAFA;
 
         &:focus ~ .label,
         &.fill ~ .label,
-        &.is-placeholder ~ .label {
+        &.isPlaceholder ~ .label {
           top: 0px;
           left: 12px;
           font-size: 12px;
@@ -158,47 +169,51 @@ export const Wrapper = styled.label`
       }
     }
 
-    &.is-prefix{
-      .input{
+    &.isPrefix {
+      .input {
         padding-left: 65px;
       }
-      .label{
+
+      .label {
         left: 12px;
         font-size: 12px;
       }
-      .prefix{
+
+      .prefix {
         position: absolute;
         left: 16px;
         width: 40px;
         display: flex;
         justify-content: center;
       }
-      &.filled{
-        .label{
+
+      &.filled {
+        .label {
           top: 15px;
         }
-        
-        .prefix{
+
+        .prefix {
           top: 26px;
         }
       }
-      &.outline, &.view{
-        .label{
+
+      &.outline, &.view {
+        .label {
           top: 0px;
           background: #ffffff;
         }
-        
-        .prefix{
+
+        .prefix {
           top: 19px;
         }
       }
     }
 
-    .show-password{
+    .showPassword {
       position: absolute;
       right: 10px;
       top: 50%;
-      transform: translate(0%,-50%);
+      transform: translate(0%, -50%);
       font-size: 20px;
     }
 
@@ -214,6 +229,7 @@ export const Wrapper = styled.label`
       transform: translateY(-50%);
       transition: top .3s, font-size .3s;
     }
+
     .input {
       flex: 1;
       width: 100%;
@@ -227,9 +243,11 @@ export const Wrapper = styled.label`
       caret-color: #4C42F6;
       box-sizing: border-box;
       -moz-appearance: textfield;
+
       &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
         -webkit-appearance: none;
-      } 
+      }
+
       &::placeholder {
         opacity: 0.9;
         color: #878788;
@@ -239,10 +257,11 @@ export const Wrapper = styled.label`
       }
     }
   }
+
   .hint {
     color: #646464;
     font-size: 12px;
     font-weight: 400;
     line-height: 130%;
   }
-`;
+}

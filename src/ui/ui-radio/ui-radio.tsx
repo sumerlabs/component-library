@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { UiRadioProps } from "./types";
-import { Wrapper } from "./ui-radio.styled";
+import * as styles from './ui-radio.module.scss';
  
 const UiRadio: FC<UiRadioProps> = ({
   className,
@@ -21,9 +21,9 @@ const UiRadio: FC<UiRadioProps> = ({
   }, [active]);
 
   return (
-    <Wrapper className={`${className} ${isActive && 'active'}`} onClick={handleChange}>
-      <div className="fill" />
-    </Wrapper>
+    <div className={`${styles.uiRadio} ${className} ${isActive && styles.active}`} onClick={handleChange}>
+      <div className={styles.fill} />
+    </div>
   );
 }
  

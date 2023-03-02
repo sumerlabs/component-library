@@ -1,5 +1,4 @@
 export { default as Modal } from "./Modal";
-export { default as Slider } from "./Slider";
 export { default as Pagination } from "./Pagination";
 export { default as SelectLoginMethod } from "./SelectLoginMethod";
 export * from "./Modal/types";

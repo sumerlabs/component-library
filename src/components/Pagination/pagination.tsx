@@ -1,7 +1,7 @@
 import React from 'react';
 import { usePagination, DOTS } from './usePagination';
-import { PaginationContainer, PaginationDots, PaginationItem } from './pagination.styles';
 import { PaginationProps } from './paginationProps';
+import * as styles from './pagination.module.scss';
 
 const Pagination = ({
                         onPageChange,
@@ -35,30 +35,31 @@ const Pagination = ({
 
     let lastPage = paginationRange ? paginationRange[paginationRange.length - 1] : 1;
     return (
-        <PaginationContainer>
-            {previousLabel ? <span className={currentPage === 1 ? 'disabled' : ''}
-                                   onClick={onPrevious}>{previousLabel}</span> : <PaginationItem disabled={currentPage === 1}
+        <div className={styles.paginationContainer}>
+            {previousLabel ? <span className={currentPage === 1 ? styles.disabled : ''}
+                                   onClick={onPrevious}>{previousLabel}</span> :
+                <div className={`${styles.paginationItem} ${currentPage === 1 && styles.disabled}`}
                                                                onClick={onPrevious}>
-                <div className="arrow left" />
-            </PaginationItem>}
+                    <div className={`${styles.arrow} ${styles.left}`} />
+                </div>}
             {paginationRange?.map(pageNumber => {
                 if (pageNumber === DOTS) {
-                    return <PaginationDots key={`${pageNumber}-${randomNumber()}`}>&#8230;</PaginationDots>;
+                    return <div className={styles.paginationDots} key={`${pageNumber}-${randomNumber()}`}>&#8230;</div>;
                 }
 
                 return (
-                    <PaginationItem key={pageNumber} selected={pageNumber === currentPage}
+                    <div className={`${styles.paginationItem} ${pageNumber === currentPage && styles.disabled}`} key={pageNumber}
                                     onClick={() => onPageChange(pageNumber)}>
                         {pageNumber}
-                    </PaginationItem>
+                    </div>
                 );
             })}
-            {nextLabel ? <span className={currentPage === lastPage ? 'disabled' : ''}
-                               onClick={onNext}>{nextLabel}</span> : <PaginationItem disabled={currentPage === lastPage}
+            {nextLabel ? <span className={currentPage === lastPage ? styles.disabled : ''}
+                               onClick={onNext}>{nextLabel}</span> : <div className={`${styles.paginationItem} ${currentPage === lastPage && styles.disabled}`}
                                                                                          onClick={onNext}>
-                <div className="arrow right" />
-            </PaginationItem>}
-        </PaginationContainer>
+                <div className={`${styles.arrow} ${styles.right}`} />
+            </div>}
+        </div>
     );
 };
 

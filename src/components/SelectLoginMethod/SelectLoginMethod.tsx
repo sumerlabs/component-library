@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { SelectLoginMethodContainer } from '~/components/SelectLoginMethod/SelectLoginMethod.styled';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookLogin, googleLogin, LoginSteps } from '~/components';
 import { LoginType } from '~/components/Login/types';
@@ -14,7 +13,6 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                                    handleRegisterModal: () => void}): JSX.Element => {
 
     const url = location?.origin;
-    console.log('url', url);
     let disableGoogle = false;
 
     if (url) {

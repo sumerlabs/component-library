@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { UiLoaderProps } from "./types";
-import { Wrapper } from "./ui-loader.styled";
+import * as styles from './ui-loader.module.scss';
  
 const UiLoader: FC<UiLoaderProps> = ({
   className,
   size = 40,
 }) => {
   return (
-    <Wrapper className={className} style={{ width: `${size}px`, height: `${size}px` }}/>
+    <div className={`${styles.uiLoader} ${className}`} style={{ width: `${size}px`, height: `${size}px` }}/>
   );
 }
  

@@ -1,31 +1,25 @@
-import styled, { css } from 'styled-components';
-
-
-interface PaginationItemProps {
-  readonly selected?: boolean;
-  readonly disabled?: boolean;
-}
-
-export const PaginationContainer = styled.ul`
+.paginationContainer {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: space-between;
   margin: 20px;
   list-style-type: none;
+
   span {
     &.disabled {
       pointer-events: none;
     }
   }
+
   @media screen and (min-width: 768px) {
     width: 100%;
     justify-content: center;
     gap: 4rem;
   }
-`;
+}
 
-export const PaginationItem = styled.li<PaginationItemProps>`
+.paginationItem {
   padding: 0 5px;
   height: 32px;
   text-align: center;
@@ -34,11 +28,11 @@ export const PaginationItem = styled.li<PaginationItemProps>`
   box-sizing: border-box;
   align-items: center;
   border-radius: 16px;
-  color: ${({ theme }) => theme?.colors?.grayScale?.gr2};
+  color: #666666;
   letter-spacing: -0.002em;
   font-size: 16px;
   line-height: 24px;
-  
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.04);
     cursor: pointer;
@@ -63,10 +57,8 @@ export const PaginationItem = styled.li<PaginationItemProps>`
       transform: rotate(45deg);
     }
   }
-
-  ${({ disabled }) => disabled && css`
+  &.disabled {
     pointer-events: none;
-
     .arrow::before {
       border-right: 0.12em solid rgba(0, 0, 0, 0.43);
       border-top: 0.12em solid rgba(0, 0, 0, 0.43);
@@ -76,16 +68,15 @@ export const PaginationItem = styled.li<PaginationItemProps>`
       background-color: transparent;
       cursor: default;
     }
-  `}
+  }
+  &.selected {
+    color: #8942F6
+  }
+}
 
-  ${({ theme, selected }) => selected && css`
-    color: ${theme?.colors?.blueScale?.b9 ? theme?.colors?.blueScale?.b9 : 'red'};
-  `}
-`;
-
-export const PaginationDots = styled.div`
+.paginationDots {
   &.dots:hover {
     background-color: transparent;
     cursor: default;
   }
-`;
+}

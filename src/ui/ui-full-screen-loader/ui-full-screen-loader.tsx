@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 import UiLoader from "../ui-loader/ui-loader";
-import { Wrapper } from "./ui-full-screen-loader.styled";
 import { UiFullScreenLoaderProps } from "./types";
+import * as styles from './ui-full-screen-loader.module.scss';
  
 const UiFullScreenLoader: FC<UiFullScreenLoaderProps> = ({
   show,
 }) => {
   return (
-    <Wrapper className={`${show && 'show'}`}>
+    <div className={`${styles.uiFullScreenLoader} ${show && styles.show}`}>
       <UiLoader />
-    </Wrapper>
+    </div>
   );
 }
  

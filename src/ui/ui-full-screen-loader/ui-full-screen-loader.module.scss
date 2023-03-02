@@ -1,10 +1,8 @@
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
+.uiFullScreenLoader {
   top: 0;
   left: 0;
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   z-index: 1000;
   display: flex;
   color: #4C42F6;
@@ -13,8 +11,9 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #FFFFFF;
+
   &.show {
     width: 100vw;
     height: 100vh;
   }
-`;
+}

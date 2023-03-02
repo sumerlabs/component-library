@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
+.uiRadio {
   width: 20px;
   height: 20px;
   display: flex;
@@ -26,4 +24,4 @@ export const Wrapper = styled.div`
     height: calc(100% - 4px);
     background-color: #4C42F6;
   }
-`;
+}

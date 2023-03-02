@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
+.uiLoader {
   border-radius: 50%;
   position: relative;
   border-width: .2em;
@@ -16,4 +14,4 @@ export const Wrapper = styled.div`
       transform: rotate(360deg);
     }
   }
-`;
+}
