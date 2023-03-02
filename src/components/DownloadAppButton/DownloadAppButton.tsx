@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import * as styles from './download-app-button.module.scss';
+import styles from './download-app-button.module.scss';
 
 const DownloadAppButton = (): JSX.Element => {
     const { t } = useTranslation();

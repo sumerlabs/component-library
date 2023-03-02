@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import UiLoader from "../ui-loader/ui-loader";
 import { UiFullScreenLoaderProps } from "./types";
-import * as styles from './ui-full-screen-loader.module.scss';
+import styles from './ui-full-screen-loader.module.scss';
  
 const UiFullScreenLoader: FC<UiFullScreenLoaderProps> = ({
   show,

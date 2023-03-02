@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { UiLoaderProps } from "./types";
-import * as styles from './ui-loader.module.scss';
+import styles from './ui-loader.module.scss';
  
 const UiLoader: FC<UiLoaderProps> = ({
   className,

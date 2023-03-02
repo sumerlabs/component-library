@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { DropDownProps, Selected } from "./types";
 import React from "react";
 import { isEmpty } from "~/common/utils";
-import * as styles from "./drop-down.module.scss";
+import styles from "./drop-down.module.scss";
 
 const initialSelected = {
   label: "",

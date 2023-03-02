@@ -8,7 +8,7 @@ import ProgressBar from '~/components/ProgressBar/ProgressBar';
 import { EVENTS } from '~/common/consts/events';
 import { useLocalStorage } from '~/common/localStorage';
 import { Customer } from '~/components/Login/types';
-import * as styles from './updateUserData.module.scss';
+import styles from './updateUserData.module.scss';
 
 const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 	handleRegisterMessageView: (response: Customer) => void;

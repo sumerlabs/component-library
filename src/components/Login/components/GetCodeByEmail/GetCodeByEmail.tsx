@@ -6,7 +6,7 @@ import { Input } from '~/components/Inputs';
 import { GetCodeService } from '../../services';
 import { LoginSteps } from '../../types';
 import { EVENTS } from '~/common/consts/events';
-import * as styles from './getCodeByEmail.module.scss';
+import styles from './getCodeByEmail.module.scss';
 
 const GetCodeByEmail = ({
 					handleStepChange,

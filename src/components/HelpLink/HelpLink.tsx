@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { EVENTS } from '~/common';
 import { LightSupport } from '~/icons';
-import * as styles from './HelpLink.module.scss';
+import styles from './HelpLink.module.scss';
 
 const HelpLink = ({ logEvent }: { logEvent: (evt: string) => void}): JSX.Element => {
     const { t } = useTranslation()

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import UiDropdown from "../ui-dropdown/ui-dropdown";
 import UiInput from "../ui-input/ui-input";
 import { UiPhoneProps } from "./types";
-import * as styles from './ui-phone.module.scss';
+import styles from './ui-phone.module.scss';
  
 const UiPhone: FC<UiPhoneProps> = ({
   options,

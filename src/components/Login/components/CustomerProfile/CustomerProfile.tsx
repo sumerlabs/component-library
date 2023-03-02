@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Customer } from '../../types';
 import Profile from '../../icons/Profile';
 import SignOut from '../../icons/SignOut';
-import * as styles from './customer-profile.module.scss';
+import styles from './customer-profile.module.scss';
 
 const CustomerProfile = ({ customer, handleCloseSession } : { customer: Customer | null,
 	handleShowProfile: () => void, handleCloseSession: () => void;}): JSX.Element => {

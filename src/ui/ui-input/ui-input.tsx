@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, useEffect, useRef, useState, KeyboardEvent } from "react";
 import { UiInputProps } from "./types";
-import * as styles from './ui-input.module.scss';
+import styles from './ui-input.module.scss';
  
 const UiInput: FC<UiInputProps> = ({
   className,

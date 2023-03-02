@@ -7,7 +7,7 @@ import { useTranslation } from '~/providers/copies.provider';
 import SmsValidation from '~/components/Login/components/SmsValidation/SmsValidation';
 import { useLocalStorage } from '~/common/localStorage';
 import { EVENTS } from '~/common/consts/events';
-import * as styles from './validate-code.module.scss';
+import styles from './validate-code.module.scss';
 
 const ValidateCode = ({
 	validationSuccess,

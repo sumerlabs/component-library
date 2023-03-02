@@ -1,6 +1,6 @@
 import React from 'react';
 import CheckCircle from '~/components/Login/icons/CheckCircle';
-import * as styles from './registerMessage.module.scss';
+import styles from './registerMessage.module.scss';
 
 const RegisterMessage = (): JSX.Element => {
 

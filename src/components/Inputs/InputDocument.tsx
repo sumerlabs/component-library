@@ -5,7 +5,7 @@ import { DropDown } from '~/components/DropDown';
 import { ErrorMessage } from '~/components/ErrorMessage';
 import { isEmpty } from '~/common';
 import React from "react";
-import * as styles from './input.module.scss';
+import styles from './input.module.scss';
 
 export type InputDocumentProps = InputGeneralType & {
   identificationTypes: string[];

@@ -5,7 +5,7 @@ import { DropDown } from '~/components/DropDown';
 import { ErrorMessage } from '~/components/ErrorMessage';
 import React from "react";
 import { isEmpty } from '~/common';
-import * as styles from './input.module.scss';
+import styles from './input.module.scss';
 
 const InputPhone = ({
   errors,

@@ -8,7 +8,7 @@ import { allowOnlyNumber } from '~/common/utils';
 import { EVENTS } from '~/common/consts/events';
 import { UiPhone, UiPhoneOption } from '~/ui/ui-phone';
 import UiCheckbox from '../../../../ui/ui-checkbox/ui-checkbox';
-import * as styles from './get-code.module.scss';
+import styles from './get-code.module.scss';
 
 const GetCode = ({
 	handleStepChange,

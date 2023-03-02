@@ -1,7 +1,7 @@
 import React from "react";
 import InfoIcon from '~/icons/Information';
 import { useTheme } from 'styled-components';
-import * as styles from './error-message.module.scss';
+import styles from './error-message.module.scss';
 
 const ErrorMessage = ({
   className,

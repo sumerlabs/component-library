@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useMemo, useState } from "react";
 import { UiInput, UiInputProps } from "../ui-input";
 import { UiAutocompleteOption, UiAutocompleteProps } from "./types";
-import * as styles from './ui-autocomplete.module.scss';
+import styles from './ui-autocomplete.module.scss';
  
 const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> = ({
   className,

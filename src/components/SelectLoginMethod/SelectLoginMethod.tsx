@@ -4,7 +4,7 @@ import { facebookLogin, googleLogin, LoginSteps } from '~/components';
 import { LoginType } from '~/components/Login/types';
 import { useTranslation } from '~/providers/copies.provider';
 import { useGoogleLogin } from '@react-oauth/google';
-import * as styles from './select-login-method.module.scss';
+import styles from './select-login-method.module.scss';
 
 const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, loginType, handleRegisterModal }:
                                { validationSuccess: (token: string, expiresIn: number, refreshToken: string, channel: string)
@@ -16,7 +16,6 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
     let disableGoogle = false;
 
     if (url) {
-        console.log(url !== 'https://www.sumerlabs.com' && url !== 'https://www.dev.sumerlabs.com')
         disableGoogle = url !== 'https://www.sumerlabs.com'
             && url !== 'https://www.dev.sumerlabs.com' && !url.includes('dashboard');
     }

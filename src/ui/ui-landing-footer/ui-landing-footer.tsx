@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { UiLandingFooterProps } from "./types";
 import { WEB_ASSETS } from "~/constants";
-import * as styles from './ui-landing-footer.module.scss';
+import styles from './ui-landing-footer.module.scss';
  
 const UiLandingFooter: FC<UiLandingFooterProps> = ({
   className,

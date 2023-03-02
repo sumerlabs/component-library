@@ -2,7 +2,7 @@ import React from "react";
 import { KeyboardEvent } from "react";
 import { ErrorMessage } from '../ErrorMessage';
 import { InputTypes } from "./types";
-import * as styles from './input.module.scss';
+import styles from './input.module.scss';
 
 const Input = ({
                    className,

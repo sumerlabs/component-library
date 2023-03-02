@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import DownloadAppButton from '~/components/DownloadAppButton/DownloadAppButton';
-import * as styles from './registerIn-app.module.scss'
+import styles from './registerIn-app.module.scss'
 
 const RegisterInApp = (): JSX.Element => {
     const { t } = useTranslation();

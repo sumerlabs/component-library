@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './LoginContainer.module.scss';
+import styles from './LoginContainer.module.scss';
 
 const LoginContainer = ({ children, ref }: { children: React.ReactNode; ref?: any }): JSX.Element => {
 

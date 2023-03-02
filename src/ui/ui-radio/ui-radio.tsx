@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { UiRadioProps } from "./types";
-import * as styles from './ui-radio.module.scss';
+import styles from './ui-radio.module.scss';
  
 const UiRadio: FC<UiRadioProps> = ({
   className,

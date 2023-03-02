@@ -3,7 +3,7 @@ import { InputGeneralType } from "./types";
 import { ErrorMessage } from '~/components/ErrorMessage';
 import React from "react";
 import Password from '~/icons/Password';
-import * as styles from './input.module.scss';
+import styles from './input.module.scss';
 
 const InputPassword = ({
   title,

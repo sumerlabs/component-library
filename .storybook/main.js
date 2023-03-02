@@ -7,8 +7,7 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    '@storybook/addon-postcss',
+    "@storybook/addon-interactions"
   ],
   "framework": "@storybook/react",
   webpackFinal: async (config) => {
@@ -19,34 +18,9 @@ module.exports = {
     })
     config.module.rules.push({
       test: /\.scss$/,
-      loaders: [
-        {
-          loader: require.resolve('style-loader'),
-          options: {
-            esModule: true,
-            modules: {
-              namedExport: true,
-            },
-          },
-        },
-        {
-          loader: require.resolve('css-loader'),
-          options: {
-            importLoaders: 1,
-            esModule: true,
-            modules: {
-              namedExport: true,
-            },
-          },
-        },
-        {
-          loader: "sass-loader",
-          options: {
-            sourceMap: true,
-          },
-        },
-      ],
-    })
+      use: ['style-loader', 'css-loader?modules&importLoaders', 'sass-loader'],
+      include: path.resolve(__dirname, '../'),
+    });
     config.resolve.alias = {
       ...config.resolve?.alias,
       '~': path.resolve(__dirname, '../src/'),

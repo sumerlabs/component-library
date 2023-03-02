@@ -1,6 +1,6 @@
 import React, { createRef, useState } from 'react';
 import { EVENTS } from '~/common/consts/events';
-import * as styles from './smsValidation.module.scss';
+import styles from './smsValidation.module.scss';
 
 type Props = {
     handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;

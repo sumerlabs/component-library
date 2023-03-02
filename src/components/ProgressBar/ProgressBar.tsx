@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './progressBar.module.scss';
+import styles from './progressBar.module.scss';
 
 const ProgressBar = ({ width }: {width: number}): JSX.Element => {
 
