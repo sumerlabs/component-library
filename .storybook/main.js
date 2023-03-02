@@ -1,5 +1,4 @@
 const path = require("path");
-console.log(path.resolve("./.storybook/scss-preset.js"))
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -40,7 +39,12 @@ module.exports = {
             },
           },
         },
-        require.resolve('sass-loader'),
+        {
+          loader: "sass-loader",
+          options: {
+            sourceMap: true,
+          },
+        },
       ],
     })
     config.resolve.alias = {
