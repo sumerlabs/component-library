@@ -370,7 +370,6 @@
 .icon-line-start:before {
   content: "\e976";
 }
-
 .icon-email-outline:before {
   content: "\e977";
 }
@@ -400,4 +399,7 @@
 }
 .icon-view-grid-outline:before {
   content: "\e980";
+}
+.icon-menu:before {
+  content: "\e981";
 }
