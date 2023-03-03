@@ -8,9 +8,9 @@ import {
 import { WEB_ASSETS } from "~/constants";
 import { goToApp } from "~/utils";
 import { UiButton } from "../ui-button";
-import Modal from "~/components/Modal";
+import { Modal } from "~/components/Modal";
 import { ModalType } from "~/components/Modal/types";
-import * as styles from "./ui-landing-header.module.scss";
+import styles from "./ui-landing-header.module.scss";
 
 const UiLandingHeader: FC<UiLandingHeaderProps> = ({
   showLogin = true,
@@ -158,7 +158,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
               className={styles.actionable}
               href={i.link}
             >
-              <div className={`${styles.icon} icon-${i.icon}`} />
+              <div className={`icon-${i.icon}`} />
               <div className={styles.texts}>
                 <div className={styles.title}>{i.title}</div>
                 <div className={styles.description}>{i.description}</div>
@@ -220,18 +220,13 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         title={"Registrate en Sumer"}
         show={showModal}
         onClose={toggleOpenModal}
-        styles={{
-          content: {
-            borderRadius: {
-              bottomLeft: "10px",
-              bottomRight: "10px",
-              topLeft: "10px",
-              topRight: "10px",
-            },
+        type={ModalType.TOP}
+        content={{
+          styles: {
+            borderRadius: '10px',
             width: "499px",
             height: "auto",
-            type: ModalType.TOP,
-          },
+          }
         }}
       >
         <div className={styles.downloadContent}>
@@ -246,7 +241,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
             Descarga la app y crea tu cuenta
           </p>
           <div
-            className={styles.downloadAppbutton}
+            className={styles.downloadAppButton}
             onClick={() => goToApp(true)}
           >
             <span className="icon icon-apple" />

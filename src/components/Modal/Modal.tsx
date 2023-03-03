@@ -28,11 +28,12 @@ export const Modal = ({
   const handleClose = () => {
     onClose && onClose();
   };
+  console.log(closeElement)
 
   const modalContent = show ? (
     <aside
       className={`${styles.modalComponent} ${
-        type ? styles[`modalComponent__${type}`] : ""
+        type ? styles[`modalComponent__${type}` as keyof typeof styles] : ""
       } ${className || ""}`}
       style={stylesComponent}
     >

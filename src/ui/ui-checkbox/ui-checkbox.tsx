@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
 import { UiCheckboxProps } from "./types";
-import { Wrapper } from "./ui-checkbox.styled";
 import styles from './ui-checkbox.module.scss';
  
 const UiCheckbox: FC<UiCheckboxProps> = ({

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { UpdateUserDataContainer } from './UpdateUserData.styles';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { UpdateUserDataService } from '~/components/Login/services';

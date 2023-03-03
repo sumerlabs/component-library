@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { UiDropdownOption, UiDropdownProps } from "./types";
-import * as styles from "./ui-dropdown.module.scss"; 
+import styles from "./ui-dropdown.module.scss";
  
 const UiDropdown: FC<UiDropdownProps> = ({
   label,

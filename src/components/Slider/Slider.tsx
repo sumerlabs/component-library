@@ -1,6 +1,6 @@
-import React, { cloneElement, ElementType, useEffect, useRef, useState } from "react";
-import { Dot, Dots, ScrollElement } from "./Slider.styled";
+import React, { useEffect, useRef, useState } from "react";
 import { SliderProps } from "./Slider.type";
+import styles from './Slider.module.scss';
 
 const Slider = ({
                   children,
@@ -12,7 +12,6 @@ const Slider = ({
                   dotsStyle
                 }: SliderProps) => {
   const slider = useRef<any>(null);
-  const childrenValues = children as React.ElementType[];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [dots, setDots] = useState(0);
   const arrayNumber = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
@@ -89,8 +88,10 @@ const Slider = ({
   }
 
   return (
-      <ScrollElement dragMode={dragMode}>
-        <div className="items" ref={slider}>
+      <div className={styles.scrollElement} style={{
+        overflowX: dragMode ? 'scroll' : 'hidden',
+      }}>
+        <div className={styles.items} ref={slider}>
           {children ?
               children :
               arrayNumber.map(
@@ -103,7 +104,7 @@ const Slider = ({
             (<>
               {(currentSlide !== 0) &&
                   <button
-                      className="arrowBtn back"
+                      className={`${styles.back} ${styles.arrowBtn}`}
                       onClick={onBack}
                   >
                     {iconBackArrow ? iconBackArrow : "<"}
@@ -112,7 +113,7 @@ const Slider = ({
               {(currentSlide !== dots - 1) &&
                   <>
                     <button
-                        className="arrowBtn next"
+                        className={`${styles.next} ${styles.arrowBtn}`}
                         onClick={onNext}
                     >
                       {iconNextArrow ? iconNextArrow: ">"}
@@ -122,21 +123,24 @@ const Slider = ({
             </>)
         }
         { !hideDots && !dragMode && (
-            <Dots>
+            <div className={styles.dots}>
               {[...Array(dots)].map((dot, index) =>
-                  <Dot
-                      type={dotsStyle?.type}
-                      width={dotsStyle?.width}
-                      height={dotsStyle?.height}
-                      backgroundColor={dotsStyle?.backgroundColor}
-                      className={`${currentSlide === index && 'active'}`}
+                  <div
+                      style={{
+                        width: dotsStyle?.width ? dotsStyle?.width : '10px',
+                        height: dotsStyle?.height ? dotsStyle?.height : '10px',
+                        borderRadius: dotsStyle?.type && dotsStyle?.type === 'square' ? '4px' : '100%',
+                        backgroundColor: currentSlide === index && dotsStyle?.backgroundColor || 'black',
+                        border: `1px solid black ${dotsStyle?.backgroundColor ? dotsStyle?.backgroundColor : 'black'}`
+                      }}
+                      className={`${styles.dot} active`}
                       key={index}
                       onClick={() => moveFromDots(index)}>
-                  </Dot>)}
-            </Dots>
+                  </div>)}
+            </div>
         )
         }
-      </ScrollElement>
+      </div>
   );
 }
 
