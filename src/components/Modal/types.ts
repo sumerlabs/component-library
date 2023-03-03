@@ -4,69 +4,37 @@ export enum ModalType {
   DEFAULT = "default",
   LEFT = "left",
   RIGHT = "right",
-  MOBILE_BOTTOM = "mobile-bottom",
-  TOP = "top"
+  MOBILE_BOTTOM = "mobileBottom",
+  TOP = "top",
 }
-
-export enum Screen {
-    MOBILE = "mobile",
-    DESKTOP = "desktop"
-}
-
-export type ModalProps = {
-    show: boolean;
-    showHeader?: boolean;
-    onClose: () => void;
-    children: React.ReactNode;
-    title: string;
-    styles?: ModalStyleProps;
-    element?: Element;
-    closeElement?: React.ReactNode;
-    className?: string;
-}
-
-export type BorderRadius = {
-    topLeft?: string;
-    topRight?: string;
-    bottomLeft?: string;
-    bottomRight?: string;
-}
-
-export type ModalContent = {
-    borderRadius?: BorderRadius;
-    width?: string;
-    height?: string;
-    top?: string;
-    type?: ModalType;
-    padding?: string;
-    body?: Body
-    backgroundColor?: string;
-}
-
-export type Overlay = {
-    backgroundColor?: string;
-    zIndex?: number;
-}
-
-export type Body = {
-    borderRadius?: BorderRadius;
-    padding?: string;
-    backgroundColor?: string;
-}
-
-export type ModalStyleProps = {
-    content?: ModalContent;
-    overlay?: Overlay;
-};
 
 export type ModalContextProps = {
-    show: boolean;
-    type?: ModalType;
-    children: React.ReactNode;
-    styles: {
-        header?: CSSProperties | undefined;
-        body?: CSSProperties | undefined;
-        content?: CSSProperties | undefined;
-        overlay?: CSSProperties | undefined;
-    }
-}
+  show: boolean;
+  children: React.ReactNode;
+  type?: ModalType;
+  element?: Element;
+  showHeader?: boolean;
+  title?: string;
+  closeElement?: React.ReactNode;
+
+  className?: string;
+  styles?: CSSProperties;
+
+  overlay?: {
+    className?: string;
+    styles?: CSSProperties;
+  };
+  content?: {
+    className?: string;
+    styles?: CSSProperties;
+  };
+  header?: {
+    className?: string;
+    styles?: CSSProperties;
+  };
+  body?: {
+    className?: string;
+    styles?: CSSProperties;
+  };
+  onClose?: () => void;
+};

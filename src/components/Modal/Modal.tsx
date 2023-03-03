@@ -1,59 +1,80 @@
-import { StyledModalOverlay, StyledModal, StyledModalHeader, StyledModalBody, StyledModalTitle } from "./Modal.styles";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Close } from "../../assets/img/icons";
-import { ModalProps } from './types';
-import { getTransition } from './transition';
+import { ModalContextProps } from "./types";
+import styles from "./Modal.module.scss";
 
-const Modal = ({ show, onClose, children, title, styles, element, closeElement, showHeader = true, className }: ModalProps) => {
-    const [isBrowser, setIsBrowser] = useState(false);
+export const Modal = ({
+  show,
+  children,
+  element,
+  type,
+  showHeader = true,
+  title,
+  closeElement,
+  className,
+  styles: stylesComponent,
+  content,
+  overlay,
+  header,
+  body,
+  onClose,
+}: ModalContextProps) => {
+  const [isBrowser, setIsBrowser] = useState(false);
 
-    useEffect(() => {
-        setIsBrowser(true);
-    }, []);
+  useEffect(() => {
+    setIsBrowser(true);
+  }, []);
 
-    const handleCloseClick = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        onClose();
-    };
+  const handleClose = () => {
+    onClose && onClose();
+  };
 
-    const variants = {
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 },
-    }
+  const modalContent = show ? (
+    <aside
+      className={`${styles.modalComponent} ${
+        type ? styles[`modalComponent__${type}`] : ""
+      } ${className || ""}`}
+      style={stylesComponent}
+    >
+      <div
+        className={`${styles.modalOverlay} ${overlay?.className || ""}`}
+        style={overlay?.styles}
+        onClick={handleClose}
+      ></div>
+      <div
+        className={`${styles.modalContainer}  ${content?.className || ""}`}
+        style={content?.styles}
+      >
+        {showHeader && (
+          <header
+            className={`${styles.modalHeader} ${header?.className || ""}`}
+            style={header?.styles}
+          >
+            <span>
+              {!!title && <h3 className={styles.modalTitle}>{title}</h3>}
+            </span>
+            {closeElement ? (
+              <div onClick={handleClose}>{closeElement}</div>
+            ) : (
+              <button className={styles.modalClose} onClick={handleClose}>
+                <span className="icon-close"></span>
+              </button>
+            )}
+          </header>
+        )}
+        <div
+          className={`${styles.modalBody} ${body?.className || ""}`}
+          style={body?.styles}
+        >
+          {children}
+        </div>
+      </div>
+    </aside>
+  ) : null;
 
-    const transition = getTransition(styles?.content?.type)
-
-    const modalContent = show ? (
-        <StyledModalOverlay overlay={styles?.overlay} onClick={handleCloseClick}>
-            <StyledModal 
-                variants={variants}
-                initial={transition.initial}
-                animate={transition.animate}
-                transition={transition.transition}
-                onClick={(e) => e.stopPropagation()}
-                content={styles?.content}
-                overlay={styles?.overlay}
-                className={className}>
-                {showHeader && (
-                    <StyledModalHeader className="modal-header">
-                        <StyledModalTitle className="modal-title">{title}</StyledModalTitle>
-                        {closeElement ? <span onClick={handleCloseClick}>{closeElement}</span> : <Close onClick={handleCloseClick} />}
-                    </StyledModalHeader>
-                )}
-                <StyledModalBody className="modal-body" content={styles?.content}>{children}</StyledModalBody>
-            </StyledModal>
-        </StyledModalOverlay>
-    ) : null;
-
-    if (isBrowser) {
-        return createPortal(
-            modalContent,
-            element || document.body!, 'modal'
-        );
-    } else {
-        return null;
-    }
+  if (isBrowser) {
+    return createPortal(modalContent, element || document.body!, "modal");
+  } else {
+    return null;
+  }
 };
-
-export default Modal;

@@ -1,44 +1,40 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Modal from './Modal';
-import { ModalType } from './types';
+import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Modal } from "./Modal";
+import { ModalType } from "./types";
 
-const child = () => {
+const Child = () => {
   return (
-      <>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Pellentesque euismod, urna eu tincidunt consectetur,
-          nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
-          Sed euismod, urna eu tincidunt consectetur, nisi nisl
-          aliquam eros, eget tincidunt nisl nunc eu nisi.
-        </p>
-        <p>
-          Sed euismod, urna eu tincidunt consectetur, nisi nisl
-          aliquam eros, eget tincidunt nisl nunc eu nisi.
-          Sed euismod, urna eu tincidunt consectetur, nisi nisl
-          aliquam eros, eget tincidunt nisl nunc eu nisi.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Pellentesque euismod, urna eu tincidunt consectetur,
-          nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
-          Sed euismod, urna eu tincidunt consectetur, nisi nisl
-          aliquam eros, eget tincidunt nisl nunc eu nisi.
-        </p>
-        <p>
-          Sed euismod, urna eu tincidunt consectetur, nisi nisl
-          aliquam eros, eget tincidunt nisl nunc eu nisi.
-          Sed euismod, urna eu tincidunt consectetur, nisi nisl
-          aliquam eros, eget tincidunt nisl nunc eu nisi.
-        </p>
-      </>
-  )
-}
+    <>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        euismod, urna eu tincidunt consectetur, nisi nisl aliquam eros, eget
+        tincidunt nisl nunc eu nisi. Sed euismod, urna eu tincidunt consectetur,
+        nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
+      </p>
+      <p>
+        Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam eros, eget
+        tincidunt nisl nunc eu nisi. Sed euismod, urna eu tincidunt consectetur,
+        nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        euismod, urna eu tincidunt consectetur, nisi nisl aliquam eros, eget
+        tincidunt nisl nunc eu nisi. Sed euismod, urna eu tincidunt consectetur,
+        nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
+      </p>
+      <p>
+        Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam eros, eget
+        tincidunt nisl nunc eu nisi. Sed euismod, urna eu tincidunt consectetur,
+        nisi nisl aliquam eros, eget tincidunt nisl nunc eu nisi.
+      </p>
+    </>
+  );
+};
 
 export default {
-  title: 'Modal',
-  component: Modal
+  title: "Modal",
+  component: Modal,
 } as ComponentMeta<typeof Modal>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -51,18 +47,8 @@ Desktop.args = {
   onClose: () => {
     console.log("Close Desktop");
   },
-  children: child,
+  children: <Child />,
   title: "Desktop",
-  styles: {
-    content: {
-      borderRadius: {
-        bottomLeft: "10px",
-        bottomRight: "10px",
-        topLeft: "10px",
-        topRight: "10px"
-      }
-    }
-  }
 };
 
 export const DesktopWithCustomStyles = Template.bind({});
@@ -71,19 +57,32 @@ DesktopWithCustomStyles.args = {
   onClose: () => {
     console.log("Close DesktopWithCustomStyles");
   },
-  children: child,
+  children: <Child />,
   title: "Desktop With Custom Styles",
-  styles: {
-    content: {
-      width: "400px",
-      borderRadius: {
-        bottomLeft: "0",
-        bottomRight: "0",
-        topLeft: "10px",
-        topRight: "10px"
-      }
-    }
-  }
+  overlay: {
+    styles: {
+      backgroundColor: "rgba(124, 129, 219, 0.75)",
+    },
+  },
+  content: {
+    styles: {
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+      height: "400px",
+      maxWidth: "450px",
+    },
+  },
+  header: {
+    styles: {
+      backgroundColor: "#333333",
+      color: "#ffffff",
+    },
+  },
+  body: {
+    styles: {
+      color: "red",
+    },
+  },
 };
 
 export const DesktopPopup = Template.bind({});
@@ -92,26 +91,20 @@ DesktopPopup.args = {
   onClose: () => {
     console.log("Close DesktopPopup");
   },
-  children: child,
+  children: <Child />,
   title: "Desktop Popup",
-  styles: {
-    content: {
+  type: ModalType.LEFT,
+  content: {
+    styles: {
       width: "350px",
-      borderRadius: {
-        bottomLeft: "0",
-        bottomRight: "0",
-        topLeft: "10px",
-        topRight: "10px"
-      },
-      type: ModalType.LEFT
-    }
-  }
+    },
+  },
 };
 
 export const Mobile = Template.bind({});
 Mobile.parameters = {
   viewport: {
-    defaultViewport: 'iphonex',
+    defaultViewport: "iphonex",
   },
 };
 Mobile.args = {
@@ -119,14 +112,14 @@ Mobile.args = {
   onClose: () => {
     console.log("Close Mobile");
   },
-  children: child,
-  title: "Mobile"
+  children: <Child />,
+  title: "Mobile",
 };
 
 export const MobilePopup = Template.bind({});
 MobilePopup.parameters = {
   viewport: {
-    defaultViewport: 'iphonex',
+    defaultViewport: "iphonex",
   },
 };
 MobilePopup.args = {
@@ -134,25 +127,21 @@ MobilePopup.args = {
   onClose: () => {
     console.log("Close MobilePopup");
   },
-  children: child,
+  children: <Child />,
   title: "Mobile Popup",
-  styles: {
-    content: {
-      borderRadius: {
-        bottomLeft: "0",
-        bottomRight: "0",
-        topLeft: "10px",
-        topRight: "10px"
-      },
-      type: ModalType.LEFT
-    }
-  }
+  type: ModalType.LEFT,
+  content: {
+    styles: {
+      borderTopLeftRadius: "0.5rem",
+      borderTopRightRadius: "0.5rem",
+    },
+  },
 };
 
 export const MobileButton = Template.bind({});
 MobileButton.parameters = {
   viewport: {
-    defaultViewport: 'iphonex',
+    defaultViewport: "iphonex",
   },
 };
 MobileButton.args = {
@@ -160,19 +149,15 @@ MobileButton.args = {
   onClose: () => {
     console.log("Close MobileButton");
   },
-  children: child,
+  children: <Child />,
   title: "Mobile Button",
-  styles: {
-    content: {
-      borderRadius: {
-        bottomLeft: "0",
-        bottomRight: "0",
-        topLeft: "10px",
-        topRight: "10px"
-      },
-      type: ModalType.MOBILE_BOTTOM
-    }
-  }
+  type: ModalType.MOBILE_BOTTOM,
+  content: {
+    styles: {
+      borderTopLeftRadius: "0.5rem",
+      borderTopRightRadius: "0.5rem",
+    },
+  },
 };
 
 export const MobileButtonInDesktopView = Template.bind({});
@@ -181,19 +166,9 @@ MobileButtonInDesktopView.args = {
   onClose: () => {
     console.log("Close MobileButtonInDesktopView");
   },
-  children: child,
+  children: <Child />,
   title: "Mobile Button In Desktop View",
-  styles: {
-    content: {
-      borderRadius: {
-        bottomLeft: "10px",
-        bottomRight: "10px",
-        topLeft: "10px",
-        topRight: "10px"
-      },
-      type: ModalType.MOBILE_BOTTOM
-    }
-  }
+  type: ModalType.MOBILE_BOTTOM,
 };
 
 export const ModalWithCustomCloseElement = Template.bind({});
@@ -202,19 +177,9 @@ ModalWithCustomCloseElement.args = {
   onClose: () => {
     console.log("Close ModalWithCustomCloseElement");
   },
-  children: child,
+  children: <Child />,
   title: "Modal with custom close element",
-  styles: {
-    content: {
-      borderRadius: {
-        bottomLeft: "10px",
-        bottomRight: "10px",
-        topLeft: "10px",
-        topRight: "10px"
-      }
-    }
-  },
-  closeElement: <div>Custom close element</div>
+  closeElement: <button>Cerrar</button>,
 };
 
 export const DesktopWithTop = Template.bind({});
@@ -224,18 +189,15 @@ DesktopWithTop.args = {
   onClose: () => {
     console.log("Close Desktop");
   },
-  children: child,
+  children: <div>Ocurrio un error al consultar el servicio</div>,
+  showHeader: false,
   title: "Desktop With Top",
-  styles: {
-    content: {
+  type: ModalType.TOP,
+  content: {
+    styles: {
+      backgroundColor: '#e92c37',
+      color: '#ffffff',
       width: "350px",
-      borderRadius: {
-        bottomLeft: "10px",
-        bottomRight: "10px",
-        topLeft: "10px",
-        topRight: "10px"
-      },
-      type: ModalType.TOP
-    }
-  }
+    },
+  },
 };
