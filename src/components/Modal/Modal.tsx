@@ -28,7 +28,6 @@ export const Modal = ({
   const handleClose = () => {
     onClose && onClose();
   };
-  console.log(closeElement)
 
   const modalContent = show ? (
     <aside
