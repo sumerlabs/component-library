@@ -84,7 +84,7 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
                     onFail={(error) => {handleLoginError()}}
                     render={({ onClick, logout }) => (
                         <button className={'facebook-btn'} onClick={onClick}>
-                            <img src={'https://www.sumerlabs.com/prod/catalogue/facebokk-btn.png'}/>
+                            <img src={'/prod/catalogue/facebokk-btn.png'}/>
                             <label>{t('login.facebook_login')}</label>
                         </button>
                     )}

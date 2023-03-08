@@ -95,8 +95,8 @@ const GetCode = ({
 						<GetCodeContainer>
 							<div className={'head'}>
 								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
-									<img className='img-back' src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
-									<img className='img-sumer'  src='https://www.sumerlabs.com/prod/coupon-templates/sumerImg.png'/>
+									<img className='img-back' src='/prod/catalogue/arrowBack.png'/>
+									<img className='img-sumer'  src='/prod/coupon-templates/sumerImg.png'/>
 								</div>
 							</div>
 							<WrapperInput>
@@ -159,7 +159,7 @@ const GetCode = ({
 									logEvent(EVENTS.SELECT_SMS_CONFIRM);
 									handleSubmit(e);
 								}}>
-								<img className='icon-code' src='https://www.sumerlabs.com/prod/catalogue/sms.png'/>
+								<img className='icon-code' src='/prod/catalogue/sms.png'/>
 								{t('login.sms')}
 							</button>
 							<button className="button-wsp" disabled={!isValid} onClick={(e: any) => {
@@ -171,8 +171,8 @@ const GetCode = ({
 								className="icon-code"
 								src={
 									!isValid
-									? "https://www.sumerlabs.com/prod/catalogue/wpsgray.png"
-									: "https://www.sumerlabs.com/prod/assets/web/login/whatssapp.png"
+									? "/prod/catalogue/wpsgray.png"
+									: "/prod/assets/web/login/whatssapp.png"
 								}
 								/>
 								{t('login.whatsapp')}

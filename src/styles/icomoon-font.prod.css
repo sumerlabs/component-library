@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'icomoon';
-  src: url('https://www.sumerlabs.com/prod/assets/web/fonts/icomoon.eot') format('embedded-opentype'), 
-    url('https://www.sumerlabs.com/prod/assets/web/fonts/icomoon.ttf') format('ttf'),
-    url('https://www.sumerlabs.com/prod/assets/web/fonts/icomoon.woff') format('woff'),
+  src: url('/prod/assets/web/fonts/icomoon.eot') format('embedded-opentype'),
+    url('/prod/assets/web/fonts/icomoon.ttf') format('ttf'),
+    url('/prod/assets/web/fonts/icomoon.woff') format('woff'),
     url('https://www.sumerlabs.com/prod/assets/web/fonts/icomoon.svg') format('svg');
   font-weight: normal;
   font-style: normal;

@@ -186,7 +186,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         <DownloadContent>
           <img
             className="sumer-img"
-            src="https://www.sumerlabs.com/prod/catalogue/sumer-img.png"
+            src="/prod/catalogue/sumer-img.png"
           />
           <p className="text-acount">Aún no tienes una cuenta en Sumer.</p>
           <p className="text-download">Descarga la app y crea tu cuenta</p>

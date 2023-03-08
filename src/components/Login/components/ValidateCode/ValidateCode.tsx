@@ -144,8 +144,8 @@ const ValidateCode = ({
 					return (
 						<>
 							<div className={'back'} onClick={handleGoBack}>
-							<img className='img-back' src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
-							<img  src='https://www.sumerlabs.com/prod/catalogue/logoSumer.png'/>
+							<img className='img-back' src='/prod/catalogue/arrowBack.png'/>
+							<img  src='/prod/catalogue/logoSumer.png'/>
 						</div>
 							<WrapperCheckCode>
 								<form noValidate>
@@ -164,7 +164,7 @@ const ValidateCode = ({
 												   handleBlur={handleBlur} values={values} logEvent={logEvent} error={error} />
 												 {error ? (
 													<div className="box-error-code">
-													<img src="https://www.sumerlabs.com/prod/catalogue/error.png" />
+													<img src="/prod/catalogue/error.png" />
 													<p>{t("login.incorrect")}</p>
 													</div>
 												) : checkCode ? (
@@ -178,7 +178,7 @@ const ValidateCode = ({
 													<div className="box-loading">
 													<img
 														className="ckeck-code"
-														src="https://www.sumerlabs.com/prod/catalogue/loading.png"
+														src="/prod/catalogue/loading.png"
 													/>
 													</div>
 												) : (
