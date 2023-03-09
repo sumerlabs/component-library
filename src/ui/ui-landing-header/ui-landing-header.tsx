@@ -77,12 +77,6 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       description: "Conoce nuestro propósito y el equipo que lo hace realidad.",
       link: "/about-us",
     },
-    {
-      icon: 'book-open',
-      name: "Trabaja con nosotros",
-      description: "¡Únete a nuestro equipo! Talento LATAM",
-      link: "/sumer-jobs",
-    },
   ];
 
   const mobileMenuItems: UiLandingHeaderMenuItem[] = [
