@@ -30,7 +30,6 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             validationSuccess(response.accessToken, response.expiresIn, response.refreshToken, 'facebook');
         } catch (e) {
             console.log(e);
-            handleRegisterModal();
         }
     }
 
@@ -46,7 +45,6 @@ const SelectLoginMethod = ({ validationSuccess, apiUrl, apiKey, setStepTo, login
             validationSuccess(response.accessToken, response.expiresIn, response.refreshToken, 'google');
         } catch (e) {
             console.log(e);
-            handleRegisterModal();
         }
     }
 
