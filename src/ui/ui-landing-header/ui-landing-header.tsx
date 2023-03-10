@@ -77,12 +77,6 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       description: "Conoce nuestro propósito y el equipo que lo hace realidad.",
       link: "/about-us",
     },
-    {
-      icon: 'book-open',
-      name: "Trabaja con nosotros",
-      description: "¡Únete a nuestro equipo! Talento LATAM",
-      link: "/sumer-jobs",
-    },
   ];
 
   const mobileMenuItems: UiLandingHeaderMenuItem[] = [
@@ -158,7 +152,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         <div className="icon icon-crown" />
       </div>
       <div className="right-side">
-        {showLogin && <div className="login" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
+        {showLogin && <div className="login" onClick={onLoginClick}>Iniciar sesión</div>}
         <div className="download-button" onClick={() => toggleOpenModal()}>
           <span className="icon icon-android" />
           <span className="icon icon-apple" />
@@ -236,7 +230,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
             Quiero ser Experto
           </UiButton>
         </div>
-        {showLogin && <div className="login-button" onClick={onLoginClick}>Ingresar a Sumer WEB</div>}
+        {showLogin && <div className="login-button" onClick={onLoginClick}>Iniciar sesión</div>}
       </div>
     </UiLandingHeaderStyled>
   );
