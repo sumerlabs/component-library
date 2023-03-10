@@ -5,7 +5,7 @@
     .items {
       position: relative;
       width: 100%;
-      overflow-x: hidden;
+      overflow-x: scroll;
       transition: all 0.2s;
       user-select: none;
       cursor: pointer;
@@ -14,7 +14,7 @@
 
       -ms-overflow-style: none;
       scrollbar-width: none;
-      overflow-y: scroll;
+      overflow-y: hidden;
 
       &::-webkit-scrollbar {
         display: none;
