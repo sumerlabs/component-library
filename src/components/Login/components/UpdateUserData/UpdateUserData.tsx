@@ -83,7 +83,7 @@ const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 										   }
 										   handleBlur(e);
 									   }}
-									   value={values.firstName} name={'firstName'} placeholder={t('login.name')} className="input-update" />
+									   value={values.firstName} name={'firstName'} placeholder={t('login.name')} className={styles.inputUpdate} />
 								<label className={inputFocus ? styles.labelInputUpdate : styles.labelInputNone}>
                                 {t('login.last-name')}
 								</label>
