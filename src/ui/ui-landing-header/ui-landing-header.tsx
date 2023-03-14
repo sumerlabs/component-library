@@ -81,12 +81,6 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       description: "Conoce nuestro propósito y el equipo que lo hace realidad.",
       link: "/about-us",
     },
-    {
-      icon: "book-open",
-      name: "Trabaja con nosotros",
-      description: "¡Únete a nuestro equipo! Talento LATAM",
-      link: "/sumer-jobs",
-    },
   ];
 
   const mobileMenuItems: UiLandingHeaderMenuItem[] = [
@@ -204,7 +198,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       <div className={styles.rightSide}>
         {showLogin && (
           <div className={styles.login} onClick={onLoginClick}>
-            Ingresar a Sumer WEB
+            Iniciar sesión
           </div>
         )}
         <div
@@ -232,7 +226,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         <div className={styles.downloadContent}>
           <img
             className={styles.sumerImg}
-            src="https://www.sumerlabs.com/prod/catalogue/sumer-img.png"
+            src="/prod/catalogue/sumer-img.png"
           />
           <p className={styles.textAcount}>
             Aún no tienes una cuenta en Sumer.
@@ -302,7 +296,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
         </div>
         {showLogin && (
           <div className={styles.loginButton} onClick={onLoginClick}>
-            Ingresar a Sumer WEB
+            Iniciar sesión
           </div>
         )}
       </div>

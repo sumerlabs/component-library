@@ -28,6 +28,10 @@ export default {
         { src: 'src/styles/icons.css', dest: 'lib/styles' },
         { src: 'src/styles/icomoon-font.dev.css', dest: 'lib/styles' },
         { src: 'src/styles/icomoon-font.prod.css', dest: 'lib/styles' },
+        { src: 'src/assets/fonts/icomoon.eot', dest: 'lib/assets/fonts' },
+        { src: 'src/assets/fonts/icomoon.svg', dest: 'lib/assets/fonts' },
+        { src: 'src/assets/fonts/icomoon.ttf', dest: 'lib/assets/fonts' },
+        { src: 'src/assets/fonts/icomoon.woff', dest: 'lib/assets/fonts' },
       ]
     }),
     css(),

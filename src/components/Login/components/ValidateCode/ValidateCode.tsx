@@ -139,8 +139,8 @@ const ValidateCode = ({
 					return (
 						<>
 							<div className={styles.back} onClick={handleGoBack}>
-							<img className={styles.imgBack} src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
-							<img  src='https://www.sumerlabs.com/prod/catalogue/logoSumer.png'/>
+							<img className={styles.imgBack} src='/prod/catalogue/arrowBack.png'/>
+							<img  src='/prod/catalogue/logoSumer.png'/>
 						</div>
 							<div className={styles.wrapperCheckCode}>
 								<form noValidate>

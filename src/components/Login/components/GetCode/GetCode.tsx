@@ -92,8 +92,8 @@ const GetCode = ({
 						<div className={styles.getCodeContainer}>
 							<div className={styles.head}>
 								<div className={styles.back} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
-									<img className={styles.imgBack} src='https://www.sumerlabs.com/prod/catalogue/arrowBack.png'/>
-									<img className={styles.imgSumer}  src='https://www.sumerlabs.com/prod/coupon-templates/sumerImg.png'/>
+									<img className={styles.imgBack} src='/prod/catalogue/arrowBack.png'/>
+									<img className={styles.imgSumer}  src='/prod/coupon-templates/sumerImg.png'/>
 								</div>
 							</div>
 							<div className={styles.wrapperInput}>
@@ -168,8 +168,8 @@ const GetCode = ({
 								className={styles.iconCode}
 								src={
 									!isValid
-									? "https://www.sumerlabs.com/prod/catalogue/wpsgray.png"
-									: "https://www.sumerlabs.com/prod/assets/web/login/whatssapp.png"
+									? "/prod/catalogue/wpsgray.png"
+									: "/prod/assets/web/login/whatssapp.png"
 								}
 								/>
 								{t('login.whatsapp')}
