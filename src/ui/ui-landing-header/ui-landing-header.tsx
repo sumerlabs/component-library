@@ -84,6 +84,7 @@ const UiLandingHeader: FC<UiLandingHeaderProps> = ({
       icon: 'question-support',
       title: 'Sobre el equipo',
       description: 'Conoce nuestro equipo y su propósito',
+      link: '#',
       subItems: aboutItems,
     },
     ...defaultMenuItems
