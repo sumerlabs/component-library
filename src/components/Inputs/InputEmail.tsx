@@ -1,8 +1,8 @@
 import { KeyboardEvent } from "react";
-import { WrapperInput } from "./Input.styles";
 import { InputGeneralType } from "./types";
 import { ErrorMessage } from '~/components/ErrorMessage';
 import React from "react";
+import styles from './input.module.scss';
 
 const InputEmail = ({
   title,
@@ -15,8 +15,8 @@ const InputEmail = ({
   name = "username",
 }: InputGeneralType) => {
   return (
-    <WrapperInput>
-      <div className="input-box">
+    <div className={styles.inputContainer}>
+      <div className={styles.inputBox}>
         <input
           required
           id={name}
@@ -32,17 +32,17 @@ const InputEmail = ({
         />
         <label
           htmlFor="email"
-          className={`label-name ${
-              touched && touched[name] && touched[name] ? "error" : ""
+          className={`${styles.labelName} ${
+              touched && touched[name] && touched[name] ? styles.error : ""
           }`}
         >
-          <span className="content-name">{title}</span>
+          <span className={styles.contentName}>{title}</span>
         </label>
       </div>
       {touched&& touched[name] && errors && errors[name] ? (
         <ErrorMessage>{errors[name]}</ErrorMessage>
       ) : null}
-    </WrapperInput>
+    </div>
   );
 };
 

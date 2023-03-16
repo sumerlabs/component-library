@@ -1,0 +1,19 @@
+.uiFullScreenLoader {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 1000;
+  display: flex;
+  color: #4C42F6;
+  position: fixed;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+
+  &.show {
+    width: 100vw;
+    height: 100vh;
+  }
+}

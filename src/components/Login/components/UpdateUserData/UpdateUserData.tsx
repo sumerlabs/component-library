@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { UpdateUserDataContainer } from './UpdateUserData.styles';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { UpdateUserDataService } from '~/components/Login/services';
@@ -8,6 +7,7 @@ import ProgressBar from '~/components/ProgressBar/ProgressBar';
 import { EVENTS } from '~/common/consts/events';
 import { useLocalStorage } from '~/common/localStorage';
 import { Customer } from '~/components/Login/types';
+import styles from './updateUserData.module.scss';
 
 const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 	handleRegisterMessageView: (response: Customer) => void;
@@ -45,7 +45,7 @@ const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 	};
 
 	return (
-		<UpdateUserDataContainer>
+		<div className={styles.updateUserData}>
 			<Formik
 				initialValues={{ ...defaultValues }}
 				onSubmit={(values) => {
@@ -67,10 +67,10 @@ const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 					} = props;
 					return (
 						<>
-							<p className="title-login">{t('login.account')}</p>
+							<p className={styles.titleLogin}>{t('login.account')}</p>
 							<ProgressBar width={width} />
-							<div className="box-input-update">
-								<label className={inputFocus ? 'labe-linput-update' : 'labe-linput-none'}>
+							<div className={styles.boxInputUpdate}>
+								<label className={inputFocus ? styles.labelInputUpdate : styles.labelInputNone}>
                                 {t('login.name')}
 								</label>
 								<input onChange={(e) => {
@@ -83,8 +83,8 @@ const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 										   }
 										   handleBlur(e);
 									   }}
-									   value={values.firstName} name={'firstName'} placeholder={t('login.name')} className="input-update" />
-								<label className={inputFocus ? 'labe-linput-update' : 'labe-linput-none'}>
+									   value={values.firstName} name={'firstName'} placeholder={t('login.name')} className={styles.inputUpdate} />
+								<label className={inputFocus ? styles.labelInputUpdate : styles.labelInputNone}>
                                 {t('login.last-name')}
 								</label>
 								<input placeholder={t('login.last-name')} onChange={(e) => {
@@ -97,9 +97,9 @@ const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 										   }
 										   handleBlur(e);
 									   }}
-									   value={values.lastName} name={'lastName'} className="input-update" />
+									   value={values.lastName} name={'lastName'} className={styles.inputUpdate} />
 							</div>
-							<div className="btn-box">
+							<div className={styles.btnBox}>
 								<button
 									disabled={ ((!isValid) || isSubmitting) }
 									onClick={(e: any) => {
@@ -111,7 +111,7 @@ const UpdateUserData = ({ handleRegisterMessageView, apiUrl, logEvent }: {
 					);
 				}}
 			</Formik>
-		</UpdateUserDataContainer>
+		</div>
 	);
 };
 

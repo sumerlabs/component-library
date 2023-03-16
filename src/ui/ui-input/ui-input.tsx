@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC, useEffect, useRef, useState, KeyboardEvent } from "react";
-import { Wrapper } from "./ui-input.styled";
 import { UiInputProps } from "./types";
+import styles from './ui-input.module.scss';
  
 const UiInput: FC<UiInputProps> = ({
   className,
@@ -54,14 +54,14 @@ const UiInput: FC<UiInputProps> = ({
   }
 
   return (
-    <Wrapper role={`${role}-container`} className={`${className} ${!!hasError && 'error'} ${!!success && 'success'}`}>
-      <div className={`input-box ${style} ${prefix && 'is-prefix'}`}>
-        {prefix && <span role={`${role}-input-prefix`} className="prefix">{prefix}</span>}
+    <label role={`${role}-container`} className={`${styles.uiInput} ${className} ${!!hasError && styles.error} ${!!success && styles.success}`}>
+      <div className={`${styles.inputBox} ${styles.inputBox} ${styles[style as keyof typeof styles]} ${style} ${prefix && styles.isPrefix}`}>
+        {prefix && <span role={`${role}-input-prefix`} className={styles.prefix}>{prefix}</span>}
         <input
           role={`${role}-input`}
           ref={inputRef}
           type={`${showPassword ? 'text' : type}`}
-          className={`input ${isActive && 'fill'} ${!!placeholder && 'is-placeholder'}`} 
+          className={`${styles.input} ${isActive && styles.fill} ${!!placeholder && styles.isPlaceholder}`}
           name={name}
           value={text}
           disabled={disabled}
@@ -77,17 +77,17 @@ const UiInput: FC<UiInputProps> = ({
           placeholder={placeholder}
           autoComplete={autocomplete ? 'on' : 'off'}
         />
-        {!!label && <span className="label">{label}</span>}
+        {!!label && <span className={styles.label}>{label}</span>}
         {type === 'password' && (
           <span
             role={`${role}-icon-password`}
             onClick={() => setShowPassword(s => !s)} 
-            className={`show-password ${showPassword ? 'icon-hide-password' : 'icon-show-password'}`}
+            className={`${styles.showPassword} ${showPassword ? 'icon-hide-password' : 'icon-show-password'}`}
           />
         )}
       </div>
-      {(!!hint || hasError) && <div role={`${role}-message`} className="hint">{errorMessage || hint}</div>}
-    </Wrapper>
+      {(!!hint || hasError) && <div role={`${role}-message`} className={styles.hint}>{errorMessage || hint}</div>}
+    </label>
   );
 }
  

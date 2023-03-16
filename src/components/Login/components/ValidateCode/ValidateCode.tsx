@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {
-	Title,
-	WrapperCheckCode,
-	Text,
-	ValidateCodeContainer,
-} from './ValidateCode.styles';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { GetCodeService, ValidateCodeService } from '~/components/Login/services';
@@ -13,6 +7,7 @@ import { useTranslation } from '~/providers/copies.provider';
 import SmsValidation from '~/components/Login/components/SmsValidation/SmsValidation';
 import { useLocalStorage } from '~/common/localStorage';
 import { EVENTS } from '~/common/consts/events';
+import styles from './validate-code.module.scss';
 
 const ValidateCode = ({
 	validationSuccess,
@@ -120,7 +115,7 @@ const ValidateCode = ({
 	}
 
 	return (
-		<ValidateCodeContainer>
+		<div className={styles.validateCodeContainer}>
 			<Formik
 				initialValues={{ ...defaultValues }}
 				onSubmit={(values) => {
@@ -143,65 +138,65 @@ const ValidateCode = ({
 					} = props;
 					return (
 						<>
-							<div className={'back'} onClick={handleGoBack}>
-							<img className='img-back' src='/prod/catalogue/arrowBack.png'/>
+							<div className={styles.back} onClick={handleGoBack}>
+							<img className={styles.imgBack} src='/prod/catalogue/arrowBack.png'/>
 							<img  src='/prod/catalogue/logoSumer.png'/>
 						</div>
-							<WrapperCheckCode>
+							<div className={styles.wrapperCheckCode}>
 								<form noValidate>
 									<div className='box-code-verification'>
-										<p className='text-code'>{t('login.code_verification')}</p>
+										<p className={styles.textCode}>{t('login.code_verification')}</p>
 										<br/>
-										<p className='text-code-send'>{t('login.code_verification_send')}</p>
+										<p className={styles.textCodeSend}>{t('login.code_verification_send')}</p>
 									</div>
 									<br/>
-									<div className='box-send-to'>
-										<p className='text-send-to'>{`${prefixSendTo} ${sendTo}`}</p>
-										<p className='text-change' onClick={handleGoBack}>{t('login.change_phone')}</p>
+									<div className={styles.boxSendTo}>
+										<p className={styles.textSendTo}>{`${prefixSendTo} ${sendTo}`}</p>
+										<p className={styles.textChange} onClick={handleGoBack}>{t('login.change_phone')}</p>
 									</div>
 									<SmsValidation
 												   handleChange={handleChange}
 												   handleBlur={handleBlur} values={values} logEvent={logEvent} error={error} />
 												 {error ? (
-													<div className="box-error-code">
-													<img src="/prod/catalogue/error.png" />
+													<div className={styles.boxErrorCode}>
+													<img src="https://www.sumerlabs.com/prod/catalogue/error.png" />
 													<p>{t("login.incorrect")}</p>
 													</div>
 												) : checkCode ? (
-													<div className="box-check-code">
+													<div className={styles.boxCheckCode}>
 													<img
-														className="ckeck-code"
+														className={styles.checkCode}
 														src="https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/check.png"
 													/>
 													</div>
 												) : loadingCode ? (
-													<div className="box-loading">
+													<div className={styles.boxLoading}>
 													<img
-														className="ckeck-code"
-														src="/prod/catalogue/loading.png"
+														className={styles.checkCode}
+														src="https://www.sumerlabs.com/prod/catalogue/loading.png"
 													/>
 													</div>
 												) : (
 													""
 												)}
 													{timer &&(
-														<p className='send-code-text'>Solicita otro código dentro de: {seconds} segundos</p>
+														<p className={styles.sendCodeText}>Solicita otro código dentro de: {seconds} segundos</p>
 													)}
 													{sendCode && (
-														<Text className="small">
+														<p className={`${styles.text} ${styles.small}`}>
 														{t('login.codeQuestion')}{' '}
-														<span role="button" className="highlights" onClick={() => {
+														<span role="button" className={styles.highlights} onClick={() => {
 															logEvent(EVENTS.SELECT_RESEND_CODE);
 															handleResendCode();
 															handleSendCode()
 														}}>	
 														{t('login.send-again')}
 														</span>
-													</Text>
+													</p>
 													)}
 									
-									{ resend && <div className='box-resend-code'>{t('login.resend')}</div>}
-									<div className="btn-box enabled">
+									{ resend && <div className={styles.boxResendCode}>{t('login.resend')}</div>}
+									<div className={`${styles.btnBox} ${styles.enabled}`}>
 										<button  type={'submit'} className="btn-primary"
 												 disabled={!isValid}
 												 onClick={(e: any) => {
@@ -210,12 +205,12 @@ const ValidateCode = ({
 									</div>
 								</form>
 								
-							</WrapperCheckCode>
+							</div>
 						</>
 					);
 				}}
 			</Formik>
-		</ValidateCodeContainer>
+		</div>
 	);
 };
 

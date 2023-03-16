@@ -1,15 +1,12 @@
 import React from 'react';
-import {
-    InProgress,
-    ProgressBarContainer
-} from './ProgressBar.styles';
+import styles from './progressBar.module.scss';
 
 const ProgressBar = ({ width }: {width: number}): JSX.Element => {
 
     return (
-        <ProgressBarContainer>
-            <InProgress width={width} />
-        </ProgressBarContainer>
+        <div className={styles.progressBarContainer}>
+            <div className={styles.inProgress} style={{width}} />
+        </div>
     );
 };
 

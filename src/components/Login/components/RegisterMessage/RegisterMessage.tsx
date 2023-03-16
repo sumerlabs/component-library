@@ -1,20 +1,18 @@
 import React from 'react';
-import {
-	RegisterMessageContainer
-} from './RegisterMessage.styles';
 import CheckCircle from '~/components/Login/icons/CheckCircle';
+import styles from './registerMessage.module.scss';
 
 const RegisterMessage = (): JSX.Element => {
 
 	return (
-		<RegisterMessageContainer>
-			<div className='box-ready-account'>
+		<div className={styles.registerMessage}>
+			<div className={styles.boxReadyAccount}>
 			<CheckCircle width={80} height={80}/>
-			<p className='great'>Genial!</p>
-			<p className='ready-account'>Ya tienes tu cuenta en Sumer</p>
+			<p className={styles.great}>Genial!</p>
+			<p className={styles.readyAccount}>Ya tienes tu cuenta en Sumer</p>
 			</div>
 			
-		</RegisterMessageContainer>
+		</div>
 	);
 };
 

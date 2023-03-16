@@ -1,7 +1,4 @@
 import { useTranslation } from '~/providers/copies.provider';
-import {
-	GetCodeByEmailContainer, WrapperInputRegisterBYEmail
-} from './GetCodeByEmail.styles';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -9,6 +6,7 @@ import { Input } from '~/components/Inputs';
 import { GetCodeService } from '../../services';
 import { LoginSteps } from '../../types';
 import { EVENTS } from '~/common/consts/events';
+import styles from './getCodeByEmail.module.scss';
 
 const GetCodeByEmail = ({
 					handleStepChange,
@@ -52,7 +50,7 @@ const GetCodeByEmail = ({
 	};
 
 	return (
-		<GetCodeByEmailContainer>
+		<div className={styles.getCodeByEmail}>
 			<Formik
 				initialValues={{ ...defaultValues }}
 				onSubmit={(values) => {
@@ -75,17 +73,17 @@ const GetCodeByEmail = ({
 						isSubmitting,
 					} = props;
 					return (
-						<GetCodeByEmailContainer>
+						<div className={styles.getCodeByEmail}>
 							<div className={'head'}>
-								<div className={'back'} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
-									<img className='img-back' src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
+								<div className={styles.back} onClick={() => {setStepTo(LoginSteps.SELECT_LOGIN_METHOD)}}>
+									<img className={styles.imgBack} src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/arrowBack.png'/>
 									<img  src='https://sumer-s3-database.s3.us-west-2.amazonaws.com/prod/catalogue/logoSumer.png'/>
 								</div>
 								<br/>
-								<p className="title-login-email">{t('login.title')}</p>
+								<p className={styles.titleLoginEmail}>{t('login.title')}</p>
 								<br/>
 							</div>
-							<WrapperInputRegisterBYEmail>
+							<div>
 								<Input
 									id="email"
 									name="email"
@@ -104,9 +102,9 @@ const GetCodeByEmail = ({
 									type="email"
 									placeholder={t('formCheckout.email_placeholder')}
 								/>
-							</WrapperInputRegisterBYEmail>
+							</div>
 							<button
-								className={!isValid ? "button-msn-email" : "button-msn-email enable"}
+								className={!isValid ? styles.buttonMsnEmail : `${styles.buttonMsnEmail} ${styles.enable}`}
 								disabled={!isValid}
 								onClick={(e: any) => {
 									setFieldValue('channel','email')
@@ -115,12 +113,12 @@ const GetCodeByEmail = ({
 								}}>
 								{t('login.continue')}
 							</button>
-						</GetCodeByEmailContainer>
+						</div>
 					);
 				}}
 			</Formik>
 			{ error && <div className='box-error-code'>{t('login.invalidEmail')}</div>}
-		</GetCodeByEmailContainer>
+		</div>
 	);
 };
 

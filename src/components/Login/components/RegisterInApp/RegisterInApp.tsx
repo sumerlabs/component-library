@@ -1,22 +1,22 @@
 import React from 'react';
-import { RegisterInAppContainer } from './RegisterInApp.styled';
 import { useTranslation } from 'react-i18next';
 import DownloadAppButton from '~/components/DownloadAppButton/DownloadAppButton';
+import styles from './registerIn-app.module.scss'
 
 const RegisterInApp = (): JSX.Element => {
     const { t } = useTranslation();
 
     return (
-        <RegisterInAppContainer>
-            <img className='sumer-logo' src={'https://sumerlabs.com/prod/coupon-templates/Isotipo-sumer.png'} alt={'user'}/>
-            <div className="container">
-                <div className={'exclamation'}>{t('register.not_account')}</div>
-                <div className='download-text'>{t('register.download_app')}</div>
+        <div className={styles.registerInApp}>
+            <img className={styles.sumerLogo} src={'https://sumerlabs.com/prod/coupon-templates/Isotipo-sumer.png'} alt={'user'}/>
+            <div className={styles.container}>
+                <div className={styles.exclamation}>{t('register.not_account')}</div>
+                <div className={styles.downloadText}>{t('register.download_app')}</div>
             </div>
-            <div className="container">
+            <div className={styles.container}>
                 <DownloadAppButton />
             </div>
-        </RegisterInAppContainer>
+        </div>
     );
 };
 

@@ -7,8 +7,7 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "themeprovider-storybook/register"
+    "@storybook/addon-interactions"
   ],
   "framework": "@storybook/react",
   webpackFinal: async (config) => {
@@ -17,6 +16,11 @@ module.exports = {
       include: /node_modules/,
       type: "javascript/auto",
     })
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: ['style-loader', 'css-loader?modules&importLoaders', 'sass-loader'],
+      include: path.resolve(__dirname, '../'),
+    });
     config.resolve.alias = {
       ...config.resolve?.alias,
       '~': path.resolve(__dirname, '../src/'),

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { Wrapper } from "./ui-phone.styled";
 import UiDropdown from "../ui-dropdown/ui-dropdown";
 import UiInput from "../ui-input/ui-input";
 import { UiPhoneProps } from "./types";
+import styles from './ui-phone.module.scss';
  
 const UiPhone: FC<UiPhoneProps> = ({
   options,
@@ -28,9 +28,9 @@ const UiPhone: FC<UiPhoneProps> = ({
   }
 
   return (
-    <Wrapper className={`${className} ${hasError && 'error'}`}>
+    <div className={`${styles.uiPhone} ${className} ${hasError && styles.error}`}>
       <UiDropdown
-        className='selector'
+        className={styles.selector}
         label={label || "Teléfono*"}
         placeholder="---"
         value={prefixValue}
@@ -43,7 +43,7 @@ const UiPhone: FC<UiPhoneProps> = ({
         name="phone"
         type="number"
         maxLength={12}
-        className='input'
+        className={styles.input}
         value={phoneValue}
         placeholder={placeholder || "Tu número de celular"}
         hasError={hasError}
@@ -51,8 +51,8 @@ const UiPhone: FC<UiPhoneProps> = ({
         onFocus={onFocusInput}
         onChange={(e: any) => handlePhoneChange(e.target.value)}
       />
-      {(!!hint || hasError) && <div className="hint">{errorMessage || hint}</div>}
-    </Wrapper>
+      {(!!hint || hasError) && <div className={styles.hint}>{errorMessage || hint}</div>}
+    </div>
   );
 }
  

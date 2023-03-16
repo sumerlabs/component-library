@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { UiCheckboxProps } from "./types";
-import { Wrapper } from "./ui-checkbox.styled";
+import styles from './ui-checkbox.module.scss';
  
 const UiCheckbox: FC<UiCheckboxProps> = ({
   active,
@@ -20,15 +20,15 @@ const UiCheckbox: FC<UiCheckboxProps> = ({
   }, [active]);
 
   return (
-    <Wrapper 
-      className={`${className} ${isActive && 'active'}`} 
+    <div
+      className={`${styles.uiCheckbox} ${className} ${isActive && styles.active}`}
       onClick={handleClick} 
       style={{ width: `${size}px`, height: `${size}px` }}>
-      <span 
-        className={`icon icon-check`} 
+      <span
+        className={`${styles.icon} icon-check`}
         style={{ width: `${size}px`, height: `${size}px`, fontSize: `${size - 2}px` }}
       />
-    </Wrapper>
+    </div>
   );
 }
  

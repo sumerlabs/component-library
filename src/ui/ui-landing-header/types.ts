@@ -1,5 +1,3 @@
-import {UiLandingHeaderStyled} from "~/ui/ui-landing-header/ui-landing-header.styled";
-
 export declare type UiLandingHeaderProps = {
   showLogin?: boolean;
   className?: string;

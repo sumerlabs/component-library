@@ -1,9 +1,6 @@
 import React, { createRef, useState } from 'react';
-import {
-    SmsValidationContainer,
-    Line
-} from './SmsValidation.styles';
 import { EVENTS } from '~/common/consts/events';
+import styles from './smsValidation.module.scss';
 
 type Props = {
     handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -34,23 +31,23 @@ const SmsValidation = ({ handleChange, handleBlur, values, logEvent, error }: Pr
     }
 
     return (
-        <SmsValidationContainer onClick={() => {
+        <div className={styles.smsValidation} onClick={() => {
             logEvent(EVENTS.SELECT_INPUT_CODE);
         }}>
             {Object.keys(values).map((k, index) => {
                 return (
                     <>
-                        <input className={!error ? "input-code" : "input-error" } onChange={handleChange}
+                        <input className={!error ? styles.inputCode : styles.inputError } onChange={handleChange}
                                onBlur={handleBlur}
                                onInput={focusChange}
                                key={index}
                                autoComplete={'off'}
                                value={values[k]} name={k} placeholder="00" maxLength={2} />
-                        {index + 1 !== Object.keys(values).length && <Line />}
+                        {index + 1 !== Object.keys(values).length && <div className={styles.line} />}
                     </>
                 );
             })}
-        </SmsValidationContainer>
+        </div>
     );
 };
 

@@ -15,7 +15,7 @@ import { LoginProps, LoginSteps } from './types';
 import {EVENTS, useLocalStorage} from '~/common';
 import GetCodeByEmail from '~/components/Login/components/GetCodeByEmail/GetCodeByEmail';
 import RegisterInApp from '~/components/Login/components/RegisterInApp/RegisterInApp';
-import Modal from '~/components/Modal';
+import { Modal } from '~/components/Modal';
 import { useTranslation } from 'react-i18next';
 import { CopiesContextProvider } from '~/providers/copies.provider';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -103,17 +103,11 @@ const Login = ({ apiUrl, apiKey, logEvent,
               {step === LoginSteps.UPDATE_USER_DATA && <UpdateUserData
                   handleRegisterMessageView={handleRegisterMessageView} apiUrl={apiUrl} logEvent={logEvent} />}
               {step === LoginSteps.REGISTER_MESSAGE && <RegisterMessage />}
-              <Modal styles={{
-              content: {
-                  type: ModalType.DEFAULT,
-                borderRadius: {
-                  bottomLeft: "10px",
-                  bottomRight: "10px",
-                  topLeft: "10px",
-                  topRight: "10px",
-                },
-                height: "474px",
-              },
+              <Modal type={ModalType.DEFAULT} content={{
+                  styles: {
+                      borderRadius: '10px',
+                      height: "474px",
+                  },
             }} show={showModal} onClose={() => {setShowModal(false)}}
                      title={t('login.register')}>
                   <RegisterInApp />

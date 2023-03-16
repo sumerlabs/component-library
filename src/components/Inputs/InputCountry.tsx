@@ -1,10 +1,9 @@
 import { useMemo } from "react";
-
-import { CountryBox, WrapperInput } from "./Input.styles";
 import { InputGeneralType } from '~/components/Inputs/types';
 import { ErrorMessage } from '~/components/ErrorMessage';
 import { DropDown } from '~/components/DropDown';
 import React from "react";
+import styles from './input.module.scss';
 
 const InputCountry = ({
   title,
@@ -24,32 +23,32 @@ const InputCountry = ({
   }, [data]);
 
   return (
-    <WrapperInput>
+    <div className={styles.inputContainer}>
       <div
-        className={`select-country-container ${
-          touched?.country && errors?.country ? "error" : ""
+        className={`${styles.selectCountryContainer} ${
+          touched?.country && errors?.country ? styles.error : ""
         }`}
       >
-        <label className="label-name">
-          <span className="content-input">{title}</span>
+        <label className={styles.labelName}>
+          <span className={styles.contentInput}>{title}</span>
         </label>
-        <CountryBox
-          className={`${
-            touched?.country && errors?.country ? "error-indicative" : ""
+        <div
+          className={`${styles.countryBox} ${
+            touched?.country && errors?.country ? styles.errorIndicative : ""
           }`}
         >
           <DropDown
-            className="select-country"
+            className={styles.selectCountry}
             fieldName="country"
             options={countryOptions}
             setFieldValue={setFieldValue}
           />
-        </CountryBox>
+        </div>
       </div>
       {touched?.country && errors?.country ? (
         <ErrorMessage>{errors.country}</ErrorMessage>
       ) : null}
-    </WrapperInput>
+    </div>
   );
 };
 

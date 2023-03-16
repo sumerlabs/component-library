@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useMemo, useState } from "react";
 import { UiInput, UiInputProps } from "../ui-input";
 import { UiAutocompleteOption, UiAutocompleteProps } from "./types";
-import { Wrapper } from "./ui-autocomplete.styled";
+import styles from './ui-autocomplete.module.scss';
  
 const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> = ({
   className,
@@ -52,7 +52,7 @@ const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> =
   }
 
   return (
-    <Wrapper className={`${className} ${isOpen ? 'open' : 'close'} `}>
+    <div className={`${styles.uiAutocomplete} ${className} ${isOpen ? styles.open : styles.close} `}>
       <UiInput
         className={`${className}-input`}
         autocomplete={false}
@@ -69,19 +69,19 @@ const UiAutocomplete: FC<UiAutocompleteProps & Omit<UiInputProps, 'onChange'>> =
         onFocus={handleFocus}
         onChange={handleWriteText}
       />
-      <div className={`dropdown-expanded-section dropdown-${expandiblePosition}`}>
+      <div className={`${styles.dropdownExpandedSection} dropdown-${expandiblePosition}`}>
         {!!filteredOptions.length ? filteredOptions.map((o, index) => (
           <div 
             key={`dropdown-item-${o.value}-${index}`}
-            className={`item ${isCurrentOption(o) && 'active'}`} 
+            className={`${styles.item} ${isCurrentOption(o) && styles.active}`}
             onClick={() => handleSelectOption(o)}>
             {o.label}
           </div>
         )): (
-          <div className={`item no-result`}>No hay resultados</div>
+          <div className={`${styles.item} ${styles.noResult}`}>No hay resultados</div>
         )}
       </div>
-    </Wrapper>
+    </div>
   );
 }
  

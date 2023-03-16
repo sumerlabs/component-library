@@ -1,0 +1,267 @@
+.inputContainer {
+    display: flex;
+    font-size:16px;
+   line-height:140%;
+   font-weight: 400;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    input {
+      border: none;
+      font-size:16px;
+      line-height:140%;
+      font-weight: 400;
+      outline: none;
+      padding-top: 10px;
+      padding-left: 0;
+      padding-bottom: 5px;
+      width: 100%;
+      border: 1px solid #DDE0F5;
+      border-radius: 8px;
+      padding: 0.6rem;
+        &:focus,
+        &:active,
+        &.selected {
+          border: 1px solid #4c42f6;
+        }
+    }
+  label {
+    position: absolute;
+    padding-left: 1px;
+    bottom: 1px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+
+    &.error {
+      border-color: #ff5b24;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transform: translateX(-100%);
+    }
+
+    &.error::after {
+      border-bottom: 1px solid transparent;
+    }
+  }
+
+  & input:focus + .labelName .contentName,
+  & input:valid + .labelName .contentName {
+    color: #4c42f6;
+    font-size:12px;
+    line-height:130%;
+    font-weight: 400;
+    transform: translateY(-120%) translateX(-1px);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  & input:focus + .labelName .contentName,
+  & input:valid + .labelName .contentName {
+    color: #4c42f6;
+  }
+
+  & input:focus + .labelName.error .contentName,
+  & input:valid + .labelName.error .contentName {
+    color: #ff5b24;
+  }
+
+  & input:focus + .labelName::after,
+  & input:valid + .labelName::after {
+    transform: translateX(0%);
+    transition: 0.3s ease-out 0s;
+  }
+  &:global(&.outline) {
+    .inputBox {
+      margin-bottom: 0;
+      margin-top: 0;
+
+      label{
+        display: none;
+      }
+      input{
+        padding: 10px;
+        border: 1px solid #d2d2d2;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .iconInput {
+    align-self: end;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .contentName {
+    bottom: 8px;
+    color: #888888;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+  }
+
+  .selectBox {
+    color: #888888;
+    display: flex;
+    flex-direction: column;
+    font-size:12px;
+    line-height:130%;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .selectCountry,
+  .selectTerms,
+  .selectEconomic,
+  .selectDropdown {
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    background-color: transparent;
+    border-bottom: 1px solid #888888;
+    color: #000;
+    font-size:16px;
+   line-height:140%;
+   font-weight: 400;
+    padding: 0.5rem 0 0.5rem;
+    height: 37px;
+  }
+  .selectCountry:focus,
+  .selectEconomic:focus {
+    border-bottom: 2px solid #4c42f6;
+  }
+  .selectText {
+    font-size:12px;
+    line-height:130%;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .selectBox:focus-within {
+    color: #4c42f6;
+    font-size:12px;
+    line-height:130%;
+    font-weight: 400;
+  }
+
+  .selectPhone,
+  .selectCountryContainer,
+  .selectEconomicSector,
+  .selectGeneral {
+    color: #888888;
+    display: flex;
+    flex-direction: column;
+    font-size:12px;
+    line-height:130%;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .phoneBox,
+  .countryBox,
+  .economicSectorBox,
+  .fieldBox {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .selectIndicative,
+  .selectCountry,
+  .selectEconomic,
+  .selectDropdown,
+  .phone,
+  .inputField {
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    background-color: transparent;
+    border-bottom: 1px solid #888888;
+    color: #000;
+    font-size:16px;
+   line-height:140%;
+   font-weight: 400;
+    padding: 0.5rem 0 0.5rem;
+  }
+
+  .selectIndicative,
+  .selectDropdown {
+    width: 30%;
+    @media screen and (min-width: 980px) {
+      width: 25%;
+    }
+  }
+  .phone,
+  .inputField {
+    width: 70%;
+    @media screen and (min-width: 980px) {
+      width: 75%;
+    }
+  }
+
+  .selectPhone:focus-within,
+  .selectGeneral:focus-within,
+  .selectCountryContainer:focus-within,
+  .selectEconomicSector:focus-within {
+    color: #4c42f6;
+    font-size:12px;
+    line-height:130%;
+    font-weight: 400;
+  }
+
+  .toggle {
+    background-color: transparent;
+  }
+
+  .selectPhone,
+  .selectCountryContainer,
+  .selectEconomicSector,
+  .selectGeneral {
+    &.error {
+      .contentInput {
+        color: #ff5b24;
+      }
+
+      .phone,
+      .inputField {
+        border-bottom: 1px solid #ff5b24;
+      }
+    }
+
+    .errorIndicative,
+    .errorBox {
+      .selectIndicative,
+      .selectEconomic,
+      .selectCountry,
+      .selectDropdown {
+        border-bottom: 1px solid #ff5b24;
+      }
+    }
+  }
+}
+
+.phoneBox {
+  select {
+    height: auto;
+  }
+}
+
+.countryBox {
+  select {
+    height: auto;
+  }
+}
+
+.box {
+  select {
+    height: auto;
+  }
+}

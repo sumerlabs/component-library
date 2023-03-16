@@ -1,12 +1,12 @@
 import React from 'react';
-import { LoginContainerWrapper } from './LoginContainer.styles';
+import styles from './LoginContainer.module.scss';
 
 const LoginContainer = ({ children, ref }: { children: React.ReactNode; ref?: any }): JSX.Element => {
 
     return (
-        <LoginContainerWrapper ref={ref}>
+        <div className={styles.loginContainerWrapper} ref={ref}>
             {children}
-        </LoginContainerWrapper>
+        </div>
     );
 };
 
