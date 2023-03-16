@@ -403,3 +403,18 @@
 .icon-menu:before {
   content: "\e981";
 }
+.icon-light-trademarked:before {
+  content: "\e982";
+}
+.icon-light-layout:before {
+  content: "\e983";
+}
+.icon-eye-light:before {
+  content: "\e984";
+}
+.icon-light-paintBrush:before {
+  content: "\e985";
+}
+.icon-light-text:before {
+  content: "\e986";
+}
