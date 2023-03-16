@@ -53,7 +53,7 @@ const Input = ({
             </label>
 
             {showError && touched && touched[name] && errors && errors[name] ? (
-                <ErrorMessage className={styles.error}>{errors[name]}</ErrorMessage>
+                <ErrorMessage className={styles.error}><>{errors[name]}</></ErrorMessage>
             ) : null}
         </div>
     );

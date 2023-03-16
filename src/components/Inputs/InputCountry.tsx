@@ -46,7 +46,7 @@ const InputCountry = ({
         </div>
       </div>
       {touched?.country && errors?.country ? (
-        <ErrorMessage>{errors.country}</ErrorMessage>
+        <ErrorMessage><>{errors.country}</></ErrorMessage>
       ) : null}
     </div>
   );

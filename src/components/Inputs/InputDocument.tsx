@@ -100,7 +100,7 @@ const InputDocument = ({
       </div>
       {(touched?.idNumber && errors?.idNumber) ||
       (touched?.idType && errors?.idType) ? (
-        <ErrorMessage>{errors?.idNumber || errors?.idType}</ErrorMessage>
+        <ErrorMessage><>{errors?.idNumber || errors?.idType}</></ErrorMessage>
       ) : null}
     </div>
   );

@@ -46,7 +46,7 @@ const InputEconomicSector = ({
         </div>
       </div>
       {touched?.economicSector && errors?.economicSector ? (
-        <ErrorMessage>{errors.economicSector}</ErrorMessage>
+        <ErrorMessage><>{errors.economicSector}</></ErrorMessage>
       ) : null}
     </div>
   );
